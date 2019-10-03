@@ -1,0 +1,42 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.category-calendar {
+	position: relative;
+	top: -154px;
+	border-radius: 15px;
+}
+.category-tabs {
+	padding-right: 20px;
+}
+
+#category-tab1-tab.active ~ span.yellow-bar {
+	left: 0;
+	width: 121px;
+}
+
+#category-tab2-tab.active ~ span.yellow-bar {
+	left: 125px;
+    width: 96px;
+}
+
+#category-tab3-tab.active ~ span.yellow-bar {
+	left: 225px;
+    width: 110px;
+}
+.see-more {
+	font-size: 13px!important;
+	text-decoration: underline!important;
+	color: #4d4d4d !important;
+}
+
+@media (max-width: 993px) {
+	.category-calendar {
+		top: 0;
+	}
+}
+.category-tab-content {
+	.btn-primary {
+		border-radius: 15px;
+	}
+}

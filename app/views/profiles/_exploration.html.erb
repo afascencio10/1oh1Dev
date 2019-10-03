@@ -1,0 +1,73 @@
+<div class="exploreSection">
+    <div class="interestsHeader">
+        <div class="interestsTitle">Interests</div>
+        <div class="interestsIcon">
+            <a href="#">
+                <img class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
+            </a>
+        </div>
+    </div>
+    <div class="interestsContent">
+        <div class="interestsImages">
+            <% if @explores.blank? %>
+              <div class="emptyInterests">
+                  Update your Skills
+              </div>
+            <% else %>
+                <% @explores.each do|explore| %>
+                  <div class="interestsImage">
+                     <img class="imagesInterests" src="<%= explore.url %>">
+                  </div>
+               <% end %>
+            <% end %>
+        </div> 
+        <div class="interestsMoreLink">
+            <a id="interestsMoreLink" href="#">More</a>
+        </div>
+    </div>
+    <div class="reviewsTitle">
+        <div id="forReviewsTitle">Reviews</div>
+    </div>
+    <div class="reviewsContent">
+      <% if @explore_ratings.blank? %>
+         <div class="emptyReviews">
+            No Explore Ratings Available
+         </div>
+      <% else %>
+         <% @explore_ratings.each do |content| %>
+           <div class="reviews">
+               <div class="reviewImage">
+                   <div class="reviewImageGrid"><img class="imageReview" src="<%= Guide.find(content.guide_id).category.url %>"></div>
+                   <div class="reviewLabel">
+                     <%= Guide.find(content.guide_id).category.name %>
+                   </div>
+               </div>
+               <div class="reviewInfo">
+                   <div class="reviewRate">
+                       <div class="celXs" id="subgridscoreXs">
+                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
+                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
+                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
+                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
+                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
+                           <div class="rateNumber">5</div>
+                         </div>
+                   </div>
+                   <div class="reviewViewAllReviews">
+                       <a id="reviewViewAllReviews" href="#">viewAllReviews</a>
+                   </div>
+                   <div class="commentImage">
+                       <img class="commentProfileImage" src="<%= Guide.find(content.guide_id).profile.profile_photo %>">
+                   </div>
+                   <div class="comment">"<%= content.review %>"</div>
+               </div>
+           </div>
+         <% end %>
+      <% end %>        
+    </div>                            
+    <div class="moreLink">
+        <div id="forMoreLink">
+            <a id="moreLink" href="#">More</a>
+        </div>
+    </div>
+</div>

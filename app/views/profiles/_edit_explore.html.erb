@@ -1,0 +1,37 @@
+<div class="tab-pane container fade" id="explore">
+  <%= form_tag( {:controller=>"explores", :action => :create, }, { :method => :post }) do %>
+    <div class="row popular align-items-center justify-content-center text-center">
+      <% @category.each do |category| %>
+            <div class="col-md-3">
+              <label>
+                <div class="custom-card card-very-small my-3">
+                  <div class="has-bg" style="background-image: url(<%= category.url %>);">
+                    <div class="texts-wrap">
+                      <div class="main-text"><%= category.name %></div>
+                      <!-- <div class="sub-text">editing</div> -->
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top: 10px">
+                  <h6 class="text-primary">
+                    <input type="checkbox" class="form-check-input" id="explore<%= category.id %>" name="category[]" value="<%= category.id %>"><%= category.name %>
+                  </h6>
+                </div>
+              </label>
+            </div>
+          <% end %>
+    </div>
+
+    <div class="input-group-append float-right">
+      <a class="btn custom-btn-outline-primary" data-toggle="modal" data-target="#add_category_guest">Add Interests</a>
+      <button type="submit" class="btn custom-btn-outline-primary">Update Interests</button>
+    </div>
+  <% end %>
+</div>
+
+<script>
+    var check = '<%= raw @explores.map(&:id).as_json %>';
+    JSON.parse(check).forEach(function (item) {
+        $("#explore" + item).prop('checked', true);
+    });
+</script>

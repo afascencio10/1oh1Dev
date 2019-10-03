@@ -1,0 +1,406 @@
+// Place all the styles related to the Helps controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.timeline-calendar-wrap {
+	.dropdown-item:active {
+		background-color: #ac8bec;
+	}
+	.dropdown-toggle {
+		&:after {
+			display: none;
+		}
+		i {
+			color: rgb(77, 77, 77);
+		}
+	}
+	.fc-event {
+		padding: 20px 15px;
+		border-radius: 10px;
+	}
+	.fc-event .fc-title {
+		font-size: 20px;
+		font-weight: bold;
+		color: #2b2b2b;
+		padding: 0;
+	}
+	.fc-event-description {
+		font-size: 14px;
+		color: #2b2b2b;
+		margin-top: 5px;
+		margin-bottom: 40px;
+	}
+	.fc-event-name {
+		position: absolute;
+	    bottom: 20px;
+	}
+	.fc-event-star {
+		position: absolute;
+		right: 15px;
+		top: 20px;
+	}
+	.fc-event.unavailable {
+		border-color: #fce3e9;
+		border-left: 5px solid #fccad4;
+		background-color: #fce3e9;
+	}
+	.fc-event.pending {
+		border-color: #fff0dc;
+		border-left: 5px solid #ffc288;
+		background-color: #fff0dc;
+	}
+	.fc-event.guiding {
+		border-color: #e9e3f1;
+		border-left: 5px solid #b889e1;
+		background-color: #e9e3f1;
+	}
+	.fc-event.exploring {
+		border-color: #e6e7e7;
+		border-left: 5px solid #aaaaaa;
+		background-color: #e6e7e7;
+	}
+	.fc-event .fc-time {
+		display: none;
+	}
+	.fc-toolbar {
+		display: none;
+	}
+	.fc-dayGridWeek-view, .fc-dayGridMonth-view {
+		.fc-day-top {
+			font-size: 13px;
+		}
+		.fc-event-container {
+			padding: 5px 1px;
+		}
+		td.fc-today {
+			background: rgba(172, 139, 236, 0.3);
+		}
+		.fc-event {
+			min-height: 100px;
+			overflow: hidden;
+			.fc-title {
+				font-size: 12px;
+			}
+		}
+
+		.fc-event-description, .fc-event-name {
+			font-size: 12px;
+		}
+		.fc-day-header.fc-widget-header {
+			font-weight: normal;
+			text-transform: uppercase;
+			font-size: 13px;
+			padding: 10px;
+		}
+	}
+	.fc-timeGridDay-view {
+		td.fc-today {
+			background: white;
+		}
+		.fc-day-header.fc-widget-header {
+			font-size: 15px;
+			padding: 6px 0;
+		}
+		/* dots border */
+		.fc-time-grid .fc-slats .fc-minor td {
+			border-top: none;
+		}
+		/* current date */
+		.fc-head {
+			display: none;
+		}
+		/* border around event cels */
+		.fc-bg .fc-widget-content {
+			border: none!important;
+		}
+		/* border top of times*/
+		.fc-slats tr > td:first-child {
+			border-top: none;
+			border-right: none!important;
+			position: relative;
+			bottom: 35px;
+		}
+		.fc-slats tr > td:last-child {
+			border-left: none!important;
+		}
+		/* increate cells height */
+		.fc-time-grid .fc-slats td {
+			height: 68px;
+		}
+		/* indicator color */
+		.fc-now-indicator {
+			border: 0 solid #2b2b2b
+		}
+		.fc-time-grid .fc-now-indicator-line {
+			border-top-width: 2px;
+		}
+		.fc-axis.fc-time.fc-widget-content{
+			text-align: center;
+		}
+		.fc-axis {
+			width: 180px!important;
+		}
+
+
+		.fc-slats tr:first-child .fc-time {
+			color: white;
+		}
+	}
+}
+.very-custom-calendar-wrap {
+	border-bottom: 1px solid #dee2e6;
+	.month-placeholder {
+		font-weight: bold;
+	}
+	.months-wrap {
+		overflow: auto;
+		white-space: nowrap;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		padding: 20px 0;
+	    position: relative;
+		.month {
+			color: #4d4d4d !important;
+			font-size: 11px;
+			letter-spacing: 2px;
+			border-radius: 25px;
+			padding: 5px 10px;
+			margin: 0 5px;
+
+			&.active {
+				background-color: #ac8bec;
+				color: white!important;
+			}
+		}
+	}
+}
+.very-custom-calendar {
+	background-color: #fff;
+
+	.fc-right {
+		position: relative;
+    	right: -11px;
+	}
+	.fc-toolbar.fc-header-toolbar {
+		display: none;
+	}
+	.fc-dayGrid-view .fc-body .fc-row {
+		min-height: 10px;
+	}
+	.fc-dayGrid-view .fc-day-top .fc-day-number {
+		float: none!important;
+		font-size: 13px;
+	}
+
+	.fc-button .fc-icon {
+		color: rgb(77, 77, 77);
+	}
+	.fc-dayGrid-view .fc-body .fc-row {
+		min-height: 40px!important
+	}
+	.fc-day-top {
+		text-align: center;
+	}
+
+	.fc-row.fc-widget-header {
+		border-right: none!important;
+		padding: 15px 0;
+	}
+	.fc-button-primary:not(:disabled):active:focus {
+		box-shadow: none!important;
+	}
+	.fc-button-primary:not(:disabled):active {
+		background-color: white;
+		border-color: white!important;
+		color: #00878c;
+	}
+	.fc-row .fc-content-skeleton {
+		position: relative;
+		top: 17px;
+	}
+	.fc-head-container.fc-widget-header {
+		border: none;
+	}
+	.fc-day-header.fc-widget-header {
+		border-right: 1px solid white;
+		border-left: 1px solid white;
+		font-weight: normal;
+		text-transform: uppercase;
+		font-size: 13px;
+	}
+	&.fc-unthemed td {
+		border: none!important;
+	}
+	.fc-button-group {
+		button {
+			background: white;
+			border: none;
+			box-shadow: none;
+		}
+	}
+	.fc-day.fc-widget-content.fc-disabled-day {
+		background: white
+	}
+	.fc-day-top.done {
+		text-decoration: line-through;
+		color: #ccc;
+	}
+	.fc-day.fc-widget-content.fc-today {
+		background-color: #f2f2f2;
+	}
+}
+.months-slider {
+  .owl-nav {
+    position: absolute;
+    width: 100%;
+    top: 38%;
+    transform: translateY(-50%);
+
+    .owl-prev, .owl-next {
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      text-align: center;
+      padding-top: 4px;
+      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    }
+
+    .owl-prev {
+      position: absolute;
+      left: -2px;
+    }
+
+    .owl-next {
+      position: absolute;
+      right: -16px;
+    }
+  }
+}
+.event-list-wrap {
+	padding: 30px 10px;
+	.event-list {
+		list-style: none;
+		padding: 0;
+
+		.event {
+			font-size: 13px;
+			margin-bottom: 30px;
+			.event-icon {
+				color: #ac8bec;
+				position: relative;
+				min-width: 85px;
+				display: inline-block;
+				text-align: center;
+				i {
+					vertical-align: middle;
+					font-size: 18px;
+				}
+				&.has-next:after {
+					content: "";
+					position: absolute;
+					left: 42px;
+					top: 24px;
+					height: 26px;
+					width: 0;
+					border-left: 1px dashed #ac8bec;
+				}
+			}
+			.event-line-through-text {
+				color: #ccc;
+				text-decoration: line-through;
+			}
+		}
+	}
+}
+
+#newEventDialog, #newEventTimeConflict {
+	max-width: 450px;
+	margin: 0 auto;
+	.modal-title {
+		font-size: 16px;
+	}
+	.form-group label {
+		font-size: 16px;
+	}
+	.new-event-main-text, .new-event-action-main-text {
+		font-size: 14px;
+	}
+	.new-event-subtext {
+		display: inline-block;
+		width: 110px;
+		font-size: 15px;
+		i {
+			font-size: 18px;
+			color: #75797e;
+			vertical-align: middle;
+		}
+	}
+	.new-event-action-subtext {
+		display: inline-block;
+		font-size: 15px;
+		margin-right: 25px;
+		i {
+			font-size: 18px;
+			color: #75797e;
+			vertical-align: middle;
+		}
+	}
+	.new-event-buy-gcoins {
+		font-size: 12px;
+		text-align: right;
+		position: relative;
+		a {
+			color: #2a8bf2;
+			position: absolute;
+			left: 200px;
+			top: -30px;
+		}
+	}
+	.new-event-action {
+		cursor: pointer;
+	}
+	.new-event-price, .new-event-remaining {
+		max-width: 310px;
+	}
+	.btn-primary, .btn-secondary {
+		font-size: 13px;
+		letter-spacing: 1px;
+		text-transform: none;
+		border-radius: 5px;
+	}
+	.btn-primary {
+		color: white!important;
+	}
+	.btn-secondary {
+		border: none;
+		color: #5f6368!important;
+		background-color: white!important;
+		&:hover {
+			color: white!important;
+			background-color: #5f6368!important;
+		}
+	}
+	.modal-footer {
+		border-top: none;
+	}
+}
+#newEventTimeConflict {
+	a {
+		color: #2a8bf2;
+	}
+	.time-conflict-icon {
+		display: inline-block;
+		border-radius: 50%;
+		border: 3px solid #f16821;
+		width: 60px;
+		height: 60px;
+
+		i {
+			font-size: 45px;
+			color: #f16821;
+			position: relative;
+			right: -1px;
+			bottom: -5px;
+		}
+	}
+}

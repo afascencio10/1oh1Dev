@@ -1,0 +1,32 @@
+<div>
+  <h1>Chat Application</h1>
+  <table>
+  <% @existing_chats_users.each do |user| %>
+    <% if user != current_user %>
+      <tr>
+        <td><%= link_to(user_chats_path(current_user, :other_user => user.id), method: :post) do %>
+        <%= user.firstname %>
+        <% end %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+  <h5>Chat with <%= @other_user.firstname %></h5>
+  <% if @chat.messages.any? %>
+    <div id="messages">
+      <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
+    </div>
+  <%else%>
+    <div id="messages">
+    </div>
+  <%end%>
+</div>
+<%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat,other_user: params[:other_user]}%>
+</div>
+<script>
+  createMessageChannel();
+  // app/assets/javascripts/channels/messages.js
+  messageForm();
+  // app/assets/javascripts/messages_form.js
+</script>

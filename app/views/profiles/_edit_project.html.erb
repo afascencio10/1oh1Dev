@@ -1,0 +1,80 @@
+<div class="tab-pane container fade" id="project">
+  <%= form_tag( {:controller=>"projects", :action => :create, }, { :method => :post }) do %>
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Project Name :</label>
+<!--          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Project Name">-->
+          <%= text_field_tag :name,nil,class: 'form-control field_input',placeholder: "Name",:required => true %>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Description :</label>
+          <%= text_area_tag :description,nil,class: 'form-control field_input',placeholder: "Describe It",:required => true %>
+<!--          <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHel" placeholder="Describe your project"></textarea>-->
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Project Photo :</label>
+          <%= file_field_tag :project_photo,class: 'form-control field_input' %>
+          <%= hidden_field_tag :image%>
+<!--          <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHel" placeholder="Project Photo">-->
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Collaborators :</label>
+          <%=select_tag "colab_id", options_from_collection_for_select(User.all,"id","firstname"),multiple: true,:required => true%>
+<!--          <select multiple="multiple" id="my-select" name="my-select[]">-->
+            <%# User.all.each do |x| %>
+<!--              <option value='elem_1'><%#= x.firstname %>&nbsp;<%#= x.lastname %></option>-->
+            <%# end %>
+            <!--                      <option value='elem_1'>elem 1</option>-->
+            <!--                      <option value='elem_2'>elem 2</option>-->
+            <!--                      <option value='elem_3'>elem 3</option>-->
+            <!--                      <option value='elem_4'>elem 4</option>-->
+            <!--                      <option value='elem_100'>elem 100</option>-->
+          </select>
+          <!--                    <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHel" placeholder="Cover Photo">-->
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Current Status :</label>
+          <br>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" value="1" name="status">To-Do
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" value="2" name="status">Pending
+            </label>
+          </div>
+          <div class="form-check-inline disabled">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" value="3" name="status">Completed
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="input-group-append float-right">
+      <a href="/projects" id="submit" class="btn btn custom-btn-outline-primary">Edit Projects</a>
+      <%= submit_tag("Create Project",:id=>"submit", :class=>'btn btn custom-btn-outline-primary')%>
+      <!--                <input type="hidden" id="url" name ="url1"/>-->
+
+    </div>
+  <% end %>
+</div>

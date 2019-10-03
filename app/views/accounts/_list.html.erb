@@ -1,0 +1,22 @@
+<div id="filterrific_results">
+  <div>
+    <%= page_entries_info users, entry_name: "user" %>
+  </div>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Email</th>
+    </tr>
+    <% users.each do |user| %>
+      <% if user != current_user %>
+        <tr>
+          <td><%= link_to(user_chats_path(current_user, :other_user => user.id), method: :post) do %>
+          <%= user.firstname %>
+          <% end %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <%= will_paginate users  %>
+</div>

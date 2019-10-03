@@ -1,0 +1,7 @@
+$('.calendar').fullCalendar('removeEvents', [<%= @booking.id %>]);
+$('.calendar').fullCalendar(
+  'renderEvent',
+  $.parseJSON("<%=j render(@booking, format: :json).html_safe %>"), 
+  true
+);
+$('.modal').modal('hide');

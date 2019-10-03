@@ -1,0 +1,79 @@
+<!--<div class="site-section bg-light" id="section-contact">-->
+<!--  <div class="container">-->
+<!--    <div class="row justify-content-center mb-5">-->
+<!--      <div class="col-md-7 text-center border-primary">-->
+<!--        <h2 class="font-weight-light text-primary">Contact Us</h2>-->
+<!--        <p class="color-black-opacity-5">See Our Daily News &amp; Updates</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+
+<!--      <div class="col-md-5">-->
+
+<!--        <div class="p-4 mb-3 bg-white">-->
+<!--          <p class="mb-0 font-weight-bold">Address</p>-->
+<!--          <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>-->
+
+<!--          <p class="mb-0 font-weight-bold">Phone</p>-->
+<!--          <p class="mb-4"><a href="#">+1 232 3235 324</a></p>-->
+
+<!--          <p class="mb-0 font-weight-bold">Email Address</p>-->
+<!--          <p class="mb-0"><a href="#">youremail@domain.com</a></p>-->
+
+<!--        </div>-->
+
+<!--        <div class="p-4 mb-3 bg-white">-->
+<!--          <h3 class="h5 text-black mb-3">More Info</h3>-->
+<!--          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.</p>-->
+<!--          <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="site-section border-bottom bg-light" id="section-info">
+  <div class="container">
+
+    <div class="row mb-5">
+      <div class="col-md-12 order-md-1" data-aos="fade-up">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="text-center pb-1 mb-4">
+
+              <img src="<%= image_path('learn.jpg') %>" alt="Image" class="fix-icon">
+              <h2 class="text-primary font-weight-bold" id="moto">Learn</h2>
+            </div>
+            <div class="justify-content-center pb-1 mb-4">
+              <p class="text-primary" id="country">Explore endless skills from experts all over the globe.</p>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="text-center pb-1 mb-4">
+              <img src="<%= image_path('earn.jpg') %>" alt="Image" class="fix-icon ">
+              <h2 class="text-primary font-weight-bold" id="moto">Earn</h2>
+            </div>
+            <div class="justify-content-center pb-1 mb-4">
+              <p class="text-primary" id="country">Collect tokens by sharing your knowledge with others</p>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="text-center pb-1 mb-4">
+              <img src="<%= image_path('grow.png') %>" alt="Image" class="fix-icon ">
+              <h2 class="text-primary font-weight-bold" id="moto">Grow</h2>
+            </div>
+            <div class="justify-content-center pb-1 mb-4">
+              <p class="text-primary" id="country">Increase your development with fast tracking your search. Use the time saved to learn a new skill.</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      </div>
+
+  </div>
+</div>
+<script>
+    document.getElementById("country").innerHTML = "Popular in " + geoplugin_countryName();
+</script>

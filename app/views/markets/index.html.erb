@@ -1,0 +1,150 @@
+<%= render 'landing/navbar' %>
+
+<div class="market">
+    <section class="page-banner text-center py-5" style="background-image: url(<%= image_path('Section/workshop.jpg') %>);">
+      <div class="details">
+        <h1 class="mt-3 c-white">Market</h1>
+
+        <h3 class="px-4 c-white-darker">Add coins or find a plan that works for you.</h3>
+      </div>
+    </section>
+
+
+
+    <section class="guide-coins py-5">
+      <h1 class="text-center text-primary">Guide Coins</h1>
+
+      <div class="coins text-center mt-5">
+      	<div class="coin d-inline-block shadow mx-3 my-2 px-5 py-4 rounded" id="coin-first">
+          <h6>&nbsp</h6>
+          <h4>250 <img width="45px" src="<%= image_path('coin.png') %>" alt="coin"></h4>
+          <button type="button"
+          		  class="btn btn-outline-secondary mt-4">$20.00 USD</button>
+          <h5 class="mt-3">Save 2%</h5>
+        </div>
+
+        <div class="coin d-inline-block shadow mx-3 my-2 px-5 py-4 rounded active" id="coin-second">
+          <h6>Recommended</h6>
+          <h4>450 <img width="45px" src="<%= image_path('coin.png') %>" alt="coin"></h4>
+          <button type="button"
+          		  class="btn btn-primary mt-4">$46.00 USD</button>
+          <h5 class="mt-3">Save 12%</h5>
+        </div>
+
+        <div class="coin d-inline-block shadow mx-3 my-2 px-5 py-4 rounded" id="coin-third">
+          <h6>&nbsp</h6>
+          <h4>350 <img width="45px" src="<%= image_path('coin.png') %>" alt="coin"></h4>
+          <button type="button"
+          		  class="btn btn-outline-secondary mt-4">$36.00 USD</button>
+          <h5 class="mt-3">Save 8%</h5>
+        </div>
+      </div>
+    </section>
+
+	<hr/>
+
+    <section class="explore-subscriptions py-5">
+      <h1 class="text-center text-primary">Explore Subscriptions</h1>
+
+      <div class="subscriptions text-center mt-5">
+      	<div id="subscription-tourist" class="subscription d-inline-block shadow rounded mx-3 my-2">
+          <div class="mx-3 my-1 px-5 py-4">
+            <h4>Tourist</h4>
+            <p class="description font-weight-normal">
+              <em>
+                "Blessed are the curious for they shall have adventures."
+              </em>
+            </p>
+
+            <button
+            		type="button"
+            		class="btn btn-outline-secondary mt-4">$25.00/month</button>
+
+            <h5 class="mt-3">Save 16%</h5>
+          </div>
+
+          <div class="px-2 py-2">
+            <hr class="m-0"/>
+
+            <h6 class="mt-4 px-3 text-left">Includes</h6>
+
+            <div class="mb-4 px-3">
+              <div class="d-inline-block align-top">
+                <i class="material-icons">check</i>
+              </div>
+              <div class="includes d-inline-block p-0 text-left ml-2 align-top">
+                2 hours of tokens every month
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="subscription-voyager"
+        	 class="subscription d-inline-block shadow rounded active mx-3 my-2">
+          <div class="mx-3 my-1 px-5 py-4">
+            <h4>Voyager</h4>
+            <p class="description font-weight-normal">
+              <em>
+                "You cannot discover new oceans unless you have the courage to lose sight of the shore."
+              </em>
+            </p>
+
+            <button type="button"
+
+            		class="btn btn-primary mt-4">$48.00/month</button>
+
+            <h5 class="mt-3">Save 20%</h5>
+          </div>
+
+          <div class="px-2 py-2">
+            <hr class="m-0"/>
+
+            <h6 class="mt-4 px-3 text-left">Includes</h6>
+
+            <div class="mb-4 px-3">
+              <div class="d-inline-block align-top">
+                <i class="material-icons">check</i>
+              </div>
+              <div class="includes d-inline-block p-0 text-left ml-2 align-top">
+                4 hours of tokens every month
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="subscription-globetrotter" class="subscription d-inline-block shadow rounded mx-3 my-2">
+          <div class="mx-3 my-1 px-5 py-4">
+            <h4>Globetrotter</h4>
+            <p class="description font-weight-normal">
+              <em>
+                "Explore. Dream. Discover."
+              </em>
+            </p>
+
+            <button type="button"
+
+            		class="btn btn-outline-secondary mt-4">$90.00/month</button>
+
+            <h5 class="mt-3">Save 25%</h5>
+          </div>
+
+          <div class="px-2 py-2">
+            <hr class="m-0"/>
+
+            <h6 class="mt-4 px-3 text-left">Includes</h6>
+
+            <div class="mb-4 px-3">
+              <div class="d-inline-block align-top">
+                <i class="material-icons">check</i>
+              </div>
+              <div class="includes d-inline-block p-0 text-left ml-2 align-top">
+                8 hours of tokens every month
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<%= render 'landing/footer' %>

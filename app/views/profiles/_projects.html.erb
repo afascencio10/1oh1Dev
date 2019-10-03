@@ -1,0 +1,44 @@
+<div class="projectsSection">
+    <div class="projectsContent">
+      <% if @projects.blank? %>
+         <div class="emptyReviews">
+            Upload your Projects
+         </div>
+      <% else %>
+         <% @projects.each do|project| %>
+           <div class="projectContainer">
+               <div class="projectImages">
+                   <div class="projectPhoto">
+                       <img class="projectPicture" src="<%= project.image %>">
+                       <% if project.status == 1 %>
+                            <img src="<%= image_path('Icons/Idea_icon.png') %>" alt="Image" class="projectIcon">
+                          <% elsif project.status == 2 %>
+                            <img src="<%= image_path('Icons/WIP-icon.png') %>" alt="Image" class="projectIcon">
+                          <% else %>
+                            <img src="<%= image_path('Icons/completed-icon.png') %>" alt="Image" class="projectIcon">
+                        <% end %>                       
+                   </div>
+
+                   <div class="projectProfiles">
+                     <% project.colab_id.each do |x|%>
+                       <div class="profilePict">
+                           <img class="profileImage" src="<%= User.find(x).profile.profile_photo %>">
+                       </div>
+                     <% end %>
+                   </div>
+               </div>
+               <div class="projectInfo">
+                   <div class="projectTitle"><%= project.name %></div>
+                   <div class="editIconProject">
+                       <i class="material-icons icons create">create</i>
+                   </div>
+                   <div class="projectDescription"><h3 class="descriptionTitle">Description</h3> <p class="descriptionText"> <%= project.description %></p></div>
+                   <div class="projectSkills"><h3 class="descriptionTitle">Skills needed</h3> 
+                     <p class="descriptionText"> <%= project.skills%></p>
+                   </div>
+               </div>
+           </div>
+         <% end %>
+      <% end %>        
+    </div>
+</div>

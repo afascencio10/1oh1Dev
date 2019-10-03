@@ -1,0 +1,23 @@
+ <h1>Chats</h1>
+ <%= form_for_filterrific @filterrific do |f| %>
+   <div>
+     Search
+     <%= f.text_field(
+       :search_query,
+       class: 'filterrific-periodically-observed'
+     ) %>
+   </div>
+
+   <div>
+     <%= link_to(
+       'Reset filters',
+       reset_filterrific_url,
+     ) %>
+   </div>
+   <%= render_filterrific_spinner %>
+ <% end %>
+
+ <%= render(
+   partial: 'accounts/list',
+   locals: { users: @users }
+ ) %>

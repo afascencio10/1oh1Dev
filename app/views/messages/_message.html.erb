@@ -1,0 +1,8 @@
+<!-- <div class="message">
+  <p><%= message.content %></p>
+</div> -->
+<% if current_user.id == message.user_id%>
+  <p id="<%=message.user_id %>">&emsp;&emsp;&emsp;<%= message.user.firstname %>: <%=message.content%></p>
+<% else %>
+  <p id="<%=message.user_id %>"><%= message.user.firstname %>: <%=message.content%></p>
+<% end %>

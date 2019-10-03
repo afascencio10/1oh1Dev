@@ -1,0 +1,93 @@
+<div class="site-section block-13 border-bottom" id="section-explorers">
+
+  <div class="container" style="margin-top: 25px">
+    <div class="text-left pb-1 mb-4">
+      <h2 class="text-primary">Listed Categories</h2>
+      <!-- <div id="notifications">
+      RealTime Notification ActionCable
+      </div> -->
+      <button class="btn btn-primary text-white float-right" data-toggle="modal" data-target="#myModal" style="margin:10px">Add Category</button>
+    </div>
+
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Upload/Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do|category|%>
+            <tr>
+              <th scope="row"><%= category.id %></th>
+              <td><%= category.name %></td>
+              <td><img src="<%= category.url %>" alt="Image" style="height:50px"></td>
+              <!-- <td> <%= link_to category.id, category_path(category.name.downcase) %></td> -->
+              <td><button class="btn btn-primary text-white category_modal" data-toggle="modal" data-target="#editModal" data-val="<%=category.id%>,<%=category.name%>,<%=category.url%>">Edit</button></td>
+              <td><%= button_to("Delete", category_path(category), method: :delete, :class => "btn btn-danger text-white")%></td>
+
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+
+<%= render 'add_category'%>
+<%= render 'edit_category'%>
+
+
+<script>
+    $(document).ready(function(){
+        $("input[type=file]").change(function(e){
+            var storage = firebase.storage();
+            var storageRef = firebase.storage().ref();
+            if(e.target.id == "cat_url"){
+                var file=document.getElementById("cat_url").files[0];
+                console.log(file);
+                var thisref = storageRef.child("category/"+file.name).put(file);
+
+            }
+            else if(e.target.id == "edit_url"){
+                var file=document.getElementById("edit_url").files[0];
+                console.log(file);
+                var thisref = storageRef.child("category/"+file.name).put(file);
+
+            }
+
+            thisref.on('state_changed',function(snapshot){
+                console.log("File Uploaded Successfully");
+            },function (error) {
+
+            },function() {
+                thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    if(e.target.id=="cat_url")
+                    {
+                        profile = document.getElementById("url").value = downloadURL;
+                    }
+                    else if(e.target.id=="edit_url")
+                    {
+                        profile = document.getElementById("edurl").value = downloadURL;
+                    }
+                    alert("\nFile is here successfully");
+                })});
+        });
+    });
+
+    $(document).on("click", ".category_modal", function () {
+       var category = $(this).data('val');
+       // var id = category.split(',')[0];
+       $("#editid").val(category.split(',')[0]) ;
+       $("#editname").val(category.split(',')[1]);
+       $('img#editurl').attr('src', category.split(',')[2]);
+
+     });
+</script>

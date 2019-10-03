@@ -1,0 +1,154 @@
+<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+  <div class="cd-user-modal-container">
+      <!-- close dialog -->
+      <a href="#0" class="cd-close-form"><i class="material-icons">close</i></a>
+
+      <div class="row register-page m-0">
+        <div class="sign-up-wrap small p-0 relative">
+          <div class="circleBlue"></div>
+          <div class="messageBlue">
+            <div class="cel1">
+                 <h1 class="head">Hello!</h1>
+              </div>
+              <div class="cel1">
+                  <h6 class="sub-head">
+                    Register to start your education journey. For Free.
+                  </h6>
+              </div>
+              <div id="cel2">
+                  <button id="forSignInButton"  class="signButton"><img class="arrowIcon" src="<%= image_path('Icons/blueArrow.png') %>"><img class="arrowIcon2" src="<%= image_path('Icons/blueArrowUp.png') %>">SIGN UP</button>
+              </div>
+          </div>
+          <!-- FORM: sign up (register) -->
+          <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name),:html => {:class => "cd-form gridCreate hide", :id => "sign-up-form" }) do |f| %>
+               <h5 class="create-account-text span">
+                  Create Account
+               </h5>
+                <div class="cel1 gridRow relative">
+                  <label class="image-replace" for="signup-username">
+                    <i class="material-icons">person</i>
+                  </label>
+                  <%= f.text_field :firstname, class: "full-width", placeholder: 'First Name', required: 'true'%>
+
+                </div>
+                <div class="cel1 gridRow relative">
+                  <label class="image-replace" for="signup-username">
+                    <i class="material-icons">person</i>
+                  </label>
+                  <%= f.text_field :lastname, class: "full-width", placeholder: 'Last Name', required: 'true'%>
+
+                </div>
+                <p class="fieldset">
+                  <label class="image-replace" for="signup-email">
+                    <i class="material-icons">email</i>
+                  </label>
+                  <%= f.email_field :email, class: "full-width", placeholder: "E-mail", required: 'true'%>
+
+                </p>
+                <p class="fieldset">
+                  <label class="image-replace" for="signup-password">
+                    <i class="material-icons">lock</i>
+                  </label>
+                  <%= f.password_field :password, autocomplete: "new-password" ,class: "full-width", placeholder: "Password", required: 'true', minlength: '6'%>
+
+                  <a href="#0" class="hide-password">Show</a>
+                  <span id="password-strength-text"></span>
+                </p>
+
+                <p class="fieldset">
+                  <label class="image-replace" for="signup-password">
+                    <i class="material-icons">lock</i>
+                  </label>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "full-width", placeholder: "Confirm Password", required: 'true'%>
+
+                  <a href="#0" class="hide-password">Show</a>
+                </p>
+                <p class="fieldset fz-11 terms-container checkbox-fieldset my-2">
+                  <input type="checkbox" name="user[accept-terms]" class="align-middle" required id="accept-terms"/>
+                  <label class="align-middle" for="accept-terms">I agree to the
+                    <a href="#0" data-toggle="modal" data-target="#termsAndConditions">Terms</a> and
+                    <a href="#0" data-toggle="modal" data-target="#privacyPolicy">Privacy policy</a>
+                  </label>
+                </p>
+                <p class="fieldset text-center">
+                  <%= f.submit "Sign up", class: "full-width blueButton bg-blue", value: "Create account"%>
+                </p>
+          <% end %>
+
+        </div>
+        <div class="sub-grid sign-in-wrap expand p-0 relative">
+          <div class="circleGreen"></div>
+          <!-- MESSAGE: welcome back -->
+          <div class="messageGreen">
+            <div class="cel1">
+              <h1 class="head">Welcome Back!</h1>
+             </div>
+             <div class="cel1">
+                <h6 class="sub-head">
+                  Sign in to continue your educational adventure
+                </h6>
+            </div>
+            <div id="cel3">
+               <button id="forSignUpButton" class="signButton"><img class="arrowIcon" src="<%= image_path('Icons/greenArrow.png') %>">
+                <img class="arrowIcon2" src="<%= image_path('Icons/greenArrowDown.png') %>">SIGN IN</button>
+             </div>
+          </div>
+          <!-- FORM: sign in -->
+          <%= form_for(resource, as: resource_name, url: user_session_path(resource_name),:html => {:class => "cd-form gridSign hide", :id => "sign-in-form"}) do |f| %>
+                  <h5 class="sign-in-account-text">
+                  Sign in to 1oh1
+                  </h5>
+                  <p class="fieldset ">
+                    <label class="image-replace" for="signin-email">
+                      <i class="material-icons">email</i>
+                    </label>
+                    <%= f.email_field :email, class: "full-width sign-in-email", placeholder: "E-mail", required: 'true'%>
+                  </p>
+
+                  <p class="fieldset ">
+                    <label class="image-replace" for="signin-password">
+                      <i class="material-icons">lock</i>
+                    </label>
+                    <%= f.password_field :password ,class: "full-width", placeholder: "Password", required: 'true'%>
+                    <a href="#0" class="hide-password">Show</a>
+                  </p>
+
+                  <p class="fieldset checkbox-fieldset">
+                    <input type="checkbox" class="align-middle" required name="user[remember-me]" id="remember-me" checked>
+                    <label for="remember-me" class="align-middle">Remember me</label>
+                  </p>
+
+                  <p class="fieldset text-center">
+                    <%= f.submit  "Log in" , class: "greenButton full-width bg-green"%>
+                  </p>
+                  <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+          <% end %>
+          <!-- FORM FORGOT PASSWORD -->
+          <%= form_for(resource, as: resource_name, url: "/users/password",:html => {:class => "cd-form gridForgot hide", :id => "reset-password-form"}) do |f| %>
+            <h5 class="sign-in-account-text">
+              Lost your password?
+            </h5>
+            <p class="cd-form-message">
+               Please enter your email address. You will receive a link to create a new password.
+            </p>
+            <p class="fieldset">
+              <label class="image-replace" for="reset-email">
+                <i class="material-icons">email</i>
+              </label>
+              <%= f.email_field :email ,class: "full-width", placeholder: "E-mail", required: 'true'%>
+
+                <!--<input class="full-width" id="reset-email" type="email" placeholder="E-mail">-->
+            </p>
+            <p class="fieldset my-2 text-center">
+                <%= f.submit "Reset password", class: "full-width bg-green", value: "Reset password", required: 'true'%>
+                      <!--<input class="full-width" type="submit" value="Reset password">-->
+            </p>
+            <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div> <!-- cd-user-modal -->
+<%= render 'terms'%>
+<%= render 'privacy'%>

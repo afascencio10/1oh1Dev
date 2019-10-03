@@ -1,0 +1,394 @@
+// Place all the styles related to the Bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.sticky-wrapper {
+	z-index: 30;
+}
+.bookings-main-header {
+	margin-top: 150px;
+}
+.bookings-tab {
+	z-index: 30!important;
+}
+.bookings-container-wrap {
+	#site-navbar {
+		box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.1);
+		a {
+			color: rgb(77, 77, 77)
+		}
+	}
+}
+@media (max-width: 993px) {
+	.custom-calendar-wrap {
+		position: fixed;
+		width: 350px!important;
+		height: 455px!important;
+		left: -99999999px;
+		background-color: #fff;
+		z-index: 2000;
+		border-radius: 3px;
+		box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+	}
+	.booking-calendar {
+		width: auto !important;
+	}
+	.custom-calendar-modal-shadow {
+		position: fixed;
+		left: -99999999px;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1999;
+		background: rgba(77, 77, 77, 0.3);
+		&.active {
+			left: 0;
+		}
+	}
+	.custom-calendar-wrap.active {
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+.custom-calendar-wrap {
+	.btn-link {
+		color: rgb(77, 77, 77)!important;
+	}
+}
+.custom-calendar {
+	background-color: #fff;
+	.fc-right {
+		position: relative;
+    	right: -11px;
+	}
+	.fc-toolbar.fc-header-toolbar {
+		font-size: 12px;
+		h2 {
+			font-size: 16px;
+			font-weight: bold;
+			margin-top: 4px;
+		}
+	}
+	.fc-dayGrid-view .fc-body .fc-row {
+		min-height: 10px;
+	}
+	.fc-dayGrid-view .fc-day-top .fc-day-number {
+		float: none!important;
+		font-size: 13px;
+	}
+
+	.fc-button .fc-icon {
+		color: rgb(77, 77, 77);
+	}
+	.fc-dayGrid-view .fc-body .fc-row {
+		min-height: 40px!important
+	}
+	.fc-day-top {
+		text-align: center;
+	}
+	.fc-day-header.fc-widget-header {
+		font-size: 15px;
+		padding: 6px 0;
+	}
+	.fc-row.fc-widget-header {
+		border-right: none!important;
+	}
+	.fc-button-primary:not(:disabled):active:focus {
+		box-shadow: none!important;
+	}
+	.fc-button-primary:not(:disabled):active {
+		background-color: white;
+		border-color: white!important;
+		color: #00878c;
+	}
+	.fc-row .fc-content-skeleton {
+		position: relative;
+		top: 5px;
+	}
+	.fc-head-container.fc-widget-header {
+		border: none;
+	}
+	.fc-day-header.fc-widget-header {
+		border-right: 1px solid white;	
+		border-left: 1px solid white;
+		font-weight: normal;
+	}
+	.fc-unthemed td {
+		border-color: #eff2f2;
+	}
+	.fc-button-group {
+		button {
+			background: white;
+			border: none;
+			box-shadow: none;
+		}
+	}
+	.fc-day.fc-widget-content.fc-disabled-day {
+		background: white
+	}
+	.fc-day-top.done {
+		text-decoration: line-through;
+		color: #ccc;
+	}
+	.fc-day.fc-widget-content.fc-today {
+		background-color: #f2f2f2;		
+	}
+}
+.custom-calendar-modal-toolbar {
+	button {
+		padding-right: 4px;
+		margin-top: 7px;
+		i {
+			font-size: 20px;
+			color: rgb(77, 77, 77);
+		}
+	}
+}
+.custom-table {
+	padding-right: 20px;
+	.dropdown-item {
+		padding: 15px 20px;
+		font-size: 13px;
+		color: #484848;
+	}
+	.btn {
+		font-size: 14px;
+		padding: 10px 15px;
+		border-radius: 3px;
+		text-transform: none;
+	}
+	.dropdown {
+		display: inline-block;
+		&.show {
+			.dropdown-toggle {
+				background-color: #fff;
+				border: 1px solid #767676;
+			}
+		}
+		.dropdown-item {
+			font-size: 14px;
+		}
+	}
+	.dropdown-toggle {
+		background: white!important;
+		border: none;
+		font-size: 14px;
+		padding: 9px 12px 3px 12px;
+		border-radius: 3px;
+		&::after {
+			display: none;
+		}
+	}
+	.custom-btn-group {
+		border-radius: 0;
+		button {
+			border-radius: 0
+		}
+
+		.btn-outline-secondary {
+			border-color: #ccc;
+			color: #484848;
+			&:hover {
+				background-color: #00878c;
+				color: white;
+			}
+			&:active {
+				background-color: #00878c!important;
+				color: white!important;
+				border-color: #00878c!important;
+			}
+		}
+
+		.btn-outline-primary {
+			border-color: #ccc;
+		}
+	}
+	.btn-outline-secondary {
+		color: rgb(72, 72, 72);
+		&:hover {
+			color: white;
+		}
+	}
+	.btn-outline-primary {
+		color: #00878c;
+		border-color: #00878c;
+		&:hover {
+			background-color: #00878c;
+			color: white;
+		}
+		&:active {
+			background-color: #00878c!important;
+			color: white!important;
+			border-color: #00878c!important;
+		}
+	}
+	.btn-primary {
+		background-color: #00878c!important;
+		border: 1px solid #00878c!important;
+		color: white!important;
+	}
+	.success-color {
+		color: #00b02f;
+	}
+	.secondary-success-color {
+		color: #00878c;
+	}
+
+	.sub-color {
+		color: #767676;
+	}
+	.avatar {
+		img {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+		}
+		img.large {
+			width: 80px;
+			height: 80px;
+		}
+	}
+	th, td {
+		color: #484848;
+	}
+
+	th {
+		border-top: none;
+		font-size: 15px;
+		vertical-align: middle!important;
+		text-transform: capitalize;
+		border-bottom: 1px solid #ccc!important;
+
+		&.has-sort-icon::after {
+			content: 'arrow_drop_down';
+			font-family: 'Material Icons';
+			vertical-align: middle;
+		}
+
+		&.has-sort-icon.active::after {
+			content: 'arrow_drop_up'
+		}
+	}
+
+	tr {
+		background-color: #fff!important;
+		cursor: pointer;
+	}
+
+	td {
+		height: 70px;
+		vertical-align: middle;
+		border-bottom: 1px solid #ccc;
+		font-size: 14px;
+	}
+	.date-time-column {
+		min-width: 155px;
+	}
+	.session-description {
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+.bookings-container {
+	min-height: 600px;
+	margin-top: 100px;
+	img.active {
+		border: 1px solid #00878c;
+	}
+	header {
+		padding-right: 20px;
+		position: relative;
+		background-color: #fff;
+	}
+}
+
+.fz-12 {
+	font-size: 12px!important;
+}
+.fz-13 {
+	font-size: 13px!important;
+}
+.fz-14 {
+	font-size: 14px!important;
+}
+
+
+// material tab
+
+.hide {
+	display: none;
+}
+
+#material-tabs {
+		position: relative;
+		display: block;
+	  padding:0;
+		border-bottom: 1px solid #e0e0e0;
+}
+
+#material-tabs > a {
+	position: relative;
+ 	display:inline-block;
+	text-decoration: none;
+	padding: 22px;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 600;
+	color: #424f5a;
+	text-align: center;
+	&:after {
+		content: ''
+	}
+}
+
+#material-tabs>a.active {
+		font-weight: 700;
+		outline:none;
+		color: #00b02f;
+}
+
+#material-tabs>a:not(.active):hover {
+		background-color: inherit;
+		color: #7c848a;
+}
+
+@media only screen and (max-width: 520px) {
+		.nav-tabs#material-tabs>li>a {
+				font-size: 11px;
+		}
+}
+.tab-content > div {
+	overflow-x: auto;
+}
+.yellow-bar {
+	position: absolute;
+	z-index: 10;
+	bottom: 0;
+	height: 3px;
+	background: #00b02f;
+	display: block;
+	left: 0;
+	transition: left .2s ease;
+	-webkit-transition: left .2s ease;
+}
+
+#tab1-tab.active ~ span.yellow-bar {
+	left: 0;
+	width: 119px;
+}
+
+#tab2-tab.active ~ span.yellow-bar {
+	left: 124px;
+	width: 133px;
+}
+
+#tab3-tab.active ~ span.yellow-bar {
+	left: 261px;
+	width: 132px;
+}

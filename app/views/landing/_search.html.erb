@@ -1,0 +1,38 @@
+<div class="site-section border-bottom" id="section-search">
+  <div class="container" style="margin-top: 25px">
+
+    <div class="row mb-5">
+      <div class="col-md-12 order-md-1" data-aos="fade-up">
+
+        <div class="text-left pb-1 mb-4">
+          <h2 class="text-primary">Search the perfect Guide</h2>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <%= text_field_tag :what,nil,class: 'form-control what',placeholder: 'Anything' %>
+              </div>
+              <div class="col-md-3">
+                <%= text_field_tag :availability,nil,class: 'form-control availability',placeholder: 'Availability', "data-provide" => 'datepicker'  %>
+              </div>
+              <div class="col-md-3">
+                <%= text_field_tag :duration,nil,class: 'form-control duration',placeholder: 'Duration' %>
+              </div>
+              <div class="col-md-2">
+                <%= submit_tag("Search",:id=>"submit", :class=>'btn btn-primary py-2 px-4 text-white') %>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

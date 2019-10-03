@@ -1,0 +1,34 @@
+<section class="my-5">
+  <h3 class="my-4">Top Explorers</h3>
+  <!-- <div class="card-slider owl-carousel"> -->
+    <% if @top_explores.empty? %>
+      No Explorers Available
+    <% else %>
+      <% @top_explores.each do |explorer|%>
+        <%= link_to explore_path(explorer.explore_id) do %>
+          <div class="custom-card card-normal my-3" >
+            <div class="has-bg" style="background-image: url(<%= explorer.explore.category.url %>);">
+              <div class="top-images">
+                <img src="<%= image_path('eng.jpeg') %>" alt="">
+              </div>
+
+              <div class="texts-wrap">
+                <h5 class="text-white"><%= explorer.explore.category.name %></h5>
+              </div>
+
+              <div class="bottom-image">
+                <img src="<%= explorer.profile.profile_photo %>" alt="">
+              </div>
+            </div>
+
+            <h5 class="text-right"><%= explorer.profile.user.firstname %>&nbsp; <%= explorer.profile.user.lastname %></h5>
+            <div class="text-right">
+              <div class="rateYo d-inline-block p-0"></div>
+              <span class="d-inline-block star-counter">453</span>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <!-- </div> -->
+</section>

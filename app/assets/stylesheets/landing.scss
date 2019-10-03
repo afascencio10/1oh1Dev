@@ -1,0 +1,172 @@
+// Place all the styles related to the landing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
+  transition: 0.3s;
+  border-radius: 10px !important;
+}
+
+.notificationsIcon {
+  position: relative;
+  top: 4px; 
+  font-size: 19px;
+}
+
+#unread_count {
+  position: absolute;
+  top: -3px;
+  left: 11px;
+}
+
+.profileTopbar{
+
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
+}
+
+.prices h3{
+  font-weight: 100;
+  font-size: 25px;
+  color: #484848;
+  margin-left: 5px;
+}
+.img{
+  display: inline-block;
+  margin: 30px 5px 0 5px;
+}
+.img:last-child {
+  margin-right: 0;
+}
+.img img{
+  width: 301px;
+  height: 206px;
+}
+.price-stamp{
+  margin: -40px 0 0 150px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 22px;
+  text-shadow: 0 0 6px #615e61;
+}
+.description{
+  margin: 180px 0 0 0;
+  font-size: 14px;
+  color: #484848;
+}
+.owl-item{
+  padding: 15px!important;
+}
+.btn-primary{
+  border-color: #fff!important;
+}
+
+.what{
+  border-radius: 10px;
+  padding: 20px;
+}
+.availability{
+  border-radius: 10px;
+}
+.duration{
+  border-radius: 10px;
+}
+
+.popular{
+  padding: 10px;
+}
+.fix-guide{
+  position: absolute;
+  left: -8px;
+  bottom: 0px;
+  height: 125px!important;
+  width: 130px!important;
+  border-radius: 300px !important;
+  border-color: #0b0b0b!important;
+  border-style: solid;
+}
+
+.fix-flag{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 65px!important;
+  width: 65px!important;
+  border-radius: 300px !important;
+  border-color: #0b0b0b!important;
+  border-style: solid;
+}
+.fix-flag2{
+  position: absolute;
+  right: 50px;
+  top: 0;
+  height: 65px!important;
+  width: 65px!important;
+  border-radius: 300px !important;
+  border-color: #0b0b0b!important;
+  border-style: solid;
+}
+
+.fix-icon{
+  height: 75px!important;
+  width: 75px!important;
+  border-radius: 300px !important;
+}
+
+#moto{
+  padding: 10px;
+}
+.nav-link{
+  &.active {
+    color: rgb(140, 199, 63)!important;
+  }
+  &:hover {
+    color: rgb(140, 199, 63)!important;
+  }
+}
+.cd-form label.check{
+  left :30px!important;
+
+}
+
+.button-addon{
+  background-color: #8BC63F; /* Green */
+  padding: 14px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 12px;
+
+
+}
+
+.input-group-append a{
+  margin-right:25px;
+}
+.input-group-append a:last-child{
+  margin-right:0px;
+}
+
+.icon-nav{
+
+  height: 65px!important;
+  width: 65px!important;
+}
+
+.alert{
+  margin-bottom: 0px;
+  z-index: 10000;
+  height: 70px;
+  padding-top: 20px;
+
+}

@@ -1,0 +1,49 @@
+// Place all the styles related to the Markets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.market {
+	/* coins & subscription section*/
+	.coins .coin.active, .subscriptions .subscription.active {
+	  border: 3px solid rgb(140,199,63);
+	}
+
+	.subscription .description {
+	  max-width: 150px;
+	  height: 100px;
+	  margin: 0 auto;
+	}
+	.subscription .includes {
+	  max-width: 200px;
+	}
+	.includes-icon {
+		color: #79a4f4;
+	}
+	/* override bootstrap */
+	.btn-primary {
+	  color: #fff;
+	  background-color: rgb(140,199,63);
+	}
+	
+	.btn-primary:hover, .btn-primary:active {
+	  color: #fff;
+	  background-color: rgb(140,199,63)!important;
+	  border-color: rgb(140,199,63)!important;
+	}
+	.btn-primary:focus {
+	  box-shadow: 0 0 0 0.2rem rgba(140, 199, 63, 0.5) !important;
+	}
+
+	/* General */
+	.c-white {
+		color: #ffffff;
+	}
+	.c-white-darker {
+		color: rgb(249, 250, 251);
+	}
+	hr {
+	  margin-top: 1rem;
+	  margin-bottom: 1rem;
+	  border: 0;
+	  border-top: 1px solid rgba(0, 0, 0, 0.1);
+	}
+}

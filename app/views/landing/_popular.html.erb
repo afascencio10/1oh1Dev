@@ -1,0 +1,115 @@
+  <div class="site-section border-bottom" id="section-popular">
+  <div class="container" style="margin-top: 25px">
+
+    <div class="row mb-5">
+      <div class="col-md-12 order-md-1" data-aos="fade-up">
+
+        <div class="text-left pb-1 mb-4">
+          <h2 class="text-primary" id="country">Popular in your Country</h2>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <div class="custom-card card-small my-3">
+              <div class="has-bg" style="background-image: url(<%= image_path('Skills/business-3152586_640.jpg') %>);">
+                <div class="texts-wrap">
+                  <div class="main-text">Business</div>
+                  <!-- <div class="sub-text">editing</div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="custom-card card-small my-3">
+              <div class="has-bg"  style="background-image: url(<%= image_path('Skills/cigar-3768640_640.jpg') %>);">
+                <div class="texts-wrap">
+                  <div class="main-text">Cigar</div>
+                  <!-- <div class="sub-text">editing</div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="custom-card card-small my-3">
+              <div class="has-bg" style="background-image: url(<%= image_path('Skills/people-2587062_1920.jpg') %>);">
+                <div class="texts-wrap">
+                  <div class="main-text">People</div>
+                  <!-- <div class="sub-text">editing</div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col text-center">
+            <div class="custom-card card-small my-3">
+              <div class="has-bg" style="background-image: url(<%= image_path('Skills/jetliner-1767857.jpg') %>);">
+                <div class="texts-wrap">
+                  <div class="main-text">Jetline</div>
+                  <!-- <div class="sub-text">editing</div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr>
+
+    <div class="text-left pb-1 mb-4">
+      <h2 class="text-primary">Popular around the World</h2>
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+        <div class="custom-card card-small my-3">
+          <div class="has-bg" style="background-image: url(<%= image_path('Skills/piano-801707_640.jpg') %>);">
+            <div class="texts-wrap">
+              <div class="main-text">Piano</div>
+              <!-- <div class="sub-text">editing</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col text-center">
+        <div class="custom-card card-small my-3">
+          <div class="has-bg"  style="background-image: url(<%= image_path('Skills/industry-3225119_640.jpg') %>);">
+            <div class="texts-wrap">
+              <div class="main-text">Industry</div>
+              <!-- <div class="sub-text">editing</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col text-center">
+        <div class="custom-card card-small my-3">
+          <div class="has-bg" style="background-image: url(<%= image_path('Skills/mediterranean-cuisine-2378758_640.jpg') %>);">
+            <div class="texts-wrap">
+              <div class="main-text">Cuisine</div>
+              <!-- <div class="sub-text">editing</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col text-center">
+        <div class="custom-card card-small my-3">
+          <div class="has-bg" style="background-image: url(<%= image_path('Skills/blood-1813410_640.jpg') %>);">
+            <div class="texts-wrap">
+              <div class="main-text">Blood</div>
+              <!-- <div class="sub-text">editing</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+    document.getElementById("country").innerHTML = "Popular in " + geoplugin_countryName();
+
+</script>
