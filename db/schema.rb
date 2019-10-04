@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190926165311) do
+ActiveRecord::Schema.define(version: 20190919054357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20190926165311) do
     t.datetime "end"
     t.string   "duration"
     t.datetime "cancel_date"
-    t.integer  "status"
+    t.boolean  "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "guide_id"
@@ -138,8 +138,10 @@ ActiveRecord::Schema.define(version: 20190926165311) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                                                      null: false
+    t.datetime "updated_at",                                                      null: false
+    t.string   "email"
+    t.string   "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
     t.integer  "user_id"
     t.string   "state"
     t.string   "country"
