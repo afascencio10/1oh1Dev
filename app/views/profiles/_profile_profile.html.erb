@@ -10,7 +10,7 @@
   <div class="fondo"><img class="imgfondo" src="<%= image_path('life-862972_1920.jpg')  %>"></div>
   <div class="celprofile" id="description">
     <div class="cel"><p class="name"><%= current_user.firstname%>&nbsp<%= current_user.lastname %></p></div>
-    <div class="cel"><i class="material-icons icons create">create</i></div>
+    <div class="cel"><i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">create</i></div>
     <div class="cel"><p class="city">
       <% if @profile.state.nil? && @profile.country.nil? %>
      Location : None
