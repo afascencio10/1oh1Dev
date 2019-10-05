@@ -7,9 +7,166 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="body_terms">
-        this is the profile modal
-      </div>
+      <div class="container">
+         <div class="celr" id="gridBackground">
+             <div class="cel">
+                <div class="imgBackgraound">
+                  <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
+                </div>
+             </div>
+             <div class="cel"></div>
+             <div class="cel"></div>
+         </div>
+         <div class="celr" id=gridForm>
+             <div class="celr" id=gridLabels>
+                <div class="cel">First Name *</div>
+                <div class="cel">Last Name *</div>    
+             </div>
+             <div class="celr" id="gridLabels">
+                <div class="cel input"><input type="text" name="fname" class="inputFname"></div>
+                <div class="cel "><input type="text" name="lname" class="inputLname"></div>
+             </div>
+             <div class="cel" id="gridPersonal">
+                 <div class="cel">Personal Summary</div>
+                 <div class="cel"><textarea class="txtPersonal"></textarea></div>
+                 <div class="margin">Main</div>
+                 <div class="celr" id="gridImage">
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/electric.png') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/electric.png') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/electric.png') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div>
+                     </div>
+                 <div class="margin">    
+                 <div class="cel">Current Position</div>
+                 <div class="cel"><input type="text" name="pSummary" class="inputP"></div>
+                </div>
+             </div>
+             <div class="celr margin" id="gridSelect">
+                 <div class="cel">Fluent Languages *</div>
+             </div>
+             <div class="celr marginOption" id="gridOption">
+                        <div class="tags-input" data-name="tags-input">
+                            <!--<span class="tag">CSS<span class="close"></span></span>
+                            <span class="tag">JavaScript<span class="close"></span></span>
+                            <span class="tag">HTML<span class="close"></span></span>-->
+                        </div>
+             </div>
+             <div class="celr margin" id="gridSelect">
+                 <div class="cel">Country/Region *</div>
+                 <div class="cel"></div>
+                 <div class="cel">
+                     <select class="select">
+                         <option>Canada</option>
+                         <option>Alemania</option>
+                     </select>
+                 </div>
+                 <div class="cel"></div>
+                 <div class="cel margin">Locations</div>
+                 <div class="cel"></div>
+                 <div class="cel" id="gridLocations">
+                     <select class="select">
+                         <option>New Westminster,british columbia,Canada </option>
+                     </select>
+                 </div>
+             </div>
+             <div class="celr margin" id="gridProfile">
+                 <div class="cel">Profile URL</div>
+                 <div class="cel"></div>
+                 <div class="cel"></div>
+                 <div class="cel">10h1.org/p/</div>
+                 <div class="cel inputProfile"><input type="text" name="inputProfile" class="profileinput"></div>
+                 <div class="cel"></div>
+             </div>
+             <div class="celr" id="gridbtnSave">
+                 <div class="cel btnSave"><button type="button" class="buttonSave">Save</button></div>
+             </div>
+             
+         </div>
+     </div>
+
+      <script>
+         [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
+      let hiddenInput = document.createElement('input'),
+          mainInput = document.createElement('input'),
+          tags = [];
+      
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', el.getAttribute('data-name'));
+
+      mainInput.setAttribute('type', 'text');
+      mainInput.classList.add('main-input');
+      mainInput.addEventListener('input', function () {
+          let enteredTags = mainInput.value.split('.');
+          if (enteredTags.length > 1) {
+              enteredTags.forEach(function (t) {
+                  let filteredTag = filterTag(t);
+                  if (filteredTag.length > 0)
+                      addTag(filteredTag);
+              });
+              mainInput.value = '';
+          }
+      });
+
+      mainInput.addEventListener('keydown', function (e) {
+          let keyCode = e.which || e.keyCode;
+          if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
+              removeTag(tags.length - 1);
+          }
+      });
+
+      el.appendChild(mainInput);
+      el.appendChild(hiddenInput);
+
+      addTag('Languages');
+      
+
+      function addTag (text) {
+          let tag = {
+              text: text,
+              element: document.createElement('span'),
+          };
+
+          tag.element.classList.add('tag');
+          tag.element.textContent = tag.text;
+
+          let closeBtn = document.createElement('span');
+          closeBtn.classList.add('close');
+          closeBtn.addEventListener('click', function () {
+              removeTag(tags.indexOf(tag));
+          });
+          tag.element.appendChild(closeBtn);
+
+          tags.push(tag);
+
+          el.insertBefore(tag.element, mainInput);
+
+          refreshTags();
+      }
+
+      function removeTag (index) {
+          let tag = tags[index];
+          tags.splice(index, 1);
+          el.removeChild(tag.element);
+          refreshTags();
+      }
+
+      function refreshTags () {
+         
+      }
+
+      function filterTag (tag) {
+          return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
+      }
+
+      
+  });
+      </script>
       
     </div>
   </div>
