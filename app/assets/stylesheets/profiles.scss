@@ -136,6 +136,7 @@
 }
 .create {
     color: #838383;
+    cursor: pointer;
 }
 .imgfondo {
     width:100%;
@@ -543,6 +544,368 @@ desktop version*/
   display: grid;
   grid-template-columns: repeat(5,1fr); 
   grid-gap: 15px;
+}
+
+/*Edit profile*/
+.containerProfileModal {
+    margin: 0;
+    margin-right: 0px;
+    padding: 0;    
+    display: grid;
+    grid-template-columns: 50fr;    
+}
+#gridBackground {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 250px;    
+    margin-bottom: 100px;
+}
+
+#gridForm {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 55px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+#gridLabels {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+}
+#gridPersonal {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+}
+#gridSelect {
+    display: grid;
+    grid-template-columns: 20fr 70fr;
+}
+#gridOption {
+    display: grid;
+    grid-template-columns:100fr;
+}
+#gridProfile {
+    display: grid;
+    grid-template-columns: 10fr 10fr 80fr;
+}
+#gridLocations {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+#gridAdd {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 15px;
+}
+#griCreator {
+    display: grid;
+    grid-template-columns: 10fr 10fr 90fr;
+    margin-top: 15px;
+}
+#gridText {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 15px;
+}
+#gridCheck {
+    display: grid;
+    grid-template-columns: repeat(4,3fr) 88fr;
+    margin-top: 5px;
+}
+#gridIcons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 20px;
+}
+#gridCategories {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 15px;
+}
+#gridImage {
+    display: grid;
+    grid-template-columns: 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr; 
+    grid-gap: 10px;
+}
+.gridCollaborator {
+    display: grid;
+    grid-template-columns: 110px auto 40px auto;
+    grid-template-rows: auto;    
+    padding: 3px;
+    margin-top:10px;
+    border-bottom: solid  rgb(170, 168, 168);
+    border-top: solid  rgb(170, 168, 168);
+}
+.pStatus {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 8;
+}
+p {
+    -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+}
+.txtL {
+    font-size: 15px;
+}
+.inputFname {
+    width:98%;
+    height: 30px;
+    border-radius: 5px;
+    border:solid 1px #c7c6c6;
+}
+.inputLname {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border:solid 1px #c7c6c6;
+}
+.inputP {
+    width:-webkit-fill-available;
+    height: 35px;
+    border-radius: 5px;
+    border:solid 1px #c7c6c6;
+}
+
+.select {
+    width:-webkit-fill-available;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #c7c6c6;
+}
+.btn {
+    border-radius: 5px;
+}
+.btnSave {
+    width: 160px;
+}
+.buttonSave{
+    background: #8cc63f;
+    color: #ffffff;
+    width: 70%;
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.inputTitle {
+    width: 100%;
+    height: 20px; 
+    margin-top: 10px;
+    border-radius: 5px;
+    border:solid 1px #c7c6c6;
+    height: 40px;
+}
+.input {
+    padding-right: 18px;
+}
+.inputDescription{
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border:solid 1px #c7c6c6;
+}
+.iptC {
+    margin-top: 5px;
+    padding-right: 10px;
+    padding: 2px;
+
+}
+.inputC {
+    width:-webkit-fill-available;
+    padding: 5px;
+}
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tags-input {
+    border: 1px solid #c7c6c6;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.tags-input .tag {
+    font-size: 85%;
+    padding: 3px;
+    margin: 0.25em 0.1em;
+    display: inline-block;
+    background-color: #ddd;
+    transition: all 0.1s linear;
+    cursor: pointer;
+}
+
+.tags-input .tag .close::after {
+    content: '×';
+    font-weight: bold;
+    display: inline-block;
+    transform: scale(-1.2);
+    margin-left: 0.70em;
+    -webkit-appearance: none;
+   -moz-appearance: none;
+}
+
+.tags-input .tag .close:hover::after {
+    color: red;
+}
+
+.tags-input .main-input {
+    border: 0;
+    outline: 0;
+    padding: 0.5em 0.1em;
+}
+
+.txtPersonal {
+    width:-webkit-fill-available;
+    padding: 20px;
+    border-radius: 5px;
+}
+.btnfile {
+    padding: 50px;
+    background-color: #631919;
+}
+
+.margin {
+    margin-top: 20px;
+}
+.marginOption {
+    margin-top: 10px;
+}
+
+#name {
+    align-self: center;
+    font-weight: bold;
+}
+.check {
+    border: 20px;
+    width: 20px;
+    height: 20px;
+}
+.imgCenter {
+    justify-self: center;
+    border: 0px;
+    border-radius: 5px;    
+}
+.collaborator {
+    align-self: center;
+}
+.collaborators{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(60px,1fr));
+  grid-gap: 10px;
+}
+.add {
+    grid-column: 3/4;
+    align-self: center;
+}
+.titleCreator {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 4
+}
+.titleAdd {
+    align-self: center;
+}
+.addDesc{
+    margin-top: 20px;
+}
+.imgCreator{
+    margin-top: 15px;
+}
+.hrefAdd {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-decoration: none;
+    color: rgb(27, 212, 245);
+}
+
+input[type=checkbox]:checked {
+    background-color: #064bb3;
+}
+input[type=checkbox i] {
+    background-color: #d1cdcd;
+    cursor: default;
+    -webkit-appearance: radio;
+    box-sizing: border-box;
+    margin: 3px 3px 0 5px;
+    padding: 10px;
+    border:solid 1px #c7c6c6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 5px;    
+}
+.imgBackgraound {
+    position: relative;
+    bottom: -150px;
+    margin-bottom: 125px;
+    margin-left: 30px;
+}
+.labelYes {
+    padding-left: 28px
+}
+.profileImg{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+}
+.skillsIcons{
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+}
+.profileinput{
+  border-radius: 5px;
+  border:solid 1px #c7c6c6;
+}
+.bodyEditProfile{
+  padding: 0;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+.creatorImage{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.projectsIcons{
+  height: 180px;
+  width: 180px;
+}
+.projectsIconsLabel{
+  text-align: center;
+}
+.projectProgressButtons{
+  border-radius: 5px;
+  border: 1px solid #c7c6c6;
+  background: none;  
+}
+.bodyEditProject{
+  padding: 0;
+  padding-bottom: 2rem;
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+.collaboratorImage{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+input[type=radio] {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 10px;
+  -webkit-appearance: none;
+}
+input[type=radio]:checked {
+  background: blue;
+  background-size: 9px 9px;
 }
 
 

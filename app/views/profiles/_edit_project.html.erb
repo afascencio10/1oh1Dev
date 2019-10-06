@@ -1,14 +1,105 @@
-<div class="modal fade terms-modal" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="projectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Project</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="body_terms">
-        this is the project modal
+      <div class="modal-body bodyEditProject" id="body_terms">
+        <div class="container">
+           <div class="gridTitleadd">               
+           </div>
+
+           <div class="celr" id="gridAdd">
+               <div class="cel">Project Title</div>
+               <div class="cel input "><input type="text" name="title" class="inputTitle"></div>
+               <div class="addDesc">Description</div>
+               <div class="cel input"><input type="text" name="description" class="inputDescription"></div>
+           </div>
+
+           <div class="celr" id="griCreator">
+               <div class="cel titleCreator">Creator</div>
+               <div class="imgCreator">
+                <img class="creatorImage" src="<%= image_path ('People/asian-square.jpg') %>">
+               </div>
+               <di class="cel" id="name">Jimi Hendrix</di>
+          </div>
+
+           <div class="gridCollaborator">
+           <div class="collaborator">Collaborators</div>
+           <div class="collaborators">
+             <div>
+               <img class="collaboratorImage" src="<%= image_path ('People/business.jpg') %>">
+             </div>
+             <div>
+               <img class="collaboratorImage" src="<%= image_path ('People/manback.jpg') %>">
+             </div>
+             <div>
+               <img class="collaboratorImage" src="<%= image_path ('People/man.jpg') %>">
+             </div>
+             <div>
+               <img class="collaboratorImage" src="<%= image_path ('People/a.jpg') %>">
+             </div>
+             <div>
+               <img class="collaboratorImage" src="<%= image_path ('People/adult.jpg') %>">
+             </div>
+             <div>
+               <img class="collaboratorImage" src="<%= image_path ('People/women.jpg') %>">
+             </div>
+             <div>
+               <img class="collaboratorImage" src="<%= image_path ('People/a.jpg') %>">
+             </div>             
+           </div>
+           <div class="add"><a href="#" class="hrefAdd">Add</a></div>
+           <div class=""></div>
+          </div>
+           
+           <div class="celr" id="gridText">
+               <div class="cel">Allow others to offer their help?</div>
+           </div>
+           <div class="celr" id="gridCheck">
+               <div>
+                 <input class="radioAllowOthers" type="radio" name="allowOthers">
+               </div>
+               <div>Yes</div>
+               <div>
+                 <input class="radioAllowOthers" type="radio" name="allowOthers">
+               </div>
+               <div>No</div>
+               <div class="cel"></div>
+           </div>
+           <div class="celr" id="gridIcons">
+               <div class="cel pStatus">Project Status</div>
+               <div class="cel"></div>
+               <div class="cel imgCenter">
+                <button class="projectProgressButtons" name="projectProgress">
+                  <img class="projectsIcons" src="<%= image_path ('Icons/Idea_icon.png') %>">
+                  <div class="projectsIconsLabel">Idea</div>
+                </button>                
+               </div>               
+               <div class="cel"></div>
+               <div class="cel imgCenter">
+                <button class="projectProgressButtons" name="projectProgress">
+                  <img class="projectsIcons" src="<%= image_path ('Icons/WIP-icon.png') %>">
+                  <div class="projectsIconsLabel">In-Progress</div>
+                </button>                
+               </div>
+               <div class="cel"></div>
+               <div class="cel imgCenter">
+                <button class="projectProgressButtons" name="projectProgress">
+                  <img class="projectsIcons" src="<%= image_path ('Icons/completed-icon.png') %>">
+                  <div class="projectsIconsLabel">Complete</div>
+                </button>                
+               </div>
+               <div class="cel"></div>
+           </div>
+           <div class="celr" id="gridCategories">
+               <div class="cel">Categories</div>
+               <div class="cel iptC"><input type="text" name="Categories" class="inputC"></div>
+           </div>
+       </div>
       </div>
       
     </div>
