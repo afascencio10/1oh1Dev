@@ -2,7 +2,7 @@
     <div class="projectsContent">
       <% if @projects.blank? %>
          <div class="emptyReviews">
-            Upload your Projects
+            <i data-toggle="modal" data-target="#projectsModal">Upload your Projects</i>
          </div>
       <% else %>
          <% @projects.each do|project| %>
