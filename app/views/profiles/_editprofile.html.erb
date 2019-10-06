@@ -1,14 +1,15 @@
-<div class="modal fade terms-modal" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Introduction</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="container">
-         <div class="celr" id="gridBackground">
+      <div class="modal-body bodyEditProfile">
+        <div class="containerProfileModal">
+         <div class="celr" id="gridBackground" style="background: url(<%= image_path ('life-862972_1920.jpg') %>);">
              <div class="cel">
                 <div class="imgBackgraound">
                   <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
@@ -82,13 +83,15 @@
                  <div class="cel">10h1.org/p/</div>
                  <div class="cel inputProfile"><input type="text" name="inputProfile" class="profileinput"></div>
                  <div class="cel"></div>
-             </div>
-             <div class="celr" id="gridbtnSave">
-                 <div class="cel btnSave"><button type="button" class="buttonSave">Save</button></div>
-             </div>
-             
+             </div>             
          </div>
-     </div>
+     </div>     
+      </div>      
+      <div class="modal-footer">
+         <div class="celr" id="gridbtnSave">
+             <div class="cel btnSave"><button type="button" class="buttonSave">Save</button></div>
+         </div>
+       </div>                          
 
       <script>
          [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {

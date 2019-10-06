@@ -525,15 +525,17 @@
 
 
 /*Edit profile*/
-.container {
+.containerProfileModal {
+    margin: 0;
+    margin-right: 0px;
+    padding: 0;    
     display: grid;
     grid-template-columns: 50fr;    
 }
 #gridBackground {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 250px;
-    background:blue;/*-image: url(../../assets/images/life-862972_1920.jpg)*/
+    grid-template-rows: 250px;    
     margin-bottom: 100px;
 }
 
@@ -541,6 +543,8 @@
     display: grid;
     grid-template-columns: 1fr;
     margin-top: 55px;
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
 #gridLabels {
     display: grid;
@@ -585,7 +589,7 @@
 }
 #gridCheck {
     display: grid;
-    grid-template-columns: 5fr 5fr 90fr;
+    grid-template-columns: repeat(4,3fr) 88fr;
     margin-top: 5px;
 }
 #gridIcons{
@@ -603,11 +607,10 @@
     grid-template-columns: 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr 10fr; 
     grid-gap: 10px;
 }
-.gridColaborator {
+.gridCollaborator {
     display: grid;
-    grid-template-columns: 10fr 10fr 80fr;
-    grid-template-rows:  35px;
-    grid-gap: 15px;
+    grid-template-columns: 110px auto 40px auto;
+    grid-template-rows: auto;    
     padding: 3px;
     margin-top:10px;
     border-bottom: solid  rgb(170, 168, 168);
@@ -630,28 +633,32 @@ p {
     width:98%;
     height: 30px;
     border-radius: 5px;
+    border:solid 1px #c7c6c6;
 }
 .inputLname {
     width: 100%;
     height: 30px;
     border-radius: 5px;
+    border:solid 1px #c7c6c6;
 }
 .inputP {
     width:-webkit-fill-available;
     height: 35px;
     border-radius: 5px;
+    border:solid 1px #c7c6c6;
 }
 
 .select {
     width:-webkit-fill-available;
     height: 35px;
     border-radius: 5px;
+    border: 1px solid #c7c6c6;
 }
 .btn {
     border-radius: 5px;
 }
 .btnSave {
-    padding-left: 90%;
+    width: 160px;
 }
 .buttonSave{
     background: #8cc63f;
@@ -660,11 +667,15 @@ p {
     padding: 7px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 .inputTitle {
     width: 100%;
     height: 20px; 
     margin-top: 10px;
+    border-radius: 5px;
+    border:solid 1px #c7c6c6;
+    height: 40px;
 }
 .input {
     padding-right: 18px;
@@ -673,6 +684,8 @@ p {
     width: 100%;
     height: 80px;
     margin-top: 10px;
+    border-radius: 5px;
+    border:solid 1px #c7c6c6;
 }
 .iptC {
     margin-top: 5px;
@@ -684,18 +697,12 @@ p {
     width:-webkit-fill-available;
     padding: 5px;
 }
-.celr {
-   
-}
-.cel {
-}
-
 :root {
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .tags-input {
-    border: 1px solid #333;
+    border: 1px solid #c7c6c6;
     display: inline-block;
     border-radius: 5px;
 }
@@ -758,22 +765,25 @@ p {
 }
 .imgCenter {
     justify-self: center;
+    border: 0px;
+    border-radius: 5px;    
 }
-.colaborator {
+.collaborator {
     align-self: center;
 }
+.collaborators{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(60px,1fr));
+  grid-gap: 10px;
+}
 .add {
+    grid-column: 3/4;
     align-self: center;
 }
 .titleCreator {
     display: grid;
     grid-column-start: 1;
     grid-column-end: 4
-}
-.gridTitleadd {
-    display: grid;
-    grid-template-rows: 35px;
-    border-bottom: solid rgb(170, 168, 168);
 }
 .titleAdd {
     align-self: center;
@@ -802,7 +812,7 @@ input[type=checkbox i] {
     box-sizing: border-box;
     margin: 3px 3px 0 5px;
     padding: 10px;
-    border:solid 1px #c7c6c6 ;
+    border:solid 1px #c7c6c6;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -821,7 +831,7 @@ input[type=checkbox i] {
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  border: 2px solid #ffffff;
+  border: 4px solid #ffffff;
 }
 .skillsIcons{
   height: 50px;
@@ -830,4 +840,48 @@ input[type=checkbox i] {
 }
 .profileinput{
   border-radius: 5px;
+  border:solid 1px #c7c6c6;
+}
+.bodyEditProfile{
+  padding: 0;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+.creatorImage{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.projectsIcons{
+  height: 180px;
+  width: 180px;
+}
+.projectsIconsLabel{
+  text-align: center;
+}
+.projectProgressButtons{
+  border-radius: 5px;
+  border: 1px solid #c7c6c6;
+  background: none;  
+}
+.bodyEditProject{
+  padding: 0;
+  padding-bottom: 2rem;
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+.collaboratorImage{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+input[type=radio] {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 10px;
+  -webkit-appearance: none;
+}
+input[type=radio]:checked {
+  background: blue;
+  background-size: 9px 9px;
 }
