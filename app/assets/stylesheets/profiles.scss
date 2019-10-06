@@ -521,3 +521,28 @@
     font-size: 12px;
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+/*css related to categories modal
+desktop version*/
+#categoriesModal .redcel {
+  border: 1px solid red;
+}
+
+.modalCategories {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.addInterests {
+  display: grid;
+  grid-template-columns: 60% 40%; 
+} 
+
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr); 
+  grid-gap: 15px;
+}
+
+
