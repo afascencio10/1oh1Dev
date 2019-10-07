@@ -50,6 +50,7 @@
 //= require markets
 //= require modal
 //= require sessions
+//= require chests
 //= require notification
 //= require messages
 //= require profiles

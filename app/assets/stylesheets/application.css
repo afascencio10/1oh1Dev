@@ -42,6 +42,7 @@
 *= require markets
 *= require guides
 *= require calendars
+*= require chests
 *= require_self
 *= require fullcalendar/core/main
 *= require fullcalendar/daygrid/main

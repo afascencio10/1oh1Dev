@@ -65,7 +65,6 @@ GEM
     faker (2.4.0)
       i18n (~> 1.6.0)
     ffi (1.11.1)
-    ffi (1.11.1-x86-mingw32)
     filterrific (5.2.1)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
@@ -110,11 +109,8 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.4-x86-mingw32)
-      mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.1.4)
-    pg (1.1.4-x86-mingw32)
     puma (3.12.1)
     rack (2.0.7)
     rack-protection (2.0.7)
@@ -198,8 +194,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2019.3)
-      tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     warden (1.2.8)
@@ -216,7 +210,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   byebug

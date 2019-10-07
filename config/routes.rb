@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :home
   resources :categories
   resources :sessions, only: [:index,:create]
+  resources :chests
 
   resources :notifications do
     member do

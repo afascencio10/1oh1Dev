@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body bodyEditProfile">
         <div class="containerProfileModal">
-         <div class="celr" id="gridBackground" style="background: url(<%= image_path ('life-862972_1920.jpg') %>);">
+         <div class="celr" id="gridBackground" style="background-image: url(<%= image_path ('life-862972_1920.jpg') %>);">
              <div class="cel">
                 <div class="imgBackgraound">
                   <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
@@ -20,17 +20,17 @@
          </div>
          <div class="celr" id=gridForm>
              <div class="celr" id=gridLabels>
-                <div class="cel">First Name *</div>
-                <div class="cel">Last Name *</div>    
+                <div class="cel boldText title">First Name *</div>
+                <div class="cel boldText title">Last Name *</div>    
              </div>
              <div class="celr" id="gridLabels">
                 <div class="cel input"><input type="text" name="fname" class="inputFname"></div>
                 <div class="cel "><input type="text" name="lname" class="inputLname"></div>
              </div>
              <div class="cel" id="gridPersonal">
-                 <div class="cel">Personal Summary</div>
+                 <div class="cel boldText title">Personal Summary</div>
                  <div class="cel"><textarea class="txtPersonal"></textarea></div>
-                 <div class="margin">Main</div>
+                 <div class="margin boldText title">Main</div>
                  <div class="celr" id="gridImage">
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
@@ -44,12 +44,12 @@
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div>
                      </div>
                  <div class="margin">    
-                 <div class="cel">Current Position</div>
+                 <div class="cel boldText title">Current Position</div>
                  <div class="cel"><input type="text" name="pSummary" class="inputP"></div>
                 </div>
              </div>
              <div class="celr margin" id="gridSelect">
-                 <div class="cel">Fluent Languages *</div>
+                 <div class="cel boldText title">Fluent Languages *</div>
              </div>
              <div class="celr marginOption" id="gridOption">
                         <div class="tags-input" data-name="tags-input">
@@ -59,7 +59,7 @@
                         </div>
              </div>
              <div class="celr margin" id="gridSelect">
-                 <div class="cel">Country/Region *</div>
+                 <div class="cel boldText title">Country/Region *</div>
                  <div class="cel"></div>
                  <div class="cel">
                      <select class="select">
@@ -68,7 +68,7 @@
                      </select>
                  </div>
                  <div class="cel"></div>
-                 <div class="cel margin">Locations</div>
+                 <div class="cel margin boldText title">Locations</div>
                  <div class="cel"></div>
                  <div class="cel" id="gridLocations">
                      <select class="select">
@@ -77,7 +77,7 @@
                  </div>
              </div>
              <div class="celr margin" id="gridProfile">
-                 <div class="cel">Profile URL</div>
+                 <div class="cel boldText title">Profile URL</div>
                  <div class="cel"></div>
                  <div class="cel"></div>
                  <div class="cel">10h1.org/p/</div>
@@ -91,7 +91,7 @@
          <div class="celr" id="gridbtnSave">
              <div class="cel btnSave"><button type="button" class="buttonSave">Save</button></div>
          </div>
-       </div>                          
+      </div>                          
 
       <script>
          [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
