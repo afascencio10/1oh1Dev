@@ -12,6 +12,7 @@ config
 /test/version_tmp/
 /tmp/
 /config/database.yml
+config
 
 # Used by dotenv library to load environment variables.
 # .env

@@ -30,6 +30,7 @@ gem 'timezone' #backend
 gem 'local_time' #frontend
 
 gem 'sidekiq'
+gem 'chartjs-ror'
 
 gem 'filterrific'
 gem 'will_paginate'
