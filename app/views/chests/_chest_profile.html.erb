@@ -1,0 +1,106 @@
+<div class="sectionContent">
+  <div class="chestHeader">
+    <div></div>
+    <div class="title boldText">Chest</div>
+    <div></div>
+    <div class="dropdownTitle">
+      Monthly
+      <i  class="material-icons keydown">keyboard_arrow_down</i>
+    </div>
+    <div class="dropdownTitle">
+      July
+      <i  class="material-icons keydown">keyboard_arrow_down</i>
+    </div>
+  </div>
+  <div class="chestBoxes">
+    <div class="roleBoxes">
+      <div class="roleBox exploringBox">
+        <div class="roleBoxTitle">Exploring</div>
+        <div class="roleBoxCount">-1400</div>
+        <img class="gCoin" src="<%= image_path('coin.png')  %>">
+      </div>
+      <div class="roleBox guidingBox">
+        <div class="roleBoxTitle">Guiding</div>
+        <div class="roleBoxCount">+1800</div>
+        <img class="gCoin" src="<%= image_path('coin.png')  %>">
+      </div>
+    </div>
+    <div class="balanceBox">
+      <div class="balanceTitle">
+        Balance
+      </div>
+      <div class="balanceCount">
+        <div class="balanceNumber">
+          +260
+        </div>
+        <img class="gCoinBalance" src="<%= image_path('coin.png')  %>">
+      </div>
+      <div class="getCoins">
+        Get more G-coins
+      </div>
+      <div class="roleTrends">
+        <div class="roleTrend">
+          <div class="trendTitle">Guiding</div>
+          <i class="material-icons  trendIcon">trending_up</i>
+          <div class="trendCount">+5660</div>
+        </div>
+        <div class="roleTrend">
+          <div class="trendTitle">Exploring</div>
+          <i class="material-icons  trendIcon">trending_down</i>
+          <div class="trendCount">-4400</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chestGraph">
+    <div class="graphContainer">
+      <canvas class="myChart" id="myChart"></canvas>
+    </div>
+  </div>
+  <div class="chestStats">
+    <div class="sessionesCounter">
+      <div class="exploringSessions">
+        <div class="exploringCounter">
+          24
+        </div>
+        <div class="sessionesTitle">
+          Explorations
+        </div>
+      </div>
+      <div class="guidingSessions">
+        <div class="guidingCounter">
+          26
+        </div>
+        <div class="sessionesTitle">
+          Guided
+        </div>
+      </div>
+    </div>
+    <div class="statsTable">
+      <table style="width:100%">
+        <tr class="tableHeight">
+          <th class="tableHeader">TYPE</th>
+          <th class="tableHeader">SESSION</th>
+          <th class="tableHeader">TIPS</th>
+          <th class="tableHeader"></th>
+        </tr>
+        <tr class="tableHeight bottomBorder">
+          <td class="boldCell">Explore</td>
+          <td class="middleCell">-120</td>
+          <td class="middleCell">+120</td>
+        </tr>
+        <tr class="tableHeight bottomBorder">
+          <td class="boldCell">Guide</td>
+          <td class="middleCell">+120</td>
+          <td class="middleCell">+300</td>
+        </tr>
+        <tr class="tableHeight">
+          <td class="boldCell">SUM</td>
+          <td class="boldCell">0</td>
+          <td class="boldCell">+400</td>
+          <td class="boldCell">Total: +400</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
