@@ -793,16 +793,26 @@ p {
     border-radius: 5px;
 }
 .btnSave {
-    width: 160px;
+    width: 100px;
 }
 .buttonSave{
     background: #8cc63f;
     color: #ffffff;
-    width: 70%;
+    width: 88%;
     padding: 7px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+.buttonCancel {
+    background: #ffffff;
+    color: #000000;
+    width: 88px;
+    padding: 4px;
+    border:solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
 }
 .inputTitle {
     width: 100%;
