@@ -1,14 +1,42 @@
-<div class="modal fade terms-modal" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" id="category">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create a new category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="body_terms">
-        this is the new category modal
+      <div class="modal-body gridContent">
+          <div class="modalNewCategory redcel">
+              <div class="reminder redcel"><p class="paragraph  textParagraph">Reminder: all categories must follow 1oh1's community policy and will be reviewed before being accesable to other users. We will notify you on the status of your submission.</p></div>
+              <div>
+                <div class="categoryName redcel">
+                  <div class="textName title boldText">Category Name</div>
+                  <div class="greyText txtinput  ">Be specific. For example, use plano instead of music.</div>
+                </div>
+              </div>
+              <div class="redcel txt">
+                <input type="text" class="txtOne">
+              </div>
+              <div>
+                <div class="categoryDescription redcel">
+                  <div class="textDescription title boldText">Category Description</div>
+                  <div class="greyText txtinput">Publically describe the category</div>
+                </div>
+              </div>
+              <div class="redcel area">
+                <textarea class="txtArea"></textarea>
+              </div>
+              <div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <div class="celr" id="gridActions">
+                    <div class="cel btnSave"><button type="button" class="buttonCancel">Cancel</button></div>
+                    <div class="cel btnSave"><button type="button" class="buttonSave">Submit</button></div>
+                </div>
+             </div>
       </div>
       
     </div>
