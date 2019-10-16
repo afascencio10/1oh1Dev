@@ -97,6 +97,10 @@
   }
 }
 
+.cel{
+    /*border: solid #eb2e2e;*/
+}
+
 /*css for the new design of profile section*/
 
 .celprofile {
@@ -1176,11 +1180,28 @@ input[type=radio]:checked {
 
 .grid-Pop {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 5vw 10vw 5vw;
     border: solid #e61616;
 }
-.cel {
 
+.starsSpan{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.rateSpan{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.yellowBar{
+    border: solid gray;
+    background-color: yellow;
+}
+
+.whiteBar{
+    border: solid gray;
+}
 
 /* The switch - the box around the slider */
 .switch {
@@ -1253,11 +1274,18 @@ input:checked + .slider:before {
   border-radius: 5px;
 }
 .buttonSaveProject{
-  background: #8cc63f;
+    background: #8cc63f;
   color: #ffffff;  
   padding: 7px;
   border: none;
   border-radius: 5px;
-  cursor: pointer;  
+  
+}
 
+.cell{
+    border: solid green;
+}
+  
+.grid{
+    border: solid #eb2e2e;
 }
