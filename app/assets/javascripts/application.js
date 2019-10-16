@@ -27,6 +27,7 @@
 //= require bootstrap.min
 //= require bootstrap-datepicker.min
 //= require cable
+//= require Chart.min
 //= require circle-progress
 //= require date_range_picker
 //= require daterangepicker

@@ -9,6 +9,12 @@ xsigin/signup popup
 #body_terms,#body_privacy {
     margin: 0px 4vw;
 }
+#category {
+  min-width: 50% !important;
+}
+.gridContent{
+  width: 100%;
+}
 
 .gridCreate {
     display: grid;
@@ -1690,5 +1696,95 @@ body {
     padding-top: 5px;
     line-height: 110%;
     text-align: justify;
+}
+
+.redcel{
+	
+}
+
+.modalNewCategory{
+	display: grid;
+  grid-template-columns: 1fr;
+  width: 50px;
+  width: 100%;
+  
+}
+
+.categoryName{
+	display: grid;
+	grid-template-columns: 25% 75%; 
+}
+
+.categoryDescription{
+	display: grid; 
+	grid-template-columns: 35% 65%; 
+}
+
+.gridActions{
+	display: grid; 
+	grid-template-columns: 1fr auto auto;
+}
+
+.reminder{
+	padding:5px 18px;  
+}
+
+
+.txtOne {
+  width:-webkit-fill-available;
+  border-color: #000000;
+}
+.txtArea{
+  width:-webkit-fill-available;
+  height: 70px;
+  border-color: #000000;
+}
+.btn {
+  padding: 3px;
+  font-size: 10px;
+  text-align: center;
+}
+.btnCancel {
+  justify-self: center;
+}
+.btnSubmit {
+  justify-self: center;
+}
+.Submit {
+  color: #ffffff;
+  padding: 3px;
+  text-align: center;
+  font-size: 10px  
+}
+.area {
+  padding-left: 17px;
+  padding-right: 22px;
+}
+.txt {
+  padding-left: 17px;
+  padding-right: 22px;
+}
+.textName {
+  padding-left: 17px;
+  color: #000000;
+}
+.textDescription {
+  padding-left: 17px;
+  color: #000000;
+}
+.txtinput {
+  font-size: 12px;
+  color: #757272;
+  font-weight: 900;
+}
+.paragraph {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  color:black;
+}
+#gridActions {
+  display: grid;
+  grid-template-columns: 60fr auto auto;
 }
 

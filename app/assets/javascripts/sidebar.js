@@ -16,7 +16,7 @@ jQuery(function ($) {
     
 
     //toggle sidebar
-    $("#responsiveMenu").click(function () {
+    $("#responsiveMenu","#toggle-sidebar").click(function () {
         $(".page-wrapper").toggleClass("toggled");
     });
     //Pin sidebar
