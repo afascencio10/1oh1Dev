@@ -46,9 +46,15 @@
               </li>
               <!-- More Options-->
               <li >
-                <a href="/profiles" style="decoration:none">
-                  <img class="profileTopbar" src="<%= image_path('People/man-2517015_640.jpg') %>">
+               <div class="dropdown"> 
+                <a  href="/profiles" class="dropdown" style="decoration:none">
+                  <img  class="profileTopbar" src="<%= image_path('People/man-2517015_640.jpg') %>">
+                  <div class="dropdown-menu" >
+                      <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+                  </div>
+                    
                 </a>
+              </div>
                 <!-- <ul class="dropdown">
                   <li><a href="/profiles" class="nav-link">Profile</a></li>
                   <li><a href="/accounts" class="nav-link">Account</a></li>
