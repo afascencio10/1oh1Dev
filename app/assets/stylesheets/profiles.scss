@@ -137,6 +137,7 @@
 .create {
     color: #838383;
     cursor: pointer;
+    display: none;
 }
 .imgfondo {
     width:100%;
@@ -149,11 +150,12 @@
     color: #fde721;
     font-size: 35px;
 }
-.name {
+.names {
     font-weight: bold;
     font-size: 18px;
     font-family: 'Source Sans Pro', sans-serif;
     margin-bottom: 0px;
+    margin-left: 15%;
 }
 .city {
     color: #000000;
@@ -276,6 +278,19 @@
   align-self: center;
 }
 
+.tool-Tip{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #6b6b6b;
+}
+
+.tool-tip a :hover {
+    color: #6b6b6b;
+}
+.aria-describedby {
+    color: #6b6b6b; 
+}
 .interestsImage{
     display: grid;    
 }
@@ -390,6 +405,7 @@
 .editIcon{
     height: 23px;
     width: auto;
+    display: none;
 }
 #subgridscoreXs {
     display: grid;
@@ -410,11 +426,13 @@
     padding-left: 20px;
     padding-top: 20px;
     z-index: 10;
+    display: none;
 }
 .profileView{
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 900;
     font-size: 30px;
+    color: #000000;
 }
 .viewAsMember{
     font-family: 'Source Sans Pro', sans-serif;
@@ -1045,7 +1063,123 @@ input[type=radio] {
 input[type=radio]:checked {
   background-size: 9px 9px;
 }
+.exit {
+  position: fixed;
+  z-index: 4;
+  padding-top: 37px;
+  right: 2%
+}
+.btnExit {
+  background: #ffffff;
+  padding: 3px;
+  color: #1f3ff8;
+  border-radius: 5px;
+  width: 100px;
+  font-weight: bold;
+  border-color: #ffffff;
 
+}
+.toggled .exit  {
+ display : none  //oculto 
+}
+.toggled .memberView {
+ display: block;
+} 
+.toggled .create {
+    display:block
+}
+
+
+.btnCalendar {
+    background: #ffffff;
+    color: #000000;
+    width: 100px;
+    font-weight: bold;
+    border-color: #afacac70;
+    padding: 4px;
+    border-radius: 5px;
+}
+.buttonCalendar{
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    position: relative;
+    bottom: 10px;
+}
+.btnMessage {
+    background: #ffffff;
+    color: #000000;
+    width: 100px;
+    font-weight: bold;
+    border-color: #afacac70;
+    padding: 4px;
+    border-radius: 5px;
+}
+.buttonMessage {
+    position: relative;
+    bottom: 14px;
+    padding-right: 4px;
+}
+.toggled .buttonCalendar {
+    display: none;
+}
+.toggled .buttonMessage {
+    display: none;
+}
+
+.toggled .names {
+    margin-left: 20px;
+}
+.toggled .pcity {
+    display: grid;
+}
+
+.pcity {
+    display: grid;
+    grid-column-start: 1;
+    padding-left: 20px;
+}
+.pLanguages {
+    padding-left: 20px;
+}
+.pDescription{
+    padding-left: 20px;
+}
+.toggled .celd {
+    display: block;
+}
+.celd {
+    display: none;
+}
+.toggled .imgView{
+    display: none;
+}
+.imgView {
+    position: absolute;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    bottom: 15px;
+    left: -3px;
+    border: 3px solid #ffffff;
+}
+.pname {
+    position: relative;
+}
+.toggled .editIcon {
+    display: block;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+
+.grid-Pop {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: solid #e61616;
+}
+.cel {
 
 
 /* The switch - the box around the slider */
@@ -1125,4 +1259,5 @@ input:checked + .slider:before {
   border: none;
   border-radius: 5px;
   cursor: pointer;  
+
 }
