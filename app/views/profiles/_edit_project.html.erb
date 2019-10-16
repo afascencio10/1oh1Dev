@@ -1,114 +1,128 @@
 <div class="modal fade" id="projectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Project</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body bodyEditProject" >
-        <div class="container">
-           <div class="gridTitleadd">               
-           </div>
+      <%= form_tag( {:controller=>"projects", :action => :create, }, { :method => :post }) do %>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bodyEditProject" >
+          <div class="container">
+             <div class="gridTitleadd">               
+             </div>
 
-           <div class="celr" id="gridAdd">
-               <div class="cel boldText title">Project Title</div>
-               <div class="cel input "><input type="text" name="title" class="inputTitle"></div>
-               <div class="addDesc boldText title">Description</div>
-               <div class="cel input">
-                <textarea name="description" class="inputDescription" ></textarea>
-               </div>
-           </div>
+             <div class="celr" id="gridAdd">
+                 <div class="cel boldText title">Project Title</div>
+                 <div class="cel input ">
+                  <%= text_field_tag :name,nil,class: 'form-control field_input inputTitle',placeholder: "Name",:required => true %>
+                  <!--<input type="text" name="title" class="inputTitle">-->
+                </div>
+                 <div class="addDesc boldText title">Description</div>
+                 <div class="cel input">
+                  <%= text_area_tag :description,nil,class: 'form-control field_input inputDescription',placeholder: "Describe It",:required => true %>
+                  <!-- <textarea name="description" class="inputDescription" ></textarea> -->
+                 </div>
+             </div>
 
-           <div class="celr" id="griCreator">
-               <div class="cel titleCreator boldText title">Creator</div>
-               <div class="imgCreator">
-                <img class="creatorImage" src="<%= image_path ('People/asian-square.jpg') %>">
-               </div>
-               <di class="cel" id="name">Jimi Hendrix</di>
-           </div>
+             <%= file_field_tag :projectphoto,class: 'form-control fieldinput' %>
+             <%= hidden_field_tag :image%>   
 
-           <div class="gridCollaborator">
-             <div class="collaborator boldText title">Collaborators</div>
-             <div class="add"><a class="hrefAdd">Add</a></div>
-             <div class="collaborators">
-               <div>
-                 <img class="collaboratorImage" src="<%= image_path ('People/business.jpg') %>">
+             <div class="celr" id="griCreator">
+                 <div class="cel titleCreator boldText title">Creator</div>
+                 <div class="imgCreator">
+                  <img class="creatorImage" src="<%= image_path ('People/asian-square.jpg') %>">
+                 </div>
+                 <di class="cel" id="name">Jimi Hendrix</di>
+             </div>
+
+             <div class="gridCollaborator">
+               <div class="collaborator boldText title">Collaborators</div>
+               <div class="add"><a class="hrefAdd">Add</a></div>
+               <%=select_tag "colab_id", options_from_collection_for_select(User.all,"id","firstname"),class: 'collaboratorsSelect',multiple: true,:required => true%>               
+               <div class="collaborators">                
+                 <div>
+                   <img class="collaboratorImage" src="<%= image_path ('People/business.jpg') %>">
+                 </div>
+                 <div>
+                   <img class="collaboratorImage" src="<%= image_path ('People/manback.jpg') %>">
+                 </div>
+                 <div>
+                   <img class="collaboratorImage" src="<%= image_path ('People/man.jpg') %>">
+                 </div>                 
                </div>
-               <div>
-                 <img class="collaboratorImage" src="<%= image_path ('People/manback.jpg') %>">
-               </div>
-               <div>
-                 <img class="collaboratorImage" src="<%= image_path ('People/man.jpg') %>">
-               </div>
-               <div>
-                 <img class="collaboratorImage" src="<%= image_path ('People/a.jpg') %>">
-               </div>
-               <div>
-                 <img class="collaboratorImage" src="<%= image_path ('People/adult.jpg') %>">
-               </div>
-               <div>
-                 <img class="collaboratorImage" src="<%= image_path ('People/women.jpg') %>">
-               </div>
-               <div>
-                 <img class="collaboratorImage" src="<%= image_path ('People/a.jpg') %>">
-               </div>             
+               
+               <div class=""></div>
              </div>
              
-             <div class=""></div>
-           </div>
-           
-           <div class="celr" id="gridText">
-               <div class="cel boldText title">Allow others to offer their help?</div>
-           </div>
-           <div class="celr" id="gridCheck">
-               <div>
-                 <input class="radioAllowOthers" type="radio" name="allowOthers">
+             <div class="celr" id="gridText">
+                 <div class="cel boldText title">Allow others to offer their help?</div>
+             </div>
+             <!-- <div class="celr" id="gridCheck">
+                 <div>
+                   <input class="radioAllowOthers" type="radio" name="allowOthers">
+                 </div>
+                 <div>Yes</div>
+                 <div>
+                   <input class="radioAllowOthers" type="radio" name="allowOthers">
+                 </div>
+                 <div>No</div>
+                 <div class="cel"></div>
+             </div> -->
+             <div class="celr" id="gridCheck">
+               <div class="labelYes">
+                   <label>No</label>
                </div>
-               <div>Yes</div>
-               <div>
-                 <input class="radioAllowOthers" type="radio" name="allowOthers">
-               </div>
-               <div>No</div>
+               <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                </label>              
+                <label>Yes</label>
                <div class="cel"></div>
            </div>
-           <div class="celr" id="gridIcons">
-               <div class="cel pStatus boldText title">Project Status</div>
-               <div class="cel"></div>
-               <div class="cel imgCenter">
-                <button class="projectProgressButtons" name="projectProgress">
-                  <img class="projectsIcons" src="<%= image_path ('Icons/Idea_icon.png') %>">
-                  <div class="projectsIconsLabel">Idea</div>
-                </button>                
-               </div>               
-               <div class="cel"></div>
-               <div class="cel imgCenter">
-                <button class="projectProgressButtons" name="projectProgress">
-                  <img class="projectsIcons" src="<%= image_path ('Icons/WIP-icon.png') %>">
-                  <div class="projectsIconsLabel">In-Progress</div>
-                </button>                
-               </div>
-               <div class="cel"></div>
-               <div class="cel imgCenter">
-                <button class="projectProgressButtons" name="projectProgress">
-                  <img class="projectsIcons" src="<%= image_path ('Icons/completed-icon.png') %>">
-                  <div class="projectsIconsLabel">Complete</div>
-                </button>                
-               </div>
-               <div class="cel"></div>
-           </div>
-           <div class="celr" id="gridCategories">
-               <div class="cel boldText title">Categories</div>
-               <div class="cel iptC"><input type="text" name="Categories" class="inputC"></div>
-           </div>
-       </div>
-      </div>
-      <div class="modal-footer">
-         <div class="celr" id="gridbtnSave">
-             <div class="cel btnSave"><button type="button" class="buttonSave">Save</button></div>
+             <div class="celr" id="gridIcons">
+                 <div class="cel pStatus boldText title">Project Status</div>
+                 <div class="cel"></div>
+                 <div class="cel imgCenter">
+                  <input type="radio" class="projectProgressButtons" name="projectProgress">
+                    <img class="projectsIcons" src="<%= image_path ('Icons/Idea_icon.png') %>">
+                    <div class="projectsIconsLabel">Idea</div>
+                  </input>                
+                 </div>               
+                 <div class="cel"></div>
+                 <div class="cel imgCenter">
+                  <input type="radio" class="projectProgressButtons" name="projectProgress">
+                    <img class="projectsIcons" src="<%= image_path ('Icons/WIP-icon.png') %>">
+                    <div class="projectsIconsLabel">In-Progress</div>
+                  </input>                
+                 </div>
+                 <div class="cel"></div>
+                 <div class="cel imgCenter">
+                  <input type="radio" class="projectProgressButtons" name="projectProgress">
+                    <img class="projectsIcons" src="<%= image_path ('Icons/completed-icon.png') %>">
+                    <div class="projectsIconsLabel">Complete</div>
+                  </input>                
+                 </div>
+                 <div class="cel"></div>
+             </div>
+             <div class="celr" id="gridCategories">
+                 <div class="cel boldText title">Categories</div>
+                 <div class="cel iptC"><input type="text" name="Categories" class="inputC"></div>
+             </div>
          </div>
-      </div>
+        </div>
+        <div class="modal-footer">
+           <div class="celr" id="gridbtnSave">
+               <div class="cel btnSave">
+                <a href="/projects" id="submit" class="buttonSaveProject">Edit Projects</a>
+                <!--<%= submit_tag("Create Project",:id=>"submit", :class=>'buttonSaveProject')%>
+                <button type="button" class="buttonSave">Save</button> -->
+              </div>
+           </div>
+        </div>
+
+      <% end %>      
       
     </div>
   </div>
