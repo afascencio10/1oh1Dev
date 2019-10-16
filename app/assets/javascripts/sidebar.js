@@ -16,7 +16,13 @@ jQuery(function ($) {
     
 
     //toggle sidebar
-    $("#responsiveMenu","#toggle-sidebar").click(function () {
+    $("#responsiveMenu").click(function () {
+        $(".page-wrapper").toggleClass("toggled");
+    });
+    $("#toggle-sidebar").click(function () {
+        $(".page-wrapper").toggleClass("toggled");
+    });
+    $("#toggle-exit").click(function () {
         $(".page-wrapper").toggleClass("toggled");
     });
     //Pin sidebar
@@ -95,3 +101,7 @@ jQuery(function ($) {
 
     
 });
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });

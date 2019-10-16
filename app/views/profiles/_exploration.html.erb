@@ -11,7 +11,7 @@
         <div class="interestsImages">
             <% if @explores.blank? %>
               <div class="emptyInterests">
-                  Update your Skills
+                <a href="#" class="tool-Tip" data-toggle="tooltip" title="prueba" data-placement="top"> Update your Skills </a> 
               </div>
             <% else %>
                 <% @explores.each do|explore| %>
@@ -69,5 +69,10 @@
         <div id="forMoreLink">
             <a id="moreLink" href="#">More</a>
         </div>
+    </div>
+    <div class="grid-Pop cel">
+        <div class="cel">1</div>
+        <div class="cel">2</div>
+        <div class="cel">3</div>
     </div>
 </div>
