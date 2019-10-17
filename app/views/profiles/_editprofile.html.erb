@@ -12,7 +12,15 @@
          <div class="celr" id="gridBackground" style="background-image: url(<%= image_path ('life-862972_1920.jpg') %>);">
              <div class="cel">
                 <div class="imgBackgraound">
-                  <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
+                  <% if @profile.profile_photo.blank? %>
+                    <%= file_field_tag :pro_photo,class: 'form-control field_input' %>
+                    <%= hidden_field_tag :profile_photo%>
+                  <% else %>
+                    <img src="<%= @profile.profile_photo %>" alt="Image" class="profileImg">
+                    <%#= file_field_tag :pro_photo,class: 'form-control field_input' %>
+                    <%#= hidden_field_tag :profile_photo%>
+                  <% end %>
+                  <!-- <img class="profileImg" src="<%= image_path ('person_4.jpg') %>"> -->
                 </div>
              </div>
              <div class="cel"></div>
@@ -24,12 +32,21 @@
                 <div class="cel boldText title">Last Name *</div>    
              </div>
              <div class="celr" id="gridLabels">
-                <div class="cel input"><input type="text" name="fname" class="inputFname"></div>
-                <div class="cel "><input type="text" name="lname" class="inputLname"></div>
+                <div class="cel input">
+                  <%= text_field_tag :name,@user.firstname,class: 'inputFname',:readonly => true %>
+                  <!-- <input type="text" name="fname" class="inputFname"> -->
+                </div>
+                <div class="cel ">
+                  <%= text_field_tag :name,@user.lastname,class: 'inputLname',:readonly => true %>
+                  <!-- <input type="text" name="lname" class="inputLname"> -->
+                </div>
              </div>
              <div class="cel" id="gridPersonal">
                  <div class="cel boldText title">Personal Summary</div>
-                 <div class="cel"><textarea class="txtPersonal"></textarea></div>
+                 <div class="cel">
+                  <%= text_area_tag :bio,@profile.bio,class: 'txtPersonal',placeholder: "Bio" %>
+                  <!-- <textarea class="txtPersonal"></textarea> -->
+                </div>
                  <div class="margin boldText title">Main</div>
                  <div class="celr" id="gridImage">
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
@@ -51,21 +68,23 @@
              <div class="celr margin" id="gridSelect">
                  <div class="cel boldText title">Fluent Languages *</div>
              </div>
-             <div class="celr marginOption" id="gridOption">
+             <%=select_tag "languages", options_for_select([ "English", "French","German","Spanish","Russian","Mandarin" ],@profile.languages),multiple: true%>
+             <!-- <div class="celr marginOption" id="gridOption">
                         <div class="tags-input" data-name="tags-input">
-                            <!--<span class="tag">CSS<span class="close"></span></span>
+                            <span class="tag">CSS<span class="close"></span></span>
                             <span class="tag">JavaScript<span class="close"></span></span>
-                            <span class="tag">HTML<span class="close"></span></span>-->
+                            <span class="tag">HTML<span class="close"></span></span>
                         </div>
-             </div>
+             </div> -->
              <div class="celr margin" id="gridSelect">
                  <div class="cel boldText title">Country/Region *</div>
                  <div class="cel"></div>
                  <div class="cel">
-                     <select class="select">
+                     <%= text_field_tag :country,@profile.country,class: 'select',placeholder: "Country" %>
+                     <!-- <select class="select">
                          <option>Canada</option>
                          <option>Alemania</option>
-                     </select>
+                     </select> -->
                  </div>
                  <div class="cel"></div>
                  <div class="cel margin boldText title">Locations</div>
@@ -89,7 +108,19 @@
       </div>      
       <div class="modal-footer">
          <div class="celr" id="gridbtnSave">
-             <div class="cel btnSave"><button type="button" class="buttonSave">Save</button></div>
+            <div class="cel btnSave">
+              <% if @new_profile %>
+                <%= submit_tag("Save",:id=>"submit", :class=>'buttonSave')%>
+              <% else %>
+                <%= submit_tag("Save",:id=>"submit", :class=>'buttonSave')%>
+              <% end %>
+
+
+        <!--      <button type="submit" class="btn btn-primary text-white button-addon" data-dismiss="modal">Update Profile</button>-->
+            </div>
+             <!-- <div class="cel btnSave">
+              <button type="button" class="buttonSave">Save</button>
+            </div> -->
          </div>
       </div>                          
 

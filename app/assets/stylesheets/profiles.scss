@@ -453,7 +453,7 @@
 /*Projects*/
 .projectsContent{
     display: grid;    
-    grid-template-columns: 28px 56% 4px;
+    grid-template-columns: 28px 56% auto;
     grid-template-rows: 120px auto;
     grid-row-gap: 50px
 }
