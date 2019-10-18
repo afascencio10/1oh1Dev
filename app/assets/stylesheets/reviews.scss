@@ -1,0 +1,276 @@
+// Place all the styles related to the Reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    margin: 0;
+}
+
+.reviewsPage {
+    padding-top: 80px;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 10vw 1fr;
+    margin-bottom: 20px;
+    margin-left: 11vw;
+}
+
+.profile2 {
+    display: grid;
+    grid-template-columns: 10vw 1fr;
+    margin-bottom: 20px;
+    margin-left: 4vw;
+}
+
+.background{
+    height: 360px;
+    background-image: url("../img/baking.jpg");
+    background-size: 100% 100%;
+    margin-bottom: 20px;
+}
+.data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.description {
+    margin-left: 6vw;
+    padding-top: 15px;
+}
+
+.rating {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 2px solid #d1d4e1;
+    padding-bottom: 35px;
+    margin-bottom: 35px;
+}
+
+.searchHelp {
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    margin-left: 6vw;
+}
+
+.search {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 20px;
+}
+
+.help {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 14vw;
+    width: 32vw;
+}
+
+.reviews {
+    display: grid;
+    grid-template-columns: 90vw;
+}
+
+.review {
+    display: grid;
+    grid-template-columns: 40% auto;
+}
+
+.imgfondo {
+    width:100%;
+    height: 350px;
+}
+
+.fondo {
+    height: 100%;
+}
+
+.score1 {
+    display: grid;
+    grid-template-columns: repeat(5,40px) 30px;
+    color: #fde721;
+    font-size: 35px;
+    justify-content: center;
+    align-items: start;
+}
+
+.score2 {
+    display: grid;
+    grid-template-columns: repeat(5,40px) 30px;
+    color: #fde721;
+    font-size: 35px;
+    align-items: start;
+    padding-left: 2vw;
+}
+
+.ratingName{
+    display: grid;
+    align-items: end;
+    padding-left: 2vw;
+    font-size: 25px;
+}
+.ratingText{
+    display: grid;
+    align-items: center;
+    font-size: 25px; 
+    padding-top: 25px;
+}
+.rating {
+    display: grid;
+    grid-template-columns: 20px 1fr 1fr 1fr 20px;
+    text-align: center;
+}
+
+.rateNumber{
+    font-size: 15px;    
+    align-self: center;
+    color: #9f9ea1;
+}
+
+.subtitles {
+    display: grid;
+    grid-template-columns: 20px 1fr 1fr 1fr 20px;
+    margin-top: 75px;
+    padding-bottom: 30px;
+    text-align: center;
+
+}
+
+.subtitle:hover{
+    color: #1cc02a;
+    text-decoration: underline;
+}
+
+.subtitle {
+    color: #000000;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.searchInput{   
+    height: 30px;
+    width: 100%;
+    border: none; 
+    outline: none;
+    margin-left: 4vw;  
+    font-size: 18px;
+}
+
+.icon{   
+    grid-row-start: 1;
+    grid-row-end: 3;
+    justify-self: center;
+}
+.imageProfile{
+    position: relative;
+    bottom: -250px;
+    margin-left: 5vw;
+}
+.imgProfile {
+    position: relative;    
+    height: 200px;
+    width: 200px;
+    border-radius: 70%;
+    bottom: -58px;
+    border: 8px solid #ffffff;    
+}
+.imgperfil{
+    position: relative;    
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    bottom: 0;
+}
+
+.site-navbar.topbarSide .site-navigation .site-menu li a {
+    color: #000;
+}
+
+.button{
+    background-color: #8cc63f;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    width: 100%;
+    height: 55px;    
+}
+.topicTitle{
+    display: grid;
+    align-items: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 4vw;
+    font-weight: 700;
+    height: 65px;   
+    padding-left: 3vw; 
+    padding-top: 20px; 
+}
+.withContainer{
+    display: grid;
+    grid-template-columns: 35px auto;
+    height: 25px;
+    padding-left: 3vw; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+}
+.headerText{
+    display: grid;
+    font-size: 2vw;
+    align-items: end;
+}
+.autor{
+    display: grid;
+    font-size: 2.5vw;
+    align-items: end;
+    font-weight: 700;
+    padding-left: 2vw; 
+}
+.projectsNumber{
+    font-size: 30px;
+    font-weight: 700;
+    color: #babbbd;
+}
+.helpText{
+    font-size: 22px;
+    font-weight: 700;
+    height: 28px;
+    padding-bottom: 5px;
+    padding-top: 25px;
+}
+.searchContainer{
+    padding-bottom: 45px;
+    border-bottom: 2px solid #d1d4e1; 
+    margin-bottom: 80px;
+}
+.tag{
+    display: grid;
+    height: 30px;
+    width: 150px;
+    background-color: #d7d7d7;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 23px;
+}
+.sortByText{
+    display: grid;
+    align-items: center;
+    font-size: 20px;
+}
+.sortBy{
+    display: grid;
+    grid-template-columns: 7vw auto;
+}
+.searchIcon{
+    position: absolute;
+}
+.searchCont{
+    width: 350px;
+    border-bottom: 2px solid #d1d4e1; 
+    margin-bottom: 20px;
+}
+/* Rules for sizing the icon. */
+.material-icons.md-36 { font-size: 36px; }

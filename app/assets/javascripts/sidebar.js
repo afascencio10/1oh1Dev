@@ -91,7 +91,8 @@ jQuery(function ($) {
     }
 
     var sidebar = document.querySelector("#sidebar");
-    if(sidebar){
+    var reviews = document.querySelector(".reviewsPage");
+    if(sidebar || reviews){
       console.log("We have sidebar");
       var topbar = document.querySelector("#site-navbar");
       if(topbar){
