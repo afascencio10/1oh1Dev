@@ -24,6 +24,10 @@ body {
     margin-left: 4vw;
 }
 
+.profile2 .perfil {
+    grid-column-end: 2;
+}
+
 .reviewsPage .background{
     height: 360px;
     background-image: url(image_path("Skills/baking.png"));
@@ -253,7 +257,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    font-size: 23px;
+    font-size: 19px;
 }
 .sortByText{
     display: grid;
