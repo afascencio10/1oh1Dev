@@ -2,7 +2,7 @@
 <div class="cell reviewsPage">
         <div class="background">
             <div class="imageProfile">
-                <img class="imgProfile" src="img/hendrix.jpg">
+                <%= image_tag('People/a.jpg', :class => 'imgProfile') %> 
             </div>
         </div>
         <div class="cell">
@@ -54,10 +54,10 @@
         <div class="cell searchContainer">
             <div class="searchHelp grid">
                 <div class="cell">
-                    <div class="search grid">
-                        <div class="cell search">
+                    <div class="searchReview grid">
+                        <div class="cell searchReview">
                             <div class="searchCont">
-                                <i class="material-icons  md-36 searchIcon">search</i><input type="text" placeholder="Search" class="searchInput">
+                                <i class="material-icons  md-36 searchIcon d-block">search</i><input type="text" placeholder="Search" class="searchInput">
                             </div>                                
                         </div>
                         <div class="sortBy">
@@ -82,7 +82,7 @@
                     <div class="review grid">
                         <div class="cell">
                             <div class="profile2 grid">
-                                <div class="cell icon perfil"><img class="imgperfil" src="img/sabrina.jpg"></div>
+                                <div class="cell icon perfil"><%= image_tag('People/women.jpg', :class => 'imgperfil') %></div>
                                 <div class="cell ratingName">Sabrina Lopez</div>
                                 <div class="grid score2">
                                     <div class="cell"><i class="material-icons md-36"> start</i></div>
@@ -103,7 +103,7 @@
                     <div class="review grid">
                         <div class="cell">
                             <div class="profile2 grid">
-                                <div class="cell icon perfil"><img class="imgperfil" src="img/clara.jpg"></div>
+                                <div class="cell icon perfil"><%= image_tag('People/people.jpg', :class => 'imgperfil') %></div>
                                 <div class="cell ratingName">Clara Li</div>
                                 <div class="grid score2">
                                     <div class="cell"><i class="material-icons md-36"> start</i></div>
@@ -124,7 +124,7 @@
                     <div class="review grid">
                         <div class="cell">
                             <div class="profile2 grid">
-                                <div class="cell icon perfil"><img class="imgperfil" src="img/clara.jpg"></div>
+                                <div class="cell icon perfil"><%= image_tag('People/adult.jpg', :class => 'imgperfil') %></div>
                                 <div class="cell ratingName">Clara Li</div>
                                 <div class="grid score2">
                                     <div class="cell"><i class="material-icons md-36"> start</i></div>
