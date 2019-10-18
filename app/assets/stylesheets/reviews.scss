@@ -24,9 +24,9 @@ body {
     margin-left: 4vw;
 }
 
-.background{
+.reviewsPage .background{
     height: 360px;
-    background-image: url("../img/baking.jpg");
+    background-image: url(image_path("Skills/baking.png"));
     background-size: 100% 100%;
     margin-bottom: 20px;
 }
@@ -52,13 +52,14 @@ body {
     display: grid;
     grid-template-columns: 40vw 40vw;
     margin-left: 6vw;
+
+    & .searchReview {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+    }
 }
 
-.search {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding-top: 20px;
-}
+
 
 .help {
     display: grid;
@@ -113,7 +114,7 @@ body {
 .ratingText{
     display: grid;
     align-items: center;
-    font-size: 25px; 
+    font-size: 22px; 
     padding-top: 25px;
 }
 .rating {
@@ -236,12 +237,11 @@ body {
 .helpText{
     font-size: 22px;
     font-weight: 700;
-    height: 28px;
     padding-bottom: 5px;
     padding-top: 25px;
 }
-.searchContainer{
-    padding-bottom: 45px;
+.reviewsPage .searchContainer{
+    padding-bottom: 45px !important;
     border-bottom: 2px solid #d1d4e1; 
     margin-bottom: 80px;
 }
