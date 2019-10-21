@@ -25,12 +25,32 @@ header section*/
     	font-weight: 900;
 	}
 	.dropdownTitle {
-		padding-right: 40px;
+		padding-right: 40px;		
 		font-size: 12px;
 	    color: black;
 	    font-family: 'Source Sans Pro', sans-serif;
 	    position: relative;
 	}
+	.dropdownTitle:after{
+		position: absolute;
+	    content: "\e313";
+	    font-size: 14px;
+	    top: 50%;
+	    right: 25%;
+	    transform: translateY(-50%);
+	    font-family: 'Material Icons';
+	}
+	#dropdownTitle2:after{
+		right: 15%;
+	}
+	.dropdownTitle select {
+		width: 160%;
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+	    text-indent: 1px;
+	    text-overflow: '';
+	    border: none;
+	}	
 	.keydown {
 		position: absolute;
 	    right: 10px;
@@ -180,6 +200,8 @@ graph section*/
 	.chestGraph {
 		display: grid;
 		grid-template-columns: 70% 30%;
+		padding-top: 45px;
+		padding-bottom: 45px;
 	}
 }
 
@@ -191,6 +213,7 @@ counter and table section*/
 		display: grid;
 		grid-template-columns: 20% 50% 30%;
 		grid-gap: 50px;
+		padding-bottom: 45px;
 	}
 	.sessionesCounter {
 		display: grid;

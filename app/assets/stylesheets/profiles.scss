@@ -97,6 +97,10 @@
   }
 }
 
+.cel{
+    /*border: solid #eb2e2e;*/
+}
+
 /*css for the new design of profile section*/
 
 .celprofile {
@@ -177,7 +181,10 @@
     font-size: 17px;
     margin-bottom: 5px;
 }
-
+#languages{
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
 .tab{
     display: none
 }
@@ -231,7 +238,7 @@
 }
 .exploreSection{
     display: grid;
-    grid-template-rows: 35px auto 35px auto 35px;     
+    grid-template-rows: 65px 35px auto 35px auto 35px;     
 }
 .interestsHeader{
     display: grid;    
@@ -449,8 +456,8 @@
 /*Projects*/
 .projectsContent{
     display: grid;    
-    grid-template-columns: 28px 56% 4px;
-    grid-auto-rows: auto;
+    grid-template-columns: 28px 56% auto;
+    grid-template-rows: 120px auto;
     grid-row-gap: 50px
 }
 
@@ -571,7 +578,7 @@ desktop version*/
 }
 
 .modal .modal-body {
-  padding: 2vw;
+  padding-bottom: 2vw;
 }
 
 .newCategoryMessage {
@@ -711,6 +718,8 @@ desktop version*/
 #gridSelect {
     display: grid;
     grid-template-columns: 20fr 70fr;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 #gridOption {
     display: grid;
@@ -719,6 +728,8 @@ desktop version*/
 #gridProfile {
     display: grid;
     grid-template-columns: 10fr 10fr 80fr;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 #gridLocations {
     display: grid;
@@ -788,12 +799,14 @@ p {
     height: 30px;
     border-radius: 5px;
     border:solid 1px #c7c6c6;
+    background: #e9ebf1;
 }
 .inputLname {
     width: 100%;
     height: 30px;
     border-radius: 5px;
     border:solid 1px #c7c6c6;
+    background: #e9ebf1;
 }
 .inputP {
     width:-webkit-fill-available;
@@ -1177,13 +1190,33 @@ input[type=radio]:checked {
 
 .grid-Pop {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 5vw 10vw 5vw;
     border: solid #e61616;
     height: auto;
 }
-.cel {
 
+
+
+
+.starsSpan{
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
+
+.rateSpan{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.yellowBar{
+    border: solid gray;
+    background-color: yellow;
+}
+
+.whiteBar{
+    border: solid gray;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -1255,14 +1288,105 @@ input:checked + .slider:before {
   border-radius: 5px;
 }
 .buttonSaveProject{
-  background: #8cc63f;
+    background: #8cc63f;
   color: #ffffff;  
   padding: 7px;
   border: none;
   border-radius: 5px;
   cursor: pointer;  
-
 }
+
+
+.projectsSearchCreate{
+  grid-row: 1/2;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 30% repeat(3,7%) 49%;
+  grid-template-rows: 60px auto;
+}
+.inputSearchProjects{
+  display: grid;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1/3;  
+}
+.searchProjectsInput{
+  height: 30px;
+  border: none;
+  outline: none;
+  font-size: 14px;  
+  background: none;
+  border-bottom: solid 2px #d1d4e1;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  width: 20vw;
+}
+.searchProjectIcon{
+  position: absolute;
+}
+.checkBoxProjectIcon{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1/2;
+}
+.checkBoxProject{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-row: 2/3;
+}
+.buttonCreateProject{
+  display: grid;
+  align-items: center;
+  justify-content: end;
+  grid-row: 1/3;
+}
+.projectProgressIcon{
+  height: 80px;
+  width: auto;
+}
+.buttonCreate{
+  background: #8cc63f;
+  color: #ffffff;
+  padding: 7px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 20vw;
+}
+.editProfilePic{
+  position: absolute;
+}
+.editProfilePicIconCont{
+  border-radius: 50%;
+  border: 1px solid #dedede;
+  height: 45px;
+  width: 45px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 15px;
+  top: -50px;  
+}
+.editProfilePicIcon{  
+  height: 30px;
+  border-radius: 50%;
+}
+.buttonEditProfilePic{
+  background: no-repeat;
+  border: none;
+  border-radius: 50%;  
+  cursor: pointer;
+}
+.editProfilePicSelect{
+  opacity: 0;  
+}
+  
+
 .grid-Starts {
     display: grid;
     grid-template-columns: 3fr 3fr 3fr 3fr 3fr 88fr;
@@ -1334,3 +1458,12 @@ input:checked + .slider:before {
     margin-top:10px ;
     border-top: 2px solid #f16821;
 }
+
+.cell{
+   /* border: solid green;*/
+}
+  
+.grid{
+    /*border: solid #eb2e2e;
+*/}
+

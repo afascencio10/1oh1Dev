@@ -1,10 +1,39 @@
 <div class="projectsSection">
     <div class="projectsContent">
+      <div class="projectsSearchCreate">
+       <div class="inputSearchProjects">
+          <div class="inputProjectsSearch">
+            <img class="searchProjectIcon" src="<%= image_path ('Icons/search.png') %>">
+            <input class="searchProjectsInput" type="" name="">
+          </div>         
+       </div>
+       <div class="checkBoxProjectIcon">          
+         <img class="projectProgressIcon" src="<%= image_path ('Icons/Idea_icon.png') %>">
+       </div>
+       <div class="checkBoxProjectIcon">
+         <img class="projectProgressIcon" src="<%= image_path ('Icons/WIP-icon.png') %>">
+       </div>
+       <div class="checkBoxProjectIcon">
+         <img class="projectProgressIcon" src="<%= image_path ('Icons/completed-icon.png') %>">
+       </div>
+       <div class="checkBoxProject">
+         <input type="checkbox" name="">
+       </div>
+       <div class="checkBoxProject">
+         <input type="checkbox" name="">
+       </div>
+       <div class="checkBoxProject">
+         <input type="checkbox" name="">
+       </div>
+       <div class="buttonCreateProject">
+         <button class="buttonCreate">CREATE</button>
+       </div>
+     </div>
       <% if @projects.blank? %>
          <div class="emptyReviews">
             <i data-toggle="modal" data-target="#projectsModal">Upload your Projects</i>
          </div>
-      <% else %>
+      <% else %>         
          <% @projects.each do|project| %>
            <div class="projectContainer">
                <div class="projectImages">
