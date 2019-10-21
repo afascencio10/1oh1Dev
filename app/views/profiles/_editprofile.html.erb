@@ -12,15 +12,24 @@
          <div class="celr" id="gridBackground" style="background-image: url(<%= image_path ('life-862972_1920.jpg') %>);">
              <div class="cel">
                 <div class="imgBackgraound">
-                  <% if @profile.profile_photo.blank? %>
-                    <%= file_field_tag :pro_photo,class: 'form-control field_input' %>
-                    <%= hidden_field_tag :profile_photo%>
-                  <% else %>
-                    <img src="<%= @profile.profile_photo %>" alt="Image" class="profileImg">
-                    <%#= file_field_tag :pro_photo,class: 'form-control field_input' %>
-                    <%#= hidden_field_tag :profile_photo%>
-                  <% end %>
-                  <!-- <img class="profileImg" src="<%= image_path ('person_4.jpg') %>"> -->
+                  <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
+                  <div class="editProfilePic">
+                    <div class="editProfilePicIconCont">
+                      <button class="buttonEditProfilePic" onclick="selectPic()">
+                        <img class="editProfilePicIcon" src="<%= image_path ('Icons/edit.png') %>">
+                      </button>
+                    </div>
+                    <div class="editProfilePicSelect" id="editProfilePicSelect">
+                      <% if @profile.profile_photo.blank? %>
+                        <%= file_field_tag :pro_photo,class: 'form-control field_input' %>
+                        <%= hidden_field_tag :profile_photo%>
+                      <% else %>
+                        <img src="<%= @profile.profile_photo %>" alt="Image" class="profileImg">
+                        <%#= file_field_tag :pro_photo,class: 'form-control field_input' %>
+                        <%#= hidden_field_tag :profile_photo%>
+                      <% end %>
+                    </div>                    
+                  </div>                  
                 </div>
              </div>
              <div class="cel"></div>
@@ -47,7 +56,7 @@
                   <%= text_area_tag :bio,@profile.bio,class: 'txtPersonal',placeholder: "Bio" %>
                   <!-- <textarea class="txtPersonal"></textarea> -->
                 </div>
-                 <div class="margin boldText title">Main</div>
+                 <!-- <div class="margin boldText title">Main</div>
                  <div class="celr" id="gridImage">
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
@@ -58,7 +67,7 @@
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div>
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/retro-4237850_640.jpg') %>"></div>
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/electric.png') %>"></div>
-                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div>
+                        <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div> -->
                      </div>
                  <div class="margin">    
                  <div class="cel boldText title">Current Position</div>
@@ -104,9 +113,8 @@
                  <div class="cel"></div>
              </div>             
          </div>
-     </div>     
-      </div>      
-      <div class="modal-footer">
+     </div> 
+     <div class="modal-footer">
          <div class="celr" id="gridbtnSave">
             <div class="cel btnSave">
               <% if @new_profile %>
@@ -122,6 +130,7 @@
               <button type="button" class="buttonSave">Save</button>
             </div> -->
          </div>
+      </div>    
       </div>                          
 
       <script>
@@ -196,10 +205,21 @@
 
       function filterTag (tag) {
           return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
-      }
+      }      
 
       
   });
+         function selectPic() {
+          var selectPic = document.getElementById("editProfilePicSelect");
+          if (selectPic.style.opacity == 0) {
+            selectPic.style.opacity = 1;           
+          }
+          else{
+            if (selectPic.style.opacity == 1) {
+              selectPic.style.opacity = 0;              
+            }
+          }
+         }
       </script>
       
     </div>

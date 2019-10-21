@@ -1788,3 +1788,13 @@ body {
   grid-template-columns: 60fr auto auto;
 }
 
+.checkboxTerms {
+    background-color: #d1cdcd !important;
+    cursor: default !important;
+    -webkit-appearance: checkbox !important;    
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;    
+    -moz-appearance: none !important;    
+    height: auto !important;
+}
