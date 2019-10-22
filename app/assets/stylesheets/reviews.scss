@@ -13,7 +13,7 @@ body {
 .profile {
     display: grid;
     grid-template-columns: 10vw 1fr;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     margin-left: 11vw;
 }
 
@@ -21,11 +21,19 @@ body {
     display: grid;
     grid-template-columns: 10vw 1fr;
     margin-bottom: 20px;
-    margin-left: 4vw;
+    margin-left: 8vw;
 }
 
 .profile2 .perfil {
     grid-column-end: 2;
+
+    & .imgperfil{
+        position: relative;    
+        height: 95%;
+        width: 95%;
+        border-radius: 50%;
+        bottom: 0;
+    }
 }
 
 .reviewsPage .background{
@@ -41,7 +49,6 @@ body {
 
 .description {
     margin-left: 6vw;
-    padding-top: 15px;
 }
 
 .rating {
@@ -79,7 +86,8 @@ body {
 
 .review {
     display: grid;
-    grid-template-columns: 40% auto;
+    grid-template-columns: 44% auto;
+    width: 95%;
 }
 
 .imgfondo {
@@ -96,7 +104,7 @@ body {
     grid-template-columns: repeat(5,40px) 30px;
     color: #fde721;
     font-size: 35px;
-    justify-content: center;
+    margin-left: 10%;
     align-items: start;
 }
 
@@ -118,8 +126,8 @@ body {
 .ratingText{
     display: grid;
     align-items: center;
-    font-size: 22px; 
-    padding-top: 25px;
+    font-size: 18px; 
+    text-align: justify;
 }
 .rating {
     display: grid;
@@ -138,19 +146,28 @@ body {
     grid-template-columns: 20px 1fr 1fr 1fr 20px;
     margin-top: 75px;
     padding-bottom: 30px;
-    text-align: center;
-
+    margin-left: 4%;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .subtitle:hover{
-    color: #1cc02a;
-    text-decoration: underline;
+    color: #8CC63F;
+    border-bottom: 2px solid  #8CC63F;
+
 }
 
 .subtitle {
+    padding: 5px 0;
     color: #000000;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 25px;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    
+    &.current-option{
+        color: #8CC63F;
+        border-bottom: 2px solid  #8CC63F;
+    }
 }
 
 .searchInput{   
@@ -174,18 +191,11 @@ body {
 }
 .imgProfile {
     position: relative;    
-    height: 200px;
-    width: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 70%;
-    bottom: -58px;
+    bottom: 30px;
     border: 8px solid #ffffff;    
-}
-.imgperfil{
-    position: relative;    
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    bottom: 0;
 }
 
 .site-navbar.topbarSide .site-navigation .site-menu li a {
@@ -218,17 +228,18 @@ body {
     grid-template-columns: 35px auto;
     height: 25px;
     padding-left: 3vw; 
-    padding-top: 20px; 
     padding-bottom: 20px; 
 }
 .headerText{
     display: grid;
-    font-size: 2vw;
+    font-size: 1.8vw;
     align-items: end;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: none;
 }
 .autor{
     display: grid;
-    font-size: 2.5vw;
+    font-size: 2vw;
     align-items: end;
     font-weight: 700;
     padding-left: 2vw; 

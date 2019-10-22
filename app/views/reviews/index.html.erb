@@ -23,8 +23,8 @@
         <div class="description cell headerText">Breads, cookies and everything inbetween... mmmmmm...</div>
         <div class="subtitles">
             <div class="cell empty"></div>
-            <div class="cell"><a class="subtitle" href="#">Explore Rating</a></div>
-            <div class="cell"><a class="subtitle" href="#">Guide Rating</a></div>
+            <div class="cell"><a class="subtitle current-option" id="help-option" href="#">Explore Rating</a></div>
+            <div class="cell"><a class="subtitle" id="learn-option" href="#">Guide Rating</a></div>
             <div class="cell"><a class="subtitle" href="#"></a></div>
             <div class="cell empty"></div>
         </div>
@@ -70,8 +70,16 @@
                 </div>
                 <div class="cell">
                     <div class="help grid">
-                        <div class="cell helpText">Help Jimi Learn Baking</div>
-                        <div class="cell"><button class="button">Book</button></div>
+                        <div class="tab-content custom-table">
+                            <div id="tab-learn" class="">
+                                <div class="cell helpText">Help Jimi Learn Baking</div>
+                                <div class="cell"><button class="button">Book</button></div>
+                            </div>
+                            <div id="tab-help" class="d-none">
+                                <div class="cell helpText">Learn Baking with Jimi</div>
+                                <div class="cell"><button class="button">Book</button></div>
+                            </div>      
+                        </div>
                     </div>
                 </div>
             </div>
