@@ -56,4 +56,5 @@
 //= require messages
 //= require profiles
 //= require sidebar
+//= require reviews
 //= require filterrific/filterrific-jquery
