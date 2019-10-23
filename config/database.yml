@@ -38,8 +38,9 @@ development:
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
   host: localhost
-  username: carlosdev
-  password: CarlosDeveloper9916
+
+  username: postgres
+  password: santi123
 
 
   # The TCP port the server listens on. Defaults to 5432.
