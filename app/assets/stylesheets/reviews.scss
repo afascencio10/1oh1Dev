@@ -8,6 +8,24 @@ body {
 
 .reviewsPage {
     padding-top: 80px;
+
+    & #material-tabs{
+        display: grid;
+    }
+
+    & #material-tabs #tab1-tab.active ~ span.yellow-bar{
+        left: 4%;
+        width: 27%;
+    }
+
+    & #material-tabs #tab2-tab.active ~ span.yellow-bar{
+        left: 37%;
+        width: 27%;
+    }
+}
+
+.reviewTab{
+    margin-top: -1%;    
 }
 
 .profile {
@@ -48,7 +66,7 @@ body {
 }
 
 .description {
-    margin-left: 6vw;
+    margin-left: 7vw;
 }
 
 .rating {
@@ -69,8 +87,6 @@ body {
         grid-template-columns: 1fr !important;
     }
 }
-
-
 
 .help {
     display: grid;
@@ -146,14 +162,7 @@ body {
     grid-template-columns: 20px 1fr 1fr 1fr 20px;
     margin-top: 75px;
     padding-bottom: 30px;
-    margin-left: 4%;
     font-family: 'Source Sans Pro', sans-serif;
-}
-
-.subtitle:hover{
-    color: #8CC63F;
-    border-bottom: 2px solid  #8CC63F;
-
 }
 
 .subtitle {
@@ -161,12 +170,11 @@ body {
     color: #000000;
     font-weight: bold;
     font-size: 25px;
-    border-bottom: 2px solid transparent;
+
     outline: none;
     
-    &.current-option{
-        color: #8CC63F;
-        border-bottom: 2px solid  #8CC63F;
+    &:hover{
+        color: #8CC63F !important;
     }
 }
 
@@ -217,11 +225,10 @@ body {
     display: grid;
     align-items: center;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 4vw;
+    font-size: 2.5vw;
     font-weight: 700;
     height: 65px;   
     padding-left: 3vw; 
-    padding-top: 20px; 
 }
 .withContainer{
     display: grid;
@@ -229,20 +236,22 @@ body {
     height: 25px;
     padding-left: 3vw; 
     padding-bottom: 20px; 
+    margin-top: -14%;
 }
 .headerText{
     display: grid;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     align-items: end;
     font-family: 'Source Sans Pro', sans-serif;
     text-decoration: none;
+    margin-top: -2%;
 }
 .autor{
     display: grid;
-    font-size: 2vw;
+    font-size: 1.5vw;
     align-items: end;
     font-weight: 700;
-    padding-left: 2vw; 
+    padding-left: 1vw; 
 }
 .projectsNumber{
     font-size: 30px;
@@ -253,7 +262,7 @@ body {
     font-size: 22px;
     font-weight: 700;
     padding-bottom: 5px;
-    padding-top: 25px;
+    padding-top: 8px;
 }
 .reviewsPage .searchContainer{
     padding-bottom: 45px !important;
@@ -287,5 +296,6 @@ body {
     border-bottom: 2px solid #d1d4e1; 
     margin-bottom: 20px;
 }
+
 /* Rules for sizing the icon. */
 .material-icons.md-36 { font-size: 36px; }
