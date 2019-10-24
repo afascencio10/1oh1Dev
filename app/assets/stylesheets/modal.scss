@@ -1698,10 +1698,6 @@ body {
     text-align: justify;
 }
 
-.redcel{
-	
-}
-
 .modalNewCategory{
 	display: grid;
   grid-template-columns: 1fr;
@@ -1709,15 +1705,22 @@ body {
   width: 100%;
   
 }
+.modal .modal-content .gridContent {
+  -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+  padding-bottom: 0vw;
+}
 
-.categoryName{
+.newCategoryName{
 	display: grid;
 	grid-template-columns: 25% 75%; 
 }
 
 .categoryDescription{
 	display: grid; 
-	grid-template-columns: 35% 65%; 
+  grid-template-columns: 35% 65%; 
+  margin-top: 12px;
 }
 
 .gridActions{
@@ -1729,7 +1732,6 @@ body {
 	padding:5px 18px;  
 }
 
-
 .txtOne {
   width:-webkit-fill-available;
   border-color: #000000;
@@ -1739,15 +1741,31 @@ body {
   height: 70px;
   border-color: #000000;
 }
-.btn {
-  padding: 3px;
-  font-size: 10px;
-  text-align: center;
+.buttonSave{
+  background: #8cc63f;
+  color: #ffffff;
+  width: 88px;
+  padding: 7px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.buttonCancel {
+  background: #ffffff;
+  color: #000000;
+  width: 88px;
+  padding: 4px;
+  border:solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
 .btnCancel {
+  padding-right: 10px;
   justify-self: center;
 }
 .btnSubmit {
+  padding-right: 5px;;
   justify-self: center;
 }
 .Submit {
@@ -1760,7 +1778,7 @@ body {
   padding-left: 17px;
   padding-right: 22px;
 }
-.txt {
+.txt-newcategory {
   padding-left: 17px;
   padding-right: 22px;
 }
@@ -1779,7 +1797,7 @@ body {
 }
 .paragraph {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
   color:black;
 }
