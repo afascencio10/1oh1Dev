@@ -13,12 +13,13 @@
              <div class="cel">
                 <div class="imgBackgraound">
                   <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
-                  <div class="editProfilePic">
-                    <div class="editProfilePicIconCont">
+                  <div class="editProfilePicIconCont">
                       <button class="buttonEditProfilePic" onclick="selectPic()">
                         <img class="editProfilePicIcon" src="<%= image_path ('Icons/edit.png') %>">
                       </button>
-                    </div>
+                  </div>
+                  <div class="editProfilePic">
+                    
                     <div class="editProfilePicSelect" id="editProfilePicSelect">
                       <% if @profile.profile_photo.blank? %>
                         <%= file_field_tag :pro_photo,class: 'form-control field_input' %>
