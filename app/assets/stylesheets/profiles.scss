@@ -1012,7 +1012,11 @@ input[type=checkbox i] {
     margin-left: 30px;
 }
 .labelYes {
-    padding-left: 28px
+    padding-left: 28px;
+
+    & label{
+      margin-left: -44%;
+    }
 }
 .profileImg{
   height: 200px;
@@ -1362,15 +1366,14 @@ input:checked + .slider:before {
 }
 .editProfilePicIconCont{
   border-radius: 50%;
-  border: 1px solid #dedede;
+  border: 2px solid #dedede;
   height: 45px;
   width: 45px;
   display: grid;
   align-items: center;
-  justify-content: center;
   position: absolute;
-  right: 15px;
-  top: -50px;  
+  right: 22px;
+  top: -50px; 
 }
 .editProfilePicIcon{  
   height: 30px;
