@@ -24,17 +24,21 @@
                   <%= text_area_tag :description,nil,class: 'form-control field_input inputDescription',placeholder: "Describe It",:required => true %>
                   <!-- <textarea name="description" class="inputDescription" ></textarea> -->
                  </div>
+                 <div class="cel boldText title">Project photo</div>
+                 <div class="cel input">
+                   <%= file_field_tag :projectphoto,class: 'form-control fieldinput' %>
+                   <%= hidden_field_tag :image%>
+                 </div>
              </div>
 
-             <%= file_field_tag :projectphoto,class: 'form-control fieldinput' %>
-             <%= hidden_field_tag :image%>   
+                
 
              <div class="celr" id="griCreator">
                  <div class="cel titleCreator boldText title">Creator</div>
                  <div class="imgCreator">
                   <img class="creatorImage" src="<%= image_path ('People/asian-square.jpg') %>">
                  </div>
-                 <di class="cel" id="name">Jimi Hendrix</di>
+                 <di class="cel" id="username">Jimi Hendrix</di>
              </div>
 
              <div class="gridCollaborator">

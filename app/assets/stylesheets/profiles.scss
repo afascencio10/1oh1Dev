@@ -120,6 +120,20 @@
     margin-bottom: 10px;
     border-bottom: 2px solid #d1d4e1;
 }
+
+.bodyEditProject #description {
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.bodyEditProject .container {
+  padding-right: 35px;
+  padding-left: 35px;
+}
+
+.bodyEditProject .inputTitle {
+  margin-top: 0px; 
+}
+
 #grid-menu {
     display: grid;
     grid-template-columns: 1fr;
@@ -855,7 +869,7 @@ p {
     height: 40px;
 }
 .input {
-    padding-right: 18px;
+    padding-right: 0px;
 }
 .inputDescription{
     width: 100%;
@@ -873,6 +887,8 @@ p {
 .inputC {
     width:-webkit-fill-available;
     padding: 5px;
+    border: solid 1px #c7c6c6;
+    border-radius: 5px;
 }
 :root {
     font-family: Arial, Helvetica, sans-serif;
@@ -931,7 +947,7 @@ p {
     margin-top: 10px;
 }
 
-#name {
+#username {
     align-self: center;
     font-weight: bold;
     padding-left: 17px;
@@ -979,6 +995,7 @@ p {
 }
 .imgCreator{
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 #projectsModal .add .hrefAdd {
     -webkit-appearance: none;
@@ -987,6 +1004,10 @@ p {
     text-decoration: none;
     color: rgb(27, 212, 245);
     cursor: pointer;
+}
+
+#colab_id {
+  margin: 12px 0px;
 }
 
 input[type=checkbox]:checked {
@@ -1043,8 +1064,8 @@ input[type=checkbox i] {
   max-height: 70vh;
 }
 .creatorImage{
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
 }
 .projectsIcons{
@@ -1372,8 +1393,8 @@ input:checked + .slider:before {
   display: grid;
   align-items: center;
   position: absolute;
-  right: 22px;
-  top: -50px; 
+  left: 173px;
+  top: 145px;
 }
 .editProfilePicIcon{  
   height: 30px;

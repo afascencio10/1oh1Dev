@@ -63,11 +63,13 @@ body {
 
 .profile2 .perfil {
     grid-column-end: 2;
+    grid-row: 1/3;
+    margin-top: 0;
 
     & .imgperfil{
         position: relative;    
-        height: 95%;
-        width: 95%;
+        height: 110px;
+        width: 110px;
         border-radius: 50%;
         bottom: 0;
     }
@@ -127,6 +129,7 @@ body {
 .reviews {
     display: grid;
     grid-template-columns: 90vw;
+    grid-row-gap: 35px;
 }
 
 .review {
