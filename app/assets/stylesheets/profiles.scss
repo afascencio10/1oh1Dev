@@ -1606,4 +1606,8 @@ input:checked + .slider:before {
 
 }
 
-
+#createProjectsModal{
+  & .modal-dialog{
+    min-width: 60% !important;
+  }
+}
