@@ -26,13 +26,13 @@
          <input type="checkbox" class="checkProjectCompleted" name="">
        </div>
        <div class="buttonCreateProject">
-         <button class="buttonCreate">CREATE</button>
+         <button class="buttonCreate" data-toggle="modal" data-target="#createProjectsModal">CREATE</button>
        </div>
      </div>
       <% if @projects.blank? %>
          <div class="emptyReviews">
             <i data-toggle="modal" data-target="#projectsModal">Upload your Projects</i>
-         </div>
+         </div> 
       <% else %>         
          <% @projects.each do|project| %>
            <div class="projectContainer">
