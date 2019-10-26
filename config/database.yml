@@ -40,8 +40,8 @@ development:
   host: localhost
 
 
-  username: username
-  password: password
+  username: postgres
+  password: santi123
 
 
 
