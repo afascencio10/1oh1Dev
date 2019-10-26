@@ -194,3 +194,104 @@
     }
 }
 // >> end
+
+.isHide {
+    height: auto;
+    width: 100%;    
+    color: #000;
+    background: #ffffff;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+.roomBG {
+    display: grid;
+    align-items: end;
+    position: relative;
+    width: 100%;
+    height: 110vh;
+    background: #767676;
+}
+.roomBar {
+    width: 100%;
+    height: auto;
+    padding-bottom: 20px;
+    position: relative;
+    background: #ffffff;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 140px auto 30%;
+    grid-template-rows: auto auto auto auto;
+}
+.showRoomBar {    
+    opacity: 1; 
+    pointer-events: all;
+}
+.roomContent {
+    width: 100%;
+    height: auto;
+}
+.withPic {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.roomTitle {
+    color: #000;
+    font-size: 40px;
+    font-weight: 700;
+    grid-row: 1/2;
+    grid-column: 1/-1;
+    line-height: 90px;
+    padding-left: 20px;
+}
+.withPersonPic{
+    display: grid;
+    justify-content: center;
+    grid-column: 1/2;
+    grid-row: 2/-1;
+}
+.withPerson {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+.roomStatus {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+.roomTime {
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: 75px auto;
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+.roomJoinButton {
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+.btnJoinRoom{
+    background-color: #B22F41;
+    color: #ffffff;
+    border: 1px solid #000;
+    padding: 2% 0;
+    width: 60%;
+    border-radius: 5px;
+}
+.startsRoomTime {
+    color: #ee5050;
+}
+.toolsIcons {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,55px);
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+}
+.callIcons {
+    background: #fff;
+    border-radius: 50%;
+}
