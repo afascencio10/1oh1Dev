@@ -31,7 +31,7 @@
 }
 
 // > Body
-.customChatBody{
+.customModalBoddySessions{
     padding-bottom: 0 !important;
     padding-top: 0;
 
@@ -76,7 +76,7 @@
     }
 }
 
-.btnSendChat{
+.btnModalSessionConfirm{
     background-color: #B22F41;
     color: #ffffff;
     border: 2px solid #000;
@@ -99,16 +99,98 @@
 // >> end
 
 // start modal |  pre running late sent
-
 #preRunningLateSent {
     
-    & .customChatBody .container{
+    & .customModalBoddySessions .container{
         grid-template-rows: 40% 30% 20%;
+        margin-top: 2%;
     }
 
     & .detailsReceiver{
         grid-template-columns: 11% 89%;
     }
 }
+// >> end
 
+// start modal | pre cancellation warning
+#preCancelationWarning{  
+    
+    & .modal-content{
+        border-radius: 0;
+    }
+    
+    & .modal-dialog{
+        min-width: 40% !important;
+        border-radius: 0;
+    }
+
+    & .customModalBoddySessions .container{
+        grid-template-rows: 30% 30% 40%;
+    }
+
+    .containerButtonsCancellation{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        padding: 1rem 3rem;
+
+        & button{
+            margin: 0% 8%;
+            font-weight: bold;
+        }
+    }
+
+}
+
+.cancellationWarningHeadGrid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3vh auto;
+    border: none;
+
+    & .container{
+        display: inherit;
+        margin-top: 5%;
+    }
+
+}
+
+.iconCloseModalCancellation{    // Icon of close modal
+    width: 4%;
+    height: auto;
+    justify-self: end;
+    filter: invert(55%);
+
+    &:hover{
+        cursor: pointer;
+        filter: invert(45%);
+    }
+}
+
+.cancellationModalTitle{        // Title modal
+    justify-self: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-bottom: 1px solid #cecece;
+}
+
+.noticeCancelSession{           // Notice modal body
+    display: inherit;
+    align-self: end;
+    padding: 0rem 5rem;
+
+    & p{
+        font-weight: bolder;
+    }
+}
+
+.confirmationTextCancellation{
+    display: inherit;
+
+    & span{
+        justify-self: center;
+        align-self: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+}
 // >> end
