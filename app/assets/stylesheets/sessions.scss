@@ -195,6 +195,89 @@
 }
 // >> end
 
+
+//  >> >> >> | View session cancelated 
+
+.containerSessionCancelated{
+    display: grid;
+    width: 100vw;
+    height: 80vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 50% 40%;
+    padding: 2% 20%;
+
+    & .containerTitleCancelated{
+        display: inherit;
+        align-self: center;
+
+        & h3{
+            font-weight: bold;
+        }
+    }
+
+    & .containerNoteCancellation form{
+        display: grid;
+        height: 100%;
+        width: 100%;
+        grid-template-rows: 20% 50% 30%;
+    }
+
+    & .containerDetailsCancellation{
+        display: inherit;
+        grid-template-columns: 90% 10%;
+        margin-top: 7%;
+
+        & .col-left,
+        & .col-right{
+            display: grid;
+            width: 100%;
+            grid-template-rows: repeat(4,1fr);
+        }
+
+        & .btnDetailsCancellation{
+            background-color: #B22F41;
+            color: #ffffff;
+            border: 1px solid #000;
+            padding: 1%;
+            width: 20%;
+            font-size: 0.6rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.noteCancellationLabel{
+    align-self: end;
+}
+
+.noteCancellationTxtArea{
+    border: 1px solid #aeaeae;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.noteCancellationSubmit{
+    align-self: end;
+    width: 15%;
+    background-color: #B22F41;
+    color: #ffffff;
+    border: 1px solid #000;
+    padding: 2% 1%;
+    font-size: .8rem;
+}
+
+.btnCloseCancellation{
+    grid-row: 4/5;
+    background-color: #7C95BB;
+    color: #ffffff;
+    border: 1px solid #000;
+    padding: 1%;
+    font-size: .7rem;
+}
+
+.detailsCancellationText{
+    font-weight: bolder;
+
 .isHide {
     height: auto;
     width: 100%;    
@@ -294,4 +377,5 @@
 .callIcons {
     background: #fff;
     border-radius: 50%;
+
 }
