@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
   end
 
 
+  def cancellation
+  end
 
   private
 
