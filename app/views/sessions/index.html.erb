@@ -1,7 +1,5 @@
 <script src="/javascripts/signaling-server.js" type="text/javascript"></script>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
+<div>   
       <h1>Video Conferencing</h1>
 
       <div>Random User ID:
@@ -10,6 +8,8 @@
 
       <div id="remote-video-container"></div>
       <video id="local-video" autoplay></video>
+
+      <%= render 'pre_in_room' %>
 
       <hr />
 
@@ -23,12 +23,15 @@
 
       <button data-toggle="modal" data-target="#preRunningLate">pre runnin late</button>
       <button data-toggle="modal" data-target="#preRunningLateSent">pre runnin late sent</button>
+
       <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
       <%= link_to 'Cancellation view', "/sessions/1/cancellation" , :class => 'btn btn-info mt-1' %>
     </div>
 
   </div>
+      <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>    
 </div>
+
 
 <%= render 'pre_running_late' %>
 <%= render 'pre_running_late_sent' %>
