@@ -277,7 +277,7 @@
 
 .detailsCancellationText{
     font-weight: bolder;
-
+}
 .isHide {
     height: auto;
     width: 100%;    
@@ -287,6 +287,7 @@
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
 }
+
 .roomBG {
     display: grid;
     align-items: end;
@@ -295,6 +296,7 @@
     height: 110vh;
     background: #767676;
 }
+
 .roomBar {
     width: 100%;
     height: auto;
@@ -306,19 +308,23 @@
     grid-template-columns: 140px auto 30%;
     grid-template-rows: auto auto auto auto;
 }
+
 .showRoomBar {    
     opacity: 1; 
     pointer-events: all;
 }
+
 .roomContent {
     width: 100%;
     height: auto;
 }
+
 .withPic {
     height: 100px;
     width: 100px;
     border-radius: 50%;
 }
+
 .roomTitle {
     color: #000;
     font-size: 40px;
@@ -328,20 +334,24 @@
     line-height: 90px;
     padding-left: 20px;
 }
+
 .withPersonPic{
     display: grid;
     justify-content: center;
     grid-column: 1/2;
     grid-row: 2/-1;
 }
+
 .withPerson {
     grid-column: 2/3;
     grid-row: 2/3;
 }
+
 .roomStatus {
     grid-column: 2/3;
     grid-row: 3/4;
 }
+
 .roomTime {
     font-weight: 700;
     display: grid;
@@ -349,10 +359,12 @@
     grid-column: 3/4;
     grid-row: 2/3;
 }
+
 .roomJoinButton {
     grid-column: 3/4;
     grid-row: 3/4;
 }
+
 .btnJoinRoom{
     background-color: #B22F41;
     color: #ffffff;
@@ -361,9 +373,11 @@
     width: 60%;
     border-radius: 5px;
 }
+
 .startsRoomTime {
     color: #ee5050;
 }
+
 .toolsIcons {
     padding-top: 20px;
     display: grid;
@@ -374,6 +388,7 @@
     right: 0;
     background: none;
 }
+
 .callIcons {
     background: #fff;
     border-radius: 50%;
