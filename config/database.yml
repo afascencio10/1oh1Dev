@@ -42,7 +42,11 @@ development:
 
 
   username: postgres
+
+  password: santi123
+
   password: root
+
 
 
 

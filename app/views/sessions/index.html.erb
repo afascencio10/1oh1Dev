@@ -44,8 +44,14 @@
     </div>
 
   </div>
+
+      <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
+      <button data-toggle="modal" data-target="#modalChat">Chat</button>
+      <button data-toggle="modal" data-target="#modalRespuesta">respuesta</button>         
+
       <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button> 
       <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>       
+
 </div>
 
 
@@ -53,3 +59,5 @@
 <%= render 'pre_5min' %>
 <%= render 'pre_running_late_sent' %>
 <%= render 'pre_cancellation_warning' %>
+<%= render 'end_times_up.html' %>
+<%= render 'pre_5min.html' %>
