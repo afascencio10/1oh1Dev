@@ -41,8 +41,8 @@ development:
 
 
 
-  username: carlosdev
-  password: CarlosDeveloper9916
+  username: postgres
+  password: root
 
 
 
