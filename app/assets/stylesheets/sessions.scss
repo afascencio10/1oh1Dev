@@ -494,6 +494,108 @@
 
 }
 
+//Pre5minute-Julian
+.opensans{
+    font-family: Open Sans;
+}
+.semibol{
+    font-weight: 600;
+}
+.titlePre5 {
+    border-bottom: 1px solid;
+    padding: 0;
+}
+
+.imgPre5{
+    align-self: flex-end;
+}
+
+.boximage{
+    box-shadow: 0 5px 7px;
+}
+
+.gridModalPre5{
+    padding: 0;
+}
+
+.align-bottom{
+    align-self: flex-end;
+}
+.titleSessionsPre5{
+    text-align: left;
+    font-size: 25px;
+}
+.titleSessionPre5 h5,b{
+    font-family: open sans;
+    font-weight: 600;
+    font-size: 32px;
+}
+.containPre5{
+  margin-left: 7%;
+  margin-right: 7%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 82px 78px 85px 100px 100px;
+}
+
+.headerContainPre5{
+    display: grid;
+    grid-template-columns: 14% 50% 36%;
+}
+.grid-rol-durationPre5{
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+.titleHeads5{
+    text-align: center;
+    margin-bottom: 3%;
+}
+.withrol{
+    margin-bottom: 10px;
+    font-family: open sans;
+    font-weight: 500;
+}
+
+.pre5Time{
+    text-align: center;
+}
+.pre5Time span{
+    color: red;
+    font-weight: 600;
+    font-family: open sans;
+}
+ .gridBottom{
+    display: grid;
+    grid-template-columns: 5% 30% 30% 30% 5%;
+ }
+ .gridBottom div{
+    margin: 15px;
+ }
+ .gridBottom button{
+    margin: 9px;
+    padding: 9px
+ }
+ .btnPreGreen{
+    width: -webkit-fill-available;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #8CC63F;
+    padding: 5px;
+ }
+ .btnTransparent{
+    background-color: transparent;
+    color: black;
+    width: -webkit-fill-available;
+    border-radius: 5px;
+ }
+ .pre5Reminder{
+    color: darkgray;
+    padding: 5px 18px;
+    line-height: 16px;
+    font-size: 14px;
+ }
+
+
 .containerSessionVid{
     display: grid;
 
