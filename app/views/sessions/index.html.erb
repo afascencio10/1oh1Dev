@@ -1,15 +1,30 @@
 <script src="/javascripts/signaling-server.js" type="text/javascript"></script>
-<div>   
-      <h1>Video Conferencing</h1>
+<div class="container"> 
+  <div class="gridSessionMain">
 
-      <div>Random User ID:
-      <span id="current-user"><%= @random_number %></span>
-      </div>
+    <%= image_tag('icon.png', :class => 'img-fluid w-100') %>
 
-      <div id="remote-video-container"></div>
-      <video id="local-video" autoplay></video>
+    <%= render 'pre_session' %>
 
-      <%= render 'pre_in_room' %>
+
+  </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <hr />
 
@@ -29,13 +44,19 @@
     </div>
 
   </div>
+
       <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
       <button data-toggle="modal" data-target="#modalChat">Chat</button>
       <button data-toggle="modal" data-target="#modalRespuesta">respuesta</button>         
+
+      <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button> 
+      <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>       
+
 </div>
 
 
 <%= render 'pre_running_late' %>
+<%= render 'pre_5min' %>
 <%= render 'pre_running_late_sent' %>
 <%= render 'pre_cancellation_warning' %>
 <%= render 'end_times_up.html' %>

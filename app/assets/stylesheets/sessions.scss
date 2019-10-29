@@ -379,19 +379,232 @@
 }
 
 .toolsIcons {
-    padding-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(4,55px);
-    justify-content: center;
     position: absolute;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(10,1fr);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
     top: 0;
     right: 0;
     background: none;
+
+    & .icon-1{
+        grid-column: 3/4;
+        justify-self: end;
+        align-self: start;
+        grid-row: 5/6;
+    }
+
+    & .icon-2{
+        grid-column: 4/5;
+        justify-self: center;
+        align-self: start;
+        grid-row: 5/6;
+    }
 }
 
 .callIcons {
     background: #fff;
     border-radius: 50%;
+}
+
+// Section - index 
+.gridSessionMain{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+.wrapCardSession{
+    padding: 7% 11%;
+}
+
+.sessionCardCustom{
+    border: none;
+    border-radius: 0% !important;
+    box-shadow: 0 4px 6px #888686 !important;
+    background-color: #fff !important;
+    padding: 0;
+    height: 84vh !important;
+    display: grid;
+    grid-template-rows: 80% 20%;
+
+    & .card-body{
+        padding: 0;
+    }
+
+    & .card-footer{
+        background-color: transparent !important;
+        border-radius: 0 !important;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        border-top: 1px solid #d9d9d9 !important;
+
+
+        & .userDetails{
+            display: inherit;
+            grid-template-columns: repeat(2,1fr);
+
+            & img{
+                border-radius: 100%;
+                width: 60px;
+                height: 60px;
+                align-self: center;
+                justify-self: end;
+            }
+
+            & .details{
+                display: grid;
+                grid-template-rows: repeat(2,1fr);
+                padding: 0% 8%;
+
+
+                & .title{
+                    font-size: .9rem;
+                    align-self: end;
+                    justify-self: start;
+                    font-weight: bold;
+                }
+
+                & .descriptionSession{
+                    font-size: .9rem;
+                    align-self: top;
+                    justify-self: start;
+                }
+            }
+        }
+
+        & .sessionDetails{
+            display: inherit;
+            grid-template-rows: repeat(2,1fr);
+            font-size: .9rem;
+
+            & .desc-top{
+                align-self: end;
+                justify-self: center;
+            }
+
+            & .desc-bottom{
+                justify-self: center;
+                align-self: start;
+            }
+        }
+    }
+
+}
+
+//Pre5minute-Julian
+.opensans{
+    font-family: Open Sans;
+}
+.semibol{
+    font-weight: 600;
+}
+.titlePre5 {
+    border-bottom: 1px solid;
+    padding: 0;
+}
+
+.imgPre5{
+    align-self: flex-end;
+}
+
+.boximage{
+    box-shadow: 0 5px 7px;
+}
+
+.gridModalPre5{
+    padding: 0;
+}
+
+.align-bottom{
+    align-self: flex-end;
+}
+.titleSessionsPre5{
+    text-align: left;
+    font-size: 25px;
+}
+.titleSessionPre5 h5,b{
+    font-family: open sans;
+    font-weight: 600;
+    font-size: 32px;
+}
+.containPre5{
+  margin-left: 7%;
+  margin-right: 7%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 82px 78px 85px 100px 100px;
+}
+
+.headerContainPre5{
+    display: grid;
+    grid-template-columns: 14% 50% 36%;
+}
+.grid-rol-durationPre5{
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+.titleHeads5{
+    text-align: center;
+    margin-bottom: 3%;
+}
+.withrol{
+    margin-bottom: 10px;
+    font-family: open sans;
+    font-weight: 500;
+}
+
+.pre5Time{
+    text-align: center;
+}
+.pre5Time span{
+    color: red;
+    font-weight: 600;
+    font-family: open sans;
+}
+ .gridBottom{
+    display: grid;
+    grid-template-columns: 5% 30% 30% 30% 5%;
+ }
+ .gridBottom div{
+    margin: 15px;
+ }
+ .gridBottom button{
+    margin: 9px;
+    padding: 9px
+ }
+ .btnPreGreen{
+    width: -webkit-fill-available;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #8CC63F;
+    padding: 5px;
+ }
+ .btnTransparent{
+    background-color: transparent;
+    color: black;
+    width: -webkit-fill-available;
+    border-radius: 5px;
+ }
+ .pre5Reminder{
+    color: darkgray;
+    padding: 5px 18px;
+    line-height: 16px;
+    font-size: 14px;
+ }
+
+
+.containerSessionVid{
+    display: grid;
+
+    & img{
+        justify-self: center;
+        max-width: 60% !important;
+    }
+}
+
 
 }
 
@@ -462,3 +675,70 @@
     padding-left: 70px;
     padding-right:70px ;
   }
+
+.optionsSession{
+    display: grid;
+    width: 100%;
+    height: 30%;
+    grid-template-rows: 30% 50% 20%;
+    padding: 1% 15%;
+}
+
+.textBottomVid{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.7rem;
+}
+
+.buttonsOptions{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    padding-top: 3%;
+
+    & .btnSmall{
+        width: 78%;
+        height: 76%;
+        font-size: .8rem;
+    }
+
+    & .btnBig{
+        width: 63%;
+        height: 76%;
+        font-size: .8rem;
+        justify-self: center;
+    }
+
+    & .direction-r{
+        justify-self: right;
+    }
+
+    & .direction-l{
+        justify-self: left;
+    }
+
+    & .btn{
+        background-color: #ffffff;
+        border: 1px solid gainsboro;
+        font-weight: 600;
+        transition: background-color .2s,
+                    color .2s;
+
+        &:hover{
+            background-color: #8CC63F;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
+
+.timeDetails{
+    text-align: center;
+    font-size: .9rem;
+    margin-top: 4%;
+
+    & .time{
+        color: #ff3b3b;
+        margin-left: 1%;
+    }
+}
+
