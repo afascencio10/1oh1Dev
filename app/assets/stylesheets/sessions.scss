@@ -394,3 +394,71 @@
     border-radius: 50%;
 
 }
+
+//modalMessageChat
+.gridModalChat {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .chatProfile {
+    display: grid;
+    grid-template-columns: 10fr 15fr 75fr;
+  }
+  .gridbtnChat {
+    display: grid;
+    grid-template-columns:70fr 15fr 15fr;
+    column-gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .imgChat{
+    height: 50px;
+    width: 50px;
+    border-radius: 40px;
+  }
+  .nameChat {
+    align-self: center;
+  }
+  .textareaChat {
+    margin-top: 15px;
+  }
+  .txtareaChat {
+    width:-webkit-fill-available;
+    height: 90px;
+    border: 1px solid #a19c9c ;
+    border-radius: 5px;
+  }
+  .nameProfileChat{
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .cancelChat {
+    width:-webkit-fill-available;
+    color: #000000;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #a19c9c;
+  }
+  .sendChat {
+    width:-webkit-fill-available;
+    color: #ffffff;
+    background: #56d40d;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #a19c9c;
+  }
+  .closeChat {
+    padding-left: 93%;
+  }
+  .celverde {
+   // border: solid #78ff2a
+  }
+  
+  //modalAnswer
+  
+  .answerChat {
+    text-align: center;
+    padding-left: 70px;
+    padding-right:70px ;
+  }
