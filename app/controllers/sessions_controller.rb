@@ -11,10 +11,6 @@ class SessionsController < ApplicationController
     ActionCable.server.broadcast( "session_channel_#{session_params[:session_id]}",session_params)
   end
 
-
-  def cancellation
-  end
-
   private
 
   def session_params
