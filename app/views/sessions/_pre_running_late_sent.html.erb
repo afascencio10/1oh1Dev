@@ -1,35 +1,36 @@
-<div class="modal fade mt-5" id="preRunningLateSent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <%= form_tag do %>
-        <div class="modal-header">
-            <div class="container">
-              <!-- start: details receiver chat -->
-                <div class="detailsReceiver">
-                  <span class="stylesDetails">From:</span>
-                  <span class="stylesDetails">Bell Thorne</span>
+<div class="modal fade" id="modalFrom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" id="category">
+      <div id="sizeSessionLate" class="modal-content">
+    
+        <div class="modal-body gridModalChat">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span class="closeChat" aria-hidden="true">&times;</span>
+              </button>
+            <div class="gridFrom">
+                <div class="">
+                    <img class="imgChat" src="<%= image_path('People/adult.jpg')  %> ">
                 </div>
-              <!-- end: details receiver chat -->
+                <div class="nameChat">
+                  <span class="nameFrom"> From:Bell Thorne</span>
+                </div>
+                <div class=""></div>
             </div>
-        </div>
-        <!-- start: body  -->
-        <div class="modal-body customModalBoddySessions">
-          <div class="container">
-            <div class="chatAreaSession">
-              <textarea name="chat" id="" cols="30" rows="10">James, I am runnig late! I will be there shortly. -Bell</textarea>
-            </div>
-            <div class="noteChatSession">
-              <p>Note: Tolken exchange will begin at the start of
-                the sessions regardless of your attendance.
-              </p>
-            </div>
-            <div class="containerBtnChatSession">
-              <button class="btn w-100 btnModalSessionConfirm">Close</button>
-            </div>
-          </div>
-        </div>
-        <!-- end: body  -->
-      <% end %>      
+            <div class="textareaChat">
+                <textarea class="txtareaChat"></textarea>
+            </div> 
+            <div class="answerChat">
+                <span>Note: Tolken exchange will begin at the start of the 
+                      sessions regardless of your attendence
+                </span>
+              </div>
+            <div class="gridbtnFrom">
+               <div class="btnCloseFrom">
+                    <button type="button" class="closeFrom">Close</button>
+               </div>
+                
+                
+            </div>  
+        </div> 
+      </div>
     </div>
   </div>
-</div>

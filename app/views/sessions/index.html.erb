@@ -8,25 +8,7 @@
 
 
   </div>  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <hr />
+      <hr/>
 
       <button onclick="handleJoinSession()">
       Join Room
@@ -36,8 +18,8 @@
       Leave Room
       </button>
 
-      <button data-toggle="modal" data-target="#preRunningLate">pre runnin late</button>
-      <button data-toggle="modal" data-target="#preRunningLateSent">pre runnin late sent</button>
+      <button data-toggle="modal" data-target="#modalChat">pre runnin late</button>
+      <button data-toggle="modal" data-target="#modalFrom">pre runnin late sent</button>
 
       <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
       <%= link_to 'Cancellation view', "/sessions/1/cancellation" , :class => 'btn btn-info mt-1' %>
@@ -46,8 +28,8 @@
   </div>
 
       <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
-      <button data-toggle="modal" data-target="#modalChat">Chat</button>
-      <button data-toggle="modal" data-target="#modalRespuesta">respuesta</button>         
+      <button data-toggle="modal" data-target="#modalSent">sent modal</button>
+              
 
       <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button> 
       <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>       
@@ -61,3 +43,5 @@
 <%= render 'pre_cancellation_warning' %>
 <%= render 'end_times_up.html' %>
 <%= render 'pre_5min.html' %>
+<%= render 'sent_modal.html' %>
+

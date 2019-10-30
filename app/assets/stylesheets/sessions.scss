@@ -606,28 +606,35 @@
 }
 
 
-}
 
 //modalMessageChat
-.gridModalChat {
+  #sizeSessionLate {
+    width: 72%;
+  }
+  .gridModalChat {
     display: grid;
     grid-template-columns: 1fr;
+   
   }
   .chatProfile {
     display: grid;
-    grid-template-columns: 10fr 15fr 75fr;
+    grid-template-columns: 10fr 25fr 65fr;
+    column-gap: 15px;
   }
   .gridbtnChat {
     display: grid;
-    grid-template-columns:70fr 15fr 15fr;
+    grid-template-columns:55fr 25fr 25fr;
     column-gap: 20px;
     margin-top: 20px;
   }
   
   .imgChat{
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     border-radius: 40px;
+  }
+  .nameTo{
+      align-self: center;
   }
   .nameChat {
     align-self: center;
@@ -638,7 +645,7 @@
   .txtareaChat {
     width:-webkit-fill-available;
     height: 90px;
-    border: 1px solid #a19c9c ;
+    border: 1px solid #c5c3c3 ;
     border-radius: 5px;
   }
   .nameProfileChat{
@@ -656,26 +663,76 @@
   .sendChat {
     width:-webkit-fill-available;
     color: #ffffff;
-    background: #56d40d;
+    background: #75c745;
     border-radius: 5px;
     padding: 5px;
+    font-weight: bold;
     border: 1px solid #a19c9c;
   }
   .closeChat {
-    padding-left: 93%;
+    padding-left: 96%;
   }
   .celverde {
    // border: solid #78ff2a
   }
   
   //modalAnswer
-  
+   .gridFrom {
+    display: grid;
+    grid-template-columns: 10fr 35fr 50fr;
+    column-gap: 15px;
+   }
   .answerChat {
     text-align: center;
-    padding-left: 70px;
-    padding-right:70px ;
+    padding-left: 55px;
+    padding-right:55px;
+    font-size: 14px;
   }
 
+  .fromProfile {
+    display: grid;
+    grid-template-columns:1fr;
+  }
+  .gridbtnFrom {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+  }
+  .btnCloseFrom{
+      padding-left: 20%;
+      padding-right: 20%;
+  }
+  .closeFrom {
+    width:-webkit-fill-available; 
+    color: #ffffff;
+    background: #8CC63F;
+    border-radius: 5px;
+    border: 1px solid #000000;
+  }
+  .nameFrom {
+    font-size: 18px;
+    font-weight: 500;
+  }
+//END//
+
+
+//modal Sent
+.gridModalSent {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px; 
+}
+.sentIcon {
+    color: #8CC63F;
+}
+.iconSent {
+    justify-self: center;
+}
+.messageSent {
+    text-align-last: center;
+}
+
+//End
 .optionsSession{
     display: grid;
     width: 100%;
