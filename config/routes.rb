@@ -15,9 +15,7 @@ Rails.application.routes.draw do
   resources :subscribes
   resources :home
   resources :categories
-  resources :sessions, only: [:index,:create] do
-    get "cancellation", to: 'sessions#cancellation'
-  end
+  resources :sessions, only: [:index,:create]
 
   resources :chests
   resources :reviews
