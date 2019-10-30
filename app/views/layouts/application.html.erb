@@ -14,8 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
+
+
     <!-- Fonts and his variations -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Source+Sans+Pro:200,300,400,600,700,900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Source+Sans+Pro:200,300,400,600,700,900&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/google_analytics' %>
@@ -33,7 +35,6 @@
     <% end %>
 
     <%= yield %>
-
   </body>
   <script type="text/javascript">
       AOS.init({
@@ -385,7 +386,7 @@
 
           // booking page
           $(".booking-calendar").sticky({ topSpacing: 40 });
-          
+
           $('#bookingsCalendarToggle, #categoryCalendarToggle').on('click', function () {
             $('.custom-calendar-wrap, .custom-calendar-modal-shadow').addClass('active')
           })

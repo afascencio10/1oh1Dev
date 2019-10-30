@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20190919054357) do
     t.integer  "explore_id"
     t.string   "identifier"
     t.string   "slug"
+    t.string   "description"
     t.index ["explore_id"], name: "index_bookings_on_explore_id", using: :btree
     t.index ["guide_id"], name: "index_bookings_on_guide_id", using: :btree
   end
@@ -40,9 +41,10 @@ ActiveRecord::Schema.define(version: 20190919054357) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "slug"
+    t.string   "description"
   end
 
   create_table "chats", force: :cascade do |t|

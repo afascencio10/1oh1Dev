@@ -14,7 +14,7 @@ module Mvp1oh1
     #
     # config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
-    # config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :sidekiq
 
   end
 end

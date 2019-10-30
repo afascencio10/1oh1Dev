@@ -18,7 +18,7 @@ class User < ApplicationRecord
    terms = query.downcase.split(/\s+/)
 
    terms = terms.map { |e|
-     (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+     ('%'+e.gsub('*', '%') + '%').gsub(/%+/, '%')
    }
    num_or_conditions = 2
    where(

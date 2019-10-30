@@ -347,12 +347,14 @@
 	}
 }
 
-#material-tabs>a.active {
-		font-weight: 700;
-		outline:none;
-		color: #00b02f;
+#material-tabs > a.active {
+	font-weight: 700;
+	outline:none;
+	color: #00b02f;
 }
-
+#material-tabs > a.blue.active {
+	color: #2a8bf2;
+}
 #material-tabs>a:not(.active):hover {
 		background-color: inherit;
 		color: #7c848a;

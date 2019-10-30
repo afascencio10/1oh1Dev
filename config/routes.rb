@@ -15,16 +15,26 @@ Rails.application.routes.draw do
   resources :subscribes
   resources :home
   resources :categories
+  resources :sessions
   resources :sessions, only: [:index,:create]
-
   resources :chests
   resources :reviews
+  resources :payment
+
 
   resources :notifications do
     member do
       post :mark_as_read
     end
   end
+
+  get '/reservation_calendar' , to: 'sessions#index', as: :reserve_calendar
+  get '/states/:country', to: 'helps#states'
+  get '/cities/:state/:country', to: 'helps#cities'
+  get '/in-session', to: 'bookings#in_session'
+  get '/post-session', to: 'bookings#post_session'
+  get '/pre-session', to: 'bookings#pre_session'
+
 
   resources :users, only:[:new] do
    resources :chats, only: [:show,:create]

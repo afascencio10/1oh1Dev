@@ -15,6 +15,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Description</th>
             <th scope="col">Image</th>
             <th scope="col">Upload/Edit</th>
             <th scope="col">Delete</th>
@@ -25,9 +26,10 @@
             <tr>
               <th scope="row"><%= category.id %></th>
               <td><%= category.name %></td>
+              <td><%= category.description %></td>
               <td><img src="<%= category.url %>" alt="Image" style="height:50px"></td>
               <!-- <td> <%= link_to category.id, category_path(category.name.downcase) %></td> -->
-              <td><button class="btn btn-primary text-white category_modal" data-toggle="modal" data-target="#editModal" data-val="<%=category.id%>,<%=category.name%>,<%=category.url%>">Edit</button></td>
+              <td><button class="btn btn-primary text-white category_modal" data-toggle="modal" data-target="#editModal" data-val="<%=category.id%>,<%=category.name%>,<%=category.description%>,<%=category.url%>">Edit</button></td>
               <td><%= button_to("Delete", category_path(category), method: :delete, :class => "btn btn-danger text-white")%></td>
 
             </tr>
@@ -84,10 +86,10 @@
 
     $(document).on("click", ".category_modal", function () {
        var category = $(this).data('val');
-       // var id = category.split(',')[0];
        $("#editid").val(category.split(',')[0]) ;
        $("#editname").val(category.split(',')[1]);
-       $('img#editurl').attr('src', category.split(',')[2]);
+       $("#editdescription").val(category.split(',')[2]);
+       $('img#editurl').attr('src', category.split(',')[3]);
 
      });
 </script>

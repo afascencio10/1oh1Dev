@@ -4,9 +4,17 @@ class MessagesController < ApplicationController
 
   # GET /messages
   # GET /messages.json
-  # def index
-  #   @messages = Message.all
-  # end
+  def index
+    @filterrific = initialize_filterrific(
+      User,
+      params[:filterrific]
+    ) or return
+   @users = @filterrific.find.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def create
     message = Message.new(message_params)

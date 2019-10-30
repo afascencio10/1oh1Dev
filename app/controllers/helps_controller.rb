@@ -5,12 +5,21 @@ class HelpsController < ApplicationController
   # GET /helps
   # GET /helps.json
   def index
-    @helps = Help.all
+    @filterrific = initialize_filterrific(
+      Category,
+      params[:filterrific]
+    ) or return
+   @categories = @filterrific.find.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /helps/1
   # GET /helps/1.json
   # def show
+  #   @test =  Booking.find(params[:id])
   # end
   #
   # # GET /helps/new
@@ -20,6 +29,7 @@ class HelpsController < ApplicationController
   #
   # # GET /helps/1/edit
   # def edit
+  #   @booking =  Booking.find(params[:id])
   # end
   #
   # # POST /helps
@@ -62,6 +72,13 @@ class HelpsController < ApplicationController
   #   end
   # end
   #
+  def states
+    render json: CS.states(params[:country]).to_json
+  end
+
+  def cities
+    render json: CS.cities(params[:state],params[:country]).to_json
+  end
   # private
   #   # Use callbacks to share common setup or constraints between actions.
   #   def set_help

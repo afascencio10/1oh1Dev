@@ -1,3 +1,243 @@
-// Place all the styles related to the Guides controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.profile-builder {
+	margin-top: 140px;
+	padding: 0 200px;
+	.headline {
+		font-size: 28px;
+		font-weight: bold;
+		color: #000;
+	}
+
+	.headline-description {
+		font-size: 15px;
+		color: #000;
+	}
+
+	.headline-image {
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform: translateX(-120%) rotatey(180deg);
+	}
+
+	.navigation-item-wrap:not(:first-child) {
+		&:before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			left: -50%;
+			top: 35px;
+			background-color: #dbdee3;
+			z-index: 0;
+			height: 2px;
+		}
+	}
+	.navigation-item-wrap {
+		&.active {
+			.navigation-item {
+				background-color: #8cc63f;
+			}
+		}
+
+		&.active:before {
+			background-color: #8cc63f;
+		}
+	}
+	.navigation-item-wrap-6.active {
+		transform: scale(1.5);
+		position: relative;
+		left: 14px;
+	}
+	.navigation-item {
+		background-color: #dbdee3;
+		width: 70px;
+		height: 70px;
+		position: relative;
+		z-index: 1;
+		img {
+			width: 40px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	.tell-us {
+		font-weight: bold;
+		font-size: 15px;
+		color: #000;
+	}
+	.custom-from-group {
+		label {
+			font-size: 13px;
+		}
+		select {
+			height: 44px;
+		}
+		input, select, textarea, .input-group-text {
+			background-color: #f9f9f9;
+			font-size: 14px;
+			border-color: #f3f3f3!important;
+			border-radius: 3px;
+		}		
+	}
+	.btn {
+		text-transform: none;
+		min-width: 80px;
+		font-size: 13px;
+	}
+	.btn-success {
+		color: white;
+	}
+	#addLanguageBtn {
+		position: absolute;
+		color: #2a8bf2!important;
+		left: 305px;
+		bottom: 10px;
+		text-transform: none;
+		font-size: 12px;
+	}
+	a {
+		color: #2a8bf2!important;
+	}
+	#select-languages-wrap > div:not(:first-child) {
+		margin-top: 5px;
+	}
+	#select-languages-wrap > div {
+		min-width: 204px;
+	}
+	.explore-item {
+		&:not(:first-child) {
+			margin-top: 10px;
+		}
+		img {
+			border-radius: 8px;
+		}
+		.explore-item-head {
+			color: #000;
+			font-size: 15px;
+			margin-top: 28px;
+			margin-bottom: 0;
+		}
+		.explore-item-sub-head {
+			color: rgb(177, 178, 194);
+			font-size: 14px;
+		}
+		.btn {
+			margin-top: 31px;
+		}
+	}
+
+	#explore-item-container, #guiding-item-container, #projects-container, #calendar-container {
+		max-height: 400px;
+	}
+	
+	#calendar-container {
+		input[type="text"] {
+			max-width: 100px;
+			text-align: center;
+		}
+
+		.btn-link {
+			color: rgb(60, 64, 67)!important;
+			span {
+				color: rgb(60, 64, 67);
+				font-size: 18px;
+			}
+			text-transform: none!important;
+			letter-spacing: 1px;
+			font-size: 14px;
+		}
+
+		.time-picker-wrap > div {
+			margin-top: 5px;
+		}
+
+		.time-picker-wrap > div:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.project_status {
+		position: absolute;
+		right: 25px;
+		top: 10px;
+		z-index: 2;
+	}
+
+	#addProjectBtn {
+		padding: 0;
+		border-radius: 76px;
+		border: 1px solid #8cc63f;
+
+		span.icon {
+			display: inline-block;
+			height: 76px;
+			width: 76px;
+			padding-top: 23px;
+			border: 1px solid #8cc63f;
+			border-radius: 50%;
+			i {
+				color: #8cc63f;
+				font-size: 30px;
+			}
+		}
+
+		span.text {
+			position: relative;
+			top: -7px;
+			font-size: 20px;
+			font-weight: bold;
+			margin: 0 25px 0 10px;
+		}
+
+		&:hover {
+			background-color: #8cc63f;
+
+			span.icon {
+				border-color: white;
+				i {
+					color: white;
+				}
+			}
+
+			span.text {
+				color: white;
+			}
+		}
+	}
+}
+
+.profile-builder-last-page {
+	height: calc(100% - 255px);
+	position: relative;
+	& > div {
+		height: 100%;
+		background-size: cover;
+	}
+
+	.btn-success {
+		color: white;
+		font-weight: bold;
+		text-transform: none;
+		width: 300px;
+		border-radius: 20px;
+		font-size: 20px;
+		letter-spacing: 1px;
+	}
+
+	.btn-link {
+		color: white !important;
+		text-transform: none;
+		position: relative;
+		top: 18px;
+		font-size: 12px;
+	}
+
+	.button-group {
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
