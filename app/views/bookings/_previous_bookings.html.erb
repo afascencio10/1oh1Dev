@@ -1,0 +1,85 @@
+<table id="bookings-previous-btn-content" class="table table-condensed table-hover table-striped mt-5">
+    <thead>
+      <tr>
+        <th class="has-sort-icon secondary-success-color">Type</th>
+        <th class="has-sort-icon active date-time-column">date and times</th>
+        <th>Companion</th>
+        <th>Details</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @completed_bookings.each do |booking|%>
+        <% if booking.guide.profile_id == @profile_id %>
+          <% @type= "Guided" %>
+          <% @companion= booking.guide.profile %>
+        <% else %>
+          <% @type= "Explored" %>
+          <% @companion= booking.explore.profile %>
+        <%end%>
+        <tr>
+          <td class="secondary-success-color"><%= @type %></td>
+          <td>
+            <span><%= local_time(booking.start,'%B %e, %Y')%></span>
+            <br>
+            <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.start,'%l:%M %P')%></span>
+          </td>
+          <td class="avatar text-center">
+            <img width="40px" src="<%= @companion.profile_photo %>" alt="avatar">
+            <br>
+            <span><%= @companion.user.firstname%></span>
+          </td>
+          <td>
+            <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
+
+
+            <br>
+            <div class="rateYo d-inline-block p-0 my-2"></div>
+            <div class="booking-description">
+              <span><%= booking.guide.category.name %></span>-
+              <span title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."><%= booking.title %></span>
+            </div>
+          </td>
+          <td>
+            <a class="secondary-success-color" href="#">Send Tip</a>
+            <br>
+            <a class="secondary-success-color" href="#">Message</a>
+            <br>
+            <a class="secondary-success-color" href="#">Re-book</a>
+            <br>
+          </td>
+        </tr>
+      <%end%>
+      <!-- <tr>
+        <td class="success-color">Guided</td>
+        <td>
+          <span>JULY 22, 2019</span>
+          <br>
+          <span>8:00PM - 8:30PM</span>
+        </td>
+        <td class="avatar text-center">
+          <img width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+          <br>
+          <span>name</span>
+        </td>
+        <td>
+          <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
+
+          <span>subject</span>
+          <br>
+          <div class="rateYo d-inline-block p-0 my-2"></div>
+          <div class="booking-description">
+            <span title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+          </div>
+        </td>
+        <td>
+          <a class="secondary-success-color" href="#">Send Tip</a>
+          <br>
+          <a class="secondary-success-color" href="#">Message</a>
+          <br>
+          <a class="secondary-success-color" href="#">Re-book</a>
+          <br>
+        </td>
+      </tr> -->
+      </tbody>
+    </table>

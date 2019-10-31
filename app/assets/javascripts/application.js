@@ -16,12 +16,15 @@
 //= require jquery_ujs
 //= require moment.min
 //= require perfect-scrollbar.min
+//= require mdtimepicker
 
 //= require fullcalendar/core/main
 //= require fullcalendar/daygrid/main.js
 //= require fullcalendar/timegrid/main.js
 //= require fullcalendar/interaction/main.js
 //= require fullcalendar/moment/main.js
+
+//= require bootstrap-material-datetimepicker
 
 //= require aos
 //= require bootstrap.min
@@ -47,14 +50,13 @@
 //= require bookings
 //= require categories
 //= require guides
-//= require helps
 //= require markets
 //= require modal
-//= require sessions
 //= require chests
 //= require notification
 //= require messages
 //= require profiles
 //= require sidebar
 //= require reviews
+//= require payment
 //= require filterrific/filterrific-jquery

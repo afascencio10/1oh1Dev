@@ -1,0 +1,26 @@
+<div id="filterrific_results">
+  <div>
+    <%= page_entries_info categories, entry_name: "category" %>
+  </div>
+  <% categories.each do |category| %>
+  	<div class="row mx-0 explore-item">
+  		<div class="col">
+  			<div>
+  				<div class="row">
+  					<div class="col-auto pl-0">
+  						<img width="100px" height="100px" src="<%= image_path('Skills/poly.jpg')%>" alt="poly">
+  					</div>
+  					<div class="col pr-0">
+  						<h5 class="font-weight-bold explore-item-head"><%= category.name%></h5>
+  						<p class="explore-item-sub-head">260 Explores</p>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  		<div class="col-auto pr-0">
+  			<button type="button" class="btn btn-success p-2 addExploreBtn">Add</button>
+  		</div>
+  	</div>
+  <% end %>
+  <%= will_paginate categories  %>
+</div>

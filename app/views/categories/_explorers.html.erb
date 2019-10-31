@@ -1,0 +1,340 @@
+<div id="filterrific_results">
+  <div>
+    <%= page_entries_info profiles, entry_name: "profile" %>
+  </div>
+    <h4 class="mt-5 font-weight-bold">Top Explorers for baking</h4>
+    <table class="table table-condensed table-hover table-striped mt-5">
+          <tbody>
+            <tr>
+              <% profiles.each do |f| %>
+              <%= f.explores.find_by(category_id: @category.id).profile.state %>
+              <%end%>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color my-2" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+
+            <button type="button" class="btn btn-link fz-13 px-0 mt-4 see-more">
+            See more
+          </button>
+
+
+          <!--  -->
+          <h4 class="mt-5 font-weight-bold">Top Explorers for baking in your country</h4>
+    <table class="table table-condensed table-hover table-striped mt-5">
+          <tbody>
+            <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color my-2" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+
+            <button type="button" class="btn btn-link fz-13 px-0 mt-4 see-more">
+            See more
+          </button>
+
+
+          <!--  -->
+          <h4 class="mt-5 font-weight-bold">Popular Explorers</h4>
+    <table class="table table-condensed table-hover table-striped mt-5">
+          <tbody>
+            <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color my-2" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td class="avatar text-center">
+                  <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+                </td>
+
+                <td>
+                  <span class="font-weight-bold">Aura Spring</span>
+                  <br>
+                  <span>England, UK</span>
+                  <br>
+                  <span>English</span>
+                </td>
+                <td width="150px">
+                  <span class="align-middle">Explore Rating: </span>
+                  <br>
+                  <span class="align-middle">Baking Rating:</span>
+
+
+                </td>
+                <td>
+                  <div class="rateYo d-inline-block p-0"></div>
+                  <br>
+                  <div class="rateYo d-inline-block p-0"></div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary px-3 py-1">book</button>
+                  <br>
+                  <a class="secondary-success-color" href="#">Message</a>
+                  <br>
+                  <a class="secondary-success-color" href="#">Profile</a>
+                  <br>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+
+            <button type="button" class="btn btn-link fz-13 px-0 mt-4 see-more">
+            See more
+          </button>
+          <%= will_paginate profiles  %>
+
+</div>
