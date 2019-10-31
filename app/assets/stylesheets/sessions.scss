@@ -583,38 +583,39 @@
 .withPic {
     height: 100px;
     width: 100px;
-.event-list-wrap {
-	padding: 30px 10px;
-	.event-list {
-		list-style: none;
-		padding: 0;
+	.event-list-wrap {
+		padding: 30px 10px;
+		.event-list {
+			list-style: none;
+			padding: 0;
 
-		.event {
-			font-size: 13px;
-			margin-bottom: 30px;
-			.event-icon {
-				color: #ac8bec;
-				position: relative;
-				min-width: 85px;
-				display: inline-block;
-				text-align: center;
-				i {
-					vertical-align: middle;
-					font-size: 18px;
+			.event {
+				font-size: 13px;
+				margin-bottom: 30px;
+				.event-icon {
+					color: #ac8bec;
+					position: relative;
+					min-width: 85px;
+					display: inline-block;
+					text-align: center;
+					i {
+						vertical-align: middle;
+						font-size: 18px;
+					}
+					&.has-next:after {
+						content: "";
+						position: absolute;
+						left: 42px;
+						top: 24px;
+						height: 26px;
+						width: 0;
+						border-left: 1px dashed #ac8bec;
+					}
 				}
-				&.has-next:after {
-					content: "";
-					position: absolute;
-					left: 42px;
-					top: 24px;
-					height: 26px;
-					width: 0;
-					border-left: 1px dashed #ac8bec;
+				.event-line-through-text {
+					color: #ccc;
+					text-decoration: line-through;
 				}
-			}
-			.event-line-through-text {
-				color: #ccc;
-				text-decoration: line-through;
 			}
 		}
 	}
@@ -883,18 +884,19 @@ input.gray-input, select.gray-input{
 
 .toolsIcons {
 /* Box */
-.pure-material-checkbox > span::before {
-    content: "";
-    display: inline-block;
-    box-sizing: border-box;
-    margin: 3px 11px 3px 1px;
-    border: solid 2px; /* Safari */
-    border-color: rgba(0, 0, 0, 0.6);
-    border-radius: 2px;
-    width: 18px;
-    height: 18px;
-    vertical-align: top;
-    transition: border-color 0.2s, background-color 0.2s;
+	.pure-material-checkbox > span::before {
+	    content: "";
+	    display: inline-block;
+	    box-sizing: border-box;
+	    margin: 3px 11px 3px 1px;
+	    border: solid 2px; /* Safari */
+	    border-color: rgba(0, 0, 0, 0.6);
+	    border-radius: 2px;
+	    width: 18px;
+	    height: 18px;
+	    vertical-align: top;
+	    transition: border-color 0.2s, background-color 0.2s;
+	}
 }
 
 /* Checkmark */

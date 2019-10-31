@@ -43,8 +43,7 @@ development:
   password: Ascencioarni10
 
 
-  username: postgres
-  password: pingpong00
+  
 
 
   # The TCP port the server listens on. Defaults to 5432.
