@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190919054357) do
+ActiveRecord::Schema.define(version: 20191015054410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20190919054357) do
     t.datetime "end"
     t.string   "duration"
     t.datetime "cancel_date"
-    t.boolean  "status"
+    t.integer  "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "guide_id"
