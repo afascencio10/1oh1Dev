@@ -40,14 +40,8 @@ development:
   host: localhost
 
 
-
   username: postgres
-
   password: pingpong00
-
-
-
-
 
 
   # The TCP port the server listens on. Defaults to 5432.

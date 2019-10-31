@@ -16,6 +16,7 @@
 *= require perfect-scrollbar
 *= require jquery-ui
 *= require bootstrap.min
+*= require mdtimepicker
 *= require bootstrap-datepicker
 *= require owl.carousel.min
 *= require owl.theme.default.min
@@ -24,6 +25,7 @@
 *= require bootstrap/bootstrap
 *= require bootstrap/bootstrap-grid
 *= require bootstrap/bootstrap-reboot
+*= require bootstrap-material-datetimepicker
 *= require daterangepicker
 *= require scss/style
 *= require material_icons
@@ -43,6 +45,7 @@
 *= require markets
 *= require guides
 *= require calendars
+*= require payment
 *= require chests
 *= require_self
 *= require fullcalendar/core/main

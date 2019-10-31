@@ -1,0 +1,71 @@
+<div class="modal fade" id="chagneOrCancelDialog" tabindex="-1" role="dialog" aria-labelledby="chagneOrCancelDialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="row border-bottom pb-2">
+				<div class="col-10 pl-0">
+					<h4 class="chagneOrCancelDialog-title">
+						<b>Change or Cancel Bell's Reservation</b>
+					</h4>
+				</div>
+
+				<div class="col-2 text-right">
+					<img class="rounded-circle"
+			             height="80px"
+			             width="80px"
+			             src="<%=image_path('People/asian-square.jpg')%>" alt="">
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-8 p-0">
+					<div class="border-bottom chagneOrCancelDialog-option">
+						<img class="chagneOrCancelDialog-option-icon"
+							 src="<%=image_path('Icons/icons8-edit-100.png')%>"
+							 alt="cancel">
+						<h6 class="fz-14"><b>Change Reservation</b></h6>
+						<p>Make a change request for date, start time and duration to your exisiting reservation.</p>
+
+						<button class="btn btn-outline custom-btn-outline-primary"
+								id="chagneOrCancelDialogChangeReservation" 
+								data-dismiss="modal">Change Reservation</button>
+					</div>
+
+					<div class="chagneOrCancelDialog-option">
+						<img class="chagneOrCancelDialog-option-icon"
+							 src="<%=image_path('Icons/icons8-cancel-100.png')%>"
+							 alt="cancel">
+						<h6 class="fz-14"><b>Cancel Reservation</b></h6>
+						<p>Only select if changing the reservation is not an option. the penalty may apply.</p>
+
+						<button class="btn btn-outline custom-btn-outline-primary"
+								id="chagneOrCancelDialogCancelReservationBtn"
+								data-dismiss="modal">Cancel Reservation</button>
+					</div>
+				</div>
+				<div class="col-4 border-left p-0">
+					<div class="py-2 px-3">
+						<h6 class="fz-14"><b>Details</b></h6>
+						<p class="fz-14">
+							<i class="material-icons align-middle mr-3">today</i>
+							<span class="today-placeholder align-middle">July 4th</span>
+						</p>
+						<p class="fz-14">
+							<i class="material-icons align-middle mr-3">access_time</i>
+							<span class="start-time-placeholder align-middle">4:30PM</span>
+							<span class="align-middle"> - </span>
+							<span class="end-time-placeholder align-middle">5:30PM</span>
+							<span class="align-middle">PST</span>
+						</p>
+						<h6 class="fz-14"><b>Price</b></h6>
+						<p> 
+							<span class="align-middle">Session Const:</span>
+							<span class="session-cost-placeholder align-middle ml-3 fz-14">+120</span>
+							<img class="align-middle" width="25px" src="<%= image_path('coin.png') %>" alt="coin"/>
+						</p>
+						<h6 class="fz-14"><b>Message</b></h6>
+						<p>first message</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

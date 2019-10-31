@@ -19,7 +19,7 @@
                       </button>
                   </div>
                   <div class="editProfilePic">
-                    
+
                     <div class="editProfilePicSelect" id="editProfilePicSelect">
                       <% if @profile.profile_photo.blank? %>
                         <%= file_field_tag :pro_photo,class: 'form-control field_input' %>
@@ -29,8 +29,8 @@
                         <%#= file_field_tag :pro_photo,class: 'form-control field_input' %>
                         <%#= hidden_field_tag :profile_photo%>
                       <% end %>
-                    </div>                    
-                  </div>                  
+                    </div>
+                  </div>
                 </div>
              </div>
              <div class="cel"></div>
@@ -39,7 +39,7 @@
          <div class="celr" id=gridForm>
              <div class="celr" id=gridLabels>
                 <div class="cel boldText title">First Name *</div>
-                <div class="cel boldText title">Last Name *</div>    
+                <div class="cel boldText title">Last Name *</div>
              </div>
              <div class="celr" id="gridLabels">
                 <div class="cel input">
@@ -70,7 +70,7 @@
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/electric.png') %>"></div>
                         <div class="cel"><input class="skillsIcons" type="image" src="<%= image_path ('Skills/car-repair-362150_640.jpg') %>"></div> -->
                      </div>
-                 <div class="margin">    
+                 <div class="margin">
                  <div class="cel boldText title">Current Position</div>
                  <div class="cel"><input type="text" name="pSummary" class="inputP"></div>
                 </div>
@@ -78,7 +78,7 @@
              <div class="celr margin" id="gridSelect">
                  <div class="cel boldText title">Fluent Languages *</div>
              </div>
-             <%=select_tag "languages", options_for_select([ "English", "French","German","Spanish","Russian","Mandarin" ],@profile.languages),multiple: true%>
+             <%= select_tag "Language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select"}%>
              <!-- <div class="celr marginOption" id="gridOption">
                         <div class="tags-input" data-name="tags-input">
                             <span class="tag">CSS<span class="close"></span></span>
@@ -86,25 +86,36 @@
                             <span class="tag">HTML<span class="close"></span></span>
                         </div>
              </div> -->
-             <div class="celr margin" id="gridSelect">
-                 <div class="cel boldText title">Country/Region *</div>
-                 <div class="cel"></div>
-                 <div class="cel">
-                     <%= text_field_tag :country,@profile.country,class: 'select',placeholder: "Country" %>
-                     <!-- <select class="select">
-                         <option>Canada</option>
-                         <option>Alemania</option>
-                     </select> -->
-                 </div>
-                 <div class="cel"></div>
-                 <div class="cel margin boldText title">Locations</div>
-                 <div class="cel"></div>
-                 <div class="cel" id="gridLocations">
-                     <select class="select">
-                         <option>New Westminster,british columbia,Canada </option>
-                     </select>
-                 </div>
-             </div>
+
+             <div class="form-row">
+           		<div class="form-group col-md-4 custom-from-group pl-0">
+           			<label>Country</label>
+           			<select id="countries" class="custom-select" name="country">
+           				<option value="" selected="">Select Your Country</option>
+           				<% CS.countries.each do |key, value| %>
+           				<option value="<%= key %>"><%= value %></option>
+           				<% end %>
+           			</select>
+           		</div>
+
+           		<div class="form-group col-md-4 custom-from-group">
+           			<label>State/Provience</label>
+           			<select id="states-of-country" class="custom-select" name="state">
+           				<option value="" selected="">Select Your Country</option>
+           			</select>
+
+
+           		</div>
+
+           		<div class="form-group col-md-4 custom-from-group pr-0">
+           		  <label for="city">City</label>
+           			<select id="cities-of-state" class="custom-select" name="city">
+           				<option value="" selected="">Select Your Country</option>
+           			</select>
+
+           		</div>
+           	</div>
+
              <div class="celr margin" id="gridProfile">
                  <div class="cel boldText title">Profile URL</div>
                  <div class="cel"></div>
@@ -112,9 +123,9 @@
                  <div class="cel">10h1.org/p/</div>
                  <div class="cel inputProfile"><input type="text" name="inputProfile" class="profileinput"></div>
                  <div class="cel"></div>
-             </div>             
+             </div>
          </div>
-     </div> 
+     </div>
      <div class="modal-footer">
          <div class="celr" id="gridbtnSave">
             <div class="cel btnSave">
@@ -131,15 +142,15 @@
               <button type="button" class="buttonSave">Save</button>
             </div> -->
          </div>
-      </div>    
-      </div>                          
+      </div>
+      </div>
 
       <script>
          [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
       let hiddenInput = document.createElement('input'),
           mainInput = document.createElement('input'),
           tags = [];
-      
+
       hiddenInput.setAttribute('type', 'hidden');
       hiddenInput.setAttribute('name', el.getAttribute('data-name'));
 
@@ -168,7 +179,7 @@
       el.appendChild(hiddenInput);
 
       addTag('Languages');
-      
+
 
       function addTag (text) {
           let tag = {
@@ -201,28 +212,28 @@
       }
 
       function refreshTags () {
-         
+
       }
 
       function filterTag (tag) {
           return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
-      }      
+      }
 
-      
+
   });
          function selectPic() {
           var selectPic = document.getElementById("editProfilePicSelect");
           if (selectPic.style.opacity == 0) {
-            selectPic.style.opacity = 1;           
+            selectPic.style.opacity = 1;
           }
           else{
             if (selectPic.style.opacity == 1) {
-              selectPic.style.opacity = 0;              
+              selectPic.style.opacity = 0;
             }
           }
          }
       </script>
-      
+
     </div>
   </div>
 </div>

@@ -1,0 +1,34 @@
+<div class="gridcontainer font">
+      <div class="contactList background">
+          <div class="celroja">
+              <div class="messagesTitle">Messages</div>
+              <div class="celverde" id="forSearchInput">
+                <div>
+                  <div class="form-group col-md-12">
+
+                  </div>
+                </div>
+                <div class="searchContainer"><img class="searchIcon" src="<%= image_path('Icons/search.png')  %>"></div>
+                <%= form_for_filterrific @filterrific, url: messages_path do |f| %>
+                  <div class="searchContainer">
+                    <%= f.text_field(
+                      :search_query,
+                      class: 'filterrific-periodically-observed searchInput background',
+                      placeholder: 'Search'
+                    ) %>
+                  </div>
+                <% end %>
+              </div>
+          </div
+          <div class="chats">
+            <%= render(
+              partial: 'chats/list',
+              locals: { users: @users }
+            ) %>
+          </div>
+           <div class="celdaroja chat background">
+             <%= render 'chatting' %>
+          </div>
+      </div>
+
+</div>

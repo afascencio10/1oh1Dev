@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
     # @messages = Message.all
   end
 
+  def new
+    @booking = Booking.new
+  end
+
   def create
     head :no_content
     # ActionCable.server.broadcast 'session_channel_'+id.to_s, session_params
     ActionCable.server.broadcast( "session_channel_#{session_params[:session_id]}",session_params)
-  end
-
-
-  def cancellation
   end
 
   private

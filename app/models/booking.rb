@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   extend FriendlyId
   friendly_id :identifier
-  
+
   belongs_to :explore
   belongs_to :guide
   has_many :video_sessions, dependent: :destroy
@@ -15,4 +15,6 @@ class Booking < ApplicationRecord
   def all_day_booking?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false
   end
+
+  enum status: [:pending, :upcoming, :completed, :unavailable]
 end

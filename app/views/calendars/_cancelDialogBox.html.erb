@@ -1,0 +1,78 @@
+<div class="modal fade"
+	id="cancelSessionDialog"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="cancelSessionDialog"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="row border-bottom pb-2 m-0">
+				<div class="col-10 pl-0">
+					<h4 class="chagneOrCancelDialog-title">
+						<b>Are you sure you want to cancel your session with Bell?</b>
+					</h4>
+				</div>
+
+				<div class="col-2 text-right">
+					<img class="rounded-circle"
+			             height="80px"
+			             width="80px"
+			             src="<%=image_path('People/asian-square.jpg')%>" alt="">
+				</div>
+			</div>
+
+			<h5 class="mt-3"><b>Your Role: Guide</b></h5>
+			<h5><b>Subject: Logo Design</b></h5>
+			<h5><b>Status: Confirmed</b></h5>
+
+			<h6 class="fz-14 mt-3"><b>Details</b></h6>
+			<p class="fz-14 mt-2 mb-0">
+				<i class="material-icons align-middle mr-3">today</i>
+				<span class="today-placeholder align-middle">July 4th</span>
+			</p>
+
+			<p class="fz-14">
+				<i class="material-icons align-middle mr-3">access_time</i>
+				<span class="start-time-placeholder align-middle">4:30PM</span>
+				<span class="align-middle"> - </span>
+				<span class="end-time-placeholder align-middle">5:30PM</span>
+				<span class="align-middle">PST</span>
+			</p>
+
+			<h6 class="fz-14 mt-3"><b>Price</b></h6>
+
+			<h5 class="cancelSessionDialog-price-wrap">
+				<span class="align-middle">Cancelation Fee:</span>
+				<span class="cancelation-fee-placeholder align-middle">-60</span>
+				<img class="align-middle" width="25px" src="<%= image_path('coin.png') %>" alt="coin"/>
+			</h5>
+			<h5 class="cancelSessionDialog-price-wrap">
+				<span class="align-middle">Late Cancelation Fee:</span>
+				<span class="late-cancelation-fee-placeholder align-middle">-60</span>
+				<img class="align-middle" width="25px" src="<%= image_path('coin.png') %>" alt="coin"/>
+				<span class="align-middle fz-13">
+					Sessions cancelled within 24 hours of session are subjected to additional fees
+				</span>
+			</h5>
+			<h5 class="cancelSessionDialog-price-wrap">
+				<span class="align-middle">New Balance:</span>
+				<span class="new-balance-placeholder align-middle">240</span>
+				<img class="align-middle" width="25px" src="<%= image_path('coin.png') %>" alt="coin"/>
+			</h5>
+
+			<form action="" class="mt-3">
+				<div class="form-group pt-3 border-top">
+    				<label for="cancelSessionDialogNote"><b>Add a note</b></label>
+    				<textarea class="form-control"
+    						  maxlength="140"
+    						  id="cancelSessionDialogNote"
+    						  rows="3"></textarea>
+  				</div>
+			</form>
+			<div class="modal-footer align-items-start px-0 border-0">
+	      <button type="button" class="btn btn-secondary" id="cancelDialogBoxBackBtn" data-dismiss="modal">Back</button>
+	      <button type="button" class="btn btn-danger cancel-session">Cancel Session</button>
+	    </div>
+		</div>
+	</div>
+</div>

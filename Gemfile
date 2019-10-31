@@ -25,6 +25,9 @@ gem 'jquery-rails'
 gem 'friendly_id', '~> 5.2'
 gem 'material_icons'
 
+gem 'city-state'
+gem 'language_list', '~> 1.1'
+
 gem 'geocoder' #for user's location
 gem 'timezone' #backend
 gem 'local_time' #frontend
@@ -50,6 +53,8 @@ gem 'rolify'
 gem 'turbolinks', '~> 5.2.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+gem 'stripe'
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 3.0"

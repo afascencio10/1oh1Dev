@@ -4,16 +4,5 @@
 <hr/>
 Category:: <%= @explore.category.id%>,<%= @explore.category.name%>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h1>Calendar</h1>
-      <div class="calendar">
-        <div class="check">
-          <%= @explore.id %>,explore
-        </div>
-      </div>
-      <div id='remote_container'></div>
-    </div>
-  </div>
-</div>
+  <!-- <button type="button" class="btn btn-primary">Create Booking</button> -->
+  <%= link_to 'Create Booking', reserve_calendar_path(explore_id: @explore.id )%>

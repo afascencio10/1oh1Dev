@@ -1,0 +1,84 @@
+<div class="modal fade"
+	id="bookingChangeRequestDialog"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="bookingChangeRequestDialog"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="row border-bottom pb-2 m-0">
+				<div class="col-10 pl-0">
+					<h4 class="chagneOrCancelDialog-title">
+						<b>Does this look correct?</b>
+					</h4>
+				</div>
+
+				<div class="col-2 text-right">
+					<img class="rounded-circle"
+			             height="80px"
+			             width="80px"
+			             src="<%=image_path('People/asian-square.jpg')%>" alt="">
+				</div>
+			</div>
+
+			<h5 class="mt-3"><b>Your Role: Guide</b></h5>
+			<h5><b>Subject: Logo Design</b></h5>
+			<h5><b>Status: Confirmed</b></h5>
+
+			<h6 class="fz-14 mt-3"><b>Details</b></h6>
+			<p class="fz-14 mt-2 mb-0">
+				<i class="material-icons align-middle mr-3">today</i>
+
+				<span class="previous-day-placeholder align-middle">July 4th</span>
+
+				<i class="material-icons align-middle mx-4">arrow_right_alt</i>
+
+				<span class="today-placeholder align-middle">July 6th</span>
+			</p>
+
+			<p class="fz-14">
+				<i class="material-icons align-middle mr-3">access_time</i>
+				<span class="previous-wrap">
+					<span class="previous-start-time-placeholder align-middle">4:30PM</span>
+					<span class="align-middle"> - </span>
+					<span class="previous-end-time-placeholder align-middle">5:30PM</span>
+					<span class="align-middle">PST</span>
+				</span>
+
+				<i class="material-icons align-middle mx-4">arrow_right_alt</i>
+
+				<span>
+					<span class="start-time-placeholder align-middle">4:30PM</span>
+					<span class="align-middle"> - </span>
+					<span class="end-time-placeholder align-middle">5:30PM</span>
+					<span class="align-middle">PST</span>
+				</span>
+			</p>
+
+			<h6 class="fz-14 mt-3"><b>Price</b></h6>
+
+			<h5 class="cancelSessionDialog-price-wrap">
+				<span class="align-middle">Session Cost:</span>
+				<span class="session-const-placeholder align-middle">-60</span>
+				<img class="align-middle" width="25px" src="<%= image_path('coin.png') %>" alt="coin"/>
+			</h5>
+			<h5 class="cancelSessionDialog-price-wrap">
+				<span class="align-middle">Price Difference:</span>
+				<span class="price-difference-placeholder align-middle">-60</span>
+				<img class="align-middle" width="25px" src="<%= image_path('coin.png') %>" alt="coin"/>
+			</h5>
+			<h5 class="cancelSessionDialog-price-wrap">
+				<span class="align-middle">New Balance:</span>
+				<span class="new-balance-placeholder align-middle">240</span>
+				<img class="align-middle" width="25px" src="<%= image_path('coin.png') %>" alt="coin"/>
+			</h5>
+
+			<h6 class="fz-14 mt-3"><b>Please note that Bell must approve the change request.</b></h6>
+
+			<div class="modal-footer align-items-start px-0 border-0">
+		      <button type="button" class="btn btn-secondary" id="changeSendRequestBackBtn" data-dismiss="modal">Back</button>
+		      <button type="button" class="btn btn-primary edit-booking">Send request</button>
+		    </div>
+		</div>
+	</div>
+</div>

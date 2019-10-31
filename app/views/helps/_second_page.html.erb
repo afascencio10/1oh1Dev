@@ -1,0 +1,52 @@
+<p class="font-weight-bold">
+	Interests
+</p>
+
+<!--  search container -->
+<div class="row">
+  <div class="col">
+  	<div class="input-group custom-from-group">
+        <!-- <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div> -->
+
+        <!-- <input type="text" class="form-control" placeholder="Oil painting, 3D printing, Electric cars etc."> -->
+				<%= form_for_filterrific @filterrific do |f| %>
+					<div>
+						Search
+						<%= f.text_field(
+							:search_query,
+							class: 'filterrific-periodically-observed form-control',
+							placeholder: 'Oil painting, 3D printing, Electric cars etc.'
+						) %>
+					</div>
+
+					<div>
+						<%= link_to(
+							'Reset filters',
+							reset_filterrific_url,
+						) %>
+					</div>
+					<%= render_filterrific_spinner %>
+				<% end %>
+  	</div>
+  </div>
+
+  <div class="col-auto">
+  	<div>
+  		<span class="fz-12">Cant find something?</span>
+  	</div>
+  	<div>
+  		<a href="#" class="fz-12">Add a new category.</a>
+  	</div>
+  </div>
+</div>
+
+<!-- explore container -->
+
+<div class="my-5 p-3 border rounded position-relative" id="explore-item-container">
+		<%= render(
+			partial: 'helps/list',
+			locals: { categories: @categories }
+		) %>
+</div>

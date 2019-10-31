@@ -21,6 +21,15 @@ class ChatsController < ApplicationController
     @other_user = User.find(params[:other_user])
     @chat = Chat.friendly.find(params[:id])
     @message = Message.new
+    @filterrific = initialize_filterrific(
+      User,
+      params[:filterrific]
+    ) or return
+   @users = @filterrific.find.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 private

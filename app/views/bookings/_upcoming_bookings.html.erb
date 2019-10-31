@@ -1,0 +1,50 @@
+<table id="bookings-upcomming-btn-content" class="table table-condensed table-hover table-striped mt-5">
+  <thead>
+    <tr>
+      <th class="has-sort-icon secondary-success-color">Type</th>
+      <th class="has-sort-icon active date-time-column">date and times</th>
+      <th>Companion</th>
+      <th>Details</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @completed_bookings.each do |booking|%>
+      <% if booking.guide.profile_id == @profile_id %>
+        <% @type= "Guided" %>
+        <% @companion= booking.guide.profile %>
+      <% elsif booking.explore.profile_id == @profile_id %>
+        <% @type= "Explored" %>
+        <% @companion= booking.explore.profile %>
+      <%end%>
+      <tr>
+          <td class="secondary-success-color"><%= @type %></td>
+          <td>
+            <span><%= local_time(booking.start,'%B %e, %Y')%></span>
+            <br>
+            <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.start,'%l:%M %P')%></span>
+          </td>
+          <td class="avatar text-center">
+            <img width="40px" src="<%= @companion.profile_photo %>" alt="avatar">
+            <br>
+            <span><%= @companion.user.firstname %></span>
+          </td>
+          <td>
+            <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
+
+
+            <br>
+            <div class="booking-description">
+              <span class="font-weight-bold"><%= booking.guide.category.name %></span> - <span title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."><%= booking.title %></span>
+            </div>
+          </td>
+          <td>
+            <a class="secondary-success-color" href="#">Message</a>
+            <br>
+            <a class="secondary-success-color" href="#">Change or Cancel</a>
+            <br>
+          </td>
+        </tr>
+      <%end%>
+  </tbody>
+</table>
