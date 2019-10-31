@@ -41,6 +41,7 @@
 *= require explores
 *= require bookings
 *= require sessions
+*= require pre_sessions
 *= require categories
 *= require markets
 *= require guides
