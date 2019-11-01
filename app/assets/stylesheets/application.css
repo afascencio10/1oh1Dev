@@ -42,6 +42,7 @@
 *= require bookings
 *= require sessions
 *= require pre_sessions
+*= require in_sessions
 *= require categories
 *= require markets
 *= require guides

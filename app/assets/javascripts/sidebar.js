@@ -82,6 +82,14 @@ jQuery(function ($) {
         e.preventDefault();
         $('.page-wrapper').toggleClass("boder-radius-on");
     });
+    $(".transparent1oh1Icon").click(function(){
+        console.log("Hola");
+      $(".more_time_conflict").animate({left: '4px'});
+    });
+    $(".transparent1oh1").click(function(){
+        console.log("babe");
+      $(".more_time_conflict").animate({left: '4px'});
+    });
 
     //custom scroll bar is only used on desktop
     if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
