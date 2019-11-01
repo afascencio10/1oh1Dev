@@ -642,9 +642,12 @@
 
 
 //modalMessageChat
-  #sizeSessionLate {
-    width: 72%;
-  }
+  .modal #modal-messageSent{
+    min-width: 23px !important;
+  } 
+  .modal #sizePreLate {
+    min-width: 23px !important;
+  }  
   .gridModalChat {
     display: grid;
     grid-template-columns: 1fr;
@@ -683,8 +686,8 @@
     border-radius: 5px;
   }
   .nameProfileChat{
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 15px;
   }
   .cancelChat {
     width:-webkit-fill-available;
@@ -703,14 +706,17 @@
     font-weight: bold;
     border: 1px solid #a19c9c;
   }
-  .closeChat {
-    padding-left: 96%;
+  .close {
+      justify-self: end;
   }
   .celverde {
    // border: solid #78ff2a
   }
   
   //modalAnswer
+   .modal #sizePreLateSent{
+    min-width: 23px !important;
+   }
    .gridFrom {
     display: grid;
     grid-template-columns: 10fr 35fr 50fr;
@@ -758,14 +764,19 @@
 }
 .sentIcon {
     color: #8CC63F;
+    width: 40px;
 }
 .iconSent {
     justify-self: center;
 }
 .messageSent {
     text-align-last: center;
+    font-family: 'Open Sans';
 }
-
+.sent-messageH {
+    font-family: 'Open Sans';
+    font-weight: 400;
+}
 .optionsSession{
     display: grid;
     width: 100%;
