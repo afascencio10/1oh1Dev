@@ -1,21 +1,39 @@
 <%= form_tag payment_index_path do %>
-<article>
-  <% if flash[:error].present? %>
-  <div id="error_explanation">
-    <p><%= flash[:error] %></p>
-  </div>
-  <% end %>
-  <label class="amount">
-  <span>Amount: $50</span>
-  </label>
-</article>
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-amount="5000"
-  data-name="1oh1.org"
-  data-description="Voyager Subscription"
-  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-  data-label="Buy Now"
-  data-locale="auto"></script>
+  <article>
+
+    <div class="container">
+
+      <div class="gridSessionMain">
+
+        <%= image_tag('icon.png', :class => 'img-fluid w-100') %>
+    
+        <%= render 'pre_session' %>
+
+      </div>  
+    
+    
+      <div>
+        <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
+        <button data-toggle="modal" data-target="#modalChat">Chat</button>
+        <button data-toggle="modal" data-target="#modalFrom">respuesta</button>         
+    
+        <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>
+        <button data-toggle="modal" data-target="#preRunningLate">pre runnin late</button>
+        <button data-toggle="modal" data-target="#preRunningLateSent">pre runnin late sent</button>
+    
+      </div>
+    
+      <%= render 'pre_running_late' %>
+      <%= render 'pre_5min' %>
+      <%= render 'pre_running_late_sent' %>
+      <%= render 'pre_cancellation_warning' %>
+    
+      <%= render 'pre_5min.html' %>
+
+
+    </div>
+
+  </article>
 
 <% end %>
+
