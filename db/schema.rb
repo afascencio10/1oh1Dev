@@ -220,33 +220,49 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   end
 
   add_foreign_key "bookings", "explores", name: "bookings_explore_id_fkey", on_delete: :nullify
+
+  add_foreign_key "bookings", "explores", name: "bookings_explore_id_fkey1", on_delete: :nullify
   add_foreign_key "bookings", "explores", on_delete: :nullify
   add_foreign_key "bookings", "guides", name: "bookings_guide_id_fkey", on_delete: :nullify
+  add_foreign_key "bookings", "guides", name: "bookings_guide_id_fkey1", on_delete: :nullify
   add_foreign_key "bookings", "guides", on_delete: :nullify
   add_foreign_key "explore_ratings", "explores", name: "explore_ratings_explore_id_fkey", on_delete: :cascade
+  add_foreign_key "explore_ratings", "explores", name: "explore_ratings_explore_id_fkey1", on_delete: :cascade
   add_foreign_key "explore_ratings", "explores", on_delete: :cascade
   add_foreign_key "explore_ratings", "guides", name: "explore_ratings_guide_id_fkey", on_delete: :cascade
+  add_foreign_key "explore_ratings", "guides", name: "explore_ratings_guide_id_fkey1", on_delete: :cascade
   add_foreign_key "explore_ratings", "guides", on_delete: :cascade
   add_foreign_key "explore_ratings", "profiles"
   add_foreign_key "explore_ratings", "profiles", name: "explore_ratings_profile_id_fkey"
+  add_foreign_key "explore_ratings", "profiles", name: "explore_ratings_profile_id_fkey1"
   add_foreign_key "explores", "categories", name: "explores_category_id_fkey", on_delete: :cascade
+  add_foreign_key "explores", "categories", name: "explores_category_id_fkey1", on_delete: :cascade
   add_foreign_key "explores", "categories", on_delete: :cascade
   add_foreign_key "explores", "profiles"
   add_foreign_key "explores", "profiles", name: "explores_profile_id_fkey"
+  add_foreign_key "explores", "profiles", name: "explores_profile_id_fkey1"
   add_foreign_key "guide_ratings", "explores", name: "guide_ratings_explore_id_fkey", on_delete: :cascade
+  add_foreign_key "guide_ratings", "explores", name: "guide_ratings_explore_id_fkey1", on_delete: :cascade
   add_foreign_key "guide_ratings", "explores", on_delete: :cascade
   add_foreign_key "guide_ratings", "guides", name: "guide_ratings_guide_id_fkey", on_delete: :cascade
+  add_foreign_key "guide_ratings", "guides", name: "guide_ratings_guide_id_fkey1", on_delete: :cascade
   add_foreign_key "guide_ratings", "guides", on_delete: :cascade
   add_foreign_key "guide_ratings", "profiles"
   add_foreign_key "guide_ratings", "profiles", name: "guide_ratings_profile_id_fkey"
+  add_foreign_key "guide_ratings", "profiles", name: "guide_ratings_profile_id_fkey1"
   add_foreign_key "guides", "categories", name: "guides_category_id_fkey", on_delete: :cascade
+  add_foreign_key "guides", "categories", name: "guides_category_id_fkey1", on_delete: :cascade
   add_foreign_key "guides", "categories", on_delete: :cascade
   add_foreign_key "guides", "profiles"
   add_foreign_key "guides", "profiles", name: "guides_profile_id_fkey"
+  add_foreign_key "guides", "profiles", name: "guides_profile_id_fkey1"
   add_foreign_key "notifications", "users"
   add_foreign_key "notifications", "users", name: "notifications_user_id_fkey"
+  add_foreign_key "notifications", "users", name: "notifications_user_id_fkey1"
   add_foreign_key "profiles", "users"
   add_foreign_key "profiles", "users", name: "profiles_user_id_fkey"
+  add_foreign_key "profiles", "users", name: "profiles_user_id_fkey1"
   add_foreign_key "projects", "profiles"
   add_foreign_key "projects", "profiles", name: "projects_profile_id_fkey"
+  add_foreign_key "projects", "profiles", name: "projects_profile_id_fkey1"
 end
