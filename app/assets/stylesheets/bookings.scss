@@ -394,3 +394,52 @@
 	left: 261px;
 	width: 132px;
 }
+//MODALS
+.modal-float{
+	position: absolute;
+    left: -330px;
+    top: 12%;
+}
+.semi-bold{
+	font-weight: 600;
+}
+.border-grey{
+	border: 1px solid #d7d7d7;
+}
+.grid-values{
+	grid-template-columns: 50% 50%;
+    display: grid;
+}
+.grid-values-one{
+	grid-template-columns: 60% 40%;
+    display: grid;
+}
+.spanIconpaper{
+	padding-top: 16px;
+}
+
+.spanIconpaper img{
+	width: 37px;
+}
+.coin img{
+	width: 30px;
+}
+.d-inline{
+	display: inline;
+}
+.p-10{
+	padding: 10px;
+}
+.p-5{
+	padding: 5px !important;
+}
+.grid-withoutgap{
+	display: grid;
+    grid-template-columns: 1fr;
+    width: 325px;
+    background: #f2f2f2;
+    border-radius: 7px;
+}
+.mb-0{
+	margin-bottom: 0;
+}

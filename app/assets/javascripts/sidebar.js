@@ -82,13 +82,62 @@ jQuery(function ($) {
         e.preventDefault();
         $('.page-wrapper').toggleClass("boder-radius-on");
     });
+    //VARIABLE VALIDAR SI ESTA MOSTRANDO
+    var isShow=0;
     $(".transparent1oh1Icon").click(function(){
-        console.log("Hola");
-      $(".more_time_conflict").animate({left: '4px'});
+        if(isShow == 0){
+            console.log("Hola");
+            $(".more_time_conflict").animate({left: '4px'});
+            isShow=1;
+        }else{
+            isShow=0;
+            $(".more_time_conflict").animate({left: '-330px'});
+        }
     });
     $(".transparent1oh1").click(function(){
         console.log("babe");
       $(".more_time_conflict").animate({left: '4px'});
+    });
+    //Modals
+    $(".sessionIconsNoVideo").click(function(){
+        if(isShow == 0){
+            console.log("Mostrar");
+            $(".more_time_conflict_5minutes").animate({left: '4px'});
+            isShow=1;
+        }else{
+            isShow=0;
+            $(".more_time_conflict_5minutes").animate({left: '-330px'});
+        }
+    });
+    $(".sessionIconsEndCallCont").click(function(){
+        if(isShow == 0){
+            console.log("Mostrar");
+            $(".more_time_conflict_remaining").animate({left: '4px'});
+            isShow=1;
+        }else{
+            isShow=0;
+            $(".more_time_conflict_remaining").animate({left: '-330px'});
+        }
+    });
+    $(".sessionIconsMuteCont").click(function(){
+        if(isShow == 0){
+            console.log("Mostrar");
+            $(".more_time_conflict_request").animate({left: '4px'});
+            isShow=1;
+        }else{
+            isShow=0;
+            $(".more_time_conflict_request").animate({left: '-330px'});
+        }
+    });
+    $(".sessionIconsScreenSharingCont").click(function(){
+        if(isShow == 0){
+            console.log("Mostrar");
+            $(".more_time_conflict_extra_request").animate({left: '4px'});
+            isShow=1;
+        }else{
+            isShow=0;
+            $(".more_time_conflict_extra_request").animate({left: '-330px'});
+        }
     });
 
     //custom scroll bar is only used on desktop
