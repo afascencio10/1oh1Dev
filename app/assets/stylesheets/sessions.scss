@@ -1592,7 +1592,7 @@ input.gray-input, select.gray-input{
 .optionsSession{
     display: grid;
     width: 100%;
-    height: 30%;
+    height: calc(100% - 60%);
     grid-template-rows: 30% 50% 20%;
     padding: 1% 15%;
 }
