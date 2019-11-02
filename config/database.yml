@@ -39,11 +39,15 @@ development:
   # domain sockets, so uncomment these lines.
   host: localhost
   
+<<<<<<< HEAD
   username: postgres
   password: root
+=======
+>>>>>>> bac992188d7a711485bc3026143884f57e340652
 
+  username: carlosdev
+  password: CarlosDeveloper9916
 
-  
 
 
   # The TCP port the server listens on. Defaults to 5432.

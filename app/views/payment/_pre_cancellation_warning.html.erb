@@ -1,0 +1,40 @@
+<div class="modal fade mt-5" id="preCancelationWarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_tag do %>
+        <div class="modal-header cancellationWarningHeadGrid">
+            <%= image_tag('Icons/delete-button.png', :class => 'iconCloseModalCancellation', 'data-dismiss' => "modal", 'aria-label' => "Close") %>
+            <div class="container">
+              <!-- start: title modal -->
+                  <span class="cancellationModalTitle">You are about to cancel a session</span>
+              <!-- end: title modal -->
+            </div>
+        </div>
+        <!-- start: body  -->
+        <div class="modal-body customModalBoddySessions">
+          <div class="container">
+              
+            <div class="noticeCancelSession">
+                <p>Cancellation at this time is non-refundable
+                    you will be charged 120 tokens.</p>
+            </div>
+
+            <div class="confirmationTextCancellation">
+                <span>Would you like to continue?</span>
+            </div>
+
+            <div class="containerButtonsCancellation">
+              <button class="btn btnModalSessionConfirm">Yes</button>
+              <button class="btn btnModalSessionConfirm">No</button>
+            </div>
+
+          </div>
+        </div>
+        <!-- end: body  -->
+        <div class="modal-footer containerCancelMessage">
+          <a class="linkCancelMessage">Back</a>
+        </div>
+      <% end %>      
+    </div>
+  </div>
+</div>
