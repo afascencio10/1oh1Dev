@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   end
 
   add_foreign_key "bookings", "explores", name: "bookings_explore_id_fkey", on_delete: :nullify
+
   add_foreign_key "bookings", "explores", name: "bookings_explore_id_fkey1", on_delete: :nullify
   add_foreign_key "bookings", "explores", on_delete: :nullify
   add_foreign_key "bookings", "guides", name: "bookings_guide_id_fkey", on_delete: :nullify
