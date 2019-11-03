@@ -54,4 +54,5 @@
 *= require fullcalendar/daygrid/main
 *= require fullcalendar/timeGrid/main
 *= require jquery.rateyo.min.css
+*= require post_session
  */
