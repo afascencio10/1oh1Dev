@@ -110,11 +110,19 @@
     }
 }
 
+.dropleft {
+
+    & .dropdown-menu{
+        padding: 20% 1rem;
+    }
+}
+
 
 // Part three of modal body
 .end-body{
     display: grid;
     padding-bottom: 2%;
+
     & .comments form{
         display: grid;
         grid-template-rows: repeat(2,1fr);
