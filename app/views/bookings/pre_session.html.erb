@@ -11,23 +11,8 @@
 
       </div>  
     
-      <div>
-        <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
-        <button data-toggle="modal" data-target="#modalChat">Chat</button>
-        <button data-toggle="modal" data-target="#modalFrom">respuesta</button>         
+      
     
-        <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>
-        <button data-toggle="modal" data-target="#preRunningLate">pre runnin late</button>
-        <button data-toggle="modal" data-target="#preRunningLateSent">pre runnin late sent</button>
-    
-      </div>
-    
-      <%= render 'pre_running_late' %>
-      <%= render 'pre_5min' %>
-      <%= render 'pre_running_late_sent' %>
-      <%= render 'pre_cancellation_warning' %>
-    
-      <%= render 'pre_5min.html' %>
 
 
     </div>
@@ -35,6 +20,20 @@
   </article>
 
 <% end %>
+<div>
+  DEMO TO SHOW CASE PRE SESSIONS MODALS
+</div>
+<div>
+  <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
+  <button data-toggle="modal" data-target="#modalChat">pre runnin late</button>
+  <button data-toggle="modal" data-target="#modalFrom">pre runnin late read</button>         
+  <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>
+</div>
+    
+<%= render 'pre_running_late' %>
+<%= render 'pre_5min' %>
+<%= render 'pre_running_late_sent' %>
+<%= render 'pre_cancellation_warning' %>
 
 <script>
 
