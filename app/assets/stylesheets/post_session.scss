@@ -169,6 +169,14 @@
     display: grid;
     grid-template-rows: repeat(4,auto);    
 }
+.reportProblemModalContent .modal-header {
+    padding-left: 60px;
+}
+.reportProblemModalContent .modal-header .modal-title {
+    font-size: 25px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
 .problemReportedIconCont {
     display: grid;
     align-items: center;
@@ -231,7 +239,7 @@
 .whoReportProblem {
     grid-column: 1/2;
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 600;
 }
 .whoReportProblemName {
     grid-column: 2/-1;
@@ -242,7 +250,7 @@
 }
 .reportProblemIssueTitle {
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 600;
     grid-column: 1/-1;
 }
 .reportProblemType {
@@ -259,7 +267,9 @@
 .reportProblemDescriptionTitle {
     grid-column: 1/-1;
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 24px;
 }
 .reportProblemButtons {
     grid-row: 9/-1;
@@ -272,9 +282,10 @@
 }
 .reportProblemTextArea {
     grid-column: 1/-1;
+    margin-bottom: 10px;
 }
 .reportProblemTextAreaItem {
-    width: 90%;
+    width: 100%;
     border-radius: 5px;
 }
 .reportPorblemSubmitButton {
