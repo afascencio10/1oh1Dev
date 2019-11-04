@@ -94,10 +94,6 @@ jQuery(function ($) {
             $(".more_time_conflict").animate({left: '-330px'});
         }
     });
-    $(".transparent1oh1").click(function(){
-        console.log("babe");
-      $(".more_time_conflict").animate({left: '4px'});
-    });
     //Modals
     $(".sessionIconsNoVideo").click(function(){
         if(isShow == 0){
