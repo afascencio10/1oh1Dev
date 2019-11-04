@@ -278,11 +278,11 @@
 .detailsCancellationText{
     font-weight: bolder;
 }
+
 .isHide {
     height: auto;
     width: 100%;    
     color: #000;
-    background: #ffffff;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
@@ -378,6 +378,10 @@
     color: #ee5050;
 }
 
+.customPreSession{
+    background-color: transparent !important;
+}
+
 .toolsIcons {
     position: absolute;
     display: grid;
@@ -388,13 +392,12 @@
     justify-content: center;
     top: 0;
     right: 0;
-    background: none;
 
     & .icon-1{
         grid-column: 6/7;
         justify-self: start;
         align-self: start;
-        grid-row: 5/6;
+        grid-row: 6/7;
 
         & img{
            min-width: 85%;
@@ -405,7 +408,7 @@
         grid-column: 7/8;
         justify-self: start;
         align-self: start;
-        grid-row: 5/6;
+        grid-row: 6/7;
 
         & img{
             min-width: 85%;
@@ -414,7 +417,7 @@
 
     & .icon-3{
         grid-column: 9/10;
-        grid-row: 5/6;
+        grid-row: 6/7;
         justify-self: center;
 
         & img{
@@ -446,7 +449,7 @@
     box-shadow: 0 4px 6px #888686 !important;
     background-color: #fff !important;
     padding: 0;
-    height: 84vh !important;
+    height: 36rem !important;
     display: grid;
     grid-template-rows: 80% 20%;
 
@@ -780,8 +783,8 @@
 .optionsSession{
     display: grid;
     width: 100%;
-    height: 30%;
-    grid-template-rows: 30% 50% 20%;
+    height: 32%;
+    grid-template-rows: 30% 60% 1fr;
     padding: 1% 15%;
 }
 
@@ -794,33 +797,35 @@
 .buttonsOptions{
     display: grid;
     grid-template-columns: 25% 50% 25%;
-    padding-top: 3%;
+    padding-top: 6%;
 
     & .btnSmall{
         width: 78%;
-        height: 76%;
+        height: 85%;
         font-size: .8rem;
         text-transform: capitalize;
+        border: 1px solid gainsboro;
+    }
+
+    & .direction-l{
+        justify-self: right;
+        background-color: #8CC63F;
+        color: #ffffff;
+        font-weight: bold;
+        
+    }
+
+    & .direction-r{
+        justify-self: left;
+        background-color: #ffffff;
     }
 
     & .btnBig{
         width: 63%;
-        height: 76%;
+        height: 85%;
         font-size: .8rem;
         justify-self: center;
         text-transform: capitalize;
-    }
-
-    & .direction-r{
-        justify-self: right;
-    }
-
-    & .direction-l{
-        justify-self: left;
-    }
-
-    & .btnSmall,
-    & .btnBig{
         background-color: #ffffff;
         border: 1px solid gainsboro;
         font-weight: 600;
@@ -838,7 +843,7 @@
 .timeDetails{
     text-align: center;
     font-size: .9rem;
-    margin-top: 7%;
+    margin-top: 5%;
 
     & .time{
         color: #ff3b3b;
