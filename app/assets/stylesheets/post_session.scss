@@ -3,7 +3,7 @@
 
     & .modal-content{
         width: 40%;
-        height: 80vh;
+        height: 444px;
         margin-left: calc(70% - 40%);
     }
 
@@ -31,8 +31,8 @@
 
     // Part one of modal body
     & .top-body{
-        display: inherit;
-        grid-template-rows: repeat(2,1fr);
+        display: grid;
+        grid-template-columns: 1fr;
 
         & .notice{
             display: flex;
@@ -40,6 +40,8 @@
             justify-content: end;
             font-size: 1.1rem;
             font-weight: bolder;
+            justify-self:center; 
+            text-align:center; 
         }
 
         & .name{
