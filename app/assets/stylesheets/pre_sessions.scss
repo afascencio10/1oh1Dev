@@ -382,58 +382,52 @@
     background-color: transparent !important;
 }
 
-.toolsIcons {
+.containerSessionVid .toolsIcons {
     position: absolute;
-    display: grid;
-    grid-template-columns: repeat(11,1fr);
-    grid-template-rows: repeat(10,1fr);
     width: 100%;
     height: 100%;
-    justify-content: center;
     top: 0;
     right: 0;
+    background-color: red;
+
+    & .callIcons{
+        position: absolute;
+        margin-top: 32%;
+        width: 3rem;
+        border: 2px solid white;
+        border-radius: 100%;
+        padding: 1%;
+    }
 
     & .icon-1{
-        grid-column: 6/7;
-        justify-self: start;
-        align-self: start;
-        grid-row: 6/7;
+        margin-left: 44%;
 
-        & img{
-           min-width: 85%;
-        }
     }
 
     & .icon-2{
-        grid-column: 7/8;
-        justify-self: start;
-        align-self: start;
-        grid-row: 6/7;
+        margin-left: 54%;
 
-        & img{
-            min-width: 85%;
-        }
     }
 
     & .icon-3{
-        grid-column: 9/10;
-        grid-row: 6/7;
-        justify-self: center;
-
-        & img{
-            width: 25%;
-            filter: invert(100%);
-            margin-left: 35%;
-        }
+        margin-left: 81%;
+        color: #ffff;
+        margin-top: 34%;
     }
-}
 
-.callIcons {
-    background: #fff;
-    border-radius: 50%;
 }
 
 // Section - index 
+.preSessionSection{
+    background-color: #fafafa;
+}
+
+.brand1oh1{
+    position: absolute;
+    width: 6rem !important;
+    margin-left: 1%;
+}
+
 .gridSessionMain{
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -441,6 +435,7 @@
 
 .wrapCardSession{
     padding: 7% 11%;
+    grid-column: 2/3;
 }
 
 .sessionCardCustom{
@@ -484,10 +479,11 @@
 
 
                 & .title{
-                    font-size: .9rem;
+                    font-size: .8rem;
                     align-self: end;
                     justify-self: start;
                     font-weight: bold;
+                    margin-bottom: 0;
                 }
 
                 & .descriptionSession{
@@ -506,11 +502,13 @@
             & .desc-top{
                 align-self: end;
                 margin-left: 25%;
+                font-weight: 500;
             }
 
             & .desc-bottom{
                 align-self: start;
                 margin-left: 25%;
+                font-weight: 500;
             }
         }
     }
@@ -636,10 +634,14 @@
 
 .containerSessionVid{
     display: grid;
+    position: relative;
 
-    & img{
+    & .imageSession{
         justify-self: center;
-        max-width: 60% !important;
+        max-width: 72%;
+        min-width: 72%;
+        width: 31rem;
+        height: 18rem;
     }
 }
 
@@ -790,14 +792,15 @@
 
 .textBottomVid{
     text-align: center;
-    font-weight: bolder;
-    font-size: 1.7rem;
+    font-weight: 300;
+    font-size: 2rem;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .buttonsOptions{
     display: grid;
     grid-template-columns: 25% 50% 25%;
-    padding-top: 6%;
+    padding-top: 6.5%;
 
     & .btnSmall{
         width: 78%;
@@ -805,13 +808,14 @@
         font-size: .8rem;
         text-transform: capitalize;
         border: 1px solid gainsboro;
+        font-family: 'Source Sans Pro', sans-serif;
     }
 
     & .direction-l{
         justify-self: right;
         background-color: #8CC63F;
         color: #ffffff;
-        font-weight: bold;
+        font-weight: 800;
         
     }
 
@@ -831,6 +835,7 @@
         font-weight: 600;
         transition: background-color .2s,
                     color .2s;
+        font-family: 'Source Sans Pro', sans-serif;
 
         &:hover{
             background-color: #8CC63F;
@@ -843,7 +848,7 @@
 .timeDetails{
     text-align: center;
     font-size: .9rem;
-    margin-top: 5%;
+    margin-top: 3%;
 
     & .time{
         color: #ff3b3b;

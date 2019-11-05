@@ -1,23 +1,17 @@
 <%= form_tag payment_index_path do %>
-  <article>
-
+  <section class="preSessionSection">
+    <!-- icon brand  -->
+    <%= image_tag('icon.png', :class => 'img-fluid w-100 brand1oh1') %>
+    
     <div class="container">
-
+      <!-- start: card  -->
       <div class="gridSessionMain">
-
-        <%= image_tag('icon.png', :class => 'img-fluid w-100') %>
-    
         <%= render 'pre_session' %>
-
-      </div>  
-    
-      
-    
-
-
+      </div>
+      <!-- end : card  -->
     </div>
 
-  </article>
+  </section>
 
 <% end %>
 <div>
