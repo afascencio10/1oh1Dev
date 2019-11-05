@@ -31,24 +31,20 @@
 
     // Part one of modal body
     & .top-body{
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
+        justify-content: center;
 
         & .notice{
-            display: flex;
-            align-items: end;
-            justify-content: end;
+            position: absolute;
             font-size: 1.1rem;
             font-weight: bolder;
-            justify-self:center; 
-            text-align:center; 
+            margin-top: 5%;
         }
 
         & .name{
-            display: flex;
-            align-items: start;
-            justify-content: center;
+            position: absolute;
             font-weight: bold;
+            margin-top: 11%;
         }
     }
 
@@ -155,6 +151,7 @@
         text-decoration: underline;
         font-size: .8rem;
         margin-top: 2%;
+        font-weight: bold;
         
         &:hover{
             cursor: pointer;
@@ -309,4 +306,8 @@
     width: 60% !important;
     left: 50%;
     transform: translate(-50%, 0);
+}
+
+.titleModalTimesUp{
+    color: #000;
 }
