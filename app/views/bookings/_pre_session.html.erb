@@ -2,23 +2,22 @@
     <div class="card container sessionCardCustom">
         <div class="card-body">
             <div class="containerSessionVid">
-                <%= image_tag('People/women.jpg', :class => 'img-fluid') %>
+                <%= image_tag('People/women.jpg', :class => 'img-fluid imageSession') %>
                 <div class="toolsIcons isHide customPreSession">
-                    <div class="icon-1">
-                        <a href="">
-                            <img src="<%= image_path('Icons/mic.png')  %>" class="callIcons">
-                        </a>
-                    </div>
-                    <div class="icon-2">
-                        <a href="">
-                            <img src="<%= image_path('Icons/noVideo.png')  %>" class="callIcons">
-                        </a>
-                    </div>
-                    <div class="icon-3">
-                        <a href="">
-                            <%= image_tag('Icons/menu-points.png') %>
-                        </a>
-                    </div>
+                    <!-- mute icon song -->
+                    <a href="">
+                        <img src="<%= image_path('Icons/iconsu-nmute.png')  %>" class="callIcons icon-1">
+                    </a>
+
+                    <!-- mute icon video  -->
+                    <a href="">
+                        <img src="<%= image_path('Icons/nvideo.png')  %>" class="callIcons icon-2">
+                    </a>
+
+                    <!-- options  -->
+                    <a href="">
+                        <i class="material-icons icon-3">more_vert</i>
+                    </a>
                 </div>
             </div>
             <div class="optionsSession">
