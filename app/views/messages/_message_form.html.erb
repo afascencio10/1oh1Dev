@@ -1,6 +1,12 @@
 
 <%=form_for message, remote: true,authenticity_token: true do |f|%>
-  <%= f.text_area :content, data: {textarea: "message"}%>
+  <%= f.text_field :content, data: {textarea: "message"}, :placeholder => 'Type a message...', :id => 'forInputChat' %> 
+    <a class="attach" href="#">
+      <img class="attachIcon" src="<%= image_path('Icons/attach.png') %>">
+  </a>
+  <a class="send" href="#">
+      <img class="sendIcon" src="<%= image_path('Icons/send.png')  %>">
+  </a>
 <!-- this hidden field is for the MessagesController and Action Cable to keep track of what chat this message belongs to -->
 <%= f.hidden_field :chat_id, value: chat.id %>
 <%= f.hidden_field :other_user, value: other_user %>
