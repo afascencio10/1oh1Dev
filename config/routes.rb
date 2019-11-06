@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get '/in-session', to: 'bookings#in_session'
   get '/post-session', to: 'bookings#post_session'
   get '/pre-session', to: 'bookings#pre_session'
+  post '/webhook', to: 'payment#receive'
+
 
 
   resources :users, only:[:new] do

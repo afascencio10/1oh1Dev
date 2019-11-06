@@ -12,6 +12,19 @@ class PaymentController < ApplicationController
     redirect_to payment_index_path
   end
 
+  def receive
+    if request.headers['Content-Type'] == 'application/json'
+      data = JSON.parse(request.body.read)
+    else
+      # application/x-www-form-urlencoded
+      data = params.as_json
+    end
+    puts data
+    # Webhook::Received.save(data: data, integration: params[:integration_name])
+
+    render json: data
+  end
+
   private
 
   def charges_params
