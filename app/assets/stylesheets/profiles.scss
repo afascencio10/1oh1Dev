@@ -1210,11 +1210,12 @@ input[type=radio]:checked {
     display: block;
 }
 
-.dropdownImg:hover>.dropdown-menu {
+.dropdownImg:hover{
+  position: relative;
+
+  & > .dropdown-menu{
     display: block;
   }
-.dropdownImg{
-  position: relative;
 }
 
 .grid-Pop {
@@ -1552,7 +1553,7 @@ input:checked + .slider:before {
   
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu {
-  top: 50px;
+  top: 42px;
   height: 34px;
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu:hover {
