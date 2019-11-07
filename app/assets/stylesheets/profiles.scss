@@ -1212,7 +1212,6 @@ input[type=radio]:checked {
 
 .dropdownImg:hover{
   position: relative;
-  background-color: lightgreen;
 
   & > .dropdown-menu{
     display: block;
@@ -1554,7 +1553,7 @@ input:checked + .slider:before {
   
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu {
-  top: 50px;
+  top: 42px;
   height: 34px;
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu:hover {
