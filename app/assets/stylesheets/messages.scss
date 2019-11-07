@@ -134,6 +134,19 @@
   display:none;
 }
 
+.contactCounter {
+  margin-left: 13%;
+}
+
+#filterrific_results #filterrific_results > :first-child {
+  margin-left: 13%;
+}
+
+#filterrific_results {
+  height: 73vh;
+  overflow-y: scroll;
+}
+
 
 .chatHeader{
   position: relative;

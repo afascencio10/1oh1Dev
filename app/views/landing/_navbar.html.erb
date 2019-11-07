@@ -32,6 +32,7 @@
               <!-- <li><a href="/messages" class="nav-link">Messages</a></li> -->
               <% if current_user.admin? %>
                 <li><a href="/categories" class="nav-link">Categories</a></li>
+                <li><a href="/products" class="nav-link">Products</a></li>
               <% end %>
               <!-- notification bell with counts -->
               <li class="has-children">
@@ -46,15 +47,15 @@
               </li>
               <!-- More Options-->
               <li >
-              <div class="dropdownImg has-children"> 
+              <div class="dropdownImg has-children">
                 <a  href="/profiles" class="" style="decoration:none">
                   <img  class="profileTopbar" src="<%= image_path('People/man-2517015_640.jpg') %>">
                 </a>
                 <div class="dropdown-menu drop-Bottom dropdown">
                     <a class="txtLog">  <%= link_to "Log out", destroy_user_session_path, :method => :delete, :class=>"logtxt" %> </a>
                 </div>
-                    
-                
+
+
               </div>
                 <!-- <ul class="dropdown">
                   <li><a href="/profiles" class="nav-link">Profile</a></li>

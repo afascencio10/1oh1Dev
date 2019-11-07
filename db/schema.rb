@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191015054410) do
+ActiveRecord::Schema.define(version: 20191106142909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,8 +115,15 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   end
 
   create_table "markets", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.string   "currency"
+    t.string   "mode"
+    t.string   "interval"
+    t.integer  "price"
+    t.string   "offer"
+    t.string   "description"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -140,10 +147,8 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
-    t.string   "email"
-    t.string   "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "state"
     t.string   "country"
@@ -190,6 +195,20 @@ ActiveRecord::Schema.define(version: 20191015054410) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.string   "name"
+    t.string   "currency"
+    t.string   "mode"
+    t.string   "interval"
+    t.integer  "price"
+    t.string   "customer_id"
+    t.string   "product_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["profile_id"], name: "index_transactions_on_profile_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -234,4 +253,5 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   add_foreign_key "notifications", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
+  add_foreign_key "transactions", "profiles"
 end

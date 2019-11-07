@@ -25,8 +25,9 @@ class MessagesController < ApplicationController
           #message and user hold the data we render on the page using javascript
           message: message.content,
           user: message.user.firstname,
-          other_user: params[:message][:other_user],
+          other_user: params[:message][:other_user].to_i,
           user_id: message.user_id,
+          current_user_id: current_user.id
           )
         else
           redirect_to chats_path
