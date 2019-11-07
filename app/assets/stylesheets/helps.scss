@@ -240,4 +240,47 @@
 		transform: translateX(-50%);
 	}
 }
+//====section helps===
+@media (min-width: 10px){
+	.containerHelps {
+		display: grid;
+		grid-template-columns: 15fr 50fr 25fr;
+		border: solid #ec2727;
+		margin-top: 80px;
+		
+	}
+	.containerHelp-Account {
+		display: grid;
+		grid-template-columns: 1fr;
+		border: solid #ec2727;
+		row-gap: 10px;
+	}
+	.containerHelpIntroduction {
+		display: grid;
+		grid-template-columns: 60fr 40fr;
+		border: solid #ec2727;
+	}
+	.gridHelpIntroduction {
+		display: grid;
+		grid-template-columns: 1fr;
+		border: solid #27ec31;
+	}
+	.section-Account{
+		display: grid;
+		grid-template-columns: 20fr 80fr;
+		border: solid #ec2727;
+	}
+	.accountTags {
+		display: grid;
+		grid-template-columns: 1fr;
+		border:solid #ec2727;
+	}
+	.paragraphAccount{
+		font-size: 14px;
+		font-weight: 600;
+	}
+}
 
+.celverde {
+	border: solid #8cc63f;
+}
