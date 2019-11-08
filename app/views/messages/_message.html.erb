@@ -2,7 +2,25 @@
   <p><%= message.content %></p>
 </div> -->
 <% if current_user.id == message.user_id%>
-  <p id="<%=message.user_id %>">&emsp;&emsp;&emsp;<%= message.user.firstname %>: <%=message.content%></p>
+  <!-- <p id="<%=message.user_id %>">&emsp;&emsp;&emsp;<%= message.user.firstname %>: <%=message.content%></p> -->
+  <div class="d-flex justify-content-end mb-4">
+    <div class="msg_cotainer_send">
+      <%=message.content%>
+    </div>
+    <div class="img_cont_msg">
+
+    </div>
+  </div>
+
 <% else %>
-  <p id="<%=message.user_id %>"><%= message.user.firstname %>: <%=message.content%></p>
+  <!-- <p id="<%=message.user_id %>"><%= message.user.firstname %>: <%=message.content%></p> -->
+  <div class="d-flex justify-content-start mb-4">
+    <div class="img_cont_msg">
+      <img src="https://www.khaama.com/wp-content/uploads/2019/02/Afghan-Singer-Ghawgha-Taban-880x672-880x672.jpg" class="rounded-circle user_img_msg">
+    </div>
+    <div class="msg_cotainer">
+      <%=message.content%>
+      <span class="msg_time">9:07 AM, Today</span>
+    </div>
+  </div>
 <% end %>
