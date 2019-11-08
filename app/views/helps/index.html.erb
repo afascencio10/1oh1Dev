@@ -26,7 +26,7 @@
 					<a href="#" class="optionHelp active-link" id="account">
 						Account
 					</a>
-					<a href="" class="optionHelp" id="communication" >Communication</a>
+					<a  class="optionHelp" id="communication" >Communication</a>
 					<a href="#section-how" class="optionHelp" id="how" >How-to...</a>
 					<a href="#section-explorer" class="optionHelp" id="explorer" >Explorer Support</a>
 					<a href="#section-guide" class="optionHelp" id="guide" >Guide Support</a>
@@ -35,7 +35,9 @@
 				<!-- -  -->
 				<div class="sectionRight">
 					<div class="" id="section-account">Section Account</div>
-					<div class="d-none" id="section-communication">Section communication</div>
+					<div class="d-none" id="section-communication">
+						<%= render 'helpcommunication'%>
+					</div>
 					<div class="d-none" id="section-how">How to</div>
 					<div class="d-none" id="section-explorer">Explorer Support</div>
 					<div class="d-none" id="section-guide">Guide Support</div>
@@ -49,126 +51,4 @@
 
 		
 
-<!--<%= render 'landing/navbar' %>-->
 
-<!-- <div class="container profile-builder">
-	<div class="position-relative">
-		<div class="d-none page-1">		
-			<h1 class="headline">Thanks for signing up Ashton!</h1>
-
-			<p class="headline-description mt-4">We know you're excited to start, but first help us tailor your experience for you.</p>
-
-			<img class="headline-image" src="<%= image_path('Icons/icons8-confetti-100.png')%>" alt="confetti">
-		</div>
-
-		<div class="d-none page-2">		
-			<h1 class="headline">Explore</h1>
-
-			<p class="headline-description mt-4">Add categories that you are interested in and would like to explore further.</p>
-
-			<img class="headline-image" src="<%= image_path('Icons/Explore graphic.png')%>" alt="confetti">
-		</div>
-
-		<div class="d-none page-3">		
-			<h1 class="headline">Guide</h1>
-
-			<p class="headline-description mt-4">Add categories that you would be comfortable teaching to others.</p>
-
-			<img class="headline-image" src="<%= image_path('Icons/Guide Graphic.png')%>" alt="confetti">
-		</div>
-
-		<div class="d-none page-4">		
-			<h1 class="headline">Projects</h1>
-
-			<p class="headline-description mt-4">Add ideas, works-in-progress, or completed projects and connect with other users to take it to the next level.</p>
-
-			<img class="headline-image" src="<%= image_path('Icons/project_page.png')%>" alt="confetti">
-		</div>
-
-		<div class="d-none page-5">		
-			<h1 class="headline">Availability</h1>
-
-			<p class="headline-description mt-4">Add reoccuring times when you will be unavailable such as work, soccer practice, games night etc.</p>
-
-			<img class="headline-image" width="150" src="<%= image_path('Icons/schedule.png')%>" alt="schedule">
-		</div>
-
-		<div class="d-none page-6">		
-			<h1 class="headline">... and you're done!</h1>
-
-			<p class="headline-description mt-4">Time to start your education adventure!</p>
-
-			<img class="headline-image" width="150" src="<%= image_path('Icons/schedule.png')%>" alt="schedule">
-		</div>
-	</div>
-
-	
-	<div class="mt-5">
-		<div class="row">
-			<div class="col text-center p-0 navigation-item-wrap navigation-item-wrap-1">
-			 	<div class="navigation-item rounded-circle d-inline-block">
-			 		<img src="<%= image_path('Icons/icons8-person-100.png')%>" alt="person">
-			 	</div>
-			</div>
-			<div class="col text-center p-0 navigation-item-wrap navigation-item-wrap-2">
-				<div class="navigation-item rounded-circle d-inline-block">
-			 		<img src="<%= image_path('Icons/icons8-telescope-100.png')%>" alt="telescope">
-			 	</div>
-			</div>
-			<div class="col text-center p-0 navigation-item-wrap navigation-item-wrap-3">
-			    <div class="navigation-item rounded-circle d-inline-block">
-			 		<img src="<%= image_path('Icons/icons8-treasure-map-100.png')%>" alt="treasure-map">
-			 	</div>
-			</div>
-			<div class="col text-center p-0 navigation-item-wrap navigation-item-wrap-4">
-			  	<div class="navigation-item rounded-circle d-inline-block">
-			 		<img src="<%= image_path('Icons/icons8-goal-100.png')%>" alt="goal">
-			 	</div>
-			</div>
-			<div class="col text-center p-0 navigation-item-wrap navigation-item-wrap-5">
-			  	<div class="navigation-item rounded-circle d-inline-block">
-			 		<img src="<%= image_path('Icons/icons8-calendar-25-100.png')%>" alt="calendar">
-			 	</div>
-			</div>
-			<div class="col text-center p-0 navigation-item-wrap navigation-item-wrap-6">
-			  	<div class="navigation-item rounded-circle d-inline-block">
-			 		<img src="<%= image_path('Icons/icons8-checkmark-100.png')%>" alt="checkmark">
-			 	</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="mt-5 page-1 d-none">
-		<%= render 'first_page'%>
-	</div>
-	
-	<div class="mt-5 page-2 d-none">
-		<%= render 'second_page'%>
-	</div>
-
-	<div class="mt-5 page-3 d-none">
-		<%= render 'third_page'%>
-	</div>
-
-	<div class="mt-5 page-4 d-none">
-		<%= render 'fourth_page'%>
-	</div>
-
-	<div class="mt-5 page-5 d-none">
-		<%= render 'fifth_page'%>
-	</div>
-
-	<div class="form-row justify-content-end mb-5" id="action-buttons">
-		<button type="button" class="btn btn-outline-dark p-2 d-none mr-3" id="prevPageBtn">Prev</button>
-
-		<button type="button" class="btn btn-success p-2" id="nextPageBtn">Next</button>
-	</div>
-</div>
-
-<div class="mt-5 page-6 d-none profile-builder-last-page">
-		<%= render 'sixth_page'%>
-</div> -->
-
-
-
-<%= javascript_include_tag 'profile_builder.js' %>
