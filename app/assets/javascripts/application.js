@@ -60,3 +60,4 @@
 //= require reviews
 //= require payment
 //= require filterrific/filterrific-jquery
+//= require helps

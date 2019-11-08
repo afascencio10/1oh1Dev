@@ -241,46 +241,83 @@
 	}
 }
 //====section helps===
+
 @media (min-width: 10px){
-	.containerHelps {
-		display: grid;
-		grid-template-columns: 15fr 50fr 25fr;
-		border: solid #ec2727;
-		margin-top: 80px;
-		
-	}
-	.containerHelp-Account {
-		display: grid;
-		grid-template-columns: 1fr;
-		border: solid #ec2727;
-		row-gap: 10px;
-	}
-	.containerHelpIntroduction {
-		display: grid;
-		grid-template-columns: 60fr 40fr;
-		border: solid #ec2727;
-	}
-	.gridHelpIntroduction {
-		display: grid;
-		grid-template-columns: 1fr;
-		border: solid #27ec31;
-	}
-	.section-Account{
-		display: grid;
-		grid-template-columns: 20fr 80fr;
-		border: solid #ec2727;
-	}
-	.accountTags {
-		display: grid;
-		grid-template-columns: 1fr;
-		border:solid #ec2727;
-	}
-	.paragraphAccount{
-		font-size: 14px;
-		font-weight: 600;
+
+}
+
+.containerHelps{
+	margin-top: 6rem;
+	display: grid;
+	grid-template-columns: 20% 1fr 20%;
+	height: 90%;
+	
+	& .bodyHelp{
+		display: inherit;
+		grid-column: 2/3;
+		grid-template-rows: 25% 1fr;
 	}
 }
 
-.celverde {
-	border: solid #8cc63f;
+.bodyHelp{
+
+	& .headerHelp{
+		display: grid;
+		grid-template-columns: 60% 1fr;
+
+		& .descriptionContainer{
+			grid-column: 1/2;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			display: grid;
+			grid-template-rows: 30% 1fr;
+		}
+	}
+
+	& .bodyContainer{
+
+		display: grid;
+		grid-template-columns: 30% 1fr;
+	}
+}
+
+.descriptionContainer{
+	& .titleDescription{
+		padding: 5px;
+		// background-color: royalblue;
+	}
+
+	& .contentDescription{
+		padding: 5px;
+		font-size: .8rem;
+	}
+}
+
+.bodyContainer{
+
+	& .sectionLeft{
+		display: grid;
+		grid-auto-rows: 10%;
+		padding: 1rem;
+	} 
+
+	& .sectionRight{
+		// background-color: powderblue;
+	}
+}
+
+
+.sectionLeft{
+
+	& .optionHelp{
+		color: #000;
+		font-weight: 600;
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+
+
+	& a.active-link{
+		color: #8CC63F;
+	}
 }
