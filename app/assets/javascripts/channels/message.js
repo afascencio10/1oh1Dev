@@ -9,19 +9,21 @@ function createMessageChannel() {
         },
         renderMessage: function(data) {
           //console.log($("div#messages").children().last().attr('id'));
-          console.log(data);
           var id = Number($("#userIdInfo").text());
-          console.log("el id");
-          console.log(id);
-          if($("div#messages").children().last().attr('id') == data.user_id)
+          setTimeout(function(){
+            $('#chatScroll').scrollTop($('#chatScroll')[0].scrollHeight);
+          },500);                 
+          if(id == data.user_id)
           {
             //return "<p id=\""+ data.user_id+ "\"> <b>&emsp;&emsp;&emsp;" + data.user + ": </b>" + data.message + "</p>";
-            return "<p id=\""+ data.user_id+ "\">" +"Hola pipe"+ "</p>";
+            return '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">'+ data.message +'</div><div class="img_cont_msg"></div></div>';          
           }
           else{
-            return "<p id=\""+ data.user_id+ "\">" +"Hola Andres"+ "</p>";
+            return '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://www.khaama.com/wp-content/uploads/2019/02/Afghan-Singer-Ghawgha-Taban-880x672-880x672.jpg" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">'+data.message+'<span class="msg_time">8:40 AM, Today</span></div></div>';
             //return "<p id=\""+ data.user_id+ "\"> <b>" + data.user + ": </b>" + data.message + "</p>";
           }
+          
+          
 
   },
       });
