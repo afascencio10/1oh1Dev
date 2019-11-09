@@ -22,19 +22,23 @@
 
 			<!-- start: body  -->
 			<article class="bodyContainer">
-				<div class="sectionLeft">
-					<a href="#" class="optionHelp active-link" id="account">
-						Account
-					</a>
-					<a  class="optionHelp" id="communication" >Communication</a>
-					<a href="#section-how" class="optionHelp" id="how" >How-to...</a>
-					<a href="#section-explorer" class="optionHelp" id="explorer" >Explorer Support</a>
-					<a href="#section-guide" class="optionHelp" id="guide" >Guide Support</a>
-					<a href="#section-legal" class="optionHelp" id="legal" >Legal</a>
+				<div>
+					<div class="sectionLeft">
+						<a href="#" class="optionHelp active-link" id="account">
+							Account
+						</a>
+						<a  class="optionHelp" id="communication" >Communication</a>
+						<a href="#section-how" class="optionHelp" id="how" >How-to...</a>
+						<a href="#section-explorer" class="optionHelp" id="explorer" >Explorer Support</a>
+						<a href="#section-guide" class="optionHelp" id="guide" >Guide Support</a>
+						<a href="#section-legal" class="optionHelp" id="legal" >Legal</a>
+					</div>
 				</div>
 				<!-- -  -->
 				<div class="sectionRight">
-					<div class="" id="section-account">Section Account</div>
+					<div class="sectionAccount" id="section-account">
+						<%= render 'help_account' %>
+					</div>
 					<div class="d-none" id="section-communication">
 						<%= render 'helpcommunication'%>
 					</div>
