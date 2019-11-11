@@ -1,7 +1,7 @@
 function createMessageChannel() {
   App.messages = App.cable.subscriptions.create({
         channel: 'MessageChannel', chat_id: parseInt($("#message_chat_id").val())
-        },
+        },          
         {
         received: function(data) {
           $("#messages").removeClass('hidden')
@@ -22,10 +22,7 @@ function createMessageChannel() {
             return '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://www.khaama.com/wp-content/uploads/2019/02/Afghan-Singer-Ghawgha-Taban-880x672-880x672.jpg" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">'+data.message+'<span class="msg_time">8:40 AM, Today</span></div></div>';
             //return "<p id=\""+ data.user_id+ "\"> <b>" + data.user + ": </b>" + data.message + "</p>";
           }
-          
-          
-
-  },
-      });
+        },
+            },$('#chatScroll').scrollTop($('#chatScroll')[0].scrollHeight));
 return App.messages;
 }

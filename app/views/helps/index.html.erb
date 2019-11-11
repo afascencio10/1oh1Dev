@@ -32,6 +32,25 @@
 						<a href="#section-explorer" class="optionHelp" id="explorer" >Explorer Support</a>
 						<a href="#section-guide" class="optionHelp" id="guide" >Guide Support</a>
 						<a href="#section-legal" class="optionHelp" id="legal" >Legal</a>
+						<div class="d-none" id="section-legal">
+							<div class="legalList">
+								<div>
+									<a href="#section-privacypolicy" class="optionHelp" id="privacypolicy">Privacy Policy</a>
+								</div>
+								<div>
+									<a href="#section-privacypolicy" class="optionHelp" id="useragreement">User Agreement</a>
+								</div>
+								<div>
+									<a href="#section-privacypolicy" class="optionHelp" id="professionalpolicy">Professional Policy</a>
+								</div>
+								<div>
+									<a href="#section-privacypolicy" class="optionHelp" id="cookiespolicy">Cookies Policy</a>
+								</div>
+								<div>
+									<a href="#section-privacypolicy" class="optionHelp" id="refundpolicy">Refund Policy</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- -  -->
@@ -45,7 +64,21 @@
 					<div class="d-none" id="section-how">How to</div>
 					<div class="d-none" id="section-explorer">Explorer Support</div>
 					<div class="d-none" id="section-guide">Guide Support</div>
-					<div class="d-none" id="section-legal">Legal</div>
+					<div class="d-none" id="section-privacypolicy">
+						<%= render 'privacypolicy'%>
+					</div>
+					<div class="d-none" id="section-useragreement">
+						<%= render 'useragreement'%>
+					</div>
+					<div class="d-none" id="section-professionalpolicy">
+						<%= render 'professionalpolicy'%>
+					</div>
+					<div class="d-none" id="section-cookiespolicy">
+						<%= render 'cookiespolicy'%>
+					</div>
+					<div class="d-none" id="section-refundpolicy">
+						<%= render 'refundpolicy'%>
+					</div>
 				</div>
 			</article>
 			<!-- end: body  -->
