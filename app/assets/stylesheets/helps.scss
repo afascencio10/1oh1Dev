@@ -255,7 +255,7 @@
 	& .bodyHelp{
 		display: inherit;
 		grid-column: 2/3;
-		grid-template-rows: 25% 1fr;
+		grid-template-rows: auto 1fr;
 	}
 }
 
@@ -269,9 +269,9 @@
 			grid-column: 1/2;
 			margin: 0;
 			padding: 0;
-			height: 100%;
+			height: auto;
 			display: grid;
-			grid-template-rows: 30% 1fr;
+			grid-template-rows: 72px auto;
 		}
 	}
 
@@ -298,11 +298,13 @@
 
 	& .sectionLeft{
 		display: grid;
-		grid-auto-rows: 10%;
+		grid-auto-rows: auto;
 		padding: 1rem;
 	} 
 
-	& .sectionRight{
+	& .sectionRight{	
+		overflow: scroll;
+		max-height: 100vh;	
 		// background-color: powderblue;
 	}
 }
@@ -506,3 +508,33 @@
 	grid-template-rows: repeat(2,1fr);
 }
 // End: Account section 
+
+
+.legalList {
+	font-size: 13px;
+	margin-left: 20px;
+}
+
+.sectionLegalTitle {
+	font-size: 35px;
+	font-weight: 600;
+	line-height: 100px;
+	color: #000;
+}
+.sectionLegalSubtitle {
+	font-size: 25px;
+	line-height: 80px;
+	font-weight: 600;
+	color: #000;
+}
+.sectionLegalSubtitleXS{
+	font-size: 22px;
+	line-height: 70px;
+	font-weight: 600;
+	color: #000;
+}
+.specificTitle{
+	font-weight: 900;
+	line-height: 40px;
+	color: #000;
+}

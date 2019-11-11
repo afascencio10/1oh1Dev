@@ -395,6 +395,10 @@
 	width: 132px;
 }
 //MODALS
+#sizePreLateSent,#sizePreLate{
+	top: 50% !important;
+	transform: translate(0,-60%) !important;
+}
 .modal-float{
 	position: absolute;
     left: -330px;

@@ -4,10 +4,10 @@ $(function(){
         showSection($( this ).attr('id'))
     })
     
-     var helpSections = ["communication","how","explorer","guide","legal","account"];
+     var helpSections = ["communication","how","explorer","guide","legal","account","privacypolicy","useragreement","cookiespolicy","professionalpolicy","refundpolicy"];
     // ​
         function removeActive(){
-            helpSections.forEach(section=>{
+            helpSections.forEach(section=>{                
                 $( "#"+section ).removeClass("active-link");
             });
         }
@@ -23,11 +23,17 @@ $(function(){
     }
     // ​
     function activateHelpSection(section){
-        hideSections();
+        if (section == "privacypolicy" || section == "useragreement" || section == "cookiespolicy" || section == "professionalpolicy" || section == "refundpolicy") {
+            hideSections();
+            $( "#section-legal" ).removeClass("d-none");
+            $( "#legal" ).addClass("active-link");
+        }else {
+            hideSections();
+        }        
         $( "#section-"+section ).removeClass("d-none");
     }
     // ​
-    function showSection(section){
+    function showSection(section){         
         activateHelpLink(section);
         activateHelpSection(section);
     }

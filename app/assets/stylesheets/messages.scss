@@ -280,7 +280,7 @@
     margin-left: 13%;
     margin-right: 2%;  
 }
-.contactCard .active{
+.contactCardActive{
   position: relative;
   margin-left: 2%;
   height: 90px;
@@ -288,6 +288,10 @@
   box-shadow: 2px 50px 50px -14px rgba(0,0,0,0.37);
   z-index: 1;
   transition: .1s;
+  background: #fff;
+}
+.gridContactActive{
+  margin-left: 0% !important;
 }
 .messagesTitle{
   font-family: 'Source Sans Pro', sans-serif;
