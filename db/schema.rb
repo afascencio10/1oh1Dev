@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191106142909) do
+ActiveRecord::Schema.define(version: 20191108163303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,10 +147,8 @@ ActiveRecord::Schema.define(version: 20191106142909) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
-    t.string   "email"
-    t.string   "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "state"
     t.string   "country"
@@ -159,6 +157,8 @@ ActiveRecord::Schema.define(version: 20191106142909) do
     t.string   "languages"
     t.string   "bio"
     t.string   "contact_no"
+    t.date     "birth_date"
+    t.string   "city"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 

@@ -46,20 +46,46 @@ class ProfilesController < ApplicationController
     # Update
     if Profile.find_by(:user_id=>current_user.id) #if Profile already exits
       @profile = Profile.find_by(:user_id=>current_user.id)
-      respond_to do |format|
-        if @profile.update(profile_params)
-          format.html { redirect_to profiles_path, notice: 'Profile was successfully updated.' }
-          format.json { render :show, status: :ok, location: @profile }
-        else
-          format.html { render :edit }
-          format.json { render json: @profile.errors, status: :unprocessable_entity }
+      @params = profile_params
+      if @params["country"]
+        @params["country"] = CS.get[profile_params[:country].to_sym]
+      end
+      if @params["state"]
+        @states = CS.get profile_params[:country].to_sym
+        @params["state"] = @states[profile_params[:state].to_sym]
+      end
+
+      if(params[:first_signup] == "true")
+        respond_to do |format|
+          if @profile.update(@params)
+            format.html { redirect_to '/profile/explores', notice: 'Profile was successfully updated.' }
+            format.json { render :show, status: :ok, location: @profile }
+          else
+            format.html { render :edit }
+            format.json { render json: @profile.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        respond_to do |format|
+          if @profile.update(@params)
+            format.html { redirect_to profiles_path, notice: 'Profile was successfully updated.' }
+            format.json { render :show, status: :ok, location: @profile }
+          else
+            format.html { render :edit }
+            format.json { render json: @profile.errors, status: :unprocessable_entity }
+          end
         end
       end
+
+
+
     else
       # Create
       @user = current_user
       @profile = Profile.new(profile_params)  #create new Profile
       @user.profile = @profile
+      @profile.country = CS.get[profile_params[:country].to_sym]
+      @profile.state = CS.get[profile_params[:state].to_sym]
       respond_to do |format|
         if @profile.save
           flash[:success] = "Profile was successfully created!"
@@ -75,6 +101,46 @@ class ProfilesController < ApplicationController
 
   end
 
+  def introduction
+    @profile = Profile.new(profile_params)
+  end
+
+  def explores
+    @filterrific = initialize_filterrific(
+      Category,
+      params[:filterrific]
+    ) or return
+   @categories = @filterrific.find.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+    @profile = Profile.find_by(:user_id=>current_user.id)
+    @list = @profile.guide_categories.uniq.map{|x| x.id}
+  end
+
+  def guides
+   #  @filterrific = initialize_filterrific(
+   #    Category,
+   #    params[:filterrific]
+   #  ) or return
+   # @categories = @filterrific.find.page(params[:page])
+   #  respond_to do |format|
+   #    format.html
+   #    format.js
+   #  end
+  end
+
+  def projects
+  end
+
+  def availabilty
+  end
+
+  def completed
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
@@ -85,6 +151,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.permit(:state,:country,:profile_photo,:banner_photo,:bio,:contact_no,:profile_photo,:banner_photo,languages:[])
+      params.permit(:state,:country,:profile_photo,:banner_photo,:bio,:contact_no,:profile_photo,:banner_photo,:birth_date,:city,:state,languages:[])
     end
+
 end

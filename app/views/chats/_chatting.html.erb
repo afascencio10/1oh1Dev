@@ -10,6 +10,7 @@
 
 <!-- Start: Body chat  -->
 <div id="userIdInfo" style="display: none;"><%= current_user.id %></div>
+<div id="userImageUrl" style="display: none;"><%= Profile.find_by(:user_id => current_user.id).profile_photo %></div>
 <div id="chatScroll" class="card-body msg_card_body">
 
     <!-- <div class="d-flex justify-content-start mb-4">
@@ -42,7 +43,7 @@
         <% end %>
       </div>
 
-  </div> 
+  </div>
 <!-- End: Body chat  -->
 
 <!-- Start: Footer chat  -->
@@ -56,4 +57,6 @@
   // app/assets/javascripts/channels/messages.js
   messageForm();
   // app/assets/javascripts/messages_form.js
+
+
 </script>

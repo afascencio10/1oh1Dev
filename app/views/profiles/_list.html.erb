@@ -17,9 +17,16 @@
   				</div>
   			</div>
   		</div>
-  		<div class="col-auto pr-0">
-  			<button type="button" class="btn btn-success p-2 addExploreBtn">Add</button>
-  		</div>
+      <% if @list.include?(category.id) %>
+        <div class="col-auto pr-0">
+    			<button type="button" class="btn btn-outline-dark p-2 addExploreBtn">Added</button>
+    		</div>
+      <% else %>
+        <div class="col-auto pr-0">
+    			<button type="button" class="btn btn-success p-2 addExploreBtn">Add</button>
+    		</div>
+      <% end %>
+
   	</div>
   <% end %>
   <%= will_paginate categories  %>
