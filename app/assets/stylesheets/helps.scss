@@ -327,7 +327,7 @@
 	.containerCommunication {
 		display:grid;
 		grid-template-columns: 1fr;
-		border: solid #ec2525;
+		/*border: solid #ec2525;*/
 		row-gap: 10px;
 	}
 	.sectionControlEmails{
@@ -375,7 +375,7 @@
 	}
 	.sessionsRemind {
 		display: grid;
-		grid-template-columns: 25fr 5fr 65fr 5fr;
+		grid-template-columns: 75px 70px auto 30px;
 //		border: solid #ec2525;
 	}
 	.helpRating {
@@ -391,13 +391,19 @@
 	.titleSectionsHelp {
 		font-size: 18px;
 		font-weight: 700;
-		color: #000000;
-		font-family: 'Source Sans  Semibold Italic';
+		color: #000000;		
 	}
 	.txtSectionHelp{
 		font-size: 13px;
 		font-weight: 600;
 		color: #000000;
+	}
+	.numberInputSectionHelp{
+		width: 65px;
+		border: none;
+		border-radius: 5px;
+		background: #eeeeee;
+		text-align: center;
 	}
 	 .containerCommunication input[type=checkbox]:checked {
 		-webkit-appearance: none;
