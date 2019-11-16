@@ -6,6 +6,8 @@ class MarketsController < ApplicationController
   # GET /markets.json
   def index
     @markets = Market.all
+    @payments = Market.where(:mode => "Payment")
+    @subscriptions = Market.where(:mode => "Subscription")
   end
 
   # GET /markets/1

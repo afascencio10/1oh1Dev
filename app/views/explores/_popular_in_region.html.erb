@@ -1,7 +1,48 @@
 <section class="my-5">
-  <h3 class="my-5 c-black">Popular Categories With Explores</h3>
+  <h3 class="my-5 c-black">Popular Categories in <%= Profile.find_by(:user_id =>current_user.id).country%></h3>
 
   <div class="row my-4">
+    <%if @popular_incountry.blank? %>
+    Update your Country
+    <%else%>
+      <% @popular_incountry.each do |category|%>
+        <div class="col center text-left">
+          <%= link_to category_path(category.name.downcase) do %>
+            <div class="card-skill border">
+              <div class="cover"
+                   style="background-image: url(<%= category.url %>);">
+              </div>
+              <h5 class="font-weight-bold">
+                <%= category.name %>
+              </h5>
+            </div>
+          <%end%>
+        </div>
+      <% end %>
+    <%end%>
+    <!-- <div class="col center text-center">
+      <div class="card-skill border">
+        <div class="cover"
+             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
+        </div>
+        <h5 class="font-weight-bold">
+          Ballet
+        </h5>
+      </div>
+    </div>
+    <div class="col center text-right">
+      <div class="card-skill border">
+        <div class="cover"
+             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
+        </div>
+        <h5 class="font-weight-bold">
+          Ballet
+        </h5>
+      </div>
+    </div> -->
+  </div>
+
+  <!-- <div class="row my-4">
     <div class="col center text-left">
       <div class="card-skill border">
         <div class="cover"
@@ -32,40 +73,7 @@
         </h5>
       </div>
     </div>
-  </div>
-
-  <div class="row my-4">
-    <div class="col center text-left">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div>
-    <div class="col center text-center">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div>
-    <div class="col center text-right">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col text-right">
       <button type="button" class="btn btn-link show-more-button">Show more</button>

@@ -15,6 +15,7 @@ let localstream;
 window.onload = () => {
   currentUser = document.getElementById("current-user").innerHTML;
   end_time = document.getElementsByTagName("time")[0].innerHTML;
+  console.log(end_time);
   countdown_timer(end_time);
   seesionId = document.getElementById("session_id").innerHTML;
   localVideo = document.getElementById("local-video");
@@ -62,7 +63,7 @@ document.onreadystatechange = () => {
   if (document.readyState === "interactive") {
     navigator.mediaDevices
       .getUserMedia({
-        audio: true,
+        audio: false,
         video: true
       })
       .then(stream => {
@@ -238,7 +239,6 @@ const exchange = data => {
 };
 
 const broadcastData = data => {
-  console.log(data);
   fetch('/sessions', {
     method: "POST",
     body: JSON.stringify(data),

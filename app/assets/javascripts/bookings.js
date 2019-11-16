@@ -23,10 +23,6 @@ jQuery(document).ready(function($) {
 	      }
 	    }
 	})
-	
-
-	
-	
 
 	calendars.render()
 })

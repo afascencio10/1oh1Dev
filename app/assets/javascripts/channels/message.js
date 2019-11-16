@@ -13,7 +13,8 @@ function createMessageChannel() {
           var url = $("#userImageUrl").text();
           setTimeout(function(){
             $('#chatScroll').scrollTop($('#chatScroll')[0].scrollHeight);
-          },500);
+          },500);          
+          $("#chat_form").trigger('reset');
           if(id == data.user_id)
           {
             //return "<p id=\""+ data.user_id+ "\"> <b>&emsp;&emsp;&emsp;" + data.user + ": </b>" + data.message + "</p>";

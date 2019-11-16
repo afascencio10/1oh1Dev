@@ -43,8 +43,10 @@
 *= require sessions
 *= require pre_sessions
 *= require in_sessions
+*= require projects
 *= require categories
 *= require markets
+*= require loading
 *= require guides
 *= require calendars
 *= require payment

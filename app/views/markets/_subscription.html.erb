@@ -1,0 +1,49 @@
+<section class="explore-subscriptions py-5">
+  <h1 class="text-center text-primary">Upgrade to a plan that works for you</h1>
+
+  <div class="subscriptions text-center mt-5">
+    <% @subscriptions.each do |subscription| %>
+        <% if subscription.price == 48 %>
+          <div id="subscription-<%= subscription.name.downcase%>" class="subscription d-inline-block shadow rounded mx-3 my-2 active">
+
+        <%else%>
+          <div id="subscription-<%= subscription.name.downcase%>" class="subscription d-inline-block shadow rounded mx-3 my-2">
+
+        <%end%>
+        <div class="mx-3 my-1 px-5 py-4">
+          <h4><%= subscription.name %></h4>
+          <p class="description font-weight-normal">
+            <em>
+              <%= subscription.description %>
+            </em>
+          </p>
+
+          <button
+              type="button"
+              class="btn btn-outline-secondary mt-4">$<%= subscription.price %>.00/<%= subscription.interval%></button>
+
+          <h5 class="mt-3"><%= subscription.offer %></h5>
+        </div>
+
+        <div class="px-2 py-2">
+          <hr class="m-0"/>
+
+          <h6 class="mt-4 px-3 text-left">Includes</h6>
+
+          <div class="mb-4 px-3">
+            <div class="d-inline-block align-top">
+              <i class="material-icons">check</i>
+            </div>
+            <div class="includes d-inline-block p-0 text-left ml-2 align-top">
+              <%= subscription.id %> hours of tokens every month
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+
+
+  <div class="text-center mt-4">
+    <button type="button" class="btn btn-light more-option-button">More options</button>
+  </div>
+</section>

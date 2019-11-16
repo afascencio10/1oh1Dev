@@ -1,0 +1,36 @@
+<section class="my-5">
+  <h3 class="my-5 c-black">Top Guides in <%= @firt_category_name_guide%></h3>
+
+  <div class="row my-4">
+    <% if @first_category_guide.empty? %>
+      <h6 class="my-7 c-black">No Guides Available</h6>
+    <% else %>
+      <% @first_category_guide.each do |guide|%>
+        <%= link_to guide_path(guide.id) do %>
+          <div class="col">
+            <div class="minimal-card-wrap text-left">
+              <div class="minimal-card border animating">
+                <div class="avatar center animating"
+                     style="background-image: url(<%= guide.profile.profile_photo %>);"></div>
+                <div class="avatar-shadow center"
+                     style="background-image: url(<%= image_path('avatar-shadow.png') %>);"></div>
+                <div class="cover"
+                     style="background-image: url(<%= guide.category.url %>);"></div>
+                <h5><%= guide.profile.user.firstname %>&nbsp; <%= guide.profile.user.lastname %></h5>
+                <h6><%= guide.profile.state %> , <%= guide.profile.country %></h6>
+                <div class="rateYo d-inline-block p-0 my-2"></div>
+                <span class="align-bottom fz-13">246</span>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+    <%end%>
+  </div>
+
+  <div class="row">
+    <div class="col text-right">
+      <button type="button" class="btn btn-link show-more-button">Show more</button>
+    </div>
+  </div>
+</section>

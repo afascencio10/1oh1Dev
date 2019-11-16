@@ -1,0 +1,40 @@
+<div class="modal fade"
+	id="preCheckoutDialog"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="preCheckoutDialog"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="logo-container">
+				<img height="35px" src="<%= image_path('icon.png') %>" alt="icon">
+				<span>
+					1oh1
+				</span>
+			</div>
+
+			<div class="row m-0 main-content align-items-center">
+				<div class="col text-center">
+					<img width="250px" src="<%= image_path('coin.png') %>" alt="coin">
+				</div>
+				<div class="col">
+					<p>
+						G-Coin
+					</p>
+					<p>
+						Amount: <span id="preCheckoutAmount">480</span>
+					</p>
+					<p>
+						Total: $<span id="preCheckoutTotal">48.00</span> USD
+					</p>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+			    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+			    <button type="button" class="btn btn-primary">Continue</button>
+			  </div>
+		</div>
+	</div>
+</div>

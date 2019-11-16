@@ -110,7 +110,7 @@ class ProfilesController < ApplicationController
       Category,
       params[:filterrific]
     ) or return
-   @categories = @filterrific.find.page(params[:page])
+    @categories = @filterrific.find.page(params[:page])
     respond_to do |format|
       format.html
       format.js
