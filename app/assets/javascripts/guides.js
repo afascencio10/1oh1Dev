@@ -9,6 +9,8 @@ jQuery(document).ready(function($) {
 	// initialize stars
 	$('.rateYo').rateYo(starConfig)
 
+	$('.time-picker').mdtimepicker()
+	
 	var timeout = null
 
 	$(".minimal-card-wrap").mousemove(function(e) {
@@ -36,4 +38,9 @@ jQuery(document).ready(function($) {
 		card.css({"transform":"scale(1)"});
 		avatar.css({"transform":"translate3d(-50%,-50%,10px) scale(0.75)"});
 	});
+
+	$('#arroundScheduleBtn').click(function () {
+		$(this).toggleClass('active')
+		$('.schedule-popup-wrap').toggleClass('d-none')
+	})
 })

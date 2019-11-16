@@ -43,10 +43,13 @@
 		}
 	}
 	.navigation-item-wrap-6.active {
-		transform: scale(1.5);
 		position: relative;
 		left: 14px;
 	}
+	.navigation-item-wrap-6.active .navigation-item{
+		transform: scale(1.5);
+	}
+
 	.navigation-item {
 		background-color: #dbdee3;
 		width: 70px;
@@ -546,4 +549,8 @@
 }
 .sizehelps {
 	font-size: 16px;
+}
+.textlegal{
+	text-align: justify;
+	margin-left: 13px;
 }

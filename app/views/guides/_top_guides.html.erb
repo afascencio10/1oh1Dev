@@ -1,126 +1,36 @@
 <section class="my-5">
-  <h3 class="my-4 c-black">Top Guides</h3>
+  <h3 class="my-5 c-black">Top Guides</h3>
 
-  <div class="card-slider owl-carousel">
-    <div class="custom-card card-normal my-3" >
-      <div class="has-bg" style="background-image: url(<%= image_path('Skills/business-3152586_640.jpg') %>);">
-        <div class="top-images">
-          <img src="<%= image_path('flags/united-states.png') %>" alt="">
-          <img src="<%= image_path('eng.jpeg') %>" alt="">
-        </div>
-
-      <div class="texts-wrap">
-        <h5 class="text-white">Make a contract</h5>
-      </div>
-
-      <div class="bottom-image">
-        <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
-      </div>
-    </div>
-
-    <h5 class="text-right">Raf Abed</h5>
-    <div class="text-right">
-      <div class="rateYo d-inline-block p-0"></div>
-
-      <span class="d-inline-block star-counter">453</span>
-    </div>
+  <div class="row my-4">
+    <% if @top_guides.empty? %>
+      <h6 class="my-7 c-black">No Guides Available</h6>
+    <% else %>
+      <% @top_guides.each do |guide|%>
+        <%= link_to guide_path(guide.guide_id) do %>
+          <div class="col">
+            <div class="minimal-card-wrap text-left">
+              <div class="minimal-card border animating">
+                <div class="avatar center animating"
+                     style="background-image: url(<%= guide.profile.profile_photo %>);"></div>
+                <div class="avatar-shadow center"
+                     style="background-image: url(<%= image_path('avatar-shadow.png') %>);"></div>
+                <div class="cover"
+                     style="background-image: url(<%= guide.guide.category.url %>);"></div>
+                <h5><%= guide.profile.user.firstname %>&nbsp; <%= guide.profile.user.lastname %></h5>
+                <h6><%= guide.profile.state %> , <%= guide.profile.country %></h6>
+                <div class="rateYo d-inline-block p-0 my-2"></div>
+                <span class="align-bottom fz-13">246</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 
-  <div class="custom-card card-normal my-3" >
-    <div class="has-bg" style="background-image: url(<%= image_path('Skills/pure-843893_640.jpg') %>);">
-      <div class="top-images">
-        <img src="<%= image_path('flags/united-states.png') %>" alt="">
-        <img src="<%= image_path('eng.jpeg') %>" alt="">
-      </div>
-
-    <div class="texts-wrap">
-      <h5 class="text-white">Smooking</h5>
-    </div>
-
-    <div class="bottom-image">
-      <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
-    </div>
-  </div>
-
-  <h5 class="text-right">Raf Abed</h5>
-  <div class="text-right">
-    <div class="rateYo d-inline-block p-0"></div>
-
-    <span class="d-inline-block star-counter">453</span>
-  </div>
-</div>
-
-<div class="custom-card card-normal my-3" >
-    <div class="has-bg" style="background-image: url(<%= image_path('Skills/cigar-3768640_640.jpg') %>);">
-      <div class="top-images">
-        <img src="<%= image_path('flags/united-states.png') %>" alt="">
-        <img src="<%= image_path('eng.jpeg') %>" alt="">
-      </div>
-
-    <div class="texts-wrap">
-      <h5 class="text-white">Woodworking</h5>
-    </div>
-
-    <div class="bottom-image">
-      <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
-    </div>
-  </div>
-
-  <h5 class="text-right">Raf Abed</h5>
-  <div class="text-right">
-    <div class="rateYo d-inline-block p-0"></div>
-
-    <span class="d-inline-block star-counter">453</span>
-  </div>
-</div>
-
-    <div class="custom-card card-normal my-3" >
-      <div class="has-bg" style="background-image: url(<%= image_path('Skills/poly.jpg') %>);">
-        <div class="top-images">
-          <img src="<%= image_path('flags/united-states.png') %>" alt="">
-          <img src="<%= image_path('eng.jpeg') %>" alt="">
-        </div>
-
-        <div class="texts-wrap">
-          <h5 class="text-white">Intermediate Photoshop</h5>
-        </div>
-
-        <div class="bottom-image">
-          <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
-        </div>
-      </div>
-
-      <h5 class="text-right">Raf Abed</h5>
-      <div class="text-right">
-        <div class="rateYo d-inline-block p-0"></div>
-
-        <span class="d-inline-block star-counter">453</span>
-      </div>
-    </div>
-
-
-    <div class="custom-card card-normal my-3" >
-      <div class="has-bg" style="background-image: url(<%= image_path('Skills/poly.jpg') %>);">
-        <div class="top-images">
-          <img src="<%= image_path('flags/united-states.png') %>" alt="">
-          <img src="<%= image_path('eng.jpeg') %>" alt="">
-        </div>
-
-        <div class="texts-wrap">
-          <h5 class="text-white">Advance Photoshop</h5>
-        </div>
-
-        <div class="bottom-image">
-          <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
-        </div>
-      </div>
-
-      <h5 class="text-right">Raf Abed</h5>
-      <div class="text-right">
-        <div class="rateYo d-inline-block p-0"></div>
-
-        <span class="d-inline-block star-counter">453</span>
-      </div>
+  <div class="row">
+    <div class="col text-right">
+      <button type="button" class="btn btn-link show-more-button">Show more</button>
     </div>
   </div>
 </section>

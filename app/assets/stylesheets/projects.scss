@@ -1,3 +1,74 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.project-cards-wrap {
+	.col {
+		max-width: 305px;
+		padding: 0;
+	}
+}
+.project-card {
+	border: 2px solid rgb(243, 243, 243);
+	border-radius: 10px;
+	display: inline-block;
+	width: 305px;
+	overflow-x: hidden;
+	.image-container {
+		width: 100%;
+		height: 300px;
+		background-size: cover;
+	}
+	.headline-subtitle, .tags, .headline {
+		color: #000;
+	}
+	.headline {
+		font-weight: 600;
+		font-size: 24px;
+	}
+	.headline-subtitle {
+		font-weight: 400;
+	}
+	.headline-subtitle {
+		font-size: 16px;
+	}
+	.tags {
+		font-size: 14px;
+	}
+	.avatars-wrap {
+		margin-left: 10px;
+	}
+	.avatars {
+		display: inline-block;
+		position: relative;
+		left: -10px;
+		.avatar {
+			background-size: cover;
+			width: 25px;
+			height: 25px;
+			display: inline-block;
+			border-radius: 50%;
+		}
+	}
+}
+
+.cards-show-more {
+	button {
+		letter-spacing: 1px;
+		font-size: 22px;
+		text-transform: none;
+		color: rgb(128, 128, 128)!important;
+		font-weight: 300;
+	}
+}
+.projects-container {
+	h3 {
+		color: #000;
+		font-weight: 600;
+	}
+
+	p {
+		color: #000;
+		font-size: 16px;
+		font-weight: 400;
+	}
+}
