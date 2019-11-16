@@ -1,0 +1,26 @@
+<section class="my-5">
+  <h3 class="my-5 c-black">Popular Categories With Explores</h3>
+
+  <div class="row my-4">
+    <%@world_popular_explore_category.each do |category|%>
+      <%= link_to category_path(category.name.downcase) do %>
+        <div class="col center text-left">
+          <div class="card-skill border">
+            <div class="cover"
+                 style="background-image: url(<%= category.url %>);">
+            </div>
+            <h5 class="font-weight-bold">
+              <%= category.name %>
+            </h5>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+
+  <div class="row">
+    <div class="col text-right">
+      <button type="button" class="btn btn-link show-more-button">Show more</button>
+    </div>
+  </div>
+</section>

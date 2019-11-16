@@ -92,13 +92,13 @@ class BookingsController < ApplicationController
     if @booking.save
       @booking.video_sessions.create(profile_id: Profile.find_by(:user_id => current_user.id).id)
       @booking.video_sessions.create(profile_id: @other_profile.id)
-      flash[:notice] = "Booking Created"
-      render js: "window.location='#{calendars_path}'"
+      # flash[:notice] = "Booking Created"
+      # render js: "window.location='#{calendars_path}'"
     end
 
 
 
-    # redirect_to profile_booking_path(Profile.find_by(:user_id => current_user.id), @booking,  :peer_id => @other_profile.id)
+    redirect_to profile_booking_path(Profile.find_by(:user_id => current_user.id), @booking,  :peer_id => @other_profile.id)
 
 
   end

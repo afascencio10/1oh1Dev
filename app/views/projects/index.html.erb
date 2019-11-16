@@ -1,4 +1,56 @@
-<p id="notice"><%= notice %></p>
+<%= render 'landing/navbar' %>
+<%= render 'cover' %>
+
+<section class="container projects-container">
+  <div class="row border-bottom pb-5 mt-5">
+    <div class="col">
+      <h3>Find a project</h3>
+      <p>Search projects of all types in and in all stages from all over the world.</p>
+    </div>
+    <div class="col">
+      <h3>Work together</h3>
+      <p>Connect, communicate and collaborate. Leverage the vast skills of users to shorten timeline and increase innovation.</p>
+    </div>
+    <div class="col">
+      <h3>Limitless build</h3>
+      <p>Access to user skills lets you build products, relationships and new skills, You're now only limited by you vison.</p>
+    </div>
+  </div>
+
+  <h3 class="my-5">Popular projects</h3>
+
+  <%= render 'cards' %>
+
+  <h3 class="my-5">Popular in your country</h3>
+
+  <%= render 'cards' %>
+
+  <h3 class="my-5">Neon</h3>
+
+  <%= render 'cards' %>
+
+  <h3 class="my-5">Lighting</h3>
+
+  <%= render 'cards' %>
+
+  <h3 class="my-5">Spacesuits</h3>
+
+  <%= render 'cards' %>
+
+  <h3 class="my-5">Colur Theory</h3>
+
+  <%= render 'cards' %>
+
+  <h3 class="my-5">Photoshop</h3>
+
+  <%= render 'cards' %>
+</section>
+
+<button class="btn show-more-button-wide mt-5">
+   Load more
+</button>
+
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>Projects</h1>
 
@@ -22,4 +74,4 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'New Project', new_project_path %> -->

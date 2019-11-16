@@ -1,34 +1,185 @@
 <script src="/javascripts/signaling-server.js" type="text/javascript"></script>
-<h1>Video Session Page</h1>
-Peer_id: <%= @other_profile.id %>
-Booking_id: <%= @booking.id %>
-End time: <%= local_time(@end,'%B %e, %Y %l:%M %P') %>
-
-<h2 id="demo"></h2>
-
-<div class="container">
-<div class="row">
-  <div class="col-md-8">
-    <h1>Video Conferencing</h1>
-
-    <div>User ID:
-    <span id="current-user"><%= params[:profile_id] %></span>
-    <span id="session_id" hidden><%= params[:id] %></span>
+<%= local_time(@end,'%B %e, %Y %l:%M %P') %>
+<span id="current-user" hidden><%= params[:profile_id] %></span>
+<span id="session_id" hidden><%= params[:id] %></span>
+<div class='inSession'>
+  <div class="roomContent" id="remote-video-container"><!--Content--></div>
+  <div class="toolsIconsSession sessionHide" onclick="handleJoinSession()">
+  	<div class="sessionIconsMenuCont">
+  		<img src="<%= image_path('Icons/iconsmenu.png')  %>" class="sessionIconsMenu">
+  	</div>
+    <div class="partnerName">
+      <div>
+        <%= User.find(params[:peer_id]).firstname %> &nbsp;<%= User.find(params[:peer_id]).lastname%>
+        <div class="timeRemaining">
+          <div id="demo">
+          </div>
+          <div>
+            Remaining
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div id="remote-video-container"></div>
+    <div class="transparent1oh1">
+      <img src="<%= image_path('iconT.png')  %>" class="transparent1oh1Icon">
+    </div>
+  	<div class="sessionIconsNoVideoCont">
+  		<img src="<%= image_path('Icons/nvideo.png')  %>" class="sessionIconsNoVideo">
+  	</div>
+    <div class="sessionIconsEndCallCont" onclick="handleLeaveSession()">
+      <img src="<%= image_path('Icons/endCallW.png')  %>" class="sessionIconsEndCall">
+    </div>
+  	<div class="sessionIconsMuteCont">
+  		<img src="<%= image_path('Icons/mute.png')  %>" class="sessionIconsMute">
+  	</div>
+  	<div class="sessionIconsScreenSharingCont">
+  		<img src="<%= image_path('Icons/screensharing.png')  %>" class="sessionIconsScreenSharing">
+  	</div>
+    <div class="sessionIconsExpandCont">
+      <img src="<%= image_path('Icons/expand.png')  %>" class="sessionIconsExpand">
+    </div>
+  </div>
+  <div class="partnerWindow">
     <video id="local-video" autoplay></video>
-
-    <hr />
-
-    <button onclick="handleJoinSession()">
-    Join Room
-    </button>
-
-    <button onclick="handleLeaveSession()">
-    Leave Room
-    </button>
-
+    <img src="<%= image_path('People/a.jpg')  %>" class="partnerWindowView">
+  </div>
+  <div class="more_time_question"></div>
+  <div class="more_time_approve"></div>
+  <div class="more_time_sent"></div>
+  <div class="more_time_options"></div>
+  <div class="more_time_conflict">
+    <div class="gridTimeConflict">
+            <div class="spanTimeConflict">
+                <span class="titleTimeConflict">Time Conflict</span>
+            </div>
+            <div class="paragraphConflict">
+                <p class="txtConflict">The extra time request cannot be processed as it concflictswith other appointments in either yourso or the other user's schedule.</p>
+            </div>
+            <div class="gridBtnConflict">
+                <div class="bntBackConflict">
+                    <a href="#" class="linkConflictBack">Back</a>
+                </div>
+                <div class="bntCloseConflict">
+                    <a href="#" class="linkConflictClose">Close</a>
+                </div>
+            </div>
+        </div>
+  </div>
+  <!--Fiveminutes-->
+  <div class="more_time_conflict_5minutes modal-float">
+  <div class="gridTimeConflict">
+          <div class="spanTimeConflict text-center">
+              <span class="titleTimeConflict">Five Minutes Remaining</span>
+          </div>
+          <div class="paragraphConflict text-center semi-bold">
+              <p class="txtConflict">Request more time?</p>
+          </div>
+          <div class="gridBtnConflict">
+              <div class="bntBackConflict">
+                  <a href="#" class="linkConflictBack">Yes</a>
+              </div>
+              <div class="bntCloseConflict">
+                  <a href="#" class="linkConflictClose">No</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--Remaining-->
+  <div class="more_time_conflict_remaining modal-float">
+  <div class="grid-withoutgap">
+          <div class="spanTimeConflict text-center">
+              <span class="titleTimeConflict">4:25 remaining!</span><br>
+              <small class="semi-bold">Request more time?</small>
+          </div>
+          <div class="paragraphConflict coin p-10 semi-bold border-grey">
+              <p class="txtConflict d-inline">Your Chest:160<%=  image_tag('coin.png')%></p>
+          </div>
+          <div class="paragraphConflict coin p-5 grid-values text-center semi-bold border-grey">
+            <p class="txtConflict">+5 Minutes</p>
+            <p class="txtConflict d-inline">10<%=  image_tag('coin.png')%></p>
+          </div>
+          <div class="paragraphConflict coin p-5 grid-values text-center semi-bold border-grey">
+            <p class="txtConflict">+10 Minutes</p>
+            <p class="txtConflict d-inline">20<%=  image_tag('coin.png')%></p>
+          </div>
+          <div class="paragraphConflict coin p-5 grid-values text-center semi-bold border-grey">
+            <p class="txtConflict">+15 Minutes</p>
+            <p class="txtConflict d-inline">30<%=  image_tag('coin.png')%></p>
+          </div>
+          <div class="paragraphConflict coin p-5 grid-values text-center semi-bold border-grey">
+            <p class="txtConflict">+20 Minutes</p>
+            <p class="txtConflict d-inline">40<%=  image_tag('coin.png')%></p>
+          </div>
+          <div class="paragraphConflict coin p-5 grid-values-one text-center semi-bold border-grey">
+            <p class="txtConflict d-inline">New Balance: 140 <%=  image_tag('coin.png')%></p>
+            <p class="txtConflict"></p>
+          </div>
+          <div class="gridBtnConflict">
+              <div class="bntBackConflict">
+                  <a href="#" class="linkConflictBack">Cancel</a>
+              </div>
+              <div class="bntCloseConflict">
+                  <a href="#" class="linkConflictClose">Send Request</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--END-->
+  <!--Fiveminutes-->
+  <div class="more_time_conflict_request modal-float">
+  <div class="gridTimeConflict">
+          <div class="spanIconpaper text-center">
+            <%=  image_tag('icons8-email-send-100.png')%>
+          </div>
+          <div class="paragraphConflict text-center semi-bold">
+              <p class="txtConflict">Request Send</p>
+          </div>
+      </div>
+  </div>
+  <!--ENd-->
+  <!--Extra time request-->
+  <div class="more_time_conflict_extra_request modal-float">
+  <div class="gridTimeConflict">
+          <div class="spanTimeConflict text-center">
+              <span class="titleTimeConflict">Extra Time Request</span>
+          </div>
+          <div class="paragraphConflict mb-0 semi-bold">
+              <p class="txtConflict mb-0">Request for:</p>
+          </div>
+          <div class="paragraphConflict coin p-5 grid-values text-center semi-bold">
+            <p class="txtConflict">+20 Minutes</p>
+            <p class="txtConflict d-inline">+20<%=  image_tag('coin.png')%></p>
+          </div>
+          <div class="gridBtnConflict">
+              <div class="bntBackConflict">
+                  <a href="#" class="linkConflictBack">Approve</a>
+              </div>
+              <div class="bntCloseConflict">
+                  <a href="#" class="linkConflictClose">Decline</a>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
-</div>
+
+<script type="text/javascript">
+	var timedelay = 1;
+	var _delay = setInterval(delayCheck, 500);
+
+	$('.inSession').on('mousemove', showAllEvent);
+
+	function delayCheck() {
+	  if (timedelay == 5) {
+	    $('.sessionHide').removeClass('showSessionBar');
+	    timedelay = 1;
+	  }
+	  timedelay = timedelay + 1;
+	}
+
+	function showAllEvent() {
+	  $('.sessionHide').addClass('showSessionBar');
+	  timedelay = 1;
+	  clearInterval(_delay);
+	  _delay = setInterval(delayCheck, 500);
+	}
+</script>
