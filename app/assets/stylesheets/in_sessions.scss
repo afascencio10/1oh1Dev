@@ -94,7 +94,10 @@ hangouts-like layout*/
         }
 
         .description{
+            margin: 0;
+            font-style: normal;
             margin-left: 4rem;
+            color: #fff;
         }
     }
 
@@ -440,4 +443,18 @@ hangouts-like layout*/
 
 time{
     display: none;
+}
+
+#sessionEnd{
+
+    & .modal-dialog{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        & .modal-content{
+            align-self: center;
+        }
+    }
 }
