@@ -30,9 +30,19 @@
        </div>
      </div>
       <% if @projects.blank? %>
-         <div class="emptyReviews">
-            <i data-toggle="modal" data-target="#projectsModal">Upload your Projects</i>
-         </div> 
+            <div class="gridProfileActivity">
+              <div class="titleactivityProfile">
+                <span class="titleYetAdd">Nothing added yet</span>
+              </div>
+              <div class="gridImgActivity">
+                <div class=""></div>
+                <div class="">
+                  <img src="<%= image_path('Icons/yet.png') %>" alt="Image" class="imgYet">
+                </div>
+                <div class=""></div>
+              </div>
+            </div>
+
       <% else %>         
          <% @projects.each do|project| %>
            <div class="projectContainer">
