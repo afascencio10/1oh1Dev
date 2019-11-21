@@ -21,9 +21,19 @@
     <div class="interestsContent">
         <div class="interestsImages">
             <% if @guides.blank? %>
-              <div class="emptyInterests">
-                  Update your Skills
-              </div>
+            <div class="gridGuidingActivity">  
+                    <button class="btnAddActivity">add</button>
+                <div class="titleactivityProfile toptitleActivity">
+                  <span class="titleYetAdd">Nothing added yet</span>
+                </div>
+                <div class="gridImgActivity">
+                    <div class=""></div>
+                    <div class="">
+                        <img src="<%= image_path('Icons/yet.png') %>" alt="Image" class="imgYet">
+                    </div>
+                    <div class=""></div>
+                </div>
+            </div>
             <% else %>
                <% @guides.each do|guide| %>
                   <div class="interestsImage">

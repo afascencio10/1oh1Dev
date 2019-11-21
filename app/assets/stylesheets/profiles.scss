@@ -271,7 +271,7 @@
 .interestsContent{    
     display: grid;
     grid-template-rows: auto 35px;
-    grid-template-columns: 35px 80% auto;
+    grid-template-columns: 35px auto 35px;
 }
 .interestsImages{
     grid-column: 2/3;
@@ -1611,4 +1611,52 @@ input:checked + .slider:before {
   & .modal-dialog{
     min-width: 60% !important;
   }
+}
+
+//gridProfileActivity
+.gridProfileActivity{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-template-columns:1fr;
+}
+.gridImgActivity{
+  display: grid;
+  grid-template-columns: 25fr 50fr 25fr;
+  margin-top: 15px;
+}
+.titleactivityProfile {
+  justify-self: center;
+  align-self: center;
+}
+.titleYetAdd {
+  font-size: 23px;
+  color: #000000;
+  font-weight: 700;
+}
+.imgYet {
+  width: 90%;
+}
+.celverde {
+  border: solid #1f3ff8;
+}
+
+.gridGuidingActivity {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  grid-template-columns: 1fr;
+  border: solid #ee0f0f;
+}
+.btnAddActivity {
+  background: #8cc63f;
+  color: #ffffff;
+  border: #8cc63f;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 8vw;
+  height: 38px;
+}
+.toptitleActivity {
+  margin-top: 23px;
 }
