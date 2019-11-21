@@ -1646,7 +1646,6 @@ input:checked + .slider:before {
   grid-column-start: 1;
   grid-column-end: -1;
   grid-template-columns: 1fr;
-  border: solid #ee0f0f;
 }
 .btnAddActivity {
   background: #8cc63f;
