@@ -51,6 +51,7 @@
 *= require calendars
 *= require payment
 *= require chests
+*= require searchProject
 *= require_self
 *= require fullcalendar/core/main
 *= require fullcalendar/daygrid/main
