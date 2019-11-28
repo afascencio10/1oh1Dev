@@ -1659,3 +1659,56 @@ input:checked + .slider:before {
 .toptitleActivity {
   margin-top: 23px;
 }
+@media (max-device-width: 767px) {
+.imgView  {
+  margin-left: 34%;
+  margin-bottom: 20px;
+  border: 10px solid #ffffff;
+}
+.names {
+  margin-top: 22px;
+  margin-bottom: -19px;
+  text-align: center;
+  margin-left: 25%;
+  font-weight: 700;
+  font-size: 22px;
+  font-weight: bold;
+}
+.mediacity {
+  margin-left: 44px;
+  padding-top: 20px;
+  text-align: center;
+}
+.medialanguages {
+  margin-left: 43px;
+  padding-top: 15px;
+  text-align: center;
+}
+.mediadescription{
+  text-align: center;
+  padding-top: 15px;
+  margin-left: 43px;
+}
+.interestsImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  border: 1px solid #fc0808;
+}
+.imagesInterests {
+  width:100%;
+  height: auto;
+}
+.btnExit {
+  display: none;
+}
+.interestsTitle {
+  font-size: 25px;
+  font-weight: bold;
+  color: #000000;
+}
+.btnAddActivity {
+  padding: 4px;
+  width: 100px
+}
+}
