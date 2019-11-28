@@ -22,7 +22,7 @@
     <div class="cel"><i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">create</i>
       <div class="cel buttonMessage"><button type="button" class="btnMessage">Message</button></div> 
     </div>  
-    <div class="cel pcity"><p class="city">
+    <div class="cel pcity mediacity"><p class="city">
       <% if @profile.state.nil? && @profile.country.nil? %>
      Location : None
      <% else %>
@@ -31,7 +31,7 @@
     </p></div>
     <div class="celd"></div>
     <div class="cel buttonCalendar"><button type="button" class="btnCalendar">Calendar</button></div>
-    <div class="pLanguages"><p class="languages">
+    <div class="pLanguages medialanguages"><p class="languages">
       <% if @profile.languages.empty? %>
         None
       <% else %>
@@ -39,7 +39,7 @@
       <% end %>
     </p></div>
     <div></div>
-    <div class="pDescription"><p class="description"> 
+    <div class="pDescription mediadescription"><p class="description"> 
       <%if @profile.bio.nil? %>
         Bio not updated
       <% else %>
@@ -57,9 +57,9 @@
     <div class="cel"></div> -->
     <header class="profile-tab">
       <div id="material-tabs">
-          <a id="tab1-tab" href="#tab1" class="active">Explore</a>
-          <a id="tab2-tab" href="#tab2">Guide</a>
-          <a id="tab3-tab" href="#tab3">Projects</a>
+          <a id="tab1-tab" href="#tab1" class="active"> 27 <br>Explore</a>
+          <a id="tab2-tab" href="#tab2">639<br>Guide</a>
+          <a id="tab3-tab" href="#tab3">432<br>Projects</a>
           <span class="yellow-bar"></span>
       </div>
     </header>

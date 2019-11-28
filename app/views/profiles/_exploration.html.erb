@@ -77,7 +77,7 @@
       <div class="cel"></div>                 
     </div>
     <div class="interestsHeader">
-        <div class="interestsTitle">Interests</div>
+        <div class="interestsTitle">Intrests</div>
         <div class="interestsIcon">
             <a href="#">
                 <img data-toggle="modal" data-target="#categoriesModal" class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
@@ -87,7 +87,13 @@
     <div class="interestsContent">
         <div class="interestsImages">
             <% if @explores.blank? %>
-            <div class="gridGuidingActivity">  
+            <div class="interestsImage">
+                    <img class="imagesInterests" src="<%= image_path('Skills/jetliner-1767857.jpg')%>">
+            </div>
+            <div class="interestsImage">
+                    <img class="imagesInterests" src="<%= image_path('Skills/jetliner-1767857.jpg')%>">
+            </div>
+         <div class="gridGuidingActivity">  
                     <button class="btnAddActivity">add</button>
                 <div class="titleactivityProfile toptitleActivity">
                   <span class="titleYetAdd">Nothing added yet</span>
