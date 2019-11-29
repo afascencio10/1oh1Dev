@@ -1661,9 +1661,10 @@ input:checked + .slider:before {
 }
 @media (max-device-width: 767px) {
 .imgView  {
-  margin-left: 34%;
-  margin-bottom: 20px;
+  margin-bottom: 46%;
   border: 10px solid #ffffff;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .names {
   margin-top: 22px;
@@ -1710,5 +1711,22 @@ input:checked + .slider:before {
 .btnAddActivity {
   padding: 4px;
   width: 100px
+}
+.pname {
+  position: initial;
+}
+#description{
+  position: relative;
+  margin-inline-start: -1px;
+  margin-right: 0%;
+  padding-left: 5%;
+  margin-left: 0%;
+}
+
+.profile-tab #material-tabs a {
+  width: 29vw
+}
+.profile-tab {
+  width: 90vw;
 }
 }
