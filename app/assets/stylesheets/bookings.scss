@@ -447,3 +447,17 @@
 .mb-0{
 	margin-bottom: 0;
 }
+@media (max-device-width: 767px) {
+	#tab1-tab.active ~ span.yellow-bar{
+		left: 0vw;
+		width: 30vw;
+	  }
+	#tab2-tab.active ~ span.yellow-bar {
+		left: 30vw;
+		width: 30vw;
+	}
+	#tab3-tab.active ~ span.yellow-bar{
+		left: 60vw;
+		width: 30vw;
+	}
+}
