@@ -1,0 +1,61 @@
+
+<!-- Modal -->
+<div class="modal fade timeUpModal" id="timesUp" tabindex="-1" role="dialog" aria-labelledby="timesUp" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- --  -->
+      <div class="modal-header">    
+        <span class="modal-title titleModalTimesUp text-center" id="exampleModalLabel">Times up!</span>
+      </div>
+      <div class="modal-body grid-timeUpModal">
+        <!-- --  -->
+        <div class="main">
+          <div class="top-body">
+            <span class="notice">Please rate your experience with</span>
+            <span class="name">Dan Black</span>
+          </div>
+            <!-- person image  -->
+          <div class="midle-body">
+            <div class="imageContainer">
+              <%= image_tag('People/adult.jpg', :class => "img-fluid") %>
+            </div>
+            <!-- starts  -->
+            <div class="startsContainer">
+                <i class="material-icons md-36"> start</i>
+                <i class="material-icons md-36"> start</i>
+                <i class="material-icons md-36"> start</i>
+                <i class="material-icons md-36"> start</i>
+                <i class="material-icons md-36"> start</i>
+            </div>
+          </div>
+
+          <div class="end-body">
+            <div class="comments">
+              <form action="">
+                <input type="text" placeholder="Leave a comment" class="form-control commentField">
+                <button class="btn btn-submit w-100">Submit</button>
+              </form>
+            </div>
+
+            <div class="last-text-body">
+              <span data-dismiss="modal" class="text-secondary">Rate later</span>
+            </div>
+          </div>
+        </div>
+        <!-- --  -->
+        <div class="container-right-modal">
+            <!-- button dropdown -->
+            <div class="btn-group dropleft">
+              <!-- Activator -->
+              <i class="material-icons icon-3 icon-dropdown-option" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup ="true" aria-expanded = "false">more_vert</i>
+              <!-- Options -->
+                <div class="dropdown-menu">
+                  Report
+                </div>
+            </div>
+        </div>
+        <!-- --  -->
+      </div>
+    </div>
+  </div>
+</div>

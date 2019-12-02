@@ -1,0 +1,73 @@
+<h5 class="tell-us">Tell us about your self</h5>
+<%= form_for(@profile) do |f| %>
+	<div class="form-row">
+		<div class="form-group col-md-6 custom-from-group">
+		  <label for="first-name">First Name</label>
+		  <input type="text" class="form-control" id="first-name" readonly placeholder="<%= current_user.firstname.capitalize %>">
+		</div>
+		<div class="form-group col-md-6 custom-from-group">
+		  <label for="last-name">Last Name</label>
+		  <input type="text" class="form-control" id="last-name"  readonly placeholder="<%= current_user.lastname.capitalize %>">
+		</div>
+	</div>
+	<input type="hidden" name="first_signup" value="true" >
+
+	<div class="form-row">
+		<div class="form-group custom-from-group">
+		  <label for="birth-day">Date of birth</label>
+		  <input type="text" class="form-control date-picker" required id="birth-day" name="birth_date" placeholder="YYYY/MM/DD">
+		</div>
+	</div>
+
+	<div class="form-row">
+		<div class="form-group col-md-4 custom-from-group pl-0">
+			<label>Country</label>
+			<select id="countries" class="custom-select" name="country">
+				<option value="" selected="">Select Your Country</option>
+				<% CS.countries.each do |key, value| %>
+				<option value="<%= key %>"><%= value %></option>
+				<% end %>
+			</select>
+		</div>
+
+		<div class="form-group col-md-4 custom-from-group">
+			<label>State/Provience</label>
+			<select id="states-of-country" class="custom-select" name="state">
+				<option value="" selected="">Select Your Country</option>
+			</select>
+
+
+		</div>
+
+		<div class="form-group col-md-4 custom-from-group pr-0">
+		  <label for="city">City</label>
+			<select id="cities-of-state" class="custom-select" name="city">
+				<option value="" selected="">Select Your Country</option>
+			</select>
+
+		</div>
+	</div>
+
+	<div class="form-row position-relative">
+
+		<div class="form-group custom-from-group" id="select-languages-wrap">
+		    <label for="birth-day">Spoken Language(s)</label>
+				<%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select"}%>
+
+		</div>
+
+		<button type="button" class="btn btn-link" id="addLanguageBtn">Add+</button>
+	</div>
+
+	<div class="form-row">
+		<div class="form-group custom-from-group w-100">
+		    <label for="about">About</label>
+		    <textarea class="form-control" placeholder="Tell us a little bit about yourself" id="about" name="bio" rows="3"></textarea>
+		</div>
+	</div>
+
+	<div class="form-row justify-content-end mb-5" id="action-buttons">
+		<button class="btn btn-success p-2" type="submit" >Next</button>
+	</div>
+
+<% end %>

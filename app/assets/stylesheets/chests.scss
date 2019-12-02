@@ -288,4 +288,44 @@ counter and table section*/
 	}
 }
 
+// Mobile classes 
+@media (max-device-width: 767px) {
+	
+	.sectionContent{
 
+		& .chestHeader{
+			margin-top: 2rem;
+		}
+
+		& .chestBoxes{
+			width: 100vw;
+			grid-template-columns: 1fr;
+			padding: 2rem;
+			margin: 0;
+			gap: 20px;
+	
+			& .balanceBox{
+				margin: 0;;
+			}
+
+			& .roleBoxes{
+				grid-gap: 10px;
+			}
+
+		}
+
+		& .chestGraph{
+			margin-top: 8%;
+			margin-bottom: 10%;
+			grid-template-columns: 1fr;
+			width: 100vw;
+			padding: 2rem;
+		}
+
+		& .chestStats{
+			grid-template-columns: repeat(2,1fr);
+			grid-gap: 8px;
+			padding: 2rem;
+		}
+	}
+}

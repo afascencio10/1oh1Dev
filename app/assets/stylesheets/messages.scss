@@ -134,6 +134,44 @@
   display:none;
 }
 
+#filterrific_results #filterrific_results > :first-child {
+  margin-left: 13%;
+}
+.contactListScroll {
+  height: calc(73vh - 27px);
+  overflow-y: scroll;
+}
+
+#filterrific_results {
+  height: 73vh;
+  
+  & .counterMessage{
+    margin-left: 13%;
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-size: 16px;
+    & b {
+      font-family: 'Source Sans Pro';
+      font-weight: 300;
+      font-size: 16px;
+    }
+  }
+}
+
+.contactCounter {
+  margin-left: 13%;
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-size: 16px;
+  & b {
+      font-family: 'Source Sans Pro';
+      font-weight: 300;
+      font-size: 16px;
+    }
+}
+
+
+
 
 .chatHeader{
   position: relative;
@@ -242,7 +280,7 @@
     margin-left: 13%;
     margin-right: 2%;  
 }
-.contactCard .active{
+.contactCardActive{
   position: relative;
   margin-left: 2%;
   height: 90px;
@@ -250,6 +288,10 @@
   box-shadow: 2px 50px 50px -14px rgba(0,0,0,0.37);
   z-index: 1;
   transition: .1s;
+  background: #fff;
+}
+.gridContactActive{
+  margin-left: 0% !important;
 }
 .messagesTitle{
   font-family: 'Source Sans Pro', sans-serif;
@@ -499,6 +541,7 @@ padding: 10px;
 position: relative;
 font-size: 12px;
 color: #000000;
+min-width: 50px;
 }
 .msg_cotainer_send{
 font-family: 'Open Sans', sans-serif;

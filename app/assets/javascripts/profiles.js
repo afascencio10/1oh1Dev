@@ -64,7 +64,7 @@ jQuery(document).ready(function($) {
 									} else
 									{
 										data.forEach(function(i) {
-											opt += '<option value="+ i +">' + i + '</option>';
+											opt += '<option value="'+ i +'">' + i + '</option>';
 											cities_of_state.html(opt);
 										});
 									}

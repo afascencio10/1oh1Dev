@@ -278,11 +278,11 @@
 .detailsCancellationText{
     font-weight: bolder;
 }
+
 .isHide {
     height: auto;
     width: 100%;    
     color: #000;
-    background: #ffffff;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
@@ -378,59 +378,56 @@
     color: #ee5050;
 }
 
-.toolsIcons {
+.customPreSession{
+    background-color: transparent !important;
+}
+
+.containerSessionVid .toolsIcons {
     position: absolute;
-    display: grid;
-    grid-template-columns: repeat(11,1fr);
-    grid-template-rows: repeat(10,1fr);
     width: 100%;
     height: 100%;
-    justify-content: center;
     top: 0;
     right: 0;
-    background: none;
+    background-color: red;
+
+    & .callIcons{
+        position: absolute;
+        margin-top: 32%;
+        width: 3rem;
+        border: 2px solid white;
+        border-radius: 100%;
+        padding: 1%;
+    }
 
     & .icon-1{
-        grid-column: 6/7;
-        justify-self: start;
-        align-self: start;
-        grid-row: 5/6;
+        margin-left: 44%;
 
-        & img{
-           min-width: 85%;
-        }
     }
 
     & .icon-2{
-        grid-column: 7/8;
-        justify-self: start;
-        align-self: start;
-        grid-row: 5/6;
+        margin-left: 54%;
 
-        & img{
-            min-width: 85%;
-        }
     }
 
     & .icon-3{
-        grid-column: 9/10;
-        grid-row: 5/6;
-        justify-self: center;
-
-        & img{
-            width: 25%;
-            filter: invert(100%);
-            margin-left: 35%;
-        }
+        margin-left: 81%;
+        color: #ffff;
+        margin-top: 34%;
     }
-}
 
-.callIcons {
-    background: #fff;
-    border-radius: 50%;
 }
 
 // Section - index 
+.preSessionSection{
+    background-color: #fafafa;
+}
+
+.brand1oh1{
+    position: absolute;
+    width: 6rem !important;
+    margin-left: 1%;
+}
+
 .gridSessionMain{
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -438,6 +435,7 @@
 
 .wrapCardSession{
     padding: 7% 11%;
+    grid-column: 2/3;
 }
 
 .sessionCardCustom{
@@ -446,7 +444,7 @@
     box-shadow: 0 4px 6px #888686 !important;
     background-color: #fff !important;
     padding: 0;
-    height: 84vh !important;
+    height: 36rem !important;
     display: grid;
     grid-template-rows: 80% 20%;
 
@@ -481,10 +479,11 @@
 
 
                 & .title{
-                    font-size: .9rem;
+                    font-size: .8rem;
                     align-self: end;
                     justify-self: start;
                     font-weight: bold;
+                    margin-bottom: 0;
                 }
 
                 & .descriptionSession{
@@ -503,11 +502,13 @@
             & .desc-top{
                 align-self: end;
                 margin-left: 25%;
+                font-weight: 500;
             }
 
             & .desc-bottom{
                 align-self: start;
                 margin-left: 25%;
+                font-weight: 500;
             }
         }
     }
@@ -633,10 +634,14 @@
 
 .containerSessionVid{
     display: grid;
+    position: relative;
 
-    & img{
+    & .imageSession{
         justify-self: center;
-        max-width: 60% !important;
+        max-width: 72%;
+        min-width: 72%;
+        width: 31rem;
+        height: 18rem;
     }
 }
 
@@ -678,14 +683,19 @@
   }
   .textareaChat {
     margin-top: 15px;
+
   }
   .txtareaChat {
     width:-webkit-fill-available;
     height: 90px;
     border: 1px solid #c5c3c3 ;
     border-radius: 5px;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   .nameProfileChat{
+    font-family: open sans;
     font-weight: 600;
     font-size: 15px;
   }
@@ -750,8 +760,9 @@
     border: 1px solid #000000;
   }
   .nameFrom {
-    font-size: 18px;
-    font-weight: 500;
+    font-family: open sans;
+    font-weight: 600;
+    font-size: 15px;
   }
 //END//
 
@@ -780,52 +791,57 @@
 .optionsSession{
     display: grid;
     width: 100%;
-    height: 30%;
-    grid-template-rows: 30% 50% 20%;
+    height: 32%;
+    grid-template-rows: 30% 60% 1fr;
     padding: 1% 15%;
 }
 
 .textBottomVid{
     text-align: center;
-    font-weight: bolder;
-    font-size: 1.7rem;
+    font-weight: 300;
+    font-size: 2rem;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .buttonsOptions{
     display: grid;
     grid-template-columns: 25% 50% 25%;
-    padding-top: 3%;
+    padding-top: 6.5%;
 
     & .btnSmall{
         width: 78%;
-        height: 76%;
+        height: 85%;
         font-size: .8rem;
         text-transform: capitalize;
+        border: 1px solid gainsboro;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    & .direction-l{
+        justify-self: right;
+        background-color: #8CC63F;
+        color: #ffffff;
+        font-weight: 800;
+        
+    }
+
+    & .direction-r{
+        justify-self: left;
+        background-color: #ffffff;
     }
 
     & .btnBig{
         width: 63%;
-        height: 76%;
+        height: 85%;
         font-size: .8rem;
         justify-self: center;
         text-transform: capitalize;
-    }
-
-    & .direction-r{
-        justify-self: right;
-    }
-
-    & .direction-l{
-        justify-self: left;
-    }
-
-    & .btnSmall,
-    & .btnBig{
         background-color: #ffffff;
         border: 1px solid gainsboro;
         font-weight: 600;
         transition: background-color .2s,
                     color .2s;
+        font-family: 'Source Sans Pro', sans-serif;
 
         &:hover{
             background-color: #8CC63F;
@@ -838,7 +854,7 @@
 .timeDetails{
     text-align: center;
     font-size: .9rem;
-    margin-top: 7%;
+    margin-top: 3%;
 
     & .time{
         color: #ff3b3b;

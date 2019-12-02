@@ -395,6 +395,10 @@
 	width: 132px;
 }
 //MODALS
+#sizePreLateSent,#sizePreLate{
+	top: 50% !important;
+	transform: translate(0,-60%) !important;
+}
 .modal-float{
 	position: absolute;
     left: -330px;
@@ -442,4 +446,18 @@
 }
 .mb-0{
 	margin-bottom: 0;
+}
+@media (max-device-width: 767px) {
+	#tab1-tab.active ~ span.yellow-bar{
+		left: 0vw;
+		width: 30vw;
+	  }
+	#tab2-tab.active ~ span.yellow-bar {
+		left: 30vw;
+		width: 30vw;
+	}
+	#tab3-tab.active ~ span.yellow-bar{
+		left: 60vw;
+		width: 30vw;
+	}
 }

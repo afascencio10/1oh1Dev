@@ -2,9 +2,17 @@
 <div class="section">
     <%= render 'cover' %>
     <main class="container">
-      <%= render 'popular'%>
-      <%= render 'top_explorers' %>
+			<%= render 'popular_in_region'%>
+			<%= render 'popular_in_explores'%>
+			<!--<%= render 'most_recent'%>-->
+			<%= render 'top_explorers' %>
+			<%= render 'top_explorers_for'%>
+
     </main>
+
+    <button class="btn show-more-button-wide">
+      Load more
+    </button>
 </div>
 
 <%= render 'landing/footer' %>

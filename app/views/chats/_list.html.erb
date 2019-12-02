@@ -1,26 +1,46 @@
 <div id="filterrific_results">
-  <div>
+  <div class="contactCounter">
     <%= page_entries_info users, entry_name: "user"%>
   </div>
+  <div class="contactListScroll">
     <% users.each do |user| %>
       <% if user != current_user %>
         <%= link_to(user_chats_path(current_user, :other_user => user.id), method: :post) do %>
-          <div class="contactCard">
-            <div class="celroja gridContact">
-              <% if user.profile.blank?%>
-              <div class="picture"><img src="<%= image_path('People/asian-square.jpg')  %>" class="profilePic"></div>
-              <%else%>
-              <div class="picture"><img src="<%= user.profile.profile_photo  %>" class="profilePic"></div>
-              <%end%>
+          <% if user.id == @other_user.id %>
+            <div class="contactCard contactCardActive">
+              <div class="celroja gridContact gridContactActive">
+                <% if user.profile.blank?%>
+                <div class="picture"><img src="<%= image_path('People/asian-square.jpg')  %>" class="profilePic"></div>
+                <%else%>
+                <div class="picture"><img src="<%= user.profile.profile_photo  %>" class="profilePic"></div>
+                <%end%>
 
-                <div class="contactLabel"><div id="forName">Name</div></div>
-                <div class="contactLabel"><div id="forDate">02 Feb</div></div>
-                <div class="contactLabel"><div id="forHobby"><%= user.firstname %></div></div>
-                <!-- <div class="notification"><div class="redCircle"><%= user.email %></div></div> -->
+                  <div class="contactLabel"><div id="forName">Name</div></div>
+                  <div class="contactLabel"><div id="forDate">02 Feb</div></div>
+                  <div class="contactLabel"><div id="forHobby"><%= user.firstname %></div></div>
+                  <!-- <div class="notification"><div class="redCircle"><%= user.email %></div></div> -->
+              </div>
             </div>
-          </div>
+          <%else%>
+            <div class="contactCard">
+              <div class="celroja gridContact">
+                <% if user.profile.blank?%>
+                <div class="picture"><img src="<%= image_path('People/asian-square.jpg')  %>" class="profilePic"></div>
+                <%else%>
+                <div class="picture"><img src="<%= user.profile.profile_photo  %>" class="profilePic"></div>
+                <%end%>
+
+                  <div class="contactLabel"><div id="forName">Name</div></div>
+                  <div class="contactLabel"><div id="forDate">02 Feb</div></div>
+                  <div class="contactLabel"><div id="forHobby"><%= user.firstname %></div></div>
+                  <!-- <div class="notification"><div class="redCircle"><%= user.email %></div></div> -->
+              </div>
+            </div>
+          <%end%>          
         <%end%>
       <% end %>
     <% end %>
+  </div>
+    
   <%= will_paginate users  %>
 </div>

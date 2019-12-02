@@ -6,9 +6,6 @@
     <table class="table table-condensed table-hover table-striped mt-5">
           <tbody>
             <tr>
-              <% profiles.each do |f| %>
-              <%= f.explores.find_by(category_id: @category.id).profile.state %>
-              <%end%>
                 <td class="avatar text-center">
                   <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
                 </td>

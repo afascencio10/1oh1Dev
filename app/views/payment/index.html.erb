@@ -1,63 +1,69 @@
-<%= form_tag payment_index_path do %>
-  <article>
+<!-- <%= form_tag payment_index_path do %>
+<article>
+  <% if flash[:error].present? %>
+  <div id="error_explanation">
+    <p><%= flash[:error] %></p>
+  </div>
+  <% end %>
+  <label class="amount">
+  <span>Amount: $50</span>
+  </label>
+</article>
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-amount="5000"
+  data-name="1oh1.org"
+  data-description="Voyager Subscription"
+  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+  data-label="Buy Now"
+  data-locale="auto"></script>
 
-    <div class="container">
-
-      <div class="gridSessionMain">
-
-        <%= image_tag('icon.png', :class => 'img-fluid w-100') %>
-    
-        <%= render 'pre_session' %>
-
-      </div>  
-    
-    
-      <div>
-        <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
-        <button data-toggle="modal" data-target="#modalChat">Chat</button>
-        <button data-toggle="modal" data-target="#modalFrom">respuesta</button>         
-    
-        <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>
-        <button data-toggle="modal" data-target="#preRunningLate">pre runnin late</button>
-        <button data-toggle="modal" data-target="#preRunningLateSent">pre runnin late sent</button>
-    
-      </div>
-    
-      <%= render 'pre_running_late' %>
-      <%= render 'pre_5min' %>
-      <%= render 'pre_running_late_sent' %>
-      <%= render 'pre_cancellation_warning' %>
-    
-      <%= render 'pre_5min.html' %>
+<% end %> !-->
 
 
-    </div>
 
-  </article>
 
-<% end %>
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+<button
+  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+  id="checkout-button-sku_G5nYYuuMxCe93q"
+  role="link"
+>
+  Checkout
+</button>
+
+<div id="error-message"></div>
 
 <script>
-  jQuery(document).ready(function($) {
-    console.log('sadsad')
-    var timedelay = 1;
-	var _delay = setInterval(delayCheck, 500);
+(function() {
+  var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
 
-	$('.containerSessionVid').on('mousemove', showAllEvent);
-	function delayCheck() {
-	  if (timedelay == 5) {
-	    $('.isHide').removeClass('showRoomBar');
-	    timedelay = 1;
-	  }
-	  timedelay = timedelay + 1;
-	}
+  var checkoutButton = document.getElementById('checkout-button-sku_G5nYYuuMxCe93q');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_G5nYYuuMxCe93q', quantity: 1}],
 
-	function showAllEvent() {
-	  $('.isHide').addClass('showRoomBar');
-	  timedelay = 1;
-	  clearInterval(_delay);
-	  _delay = setInterval(delayCheck, 500);
-	}
-})
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'http://localhost:3000/payment?session_id={CHECKOUT_SESSION_ID}',
+      cancelUrl: window.location.protocol + '//1oh1.org/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
 </script>
-

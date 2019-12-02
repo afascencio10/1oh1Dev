@@ -6,6 +6,8 @@ class MarketsController < ApplicationController
   # GET /markets.json
   def index
     @markets = Market.all
+    @payments = Market.where(:mode => "Payment")
+    @subscriptions = Market.where(:mode => "Subscription")
   end
 
   # GET /markets/1
@@ -26,10 +28,9 @@ class MarketsController < ApplicationController
   # POST /markets.json
   def create
     @market = Market.new(market_params)
-
     respond_to do |format|
       if @market.save
-        format.html { redirect_to @market, notice: 'Market was successfully created.' }
+        format.html { redirect_to @market, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @market }
       else
         format.html { render :new }
@@ -55,11 +56,9 @@ class MarketsController < ApplicationController
   # DELETE /markets/1
   # DELETE /markets/1.json
   def destroy
-    @market.destroy
-    respond_to do |format|
-      format.html { redirect_to markets_url, notice: 'Market was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    Market.find(params[:id]).delete
+    redirect_to products_path, notice: 'Product was successfully deleted.'
+
   end
 
   private
@@ -70,6 +69,6 @@ class MarketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
-      params.fetch(:market, {})
+      params.permit(:name,:offer,:interval,:mode,:price,:description,:currency)
     end
 end

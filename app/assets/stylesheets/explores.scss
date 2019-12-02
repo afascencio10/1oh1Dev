@@ -19,7 +19,28 @@
 	letter-spacing: 1px;
 	text-transform: none;
 }
-
+.around-schedule-btn {
+	padding: 0;
+	margin: 0;
+	height: 32px;
+	
+	i {
+		font-size: 44px;
+		position: relative;
+		top: -6px;
+		color: white;
+	}
+}
+.show-more-button-wide {
+	color: white;
+	border-radius: 0;
+	width: 100%;
+	height: 100px;
+	background-color: rgb(186, 221, 140);
+	color: white;
+	display: block;
+	text-transform: none;
+}
 .minimal-card-wrap {
 	cursor: pointer;
 	.animating {
@@ -125,5 +146,55 @@
 		margin-top: 30px;
 		margin-left: 15px;
 		color: #000;
+	}
+}
+.cursor-p {
+	cursor: pointer;
+}
+#arroundScheduleBtn.active{
+	color: #badd8c;
+	i {
+		color: #badd8c;
+		transform: rotate(180deg);
+	}
+}
+.schedule-popup {
+
+	background-color: #fff;
+	max-width: 400px;
+	box-sizing: border-box;
+	padding: 20px;
+	position: absolute;
+	border-radius: 5px;
+	small {
+		color: #000;
+	}
+	select {
+		height: 43px;
+	}
+	input {
+		background-color: #fff!important;
+	}
+	select, input {
+		border-radius: 3px;
+		font-size: 14px;
+		border-color: #000;
+	}
+	.small-group {
+		input, select {
+			max-width: 140px;
+		}
+	}
+	
+	label {
+		font-size: 15px;
+		font-weight: bold;
+		color: #000;
+	}
+	.btn-success {
+		width: 100%;
+		color:white;
+		letter-spacing: 1px;
+		text-transform: none;
 	}
 }

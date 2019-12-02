@@ -1,22 +1,52 @@
-<!-- TEMP TO SHOWCASE (PRE-IN-POST)SESSIONS UI -->
-<%= render 'pre_session' %>
+<section class="preSessionSection">
+  <!-- icon brand  -->
+  <%= image_tag('icon.png', :class => 'img-fluid w-100 brand1oh1') %>
 
+  <div class="container">
+    <!-- start: card  -->
+    <div class="gridSessionMain">
+      <%= render 'pre_session' %>
+    </div>
+    <!-- end : card  -->
+  </div>
 
+</section>
 
-<div class="modalDemoButtons">
-  
-           
-
-  <button data-toggle="modal" data-target="#modalPre5">Five minutes</button>
-  <button data-toggle="modal" data-target="#modalChat">pre runnin late</button>
-  <button data-toggle="modal" data-target="#modalFrom">pre runnin late sent</button>
+<div>
+  DEMO TO SHOW CASE PRE SESSIONS MODALS
+</div>
+<div>
   <button data-toggle="modal" data-target="#preCancelationWarning">Pre cancelation warning</button>
-  <button data-toggle="modal" data-target="#modalSent">Sent</button>
-
+  <button data-toggle="modal" data-target="#modalChat">pre runnin late</button>
+  <button data-toggle="modal" data-target="#modalFrom">pre runnin late read</button>
+  <button data-toggle="modal" data-target="#modalPre5">Pre five minutes</button>
 </div>
 
-<%= render 'pre_5min' %>
 <%= render 'pre_running_late' %>
+<%= render 'pre_5min' %>
 <%= render 'pre_running_late_sent' %>
 <%= render 'pre_cancellation_warning' %>
-<%= render 'sent_modal' %>
+
+<script>
+
+  jQuery(document).ready(function($) {
+    var timedelay = 1;
+	var _delay = setInterval(delayCheck, 500);
+
+	$('.containerSessionVid').on('mousemove', showAllEvent);
+	function delayCheck() {
+	  if (timedelay == 5) {
+	    $('.isHide').removeClass('showRoomBar');
+	    timedelay = 1;
+	  }
+	  timedelay = timedelay + 1;
+	}
+
+	function showAllEvent() {
+	  $('.isHide').addClass('showRoomBar');
+	  timedelay = 1;
+	  clearInterval(_delay);
+	  _delay = setInterval(delayCheck, 500);
+	}
+})
+</script>

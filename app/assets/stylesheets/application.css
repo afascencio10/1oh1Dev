@@ -43,15 +43,19 @@
 *= require sessions
 *= require pre_sessions
 *= require in_sessions
+*= require projects
 *= require categories
 *= require markets
+*= require loading
 *= require guides
 *= require calendars
 *= require payment
 *= require chests
+*= require searchProject
 *= require_self
 *= require fullcalendar/core/main
 *= require fullcalendar/daygrid/main
 *= require fullcalendar/timeGrid/main
 *= require jquery.rateyo.min.css
+*= require post_session
  */

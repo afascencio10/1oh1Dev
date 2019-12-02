@@ -271,7 +271,7 @@
 .interestsContent{    
     display: grid;
     grid-template-rows: auto 35px;
-    grid-template-columns: 35px 80% auto;
+    grid-template-columns: 35px auto 35px;
 }
 .interestsImages{
     grid-column: 2/3;
@@ -1210,11 +1210,12 @@ input[type=radio]:checked {
     display: block;
 }
 
-.dropdownImg:hover>.dropdown-menu {
+.dropdownImg:hover{
+  position: relative;
+
+  & > .dropdown-menu{
     display: block;
   }
-.dropdownImg{
-  position: relative;
 }
 
 .grid-Pop {
@@ -1552,7 +1553,7 @@ input:checked + .slider:before {
   
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu {
-  top: 50px;
+  top: 42px;
   height: 34px;
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu:hover {
@@ -1610,4 +1611,122 @@ input:checked + .slider:before {
   & .modal-dialog{
     min-width: 60% !important;
   }
+}
+
+//gridProfileActivity
+.gridProfileActivity{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-template-columns:1fr;
+}
+.gridImgActivity{
+  display: grid;
+  grid-template-columns: 25fr 50fr 25fr;
+  margin-top: 15px;
+}
+.titleactivityProfile {
+  justify-self: center;
+  align-self: center;
+}
+.titleYetAdd {
+  font-size: 23px;
+  color: #000000;
+  font-weight: 700;
+}
+.imgYet {
+  width: 90%;
+}
+.celverde {
+  border: solid #1f3ff8;
+}
+
+.gridGuidingActivity {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  grid-template-columns: 1fr;
+}
+.btnAddActivity {
+  background: #8cc63f;
+  color: #ffffff;
+  border: #8cc63f;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 8vw;
+  height: 38px;
+}
+.toptitleActivity {
+  margin-top: 23px;
+}
+@media (max-device-width: 767px) {
+.imgView  {
+  margin-bottom: 46%;
+  border: 10px solid #ffffff;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.names {
+  margin-top: 22px;
+  margin-bottom: -19px;
+  text-align: center;
+  margin-left: 25%;
+  font-weight: 700;
+  font-size: 22px;
+  font-weight: bold;
+}
+.mediacity {
+  margin-left: 44px;
+  padding-top: 20px;
+  text-align: center;
+}
+.medialanguages {
+  margin-left: 43px;
+  padding-top: 15px;
+  text-align: center;
+}
+.mediadescription{
+  text-align: center;
+  padding-top: 15px;
+  margin-left: 43px;
+}
+.interestsImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  border: 1px solid #fc0808;
+}
+.imagesInterests {
+  width:100%;
+  height: auto;
+}
+.btnExit {
+  display: none;
+}
+.interestsTitle {
+  font-size: 25px;
+  font-weight: bold;
+  color: #000000;
+}
+.btnAddActivity {
+  padding: 4px;
+  width: 100px
+}
+.pname {
+  position: initial;
+}
+#description{
+  position: relative;
+  margin-inline-start: -1px;
+  margin-right: 0%;
+  padding-left: 5%;
+  margin-left: 0%;
+}
+
+.profile-tab #material-tabs a {
+  width: 29vw
+}
+.profile-tab {
+  width: 90vw;
+}
 }

@@ -14,6 +14,7 @@ class HelpsController < ApplicationController
       format.html
       format.js
     end
+
   end
 
   # GET /helps/1

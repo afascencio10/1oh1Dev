@@ -1,76 +1,37 @@
 jQuery(document).ready(function($) {
-	var currentPage = 1
-	var maxPage = 6
 
 	// initiate select-languages-wrap
-	activatePage(currentPage)
 	initiateCustomCheckboxes()
-	new PerfectScrollbar(document.querySelector('#explore-item-container'))
-	new PerfectScrollbar(document.querySelector('#guiding-item-container'))
-	new PerfectScrollbar(document.querySelector('#projects-container'))
-	new PerfectScrollbar(document.querySelector('#calendar-container'))
+
+	var exploreItemContainer = document.querySelector('#explore-item-container')
+	var guidingItemContainer = document.querySelector('#guiding-item-container')
+	var projectsContainer = document.querySelector('#projects-container')
+	var calendarContainer = document.querySelector('#calendar-container')
+
+	if (exploreItemContainer) new PerfectScrollbar(exploreItemContainer)
+	if (guidingItemContainer) new PerfectScrollbar(guidingItemContainer)
+	if (projectsContainer) new PerfectScrollbar(projectsContainer)
+	if (calendarContainer) new PerfectScrollbar(calendarContainer)
+
 	$('.date-picker').bootstrapMaterialDatePicker({
-     weekStart: 0,
-     time: false,
-     format: 'D MMM YYYY'
-   })
-	// listeners
-	$('#nextPageBtn').on('click', function () {
-		nextPage()
-	})
-	$('#prevPageBtn').on('click', function () {
-		prevPage()
-	})
-	$('#last-page-back').on('click', function () {
-		prevPage()
-	})
+    weekStart: 0,
+    time: false,
+    format: 'D MMM YYYY'
+  })
 
 	$('#addLanguageBtn').on('click', function () {
 		addSelectLangTemplate()
 	})
 
 	$('.addExploreBtn').on('click', function () {
-		alert("Clicked");
+		// alert("Clicked");
 		$(this).removeClass('btn-success').addClass('btn-outline-dark').text('Added')
+
 	})
 
 	$('.recurringAddTimePicker').on('click', function () {
     addTimePicker($(this).parent().parent().find('.time-picker-wrap'))
   })
-	// method
-	function nextPage () {
-		currentPage += 1
-
-		$('#prevPageBtn').removeClass('d-none')
-
-		if (currentPage === maxPage) {
-			$('#action-buttons').addClass('d-none')
-			$('#nextPageBtn').addClass('d-none')
-		}
-
-		activatePage(currentPage)
-	}
-	function prevPage () {
-		currentPage -= 1
-
-		$('#nextPageBtn').removeClass('d-none')
-		$('#action-buttons').removeClass('d-none')
-
-		if (currentPage === 1) {
-			$('#prevPageBtn').addClass('d-none')
-		}
-
-		activatePage(currentPage)
-	}
-	function activatePage (pageNumber) {
-		for (var i = maxPage; i >= 1; i--) {
-			$('.page-' + i).addClass('d-none')
-		}
-
-		$('.page-' + pageNumber).removeClass('d-none')
-
-		activateNavigation(pageNumber)
-	}
 
 	function addSelectLangTemplate () {
 		var clonedSelect = $('#select-languages-wrap select').first().clone(false)
@@ -78,13 +39,6 @@ jQuery(document).ready(function($) {
 		$('#select-languages-wrap').append(clonedSelect)
 
 		clonedSelect.wrap('<div></div>')
-	}
-
-	function activateNavigation (pageNumber) {
-		$('.navigation-item-wrap').removeClass('active')
-		for (var i = pageNumber; i >= 1; i--) {
-			$('.navigation-item-wrap-' + i).addClass('active')
-		}
 	}
 
 	function initiateCustomCheckboxes () {

@@ -43,10 +43,13 @@
 		}
 	}
 	.navigation-item-wrap-6.active {
-		transform: scale(1.5);
 		position: relative;
 		left: 14px;
 	}
+	.navigation-item-wrap-6.active .navigation-item{
+		transform: scale(1.5);
+	}
+
 	.navigation-item {
 		background-color: #dbdee3;
 		width: 70px;
@@ -96,7 +99,7 @@
 		text-transform: none;
 		font-size: 12px;
 	}
-	a {
+	a:not(.btn) {
 		color: #2a8bf2!important;
 	}
 	#select-languages-wrap > div:not(:first-child) {
@@ -240,4 +243,314 @@
 		transform: translateX(-50%);
 	}
 }
+//====section helps===
 
+@media (min-width: 10px){
+
+}
+
+.containerHelps{
+	margin-top: 6rem;
+	display: grid;
+	grid-template-columns: 20% 1fr 20%;
+	height: 90%;
+	
+	& .bodyHelp{
+		display: inherit;
+		grid-column: 2/3;
+		grid-template-rows: auto 1fr;
+	}
+}
+
+.bodyHelp{
+
+	& .headerHelp{
+		display: grid;
+		grid-template-columns: 60% 1fr;
+
+		& .descriptionContainer{
+			grid-column: 1/2;
+			margin: 0;
+			padding: 0;
+			height: auto;
+			display: grid;
+			grid-template-rows: 72px auto;
+		}
+	}
+
+	& .bodyContainer{
+
+		display: grid;
+		grid-template-columns: 30% 1fr;
+	}
+}
+
+.descriptionContainer{
+	& .titleDescription{
+		padding: 5px;
+		// background-color: royalblue;
+	}
+
+	& .contentDescription{
+		padding: 5px;
+		font-size: .8rem;
+	}
+}
+
+.bodyContainer{
+
+	& .sectionLeft{
+		display: grid;
+		grid-auto-rows: auto;
+		padding: 1rem;
+	} 
+
+	& .sectionRight{	
+		overflow: scroll;
+		max-height: 100vh;	
+		// background-color: powderblue;
+	}
+}
+
+
+.sectionLeft{
+
+	& .optionHelp{
+		color: #000;
+		font-weight: 600;
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+
+
+	& a.active-link{
+		color: #8CC63F;
+	}
+}
+@media (min-width: 10px){
+	.containerCommunication {
+		display:grid;
+		grid-template-columns: 1fr;
+		/*border: solid #ec2525;*/
+		row-gap: 10px;
+	}
+	.sectionControlEmails{
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 35px;
+//		border: solid #ec2525;
+
+	}
+	.sectionReceive {
+		display: grid;
+		grid-template-columns: 95fr 5fr;
+//		border: solid #ec2525;
+	}
+	.sectionBooking {
+		display: grid;
+		grid-template-columns: 1fr;
+//		border: solid #ec2525;
+		border-top: 1px solid #dbdbdb ;
+	}
+	.optionsBooking {
+		display: grid;
+		grid-template-columns: 95fr 5fr;
+		margin-top: 7px;
+//		border: solid #ec2525;
+	}
+	.sectionSessionsHelp{
+		display: grid;
+		grid-template-columns: 1fr;
+		border-top: 1px solid #dbdbdb;
+		padding-top: 10px;
+		
+	}
+	.sectionRatingHelp {
+		display: grid;
+		grid-template-columns: 1fr;
+		border-top: 1px solid #dbdbdb;
+		padding-top: 10px;
+	}
+	.sectionOtherHelp {
+		display: grid;
+		grid-template-columns: 1fr;
+		border-top: 1px solid #dbdbdb;
+		padding-top: 10px;
+	}
+	.sessionsRemind {
+		display: grid;
+		grid-template-columns: 75px 70px auto 30px;
+//		border: solid #ec2525;
+	}
+	.helpRating {
+		display: grid;
+		grid-template-columns: 95fr 5fr;
+//		border: solid #ec2525;
+	}
+	.helpOther{
+		display: grid;
+		grid-template-columns: 95fr 5fr;
+//		border: solid #ec2525; 
+	}
+	.titleSectionsHelp {
+		font-size: 18px;
+		font-weight: 700;
+		color: #000000;		
+	}
+	.txtSectionHelp{
+		font-size: 13px;
+		font-weight: 600;
+		color: #000000;
+	}
+	.numberInputSectionHelp{
+		width: 65px;
+		border: none;
+		border-radius: 5px;
+		background: #eeeeee;
+		text-align: center;
+	}
+	 .containerCommunication input[type=checkbox]:checked {
+		-webkit-appearance: none;
+  		-moz-appearance: none;
+		appearance: none;
+		background-color: #8CC63F;
+	}
+	.help30 {
+		text-align: center;
+	}
+	.sessionsAdd {
+		justify-self: end;
+	}
+	.textAddSession {
+		font-size: 14px;
+		color: #0544aa;
+		font-weight: 600;
+	}
+	 .sectionSessionsHelp input[type=checkbox] {
+		width:-webkit-fill-available;
+		height: 20px;
+	 }
+}
+
+// Start: Account section 
+
+.sectionAccount{
+	height: 50rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 25% 1fr 30%;
+	padding: 1rem;
+}
+
+.AccountHead{
+	display: grid;
+	grid-template-rows: 29% 1fr;
+	border-bottom: 1px solid #cfcece;
+	padding: 1rem 0;
+
+	& .emailsContainer{
+		display: grid;
+		grid-auto-rows: 1fr;
+		padding: 0px 5px;
+
+		& .containerDetails{
+			display: grid;
+			grid-template-columns: repeat(2,1fr);
+
+			& .optionEmail{
+				justify-self: end;	
+			}
+		}
+
+		& .optionAddEmail{
+			justify-self: end;
+			color: #3071eb;
+
+			&:hover{
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.AccountBody{
+	display: grid;
+	padding: 1rem 0rem;
+	grid-template-columns: 70% 1fr;
+	border-bottom: 1px solid #cfcece;
+
+	& .contentContainer{
+		grid-column: 1/2;
+		grid-row: 1/2;
+		display: grid;
+		grid-template-rows: 14% 1fr;
+
+		& .containerForm{
+			display: grid;
+			grid-auto-rows: 1fr;
+			gap: 5px;
+
+			& .btnSubmitAccount{
+				margin-top: 1rem;
+				background-color: #8CC63F;
+				color: #ffffff;
+				border-radius: 15px;
+			}
+		}
+	}
+}
+
+.containerForm .group-form{
+	display: grid;
+	grid-template-columns: 1fr;
+
+	& input{
+		border: 1px solid #ebebeb;
+		font-size: 15px;
+		border-radius: 5px;  
+		background-color: #F9F9F9;
+	}
+}
+
+.AccountFooter{
+	padding: 2rem 0;
+	display: grid;
+	grid-template-rows: repeat(2,1fr);
+}
+// End: Account section 
+
+
+.legalList {
+	font-size: 13px;
+	margin-left: 20px;
+}
+
+.sectionLegalTitle {
+	font-size: 35px;
+	font-weight: 600;
+	line-height: 100px;
+	color: #000;
+}
+.sectionLegalSubtitle {
+	font-size: 25px;
+	line-height: 80px;
+	font-weight: 600;
+	color: #000;
+}
+.sectionLegalSubtitleXS{
+	font-size: 22px;
+	line-height: 70px;
+	font-weight: 600;
+	color: #000;
+}
+.specificTitle{
+	font-weight: 900;
+	line-height: 40px;
+	color: #000;
+}
+.sizehelps {
+	font-size: 16px;
+}
+.textlegal{
+	text-align: justify;
+	margin-left: 13px;
+}

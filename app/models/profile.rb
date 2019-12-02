@@ -10,6 +10,7 @@ class Profile < ApplicationRecord
   has_many :explore_ratings,dependent: :destroy
   has_many :video_sessions
   has_many :bookings, through: :video_sessions
+  has_many :transactions
   serialize :languages, Array
 
   self.per_page = 1

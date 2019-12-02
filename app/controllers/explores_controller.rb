@@ -6,7 +6,6 @@ class ExploresController < ApplicationController
   # GET /explores.json
   def index
     @explores = Explore.all
-    @top_guides = GuideRating.rate_desc.where(guide_id: guide_category_ids)
     @top_explores = ExploreRating.rate_desc.where(explore_id: explore_category_ids)
     @popular_explore_category = Category.joins(:explores => :profile).where(:profiles => {:country => country}).distinct
     @popular_guide_category = Category.joins(:guides => :profile).where(:profiles => {:country => country}).distinct
@@ -14,6 +13,15 @@ class ExploresController < ApplicationController
     @world_popular_explore_category= Category.joins(:explores => :profile).where(:profiles =>{:country => all_countries}).distinct
     @world_popular_guide_category= Category.joins(:guides => :profile).where(:profiles =>{:country => all_countries}).distinct
     @popular_inworld = @world_popular_explore_category.merge(@world_popular_guide_category)
+
+    if !@top_explores.empty?
+      @firt_category_name_explore = @top_explores[0].explore.category.name
+      @first_category_explore= Explore.where(:category_id => @top_explores[0].explore.category.id).where.not(:profile_id => current_profile_id)
+    else
+      @firt_category_name_explore = "None"
+      @first_category_explore = []
+    end
+
   end
 
   # GET /explores/1

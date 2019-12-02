@@ -1,0 +1,8 @@
+<% js = escape_javascript(
+  render(partial: 'list', locals: { categories: @categories })
+) %>
+$("#filterrific_results").html("<%= js %>");
+
+$('.addExploreBtn').on('click', function () {
+  $(this).removeClass('btn-success').addClass('btn-outline-dark').text('Added')
+})

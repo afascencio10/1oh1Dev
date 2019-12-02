@@ -34,6 +34,7 @@ hangouts-like layout*/
     .detailsCancellationText{
         font-weight: bolder;
     }
+    
     .isHide {
         height: auto;
         width: 100%;    
@@ -87,6 +88,17 @@ hangouts-like layout*/
         grid-template-columns: 50px auto;
         font-weight: 500;
         font-size: 15px;
+
+        & #demo{
+            width: 10rem;
+        }
+
+        .description{
+            margin: 0;
+            font-style: normal;
+            margin-left: 4rem;
+            color: #fff;
+        }
     }
 
     .partnerWindow {
@@ -224,8 +236,15 @@ hangouts-like layout*/
     }
 
     .roomContent {
-        width: 100%;
-        height: auto;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        
+        & video{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+        }
     }
 
     .toolsIconsSession {
@@ -419,5 +438,23 @@ hangouts-like layout*/
     .titleRequestExtra {
         
         font-size: 14px;
+    }
+}
+
+time{
+    display: none;
+}
+
+#sessionEnd{
+
+    & .modal-dialog{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        & .modal-content{
+            align-self: center;
+        }
     }
 }

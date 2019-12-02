@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :chests
   resources :reviews
   resources :payment
+  resources :products
+
 
 
   resources :notifications do
@@ -34,6 +36,13 @@ Rails.application.routes.draw do
   get '/in-session', to: 'bookings#in_session'
   get '/post-session', to: 'bookings#post_session'
   get '/pre-session', to: 'bookings#pre_session'
+  post '/webhook', to: 'payment#after_payment'
+  get '/profile/about-yourself', to: 'profiles#introduction'
+  get '/profile/explores', to: 'profiles#explores'
+  get '/profile/guides', to: 'profiles#guides'
+  get '/profile/projects', to: 'profiles#projects'
+  get '/profile/availabilty', to: 'profiles#availabilty'
+  get '/profile/completed', to: 'profiles#completed'
 
 
   resources :users, only:[:new] do

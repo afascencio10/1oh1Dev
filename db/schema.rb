@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191015054410) do
+ActiveRecord::Schema.define(version: 20191129064909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,8 +115,16 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   end
 
   create_table "markets", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.string   "currency"
+    t.string   "mode"
+    t.string   "interval"
+    t.integer  "price"
+    t.string   "offer"
+    t.string   "description"
+    t.string   "stripe_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -140,10 +148,8 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
-    t.string   "email"
-    t.string   "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "state"
     t.string   "country"
@@ -152,6 +158,8 @@ ActiveRecord::Schema.define(version: 20191015054410) do
     t.string   "languages"
     t.string   "bio"
     t.string   "contact_no"
+    t.date     "birth_date"
+    t.string   "city"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
@@ -190,6 +198,20 @@ ActiveRecord::Schema.define(version: 20191015054410) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.string   "name"
+    t.string   "currency"
+    t.string   "mode"
+    t.string   "interval"
+    t.integer  "price"
+    t.string   "customer_id"
+    t.string   "product_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["profile_id"], name: "index_transactions_on_profile_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -219,6 +241,7 @@ ActiveRecord::Schema.define(version: 20191015054410) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   add_foreign_key "bookings", "explores", name: "bookings_explore_id_fkey", on_delete: :nullify
 <<<<<<< HEAD
   add_foreign_key "bookings", "explores", on_delete: :nullify
@@ -296,4 +319,22 @@ ActiveRecord::Schema.define(version: 20191015054410) do
   add_foreign_key "projects", "profiles", name: "projects_profile_id_fkey"
   add_foreign_key "projects", "profiles", name: "projects_profile_id_fkey1"
 >>>>>>> bac992188d7a711485bc3026143884f57e340652
+=======
+  add_foreign_key "bookings", "explores", on_delete: :nullify
+  add_foreign_key "bookings", "guides", on_delete: :nullify
+  add_foreign_key "explore_ratings", "explores", on_delete: :cascade
+  add_foreign_key "explore_ratings", "guides", on_delete: :cascade
+  add_foreign_key "explore_ratings", "profiles"
+  add_foreign_key "explores", "categories", on_delete: :cascade
+  add_foreign_key "explores", "profiles"
+  add_foreign_key "guide_ratings", "explores", on_delete: :cascade
+  add_foreign_key "guide_ratings", "guides", on_delete: :cascade
+  add_foreign_key "guide_ratings", "profiles"
+  add_foreign_key "guides", "categories", on_delete: :cascade
+  add_foreign_key "guides", "profiles"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "projects", "profiles"
+  add_foreign_key "transactions", "profiles"
+>>>>>>> 08f474db8db2eefd82e8afb139ad7adb691f5b36
 end
