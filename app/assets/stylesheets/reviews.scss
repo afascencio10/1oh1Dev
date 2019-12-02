@@ -377,3 +377,203 @@ body {
 
 /* Rules for sizing the icon. */
 .material-icons.md-36 { font-size: 36px; }
+
+// Mobile classes 
+@media (max-device-width: 767px){
+
+    .background{
+        display: flex;
+        justify-content: center;
+
+        .imageProfile{
+            position: initial;
+            bottom: 0;
+            margin-left: 0;
+            display: inherit;
+
+            .imgProfile{
+                width: 160px;
+                height: 160px;
+                margin-top: 2rem;
+                align-self: end;
+            }
+        }
+    }
+
+    .reviewsPage{
+
+        .data.grid{
+            display: flex;
+            justify-content: center;
+            margin-top: 10%;
+        }
+
+        .profile.grid{
+            display: block;
+            margin-left: 0;
+
+            & .topicTitle,
+            & .autor{
+                font-size: 1.2rem;
+            }
+
+            & .topicTitle,
+            & .withContainer,
+            & .headerText,
+            & .autor,
+            & .cell{
+                display: inline-block;
+            }
+
+            & .headerText{
+                font-size: 1rem;
+            }
+    
+        }
+
+        & .categoryCopy.headerText{
+            font-size: 1rem;
+            padding: 0 1rem;
+        }
+
+        .categoryCopy{
+            margin: 0;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .subtitles{
+            grid-template-columns: 10% 1fr 1fr 10%;
+        }
+
+        // Start : options 
+        #material-tabs > a {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        #material-tabs #tab1-tab.active ~ span.green-bar{
+            left: 10%;
+            width: 40%;
+        }
+
+        #material-tabs #tab2-tab.active ~ span.green-bar{
+            left: 50%;
+            width: 40%;
+        }
+        // End : options 
+
+        // Start: starts 
+        .rating {
+            
+            grid-template-columns: 5% 1fr 1fr 5%;
+            padding-bottom: 1rem;
+
+            .score1{
+
+                grid-template-columns: repeat(5,1fr);
+                grid-template-rows: repeat(2,1fr);
+    
+                & > .cell > i{
+                    font-size: 24px;
+                }
+                &.alignmentBroScore{
+                    margin-left: 1rem;
+                }
+    
+                &.alignmentScore{
+                    margin-left: 1rem;
+                }
+    
+                & .cell.rateNumber{
+                    grid-column-start: span 1;
+                    grid-column-end: 4;
+                }
+    
+            }
+        }
+        // End: starts 
+
+
+        // Start: searcher 
+        & .searchContainer{
+
+            .searchHelp.grid{
+                grid-template-columns: 1fr;
+                margin: 0;
+
+                & .searchReview .searchCont{
+
+                    & .searchIcon{
+                        font-size: 28px;
+                        top: 21px;
+                    }
+
+                    & .searchInput{
+                        font-size: 1rem;
+                        margin-left: 2rem;
+                    }
+                }
+
+                & .sortBy{
+                    grid-template-columns: 7rem 1fr;
+                }
+
+                & .help.grid{
+                    width: 100%;
+                    grid-template-columns: 1fr;
+                    margin: 0;
+                    margin-top: 1rem;
+
+                    & .helpText{
+                        text-align: center;
+                        font-size: 20px;
+                    }
+
+                    & .button{
+                        height: 45px;
+                    }
+
+                }
+            }
+        }
+        // End: searcher 
+
+        // Start: comments 
+        & .reviews.grid{
+
+            grid-template-columns: 1fr;
+
+            & .review{
+                grid-template-columns: 1fr;
+
+                & .profile2 {
+                    margin: 0;
+                    grid-template-columns: 10rem 1fr;
+                    padding-top: 1rem;
+
+                    & .imgperfil{
+                        width: 90px;
+                        height: 90px;
+                    }
+
+                    & .score2 .cell > i{
+                        font-size: 26px;
+                    }
+                }
+
+                & .ratingText{
+                    padding: 2rem;
+                    font-size: .9rem;
+                }
+
+            }
+
+
+
+        }
+        // End: comments 
+
+
+    }
+}
