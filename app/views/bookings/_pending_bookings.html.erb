@@ -20,10 +20,17 @@
       <p class="fz-14 my-4"><%= booking.title %></p>
 
       <div>
-        <button type="button" class="btn rounded-0 btn-primary">Approve</button>
+        <button type="button" id="<%=booking.id%>" class="btn rounded-0 btn-primary approve">Approve</button>
         <button type="button" class="btn rounded-0 btn-outline-secondary mx-3">Decline</button>
         <button type="button" class="btn rounded-0 btn-outline-secondary">Respond</button>
       </div>
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(".approve").on("click", function(){
+  alert($(this).attr("id"));
+  });
+
+</script>

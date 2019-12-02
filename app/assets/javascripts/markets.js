@@ -12,22 +12,24 @@ function onCoinOrSubscriptionClick (type, event) {
 	$(event.currentTarget).closest('.' + type).addClass('active')
 }
 
-function showPreCheckout(amount, total) {
+function showPreCheckout(amount, total,id) {
 	$('#preCheckoutAmount').text(amount)
 	$('#preCheckoutTotal').text(total)
-
+	$('.checkout-button').attr('id',id)
 	$('#preCheckoutDialog').modal()
 }
 
 jQuery(document).ready(function($) {
 	$('.subscriptions .subscription button').click(function (event) {
 		onCoinOrSubscriptionClick('subscription', event)
+		showPreCheckout($(this).attr('data-amount'), $(this).attr('data-total'),$(this).attr('stripe-id'))
+
 	})
 
 	$('.coins .coin button').click(function (event) {
 		onCoinOrSubscriptionClick('coin', event)
 
-		showPreCheckout($(this).attr('data-amount'), $(this).attr('data-total'))
+		showPreCheckout($(this).attr('data-amount'), $(this).attr('data-total'),$(this).attr('stripe-id'))
 	})
 
 	$('#postCheckoutFailedDialog').on('hidden.bs.modal', function (e) {

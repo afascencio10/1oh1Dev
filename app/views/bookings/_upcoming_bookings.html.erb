@@ -39,7 +39,8 @@
             </div>
           </td>
           <td>
-            <a class="secondary-success-color" href="#">Message</a>
+            <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
+            <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "secondary-success-color"  %>
             <br>
             <a class="secondary-success-color" href="#">Change or Cancel</a>
             <br>

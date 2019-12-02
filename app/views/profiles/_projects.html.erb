@@ -5,9 +5,9 @@
           <div class="inputProjectsSearch">
             <img class="searchProjectIcon" src="<%= image_path ('Icons/search.png') %>">
             <input class="searchProjectsInput" type="" name="">
-          </div>         
+          </div>
        </div>
-       <div class="checkBoxProjectIcon">          
+       <div class="checkBoxProjectIcon">
          <img class="projectProgressIcon" src="<%= image_path ('Icons/Idea_icon.png') %>">
        </div>
        <div class="checkBoxProjectIcon">
@@ -43,7 +43,7 @@
               </div>
             </div>
 
-      <% else %>         
+      <% else %>
          <% @projects.each do|project| %>
            <div class="projectContainer">
                <div class="projectImages">
@@ -55,13 +55,17 @@
                             <img src="<%= image_path('Icons/WIP-icon.png') %>" alt="Image" class="projectIcon">
                           <% else %>
                             <img src="<%= image_path('Icons/completed-icon.png') %>" alt="Image" class="projectIcon">
-                        <% end %>                       
+                        <% end %>
                    </div>
 
                    <div class="projectProfiles">
                      <% project.colab_id.each do |x|%>
                        <div class="profilePict">
-                           <img class="profileImage" src="<%= User.find(x).profile.profile_photo %>">
+                         <% if User.find(x).profile.nil?%>
+                         <img class="profileImage" src="<%= image_path('People/asian-square.jpg')  %>">
+                         <%else%>
+                         <img class="profileImage" src="<%= User.find(x).profile.profile_photo %>">
+                         <%end%>
                        </div>
                      <% end %>
                    </div>
@@ -72,12 +76,11 @@
                        <i class="material-icons icons create">create</i>
                    </div>
                    <div class="projectDescription"><h3 class="descriptionTitle">Description</h3> <p class="descriptionText"> <%= project.description %></p></div>
-                   <div class="projectSkills"><h3 class="descriptionTitle">Skills needed</h3> 
-                     <p class="descriptionText"> <%= project.skills%></p>
+                   <div class="projectSkills"><h3 class="descriptionTitle">Skills needed</h3>
                    </div>
                </div>
            </div>
          <% end %>
-      <% end %>        
+      <% end %>
     </div>
 </div>

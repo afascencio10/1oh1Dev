@@ -43,43 +43,14 @@
           <td>
             <a class="secondary-success-color" href="#">Send Tip</a>
             <br>
-            <a class="secondary-success-color" href="#">Message</a>
+            <!-- <a class="secondary-success-color" href="#">Message</a> -->
+            <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
+            <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "secondary-success-color"  %>
             <br>
             <a class="secondary-success-color" href="#">Re-book</a>
             <br>
           </td>
         </tr>
       <%end%>
-      <!-- <tr>
-        <td class="success-color">Guided</td>
-        <td>
-          <span>JULY 22, 2019</span>
-          <br>
-          <span>8:00PM - 8:30PM</span>
-        </td>
-        <td class="avatar text-center">
-          <img width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
-          <br>
-          <span>name</span>
-        </td>
-        <td>
-          <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
-
-          <span>subject</span>
-          <br>
-          <div class="rateYo d-inline-block p-0 my-2"></div>
-          <div class="booking-description">
-            <span title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-          </div>
-        </td>
-        <td>
-          <a class="secondary-success-color" href="#">Send Tip</a>
-          <br>
-          <a class="secondary-success-color" href="#">Message</a>
-          <br>
-          <a class="secondary-success-color" href="#">Re-book</a>
-          <br>
-        </td>
-      </tr> -->
       </tbody>
     </table>
