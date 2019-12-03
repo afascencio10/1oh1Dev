@@ -461,3 +461,13 @@
 		width: 30vw;
 	}
 }
+
+.card-pre{
+	grid-column: 8/19;
+}
+#local-video-right{
+	float: right !important;
+}
+#local-video-up{
+	position: fixed;
+}

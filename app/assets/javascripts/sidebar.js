@@ -82,8 +82,8 @@ jQuery(function ($) {
         e.preventDefault();
         $('.page-wrapper').toggleClass("boder-radius-on");
     });
-    //VARIABLE VALIDAR SI ESTA MOSTRANDO
-    var isShow=0;
+    //VARIABLE Show id is Showing
+    /*var isShow=0;
     $(".transparent1oh1Icon").click(function(){
         if(isShow == 0){
             console.log("Hola");
@@ -134,7 +134,7 @@ jQuery(function ($) {
             isShow=0;
             $(".more_time_conflict_extra_request").animate({left: '-330px'});
         }
-    });
+    });*/
 
     //custom scroll bar is only used on desktop
     if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

@@ -102,7 +102,6 @@ hangouts-like layout*/
     }
 
     .partnerWindow {
-        position: absolute;
         right: 15px;
         top: 15px;
     }
@@ -251,7 +250,7 @@ hangouts-like layout*/
         position: absolute;
         display: grid;
         grid-template-columns: repeat(25, 1fr);
-        grid-template-rows: 100px auto 90px;
+        grid-template-rows: 70px auto 90px;
         width: 100%;
         height: 100%;
         justify-content: center;

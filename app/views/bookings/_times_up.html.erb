@@ -49,7 +49,7 @@
               <!-- Activator -->
               <i class="material-icons icon-3 icon-dropdown-option" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup ="true" aria-expanded = "false">more_vert</i>
               <!-- Options -->
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" data-toggle="modal" data-target="#reportProblem">
                   Report
                 </div>
             </div>
@@ -59,3 +59,5 @@
     </div>
   </div>
 </div>
+<%= render 'report_problem' %>
+

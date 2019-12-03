@@ -434,7 +434,6 @@
 }
 
 .wrapCardSession{
-    padding: 7% 11%;
     grid-column: 2/3;
 }
 
@@ -444,7 +443,7 @@
     box-shadow: 0 4px 6px #888686 !important;
     background-color: #fff !important;
     padding: 0;
-    height: 36rem !important;
+    height: 30rem !important;
     display: grid;
     grid-template-rows: 80% 20%;
 
@@ -638,10 +637,8 @@
 
     & .imageSession{
         justify-self: center;
-        max-width: 72%;
-        min-width: 72%;
-        width: 31rem;
-        height: 18rem;
+        width: 100%;
+        height: 10rem;
     }
 }
 
