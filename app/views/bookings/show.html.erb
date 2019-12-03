@@ -3,8 +3,13 @@
 <span id="current-user" hidden><%= params[:profile_id] %></span>
 <span id="session_id" hidden><%= params[:id] %></span>
 <div class='inSession'>
+  <!--DIV TO CAM TOP-END-->
+  <div class="partnerWindow" id="local-video-up">
+    <video class="partnerWindowView" id="local-video-right" autoplay></video>
+  </div>
+  <!--DIV TO CAM TOP-END-->
   <div class="roomContent" id="remote-video-container"><!--Content--></div>
-  <div class="toolsIconsSession sessionHide" onclick="handleJoinSession()">
+  <div class="toolsIconsSession sessionHide">
   	<div class="sessionIconsMenuCont">
   		<img src="<%= image_path('Icons/iconsmenu.png')  %>" class="sessionIconsMenu">
   	</div>
@@ -19,6 +24,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="center card-pre">
+      <%= render 'pre_session' %>
     </div>
     <div class="transparent1oh1">
       <img src="<%= image_path('iconT.png')  %>" class="transparent1oh1Icon">
@@ -38,9 +46,6 @@
     <div class="sessionIconsExpandCont">
       <img src="<%= image_path('Icons/expand.png')  %>" class="sessionIconsExpand">
     </div>
-  </div>
-  <div class="partnerWindow">
-    <video class="partnerWindowView" id="local-video" autoplay></video>
   </div>
   <div class="more_time_question"></div>
   <div class="more_time_approve"></div>

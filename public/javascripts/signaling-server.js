@@ -76,6 +76,21 @@ document.onreadystatechange = () => {
 };
 
 const handleJoinSession = async () => {
+  //Here to fadeOut the middlecam and add to topbarcam
+  $('.wrapCardSession').fadeOut();
+  $('#local-video-up').fadeIn();
+  navigator.mediaDevices
+  .getUserMedia({
+    audio: false,
+    video: true
+  })
+  .then(stream => {
+    localstream = stream;
+    localVideoUp = document.getElementById("local-video-right");
+    localVideoUp.srcObject = stream;
+    localVideoUp.muted = false;
+  })
+  .catch(logError);
   App.session = await App.cable.subscriptions.create({channel: 'SessionChannel',session_id: document.getElementById("session_id").innerHTML },
   { connected: () => {
       broadcastData({
