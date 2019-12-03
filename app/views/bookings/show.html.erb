@@ -34,7 +34,7 @@
   	<div class="sessionIconsNoVideoCont">
   		<img src="<%= image_path('Icons/nvideo.png')  %>" class="sessionIconsNoVideo">
   	</div>
-    <div class="sessionIconsEndCallCont" onclick="handleLeaveSession()" data-toggle="modal" data-target="#sessionEnd">
+    <div class="sessionIconsEndCallCont" onclick="handleLeaveSession()" data-toggle="modal" data-target="#timesUp">
       <img src="<%= image_path('Icons/endCallW.png')  %>" class="sessionIconsEndCall">
     </div>
   	<div class="sessionIconsMuteCont">
@@ -197,3 +197,6 @@
     </div>
   </div>
 </div>
+<%= render 'times_up' %>
+<%= render 'report_problem' %>
+<%= render 'problem_reported' %>
