@@ -1,4 +1,15 @@
 jQuery(document).ready(function($) {
+	$('#img-Profile').click(function (event) {
+		$('#profile-pic-ui').toggleClass('d-none')
+	})
+
+	var profilePicElm = document.getElementById('profile-pic')
+
+	if (profilePicElm) {
+		new Hammer(profilePicElm).on('swipe', function (event) {
+			$('#profile-pic-ui').addClass('d-none')
+		})
+	}
 
 	$('.tabLink').click(function(event){
 	     var tabId = "#tab_" + $(this).attr("id");

@@ -198,3 +198,129 @@
 		text-transform: none;
 	}
 }
+
+
+
+.explore-container {
+	h1, p {
+		color: #000;
+	}
+	h1 {
+		font-size: 44px;
+		font-weight: 700;
+	}
+
+	p {
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 28px;
+	}
+
+	.explore-guy > div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.explore-guy-avatar {
+		border-radius: 50%;
+		background-size: cover;
+		border: 2px solid #ccc;
+		width: 84px;
+		height: 84px;
+	}
+	.explore-guy-name {
+		font-size: 23px;
+		font-weight: 400;
+		color: #000;
+	}
+
+	.explore-guy-book-btn {
+		border-radius: 8px;
+		border: none!important;
+		color: #fff!important;
+		letter-spacing: 1px;
+		text-transform: none!important;
+		margin-left: 100px;
+		padding: 5px 45px;
+		font-size: 24px;
+		font-weight: 600;
+	}
+
+	.explores-reviews-count {
+		font-weight: 400;
+		position: relative;
+		top: 2px;
+	}
+
+	.explores-review {
+		padding-left: 110px;
+		position: relative;
+		min-height: 84px;
+		.explores-review-profile-pic {
+			border-radius: 50%;
+			background-size: cover;
+			width: 84px;
+			height: 84px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+
+@media (max-width: 1200px)
+{
+	.explore-container-wrap {
+		.page-banner {
+			height: 210px!important;
+			min-height: 210px!important;
+		}
+		.explore-guy-name {
+			color: rgb(107, 209, 249);
+			font-size: 14px;
+			font-weight: 600;
+
+		}
+		h1 {
+			font-size: 20px!important;
+			font-weight: 600px!important;
+		}
+		p, .explores-reviews-count {
+			color: rgb(184, 184, 184)!important;
+			font-size: 14px!important;
+			line-height: 19px!important;
+		}
+
+		.explore-guy-avatar, .explores-review-profile-pic {
+			width: 42px!important;
+			height: 42px!important;
+			border: none!important;
+		}
+		.explore-guy-book-btn {
+			padding: 4px 23px;
+			font-size: 14px;
+		}
+		.explores-review {
+			padding-left: 62px;
+			min-height: 42px;
+		}
+		.explore-guy-book-btn {
+			float: right;
+			margin-left: 0!important;
+			margin-top: 8px;
+		}
+		.yellow-bar {
+			display: none;
+		}
+		#material-tabs {
+			display: flex;
+			justify-content: space-between;
+		}
+		#material-tabs > a, #material-tabs > a.active {
+			font-weight: 500!important;
+		}
+		#material-tabs > a {
+			color: black;
+		}
+	}
+}

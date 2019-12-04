@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
-    @profile = Profile.find_by(:user_id=>current_user.id)
+    @profile = current_user.profile
   end
 
   # GET /projects/1
@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
 
-    @profile = Profile.find_by(:user_id=>current_user.id)
+    @profile = current_user.profile
     if @profile.nil?
       redirect_to profiles_path, notice: 'Please update about your yourself'
     else

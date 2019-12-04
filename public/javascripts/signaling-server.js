@@ -51,6 +51,7 @@ function countdown_timer(end_time)
     if (distance < 0) {
       clearInterval(x);
       document.getElementById("demo").innerHTML = "EXPIRED";
+      $('#timesUp').modal('show');
   }
 }, 1000);
 

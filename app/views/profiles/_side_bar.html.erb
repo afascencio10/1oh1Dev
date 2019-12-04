@@ -6,7 +6,13 @@
             </div>
             <!-- sidebar-header  -->
             <div class="gridperfil ">
-                  <div class=" perfil"><img class="imgperfil" src="<%= image_path('People/beautiful-1274056_640.jpg')  %>"></div>
+                  <div class=" perfil">
+                    <% if current_user.profile.blank? %>
+                      <img  class="imgperfil" src="<%= image_path('no_profile.png') %>">
+                    <% else %>
+                      <img  class="imgperfil" src="<%= current_user.profile.profile_photo ? current_user.profile.profile_photo : image_path('no_profile.png')%>">
+                    <% end %>
+                  </div>
                   <di class=" name"><p class="txtname"><%= current_user.firstname %></p></di>
                   <div class=" imgicon">
                     <i class="material-icons icons linkProfile">home</i>
@@ -43,6 +49,12 @@
                   </div>
                   <div class="celroja">
                     <a class="txtcolor linkSettings">Settings</a>
+                  </div>
+                  <div class="celroja imgicon">
+                    <i class="material-icons icons linkHelp">help</i>
+                  </div>
+                  <div class="celroja">
+                    <a href="/helps" class="txtcolor linkHelp">Quick Help</a>
                   </div>
 
 

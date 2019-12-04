@@ -62,7 +62,7 @@
                      <% project.colab_id.each do |x|%>
                        <div class="profilePict">
                          <% if User.find(x).profile.nil?%>
-                         <img class="profileImage" src="<%= image_path('People/asian-square.jpg')  %>">
+                         <img class="profileImage" src="<%= image_path('no_profile.png')  %>">
                          <%else%>
                          <img class="profileImage" src="<%= User.find(x).profile.profile_photo %>">
                          <%end%>

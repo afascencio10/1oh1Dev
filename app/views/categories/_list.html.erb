@@ -10,6 +10,7 @@
     </div>
 
     <div>
+      <%= page_entries_info @categories %>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -37,6 +38,7 @@
 
         </tbody>
       </table>
+      <%= will_paginate @categories%>
 
     </div>
   </div>

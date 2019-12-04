@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
   def index
     @categories = Category.all
+    @categories = @categories.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
@@ -15,6 +16,12 @@ class CategoriesController < ApplicationController
       }
     ) or return
     @profiles = @filterrific.find.page(params[:page])
+
+
+    @explorers= Explore.all.where(category_id: @category.id, profile_id: @profiles.map(&:id)).where.not(:profile_id => current_user.id)
+    # @explorers = @explorers.paginate(:page => params[:page], :per_page => 1)
+
+
     respond_to do |format|
       format.html
       format.js
@@ -53,4 +60,5 @@ class CategoriesController < ApplicationController
     def catgeory_params
       params.permit(:name,:url,:description)
     end
+
 end

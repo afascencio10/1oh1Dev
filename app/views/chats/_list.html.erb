@@ -9,10 +9,10 @@
           <% if user.id == @other_user.id %>
             <div class="contactCard contactCardActive">
               <div class="celroja gridContact gridContactActive">
-                <% if user.profile.blank?%>
-                <div class="picture"><img src="<%= image_path('People/asian-square.jpg')  %>" class="profilePic"></div>
+                <% if user.profile.nil?%>
+                <div class="picture"><img src="<%= image_path('no_profile.png')  %>" class="profilePic"></div>
                 <%else%>
-                <div class="picture"><img src="<%= user.profile.profile_photo  %>" class="profilePic"></div>
+                <div class="picture"><img src="<%= user.profile.profile_photo ? user.profile.profile_photo : image_path('no_profile.png')  %>" class="profilePic"></div>
                 <%end%>
 
                   <div class="contactLabel"><div id="forName">Name</div></div>
@@ -24,10 +24,10 @@
           <%else%>
             <div class="contactCard">
               <div class="celroja gridContact">
-                <% if user.profile.blank?%>
-                <div class="picture"><img src="<%= image_path('People/asian-square.jpg')  %>" class="profilePic"></div>
+                <% if user.profile.nil? %>
+                <div class="picture"><img src="<%= image_path('no_profile.png')  %>" class="profilePic"></div>
                 <%else%>
-                <div class="picture"><img src="<%= user.profile.profile_photo  %>" class="profilePic"></div>
+                <div class="picture"><img src="<%= user.profile.profile_photo ? user.profile.profile_photo : image_path('no_profile.png')   %>" class="profilePic"></div>
                 <%end%>
 
                   <div class="contactLabel"><div id="forName">Name</div></div>
@@ -36,11 +36,11 @@
                   <!-- <div class="notification"><div class="redCircle"><%= user.email %></div></div> -->
               </div>
             </div>
-          <%end%>          
+          <%end%>
         <%end%>
       <% end %>
     <% end %>
   </div>
-    
+
   <%= will_paginate users  %>
 </div>

@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash[:success] = "Successfully signed up!!"
 
       sign_in(resource_name, resource)
-      redirect_to '/'
+      redirect_to '/profile/about-yourself'
     else
       render 'landing/index'
     end

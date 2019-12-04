@@ -13,7 +13,7 @@ jQuery(function ($) {
         }
 
     });
-    
+
 
     //toggle sidebar
     $("#responsiveMenu").click(function () {
@@ -22,6 +22,9 @@ jQuery(function ($) {
     $("#toggle-sidebar").click(function () {
         $(".page-wrapper").toggleClass("toggled");
     });
+    $(".memberViewMobile").click(function () {
+        $(".page-wrapper").toggleClass("toggled");
+    })
     $("#toggle-exit").click(function () {
         $(".page-wrapper").toggleClass("toggled");
     });
@@ -53,7 +56,7 @@ jQuery(function ($) {
         $(".page-wrapper").toggleClass("toggled");
     });
 
-    //switch between themes 
+    //switch between themes
     var themes = "default-theme legacy-theme chiller-theme ice-theme cool-theme light-theme";
     $('[data-theme]').click(function () {
         $('[data-theme]').removeClass("selected");
@@ -138,7 +141,7 @@ jQuery(function ($) {
 
     //custom scroll bar is only used on desktop
     if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        
+
         $(".sidebar-content").addClass("desktop");
 
     }
@@ -146,16 +149,15 @@ jQuery(function ($) {
     var sidebar = document.querySelector("#sidebar");
     var reviews = document.querySelector(".reviewsPage");
     if(sidebar || reviews){
-      console.log("We have sidebar");
       var topbar = document.querySelector("#site-navbar");
       if(topbar){
         topbar.classList.add("topbarSide");
       }
     }
 
-    
+
 });
 
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+    $('[data-toggle="tooltip"]').tooltip();
   });

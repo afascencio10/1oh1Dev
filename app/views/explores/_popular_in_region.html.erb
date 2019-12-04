@@ -1,5 +1,5 @@
 <section class="my-5">
-  <h3 class="my-5 c-black">Popular Categories in <%= Profile.find_by(:user_id =>current_user.id).country%></h3>
+  <h3 class="my-5 c-black">Popular Categories in <%= current_user.profile ? current_user.profile.country: "" %></h3>
 
   <div class="row my-4">
     <%if @popular_incountry.blank? %>

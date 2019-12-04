@@ -1,5 +1,8 @@
 class Profile < ApplicationRecord
   rolify
+  extend FriendlyId
+  friendly_id :full_user_name, use: :slugged
+
   belongs_to :user
   has_many :guides,dependent: :destroy
   has_many :guide_categories,:through => :guides, :source => :category
@@ -13,7 +16,11 @@ class Profile < ApplicationRecord
   has_many :transactions
   serialize :languages, Array
 
-  self.per_page = 1
+  self.per_page = 4
+
+  def full_user_name
+    "#{user.firstname.downcase}-#{user.lastname.downcase}"
+  end
 
   scope :with_country_name, ->(country_name) {
    where(:country => [*country_name])
@@ -41,7 +48,9 @@ class Profile < ApplicationRecord
  )
 
   def self.options_for_select
-   profile = Profile.arel_table
-   order(profile[:country].lower).pluck(:country, :country)
+   # profile = Profile.arel_table
+   # order(profile[:country].lower).pluck(:country, :country)
+   Profile.distinct.pluck(:country)
   end
+
 end

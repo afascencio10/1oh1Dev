@@ -7,8 +7,8 @@ class ProfilesController < ApplicationController
   def index
     @profiles = Profile.all
     @user = current_user
-    if Profile.find_by(:user_id=>current_user.id)
-      @profile = Profile.find_by(:user_id=>current_user.id)
+    if current_user.profile
+      @profile = current_user.profile
       @explores = @profile.explore_categories.uniq
       @guides = @profile.guide_categories.uniq
       @projects = @profile.projects
@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-
+    @profile = Profile.friendly.find(params[:id])
   end
 
   # GET /profiles/new
@@ -44,8 +44,8 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     # Update
-    if Profile.find_by(:user_id=>current_user.id) #if Profile already exits
-      @profile = Profile.find_by(:user_id=>current_user.id)
+    if current_user.profile #if Profile already exits
+      @profile = current_user.profile
       @params = profile_params
       if @params["country"]
         @params["country"] = CS.get[profile_params[:country].to_sym]
@@ -116,7 +116,7 @@ class ProfilesController < ApplicationController
       format.js
     end
 
-    @profile = Profile.find_by(:user_id=>current_user.id)
+    @profile = current_user.profile
     @list = @profile.guide_categories.uniq.map{|x| x.id}
   end
 

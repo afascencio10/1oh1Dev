@@ -42,7 +42,7 @@ class ExploresController < ApplicationController
   # POST /explores
   # POST /explores.json
   def create
-    @profile = Profile.find_by(:user_id=>current_user.id)
+    @profile = current_user.profile
     if @profile.nil?
       redirect_to profiles_path, notice: 'Please update about your yourself'
     else
@@ -106,15 +106,15 @@ class ExploresController < ApplicationController
     end
 
     def current_profile_id
-      if Profile.find_by(:user_id => current_user.id)
-        Profile.find_by(:user_id => current_user.id).id
+      if current_user.profile
+        current_user.profile.id
       end
     end
 
     def explore_category_ids
-      if Profile.find_by(:user_id => current_user.id)
-        profile_id = Profile.find_by(:user_id => current_user.id).id
-        category_ids_checked=Profile.find_by(:user_id => current_user.id).explores.map(&:category_id)
+      if current_user.profile
+        profile_id = current_user.profile.id
+        category_ids_checked= current_user.profile.explores.map(&:category_id)
         Explore.all.where(category_id: category_ids_checked).where.not(:profile_id => profile_id).map(&:id)
       else
         []
@@ -122,8 +122,8 @@ class ExploresController < ApplicationController
     end
 
     def guide_category_ids
-      if Profile.find_by(:user_id => current_user.id)
-        profile = Profile.find_by(:user_id => current_user.id)
+      if current_user.profile
+        profile = current_user.profile
         guide_ids_checked = profile.guides.map(&:category_id)
         Guide.all.where(category_id: guide_ids_checked).where.not(:profile_id => profile.id).map(&:id)
       else
@@ -132,8 +132,8 @@ class ExploresController < ApplicationController
     end
 
     def country
-      if Profile.find_by(:user_id => current_user.id)
-        Profile.find_by(:user_id => current_user.id).country
+      if current_user.profile
+        current_user.profile.country
       end
 
     end

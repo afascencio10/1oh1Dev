@@ -47,6 +47,8 @@
 //= require jquery.validate
 //= require jquery-ui
 
+//= require hammer.min
+
 //= require bookings
 //= require categories
 //= require guides

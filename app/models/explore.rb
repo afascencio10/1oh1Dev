@@ -4,4 +4,5 @@ class Explore < ApplicationRecord
   has_many :guide_ratings,dependent: :destroy
   has_many :explore_ratings,dependent: :destroy
   has_many :bookings,dependent: :nullify
+
 end

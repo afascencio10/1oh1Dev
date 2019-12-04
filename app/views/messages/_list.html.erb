@@ -9,9 +9,9 @@
           <div class="contactCard">
             <div class="celroja gridContact">
               <% if user.profile.blank?%>
-              <div class="picture"><img src="<%= image_path('People/asian-square.jpg')  %>" class="profilePic"></div>
+              <div class="picture"><img src="<%= image_path('no_profile.png')  %>" class="profilePic"></div>
               <%else%>
-              <div class="picture"><img src="<%= user.profile.profile_photo  %>" class="profilePic"></div>
+              <div class="picture"><img src="<%= user.profile.profile_photo ? user.profile.profile_photo: image_path('no_profile.png') %>" class="profilePic"></div>
               <%end%>
 
                 <div class="contactLabel"><div id="forName">Name</div></div>

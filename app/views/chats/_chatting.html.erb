@@ -2,7 +2,7 @@
 <div class="chatHeader">
   <div id="forChatHeader">
       <i id="chatIcon" class="material-icons">keyboard_arrow_left</i>
-      <div class="chatTitle">Guitar</div>
+      <div class="chatTitle">Chat</div>
       <div class="chatSub">From: <%= @other_user.firstname %></div>
   </div>
 </div>
@@ -10,7 +10,8 @@
 
 <!-- Start: Body chat  -->
 <div id="userIdInfo" style="display: none;"><%= current_user.id %></div>
-<div id="userImageUrl" style="display: none;"><%= Profile.find_by(:user_id => current_user.id).profile_photo %></div>
+
+<div id="userImageUrl" style="display: none;"><%= current_user.profile ? current_user.profile.profile_photo : image_path('no_profile.png')  %></div>
 <div id="chatScroll" class="card-body msg_card_body">
 
     <!-- <div class="d-flex justify-content-start mb-4">

@@ -44,7 +44,6 @@ Rails.application.routes.draw do
   get '/profile/availabilty', to: 'profiles#availabilty'
   get '/profile/completed', to: 'profiles#completed'
 
-
   resources :users, only:[:new] do
    resources :chats, only: [:show,:create]
   end

@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
         @reservation_bookings = Guide.find(params["guide_id"].to_i).profile.bookings.uniq
       end
     else
-      @reservation_bookings = Profile.find(current_user.id).bookings.uniq
+      @reservation_bookings = current_user.profile.bookings.uniq
     end
     @profile_id = current_profile.id
     @pending_bookings =  current_profile.bookings.where(:status => "pending")
@@ -90,7 +90,7 @@ class BookingsController < ApplicationController
     end
 
     if @booking.save
-      @booking.video_sessions.create(profile_id: Profile.find_by(:user_id => current_user.id).id)
+      @booking.video_sessions.create(profile_id: current_user.profile.id)
       @booking.video_sessions.create(profile_id: @other_profile.id)
       # flash[:notice] = "Booking Created"
       # render js: "window.location='#{calendars_path}'"
@@ -98,7 +98,7 @@ class BookingsController < ApplicationController
 
 
 
-    redirect_to profile_booking_path(Profile.find_by(:user_id => current_user.id), @booking,  :peer_id => @other_profile.id)
+    redirect_to profile_booking_path(current_user.profile, @booking,  :peer_id => @other_profile.id)
 
 
   end
@@ -139,7 +139,7 @@ class BookingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
       if params[:profile_id].to_i == current_user.id
-        Profile.find_by(:user_id => current_user.id).bookings.each do |booking|
+        current_user.profile.bookings.each do |booking|
           if booking[:slug] == params[:id]
             Profile.find(params[:peer_id]).bookings.each do |peer_booking|
               if booking.id == peer_booking.id && booking.slug == params[:id] && peer_booking.slug == params[:id]
@@ -176,11 +176,11 @@ class BookingsController < ApplicationController
     end
 
     def current_profile_id
-      Profile.find_by(:user_id => current_user.id).id
+      current_user.profile.id
     end
 
     def current_profile
-      Profile.find_by(:user_id => current_user.id)
+      current_user.profile
     end
 
 
