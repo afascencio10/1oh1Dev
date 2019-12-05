@@ -464,10 +464,14 @@
 
 .card-pre{
 	grid-column: 8/19;
+	grid-row: 2;	
 }
 #local-video-right{
 	float: right !important;
 }
 #local-video-up{
 	position: fixed;
+}
+.wrapCardPre{
+	z-index: 9999;
 }

@@ -78,7 +78,7 @@ document.onreadystatechange = () => {
 
 const handleJoinSession = async () => {
   //Here to fadeOut the middlecam and add to topbarcam
-  $('.wrapCardSession').fadeOut();
+  $('.wrapCardPre').fadeOut();
   $('#local-video-up').fadeIn();
   navigator.mediaDevices
   .getUserMedia({
