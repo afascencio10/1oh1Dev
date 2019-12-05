@@ -27,25 +27,15 @@
             ) %>
           </div>
            <div class="celdaroja chat background">
-              <div class="chatHeader">
-                  <div id="forChatHeader">
-                      <i id="chatIcon" class="material-icons">keyboard_arrow_left</i>
-                      <div class="chatTitle">Guitar</div>
-                      <div class="chatSub">From: Hali</div>
-                  </div>
+              <div class="chatHeader">                  
               </div>
               <div class="card-body msg_card_body">
                   <h5 class="notSelectedTitle">You don't have a message selected</h5>
                   <p class="notSelectedText">Choose one from your existing messages</p>
+                  <img class="imgYet" src="<%= image_path('Icons/yet.png') %>" >
                 </div>
                 <div class="inputChat">
-                  <input id="forInputChat" placeholder="Type a message..." type="text">
-                  <a class="attach" href="#">
-                      <img class="attachIcon" src="<%= image_path('Icons/attach.png') %>">
-                  </a>
-                  <a class="send" href="#">
-                      <img class="sendIcon" src="<%= image_path('Icons/send.png')  %>">
-                  </a>
+                  
                 </div>
           </div>
       </div>
