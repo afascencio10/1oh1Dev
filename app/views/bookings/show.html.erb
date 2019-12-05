@@ -3,6 +3,11 @@
 <span id="current-user" hidden><%= params[:profile_id] %></span>
 <span id="session_id" hidden><%= params[:id] %></span>
 <div class='inSession'>
+  <div class="toolsIconsSession wrapCardPre">
+    <div class="center card-pre">
+      <%= render 'pre_session' %>
+    </div>
+  </div>
   <!--DIV TO CAM TOP-END-->
   <div class="partnerWindow" id="local-video-up">
     <video class="partnerWindowView" id="local-video-right" autoplay></video>
@@ -25,9 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="center card-pre">
-      <%= render 'pre_session' %>
-    </div>
+
     <div class="transparent1oh1">
       <img src="<%= image_path('iconT.png')  %>" class="transparent1oh1Icon">
     </div>
