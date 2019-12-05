@@ -87,25 +87,19 @@
     <div class="interestsContent">
         <div class="interestsImages">
             <% if @explores.blank? %>
-            <div class="interestsImage">
-                    <img class="imagesInterests" src="<%= image_path('life-862972_1920.jpg')  %>">
-            </div>
-            <div class="interestsImage">
-                    <img class="imagesInterests" src="<%= image_path('life-862972_1920.jpg')  %>">
-            </div>
-         <div class="gridGuidingActivity">  
-                    <button class="btnAddActivity">add</button>
-                <div class="titleactivityProfile toptitleActivity">
-                  <span class="titleYetAdd">Nothing added yet</span>
-                </div>
-                <div class="gridImgActivity">
-                    <div class=""></div>
-                    <div class="">
-                        <img src="<%= image_path('Icons/yet.png') %>" alt="Image" class="imgYet">
-                    </div>
-                    <div class=""></div>
-                </div>
-            </div>
+              <div class="gridGuidingActivity">  
+                      <button class="btnAddActivity">add</button>
+                  <div class="titleactivityProfile toptitleActivity">
+                    <span class="titleYetAdd">Nothing added yet</span>
+                  </div>
+                  <div class="gridImgActivity">
+                      <div class=""></div>
+                      <div class="">
+                          <img src="<%= image_path('Icons/yet.png') %>" alt="Image" class="imgYet">
+                      </div>
+                      <div class=""></div>
+                  </div>
+              </div>
             <% else %>
                 <% @explores.each do|explore| %>
                   <div class="interestsImage">
@@ -164,5 +158,5 @@
         </div>
     </div>  
 
-   <!-- <a data-toggle="modal" data-target="#endTimes" id="moreLink" href="#">More</a> -->
+   <!-- <a data-toggle="modal" data-target="#endTimes" id="moreLink" href="#">More</a> cambio prueba -->
 </div>
