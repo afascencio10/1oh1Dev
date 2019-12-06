@@ -19,9 +19,23 @@ jQuery(document).ready(function($) {
     format: 'D MMM YYYY'
   })
 
+  var languages = 1;
+  var objectLanguages = [];
 	$('#addLanguageBtn').on('click', function () {
-		addSelectLangTemplate()
-	})
+    var clonedSelect = $('#select-languages-wrap select').first().clone(false)
+    clonedSelect.attr('id', 'language-'+languages);
+		$('#select-languages-wrap').append(clonedSelect)
+    languages += 1;
+		clonedSelect.wrap('<div></div>')
+  })
+
+  $('.next-button').click(function(){
+    objectLanguages[0] = $('#language').val();
+    for (let i = 1; i <= languages-1; i++) {
+      objectLanguages[i] = $('#language-'+i).val();
+    }
+    console.log(objectLanguages);
+  })
 
 	$('.addExploreBtn').on('click', function () {
 		// alert("Clicked");

@@ -15,9 +15,13 @@
                   <div class="imgBackgraound">
                     <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
                     <div class="editProfilePicIconCont">
-                      <button class="buttonEditProfilePic" onclick="selectPic()">
+                      <button class="buttonEditProfilePic">
+                       <%= file_field_tag :projectphoto,class: 'form-control fieldinput d-none' %>
                         <img class="editProfilePicIcon" src="<%= image_path ('Icons/edit.png') %>">
                       </button>
+                      <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;position:absolute" class="fa fa-spinner" id="loaderimage"></i>
+                      <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;color:green;position:absolute" class="fa fa-check" id="check"></i>
+                      <input type="text" hidden id="url" name="url">
                     </div>
                     <div class="editProfilePic">
 
@@ -25,7 +29,7 @@
                         <% if @profile.profile_photo.blank? %>
                         <%= file_field_tag :pro_photo,class: 'form-control field_input' %>
                         <%= hidden_field_tag :profile_photo%>
-                        <% else %>
+                        <<% else %>
                         <img src="<%= @profile.profile_photo %>" alt="Image" class="profileImg">
                         <%#= file_field_tag :pro_photo,class: 'form-control field_input' %>
                         <%#= hidden_field_tag :profile_photo%>
@@ -65,7 +69,12 @@
               <div class="celr margin" id="gridSelect">
                 <div class="cel boldText title">Fluent Languages *</div>
               </div>
-              <%= select_tag "languages", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), class:"custom-select",multiple: true,:required => true%>
+              		<div class="form-group custom-from-group" id="select-languages-wrap">
+                      <label for="birth-day">Spoken Language(s)</label>
+                      <%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select"}%>
+
+                  </div>
+                  <button type="button" class="btn btn-link" id="addLanguageBtn">Add+</button>
               <!-- <div class="celr marginOption" id="gridOption">
               <div class="tags-input" data-name="tags-input">
               <span class="tag">CSS<span class="close"></span></span>
@@ -117,9 +126,9 @@
       <div class="celr" id="gridbtnSave">
         <div class="cel btnSave">
           <% if @new_profile %>
-          <%= submit_tag("Save",:id=>"submit", :class=>'buttonSave')%>
+          <%= submit_tag("Save",:id=>"submit", :class=>'buttonSave next-button')%>
           <% else %>
-          <%= submit_tag("Save",:id=>"submit", :class=>'buttonSave')%>
+          <%= submit_tag("Save",:id=>"submit", :class=>'buttonSave next-button')%>
           <% end %>
 
 
@@ -221,6 +230,70 @@
       }
     }
   }
+
+  $('.editProfilePicIcon').click(function(){
+    $( "#projectphoto" ).trigger( "click" );
+  })
+
+  var languages = 1;
+  var objectLanguages = [];
+	$('#addLanguageBtn').on('click', function () {
+    var clonedSelect = $('#select-languages-wrap select').first().clone(false)
+    clonedSelect.attr('id', 'language-'+languages);
+		$('#select-languages-wrap').append(clonedSelect)
+    languages += 1;
+		clonedSelect.wrap('<div></div>')
+  })
+
+  $('.next-button').click(function(){
+    objectLanguages[0] = $('#language').val();
+    for (let i = 1; i <= languages-1; i++) {
+      objectLanguages[i] = $('#language-'+i).val();
+    }
+    console.log(objectLanguages);
+  })
+
+</script>
+<script>
+    $(document).ready(function(){
+        $("input[type=file]").change(function(e){
+            $('#loaderimage').fadeIn();
+            $('#loaderimage').addClass('fa-spin');
+            var storage = firebase.storage();
+            var storageRef = firebase.storage().ref();
+            if(e.target.id == "projectphoto"){
+                var file=document.getElementById("projectphoto").files[0];
+                console.log(file);
+                var thisref = storageRef.child("category/"+file.name).put(file);
+
+            }
+            else if(e.target.id == "edit_url"){
+                var file=document.getElementById("edit_url").files[0];
+                console.log(file);
+                var thisref = storageRef.child("category/"+file.name).put(file);
+
+            }
+
+            thisref.on('state_changed',function(snapshot){
+                console.log("File Uploaded Successfully");
+            },function (error) {
+
+            },function() {
+                thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    if(e.target.id=="projectphoto")
+                    {
+                      $('#url').val(downloadURL);
+                        profile = document.getElementById("url").value = downloadURL;
+                    }
+                    else if(e.target.id=="edit_url")
+                    {
+                        profile = document.getElementById("edurl").value = downloadURL;
+                    }
+                    $('#loaderimage').fadeOut();
+                    $('#check').fadeIn();
+                })});
+        });
+    });
 </script>
 
 </div>
