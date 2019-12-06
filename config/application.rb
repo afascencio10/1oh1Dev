@@ -13,8 +13,9 @@ module Mvp1oh1
     # -- all .rb files in that directory are automatically loaded.
     #
     # config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
-
-    config.active_job.queue_adapter = :sidekiq
+    
+    #for development comment it
+    # config.active_job.queue_adapter = :sidekiq
 
   end
 end

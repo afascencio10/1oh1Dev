@@ -67,39 +67,45 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
+    @companion_type = params["type"].split("=")[0]
+    @companion_id = params["type"].split("=")[1].to_i
+
     #next 3 lines of code for changing local time to UTC (Manage Timezones)
-    # timezone = timezone(current_user)
-    # @booking.start = timezone.local_to_utc(@booking.start)
-    # @booking.end = timezone.local_to_utc(@booking.end)
+    timezone = timezone(current_user)
+    @booking.start = timezone.local_to_utc(@booking.start)
+    @booking.end = timezone.local_to_utc(@booking.end)
 
     @diff_seconds = (params[:booking][:end].to_time-params[:booking][:start].to_time).to_i
     @booking.duration = format_time(@diff_seconds)
     @booking.status = "pending"
-    if params[:booking][:cancel_date]=="explore"
-      @booking.guide_id = Guide.find_by(:profile_id => current_profile_id,:category_id => Explore.find(params[:booking][:id]).category_id).id
-      @booking.explore_id = params[:booking][:id]
+    if @companion_type == "explore_id"
+      @companion = Explore.find(@companion_id)
+      @booking.guide_id = Guide.find_by(:profile_id => current_profile_id,:category_id => Explore.find(@companion_id).category_id).id
+      @booking.explore_id = @companion_id
       @booking.description = params[:booking][:description]
-      @other_profile = Explore.find(params[:booking][:id]).profile
+      @other_profile = Explore.find(@companion_id).profile
       @booking.identifier = SecureRandom.base64(10)
     else
-      @booking.explore_id = Explore.find_by(:profile_id => current_profile_id,:category_id => Guide.find(1).category_id).id
-      @booking.guide_id = 1
+      @companion = Guide.find(@companion_id)
+      @booking.explore_id = Explore.find_by(:profile_id => current_profile_id,:category_id => Guide.find(@companion_id).category_id).id
+      @booking.guide_id = @companion_id
       @booking.description = params[:booking][:description]
-      @other_profile = Guide.find(1).profile
+      @other_profile = Guide.find(@companion_id).profile
       @booking.identifier = SecureRandom.base64(10)
     end
+
 
     if @booking.save
       @booking.video_sessions.create(profile_id: current_user.profile.id)
       @booking.video_sessions.create(profile_id: @other_profile.id)
-      # flash[:notice] = "Booking Created"
-      # render js: "window.location='#{calendars_path}'"
+      flash[:notice] = "Booking Created"
+
+      Notification.create(recipient: @companion.profile.user, user: current_user, action: "booking", notifiable: current_user, url: profile_booking_path(@companion.profile.id, @booking,  :peer_id => current_user.id) )
+
+      render js: "window.location='#{calendars_path}'"
+      # render js: "window.location = '#{profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)}'"
+
     end
-
-
-
-    redirect_to profile_booking_path(current_user.profile, @booking,  :peer_id => @other_profile.id)
-
 
   end
 

@@ -1,7 +1,6 @@
 <%= simple_form_for @booking, remote: true do |f| %>
   <div class="modal-header">
     <h5 class="modal-title create-view">New Event</h5>
-
     <h5 class="modal-title edit-view">Edit Event</h5>
 
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -11,6 +10,7 @@
   <div class="modal-body">
       <div class="form-group">
           <%= f.input :title,input_html: { class: 'form-control fz-14' }, id: 'newEventSubject',placeholder: 'Subject',label: false %>
+          <input type="hidden" name="type" id="type" >
         <!-- <input type="text" class="form-control fz-14" id="newEventSubject" placeholder="Subject"> -->
         <%= f.input_field :start, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
         <%= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
@@ -74,3 +74,11 @@
 
   </div>
 <% end %>
+
+<script type="text/javascript">
+  var url_string = window.location.href
+  var url = new URL(url_string);
+  var params = url.search.split("?")[1];
+  $("#type").val(params);
+
+</script>

@@ -1,8 +1,17 @@
 class SessionsController < ApplicationController
   def index
-    @random_number = rand(0...10_000)
-    # @booking = Booking.all[2].guide_id
-    # @messages = Message.all
+    if params["explore_id"]
+      @companion = Explore.find(params["explore_id"])
+      if @companion.profile.user_id.to_i == current_user.id
+        render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+      end
+    else
+      @companion = Guide.find(params["guide_id"])
+      if @companion.profile.user_id.to_i == current_user.id
+        render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+      end
+    end
+
   end
 
   def new

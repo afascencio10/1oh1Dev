@@ -14,7 +14,6 @@ class ProfilesController < ApplicationController
       @projects = @profile.projects
       @explore_ratings = @profile.explore_ratings.order("created_at DESC").first(3)
       @guide_ratings = @profile.guide_ratings.order("created_at DESC").first(3)
-
       @new_profile = false
     else
       @new_profile = true
@@ -47,6 +46,7 @@ class ProfilesController < ApplicationController
     if current_user.profile #if Profile already exits
       @profile = current_user.profile
       @params = profile_params
+      puts @params
       if @params["country"]
         @params["country"] = CS.get[profile_params[:country].to_sym]
       end
@@ -54,6 +54,9 @@ class ProfilesController < ApplicationController
         @states = CS.get profile_params[:country].to_sym
         @params["state"] = @states[profile_params[:state].to_sym]
       end
+
+      @params["languages"]= []
+      @params["languages"] = params["languages"].map!{|x| LanguageList::LanguageInfo.find(x).name}
 
       if(params[:first_signup] == "true")
         respond_to do |format|
@@ -86,6 +89,10 @@ class ProfilesController < ApplicationController
       @user.profile = @profile
       @profile.country = CS.get[profile_params[:country].to_sym]
       @profile.state = CS.get[profile_params[:state].to_sym]
+
+      @params["languages"]= []
+      @params["languages"] = params["languages"].map!{|x| LanguageList::LanguageInfo.find(x).name}
+
       respond_to do |format|
         if @profile.save
           flash[:success] = "Profile was successfully created!"
@@ -151,7 +158,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.permit(:state,:country,:profile_photo,:banner_photo,:bio,:contact_no,:profile_photo,:banner_photo,:birth_date,:city,:state,languages:[])
+      params.permit(:state,:country,:profile_photo,:banner_photo,:bio,:contact_no,:profile_photo,:banner_photo,:birth_date,:city,:state,:languages=>[])
     end
 
 end

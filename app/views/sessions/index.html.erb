@@ -7,9 +7,9 @@
 
 <div class="container booking-container">
     <div class="booking-overview">
-        <h3><b>booking</b></h3>
+        <h3><b>Booking</b></h3>
 
-        <h6>with Ms.Brown</h6>
+        <h6>with <%= @companion.profile.user.firstname%> <%= @companion.profile.user.lastname%></h6>
 
         <img class="booking-overview-avatar"
              height="80px"
@@ -70,14 +70,14 @@
             <div>
                 <label class="pure-material-checkbox orange">
                   <input type="checkbox" id="current_user_checkbox" checked="true">
-                  <span>Jimi Hendrix</span>
+                  <span><%= @companion.profile.user.firstname%> <%= @companion.profile.user.lastname%></span>
                 </label>
             </div>
 
             <div>
                 <label class="pure-material-checkbox blue">
                   <input type="checkbox" id="other_user_checkbox"  checked="true">
-                  <span>Gary Brown</span>
+                  <span><%= current_user.firstname%> <%= current_user.lastname%></span>
                 </label>
             </div>
         </div>

@@ -7,38 +7,40 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="gridContent modal-body ">
-          <div class="modalNewCategory redcel">
-              <div class="reminder redcel"><p class="paragraph  textParagraph">Reminder: all categories must follow 1oh1's community policy and will be reviewed before being accesable to other users. We will notify you on the status of your submission.</p></div>
-              <div>
-                <div class="newCategoryName redcel">
-                  <div class="textName title boldText">Category Name</div>
-                  <div class="greyText txtinput  ">Be specific. For example, use plano instead of music.</div>
+      <%= form_tag url_for({:controller => 'categories', :action => :create, :method => :post }) do %>
+          <div class="gridContent modal-body ">
+              <div class="modalNewCategory redcel">
+                  <div class="reminder redcel"><p class="paragraph  textParagraph">Reminder: all categories must follow 1oh1's community policy and will be reviewed before being accesable to other users. We will notify you on the status of your submission.</p></div>
+                  <div>
+                    <div class="newCategoryName redcel">
+                      <div class="textName title boldText">Category Name</div>
+                      <div class="greyText txtinput  ">Be specific. For example, use plano instead of music.</div>
+                    </div>
+                  </div>
+                  <div class="redcel txt-newcategory">
+                    <input type="text" class="txtOne" name="name">
+                  </div>
+                  <div>
+                    <div class="categoryDescription redcel">
+                      <div class="textDescription title boldText">Category Description</div>
+                      <div class="greyText txtinput">Publically describe the category</div>
+                    </div>
+                  </div>
+                  <div class="redcel area">
+                    <textarea class="txtArea" name="description"></textarea>
+                  </div>
+                  <div>
+                  </div>
                 </div>
-              </div>
-              <div class="redcel txt-newcategory">
-                <input type="text" class="txtOne">
-              </div>
-              <div>
-                <div class="categoryDescription redcel">
-                  <div class="textDescription title boldText">Category Description</div>
-                  <div class="greyText txtinput">Publically describe the category</div>
-                </div>
-              </div>
-              <div class="redcel area">
-                <textarea class="txtArea"></textarea>
-              </div>
-              <div>
-              </div>
-            </div>
-            <div class="modal-footer">
-                <div class="celr" id="gridActions">
-                    <div class="btnCancel"><button type="button" class="buttonCancel">Cancel</button></div>
-                    <div class="btnSubmit"><button type="button" class="buttonSave">Submit</button></div>
-                </div>
-             </div>
-      </div>
-      
+                <div class="modal-footer">
+                    <div class="celr" id="gridActions">
+                        <div class="btnCancel"><button type="button" class="buttonCancel">Cancel</button></div>
+                        <div class="btnSubmit"><button type="submit" class="buttonSave">Submit</button></div>
+                    </div>
+                 </div>
+          </div>
+        <% end %>
+
     </div>
   </div>
 </div>
@@ -68,9 +70,9 @@
           <div class="btnClose">
             <button type="button" class="btnModal-MessageRed">Close</button>
           </div>
-            
+
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -78,11 +80,11 @@
 <!--<div class="modal fade" id="endTimes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document" id="category">
     <div class="modal-content">
-     
+
         <button type="button" class="close closePre" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-    
+
       <div class="modal-body gridModalEndTimes">
         <div class="celverde">
           <h4 class="hTime">Times up!</h4>
@@ -116,7 +118,7 @@
           <a class="linkTime">Rate later</a>
         </div>
       </div>
-      
+
     </div>
   </div>
 </div>
