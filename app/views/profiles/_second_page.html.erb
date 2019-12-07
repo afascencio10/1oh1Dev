@@ -37,7 +37,7 @@
   		<span class="fz-12">Cant find something?</span>
   	</div>
   	<div>
-  		<a href="#" class="fz-12">Add a new category.</a>
+  		<a  class="fz-12" data-toggle="modal" data-target="#categoriesModal" >Add a new categorys.</a>
   	</div>
   </div>
 </div>
@@ -49,3 +49,4 @@
 			locals: { categories: @categories }
 		) %>
 </div>
+<%= render 'add_category_guest' %>
