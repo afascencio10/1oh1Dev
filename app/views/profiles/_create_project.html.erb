@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="modal fade" id="createProjectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -27,7 +28,10 @@
              </div>
 
              <%= file_field_tag :projectphoto,class: 'form-control fieldinput' %>
-             <%= hidden_field_tag :image%>
+              <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;position:absolute" class="fa fa-spinner" id="loaderimage"></i>
+              <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;color:green;position:absolute" class="fa fa-check" id="check"></i>
+              
+              <input type="text" hidden id="url" name="url">
 
              <div class="celr" id="griCreator">
                  <div class="cel titleCreator boldText title">Creator</div>
@@ -127,3 +131,44 @@
     </div>
   </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("input[type=file]").change(function(e){
+            $('#loaderimage').fadeIn();
+            $('#loaderimage').addClass('fa-spin');
+            var storage = firebase.storage();
+            var storageRef = firebase.storage().ref();
+            if(e.target.id == "projectphoto"){
+                var file=document.getElementById("projectphoto").files[0];
+                console.log(file);
+                var thisref = storageRef.child("category/"+file.name).put(file);
+
+            }
+            else if(e.target.id == "edit_url"){
+                var file=document.getElementById("edit_url").files[0];
+                console.log(file);
+                var thisref = storageRef.child("category/"+file.name).put(file);
+
+            }
+
+            thisref.on('state_changed',function(snapshot){
+                console.log("File Uploaded Successfully");
+            },function (error) {
+
+            },function() {
+                thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    if(e.target.id=="projectphoto")
+                    {
+                      $('#url').val(downloadURL);
+                        profile = document.getElementById("url").value = downloadURL;
+                    }
+                    else if(e.target.id=="edit_url")
+                    {
+                        profile = document.getElementById("edurl").value = downloadURL;
+                    }
+                    $('#loaderimage').fadeOut();
+                    $('#check').fadeIn();
+                })});
+        });
+    });
+</script>
