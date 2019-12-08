@@ -1282,8 +1282,15 @@ input[type=radio]:checked {
   border-radius: 5px;
   width: 100px;
   font-weight: bold;
-  border-color: #ffffff;
+  border-color: 1px solid #6d6a6a;
 
+
+}
+.toggled .buttonCreate {
+  display: block;
+}
+.toggled .btnAddActivity{
+  display: block;
 }
 .toggled .exit  {
  display : none  //oculto 
@@ -1304,6 +1311,7 @@ input[type=radio]:checked {
     border-color: #afacac70;
     padding: 4px;
     border-radius: 5px;
+    display: none;
 }
 .buttonCalendar{
     display: grid;
@@ -1320,6 +1328,7 @@ input[type=radio]:checked {
     border-color: #afacac70;
     padding: 4px;
     border-radius: 5px;
+    display: none;
 }
 .buttonMessage {
     position: relative;
@@ -1576,6 +1585,7 @@ input:checked + .slider:before {
   cursor: pointer;
   width: 20vw;
   margin-bottom: 19%;
+  display: none;
 }
 .editProfilePic{
   position: absolute;
@@ -1818,6 +1828,8 @@ input:checked + .slider:before {
   cursor: pointer;
   width: 8vw;
   height: 38px;
+  display: none;
+  
 }
 .toptitleActivity {
   margin-top: 23px;
@@ -1865,6 +1877,7 @@ input:checked + .slider:before {
 }
 .btnExit {
   display: none;
+
 }
 .interestsTitle {
   font-size: 25px;
