@@ -5,6 +5,20 @@
   min-height: 400px !important;
 }
 
+ 
+.memberview .page-content {
+  display: inline-block;
+  width: 100%;
+  -webkit-transition: padding-left .3s ease;
+  transition: padding-left .3s ease;
+  padding-top: 90px;
+  overflow-x: hidden;
+}
+
+.memberview-navbar .site-navbar .site-navigation .site-menu > li > a {
+    color: #000;
+}
+
 .fix-profile{
   position: absolute;
   bottom: -65px;
