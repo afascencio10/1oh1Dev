@@ -137,9 +137,12 @@
             if(e.target.id == "projectphoto"){
               $('#loaderimage').fadeIn();
               $('#loaderimage').addClass('fa-spin');
-            }else{
+            }else if(e.target.id == "profilephoto"){
               $('#loaderimageprofile').fadeIn();
               $('#loaderimageprofile').addClass('fa-spin');
+            }else if(e.target.id == "edit_url"){
+              $('#loaderedit').fadeIn();
+              $('#loaderedit').addClass('fa-spin');
             }
                 var storage = firebase.storage();
                 var storageRef = firebase.storage().ref();
@@ -179,14 +182,17 @@
                       }
                       else if(e.target.id=="edit_url")
                       {
-                          profile = document.getElementById("url").value = downloadURL;
+                          profile = document.getElementById("url_edit").value = downloadURL;
                       }
                       if(e.target.id=="projectphoto"){
                         $('#loaderimage').fadeOut();
                         $('#check').fadeIn();
-                      }else{
+                      }else if(e.target.id == "profilephoto"){
                         $('#loaderimageprofile').fadeOut();
                         $('#checkprofile').fadeIn();
+                      }else if(e.target.id == "edit_url"){
+                        $('#loaderedit').fadeOut();
+                        $('#checkedit').fadeIn();
                       }
                   })});
           })

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="modal fade" id="projectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -26,8 +27,10 @@
                  </div>
                  <div class="cel boldText title">Project photo</div>
                  <div class="cel input">
-                   <%= file_field_tag :projectphoto,class: 'form-control fieldinput' %>
-                   <%= hidden_field_tag :image%>
+                   <%= file_field_tag :edit_url,class: 'form-control fieldinput' %>
+                    <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;position:absolute" class="fa fa-spinner" id="loaderedit"></i>
+                    <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;color:green;position:absolute" class="fa fa-check" id="checkedit"></i>
+                    <input type="text" hidden id="url_edit" name="url_edit">
                  </div>
              </div>
 
