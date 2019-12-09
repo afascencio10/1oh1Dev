@@ -15,10 +15,10 @@
                   <div class="imgBackgraound">
                     <img class="profileImg" src="<%= image_path ('person_4.jpg') %>">
                     <div class="editProfilePicIconCont">
-                      <button class="buttonEditProfilePic">
+                      <a class="buttonEditProfilePic">
                        <%= file_field_tag :projectphoto,class: 'form-control fieldinput d-none' %>
                         <img class="editProfilePicIcon" src="<%= image_path ('Icons/edit.png') %>">
-                      </button>
+                      </a>
                       <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;position:absolute" class="fa fa-spinner" id="loaderimage"></i>
                       <i style="display:none;margin-left: 89%;float: right;margin-top: -4%;color:green;position:absolute" class="fa fa-check" id="check"></i>
                       <input type="text" hidden id="url" name="url">
