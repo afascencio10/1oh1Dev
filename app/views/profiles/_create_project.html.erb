@@ -134,41 +134,67 @@
 <script>
     $(document).ready(function(){
         $("input[type=file]").change(function(e){
-            $('#loaderimage').fadeIn();
-            $('#loaderimage').addClass('fa-spin');
-            var storage = firebase.storage();
-            var storageRef = firebase.storage().ref();
             if(e.target.id == "projectphoto"){
-                var file=document.getElementById("projectphoto").files[0];
-                console.log(file);
-                var thisref = storageRef.child("category/"+file.name).put(file);
-
+              $('#loaderimage').fadeIn();
+              $('#loaderimage').addClass('fa-spin');
+            }else if(e.target.id == "profilephoto"){
+              $('#loaderimageprofile').fadeIn();
+              $('#loaderimageprofile').addClass('fa-spin');
+            }else if(e.target.id == "edit_url"){
+              $('#loaderedit').fadeIn();
+              $('#loaderedit').addClass('fa-spin');
             }
-            else if(e.target.id == "edit_url"){
-                var file=document.getElementById("edit_url").files[0];
-                console.log(file);
-                var thisref = storageRef.child("category/"+file.name).put(file);
+                var storage = firebase.storage();
+                var storageRef = firebase.storage().ref();
+                if(e.target.id == "projectphoto"){
+                    var file=document.getElementById("projectphoto").files[0];
+                    console.log(file);
+                    var thisref = storageRef.child("category/"+file.name).put(file);
 
-            }
+                }
+                if(e.target.id == "profilephoto"){
+                    var file=document.getElementById("profilephoto").files[0];
+                    console.log(file);
+                    var thisref = storageRef.child("category/"+file.name).put(file);
+                }
+                else if(e.target.id == "edit_url"){
+                    var file=document.getElementById("edit_url").files[0];
+                    console.log(file);
+                    var thisref = storageRef.child("category/"+file.name).put(file);
 
-            thisref.on('state_changed',function(snapshot){
-                console.log("File Uploaded Successfully");
-            },function (error) {
+                }
 
-            },function() {
-                thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-                    if(e.target.id=="projectphoto")
-                    {
-                      $('#url').val(downloadURL);
-                        profile = document.getElementById("url").value = downloadURL;
-                    }
-                    else if(e.target.id=="edit_url")
-                    {
-                        profile = document.getElementById("edurl").value = downloadURL;
-                    }
-                    $('#loaderimage').fadeOut();
-                    $('#check').fadeIn();
-                })});
-        });
+                thisref.on('state_changed',function(snapshot){
+                    console.log("File Uploaded Successfully");
+                },function (error) {
+
+                },function() {
+                  thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                      if(e.target.id=="projectphoto")
+                      {
+                        $('#url').val(downloadURL);
+                          profile = document.getElementById("url").value = downloadURL;
+                      }
+                      if(e.target.id=="profilephoto")
+                      {
+                        $('#urlprofile').val(downloadURL);
+                          profile = document.getElementById("urlprofile").value = downloadURL;
+                      }
+                      else if(e.target.id=="edit_url")
+                      {
+                          profile = document.getElementById("url_edit").value = downloadURL;
+                      }
+                      if(e.target.id=="projectphoto"){
+                        $('#loaderimage').fadeOut();
+                        $('#check').fadeIn();
+                      }else if(e.target.id == "profilephoto"){
+                        $('#loaderimageprofile').fadeOut();
+                        $('#checkprofile').fadeIn();
+                      }else if(e.target.id == "edit_url"){
+                        $('#loaderedit').fadeOut();
+                        $('#checkedit').fadeIn();
+                      }
+                  })});
+          })
     });
 </script>

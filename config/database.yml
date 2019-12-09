@@ -39,7 +39,7 @@ development:
   # domain sockets, so uncomment these lines.
   host: localhost
   username: postgres
-  password: Ascencioarni10
+  password: root
 
   
   
