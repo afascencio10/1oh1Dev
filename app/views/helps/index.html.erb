@@ -1,88 +1,15 @@
+<%= render 'landing/navbar' %>
 
- <%=  render 'landing/navbar' %>
-
-	<div class="containerHelps">
-		<div class="bodyHelp">
-			<!-- start: head  -->
-			<div class="headerHelp">
-				<div class="descriptionContainer">
-					<div class="titleDescription">
-						<h4>We´re here to help.</h4>
-					</div>
-					<div class="contentDescription">
-						<p class="">At 1oh1 we are constantly  innovating to bring you the best
-								possible experience.Here you can find important information
-								and solutions to common problems. if you can not find a topic
-								or have a suggestion on how we can make the site better
-								please reach out to us at support.1oh1.org.
-						</p>
-					</div>
-				</div>
-			</div>
-			<!-- end: head  -->
-
-			<!-- start: body  -->
-			<article class="bodyContainer">
-				<div>
-					<div class="sectionLeft">
-						<a href="#" class="optionHelp active-link" id="account">
-							Account
-						</a>
-						<a  class="optionHelp" id="communication" >Communication</a>
-						<a href="#section-how" class="optionHelp" id="how" >How-to...</a>
-						<a href="#section-explorer" class="optionHelp" id="explorer" >Explorer Support</a>
-						<a href="#section-guide" class="optionHelp" id="guide" >Guide Support</a>
-						<a href="#section-legal" class="optionHelp" id="legal" >Legal</a>
-						<div class="d-none" id="section-legal">
-							<div class="legalList">
-								<div>
-									<a href="#section-privacypolicy" class="optionHelp" id="privacypolicy">Privacy Policy</a>
-								</div>
-								<div>
-									<a href="#section-privacypolicy" class="optionHelp" id="useragreement">User Agreement</a>
-								</div>
-								<div>
-									<a href="#section-privacypolicy" class="optionHelp" id="professionalpolicy">Professional Policy</a>
-								</div>
-								<div>
-									<a href="#section-privacypolicy" class="optionHelp" id="cookiespolicy">Cookies Policy</a>
-								</div>
-								<div>
-									<a href="#section-privacypolicy" class="optionHelp" id="refundpolicy">Refund Policy</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- -  -->
-				<div class="sectionRight">
-					<div class="sectionAccount" id="section-account">
-						<%= render 'help_account' %>
-					</div>
-					<div class="d-none" id="section-communication">
-						<%= render 'helpcommunication'%>
-					</div>
-					<div class="d-none" id="section-how">How to</div>
-					<div class="d-none" id="section-explorer">Explorer Support</div>
-					<div class="d-none" id="section-guide">Guide Support</div>
-					<div class="d-none" id="section-privacypolicy">
-						<%= render 'privacypolicy'%>
-					</div>
-					<div class="d-none" id="section-useragreement">
-						<%= render 'useragreement'%>
-					</div>
-					<div class="d-none" id="section-professionalpolicy">
-						<%= render 'professionalpolicy'%>
-					</div>
-					<div class="d-none" id="section-cookiespolicy">
-						<%= render 'cookiespolicy'%>
-					</div>
-					<div class="d-none" id="section-refundpolicy">
-						<%= render 'refundpolicy'%>
-					</div>
-				</div>
-			</article>
-			<!-- end: body  -->
-
-		</div>
-	</div>
+<div class="page-wrapper default-theme sidebar-bg bg1 toggled helpActive">
+    
+    <%= render 'profiles/side_bar' %>
+    <!-- page-content  -->
+    <main class="page-content">
+        <div id="overlay" class="overlay"></div>
+        <div class="mainContent">
+            <i id="responsiveMenu" class="material-icons">more_vert</i>
+            <%= render 'help_profile' %>
+        </div>
+    </main>
+    <!-- page-content" -->
+</div>
