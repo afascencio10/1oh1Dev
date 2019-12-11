@@ -1,37 +1,56 @@
-<div class="tab-pane container fade" id="guide">
-  <%= form_tag( {:controller=>"guides", :action => :create, }, { :method => :post }) do %>
-      <div class="row popular align-items-center justify-content-center text-center">
-        <% @category.each do |category| %>
-          <div class="col-md-3">
-            <label>
-              <div class="custom-card card-very-small my-3">
-                <div class="has-bg" style="background-image: url(<%= category.url %>);">
-                  <div class="texts-wrap">
-                    <div class="main-text"><%= category.name %></div>
-                    <!-- <div class="sub-text">editing</div> -->
-                  </div>
-                </div>
-              </div>
-              <div style="margin-top: 10px">
-                <h6 class="text-primary"><input type="checkbox" class="form-check-input" id="guide<%= category.id %>" name="category[]" value="<%= category.id %>"><%= category.name %></h6>
-              </div>
-            </label>
+<div class="modal fade" id="editGuideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Interests</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modalCategories redcel">
+          <div class="addInterests redcel">
+            <div class="title boldText redcel">
+              Add an interest
+            </div>
+            <div class="redcel">
+            </div>
+            <div class="inputContainer redcel">
+              <input placeholder="Electric cars, oil painting, guitar..." type="text" name="searchInput" class="oh1SearchInput">
+              <img class="inputRightIcon" src="<%= image_path('Icons/search.png')  %>">
+            </div>
+            <div class="newCategoryMessage boldText redcel">
+              Can't find a category? <span data-toggle="modal" data-target="#newCategoryModal" class="createCategory boldText"> Create a new category.</span>
+            </div>
           </div>
-        <% end %>
+          <div class="title boldText redcel" id="yourInterests">
+            Your interests
+          </div>
+          <div class="categoriesGrid redcel">
+            <% if @guides.blank? %>
+              <div class="gridGuidingActivity">
+                  <div class="titleactivityProfile toptitleActivity">
+                    <span class="titleYetAdd">Nothing added yet</span>
+                  </div>
+                  <div class="gridImgActivity">
+                      <div class=""></div>
+                      <div class="">
+                          <img src="<%= image_path('Icons/yet.png') %>" alt="Image" class="imgYet">
+                      </div>
+                      <div class=""></div>
+                  </div>
+              </div>
+            <% else %>
+                <% @guides.each do|guide| %>
+                  <div class="interestsImage">
+                     <img class="imagesInterests" src="<%= guide.url %>">
+                  </div>
+               <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
-      <div class="input-group-append float-right">
-        <a class="btn custom-btn-outline-primary" data-toggle="modal" data-target="#add_category_guest">Add Skills</a>
-        <button type="submit" class="btn custom-btn-outline-primary">Update Skills</button>
-      </div>
-    <% end %>
+    </div>
+  </div>
 </div>
-
-<script>
-    var check = '<%= raw @guides.map(&:id).as_json %>';
-    JSON.parse(check).forEach(function (item) {
-        $("#guide" + item).prop('checked', true);
-    });
-</script>
-
-<%= render 'add_category_guest'%>

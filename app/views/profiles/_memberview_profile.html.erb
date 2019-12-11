@@ -1,22 +1,9 @@
 <div class="celprofile">
-  <a id="toggle-sidebar" href="#">
-  <div class="memberView">
-      <div class="profileView">
-          Profile
-      </div>
-      <div class="viewAsMember">
-          View as member
-      </div>
-  </div>
-</a>
-<div class="exit">
-  <button type="button" class="btnExit" id="toggle-exit">Exit View</button>
-</div>
   <div class="fondo"><img class="imgfondo" src="<%= image_path('life-862972_1920.jpg')  %>"></div>
   <div class="celprofile" id="description">
     <div class="cel pname">
         <img id="img-Profile" class="imgView" src="<%= image_path('People/beautiful-1274056_640.jpg')%>">
-        <p class="names"><%= current_user.firstname%>&nbsp<%= current_user.lastname %></p>
+        <p class="names"><%= @profile.user.firstname%>&nbsp<%= @profile.user.lastname %></p>
     </div>
 
     <div class="cel"><i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">create</i>
@@ -26,7 +13,7 @@
       <% if @profile.state.nil? && @profile.country.nil? %>
      Location : None
      <% else %>
-      <%= @profile.state%>,<%= @profile.country%></h3>
+      <%= @profile.state%>,<%= @profile.country%>
      <% end %>
     </p></div>
     <div class="celd"></div>
@@ -50,11 +37,6 @@
     <div class="cel"></div>
   </div>
   <div class="celprofile tabOptions row" id="grid-menu">
-    <!-- <div class="cel"></div>
-    <div class="cel tabOption"><a class="tabLink selected" id="explore" tabindex="0">Explore</a></div>
-    <div class="cel tabOption"><a class="tabLink" id="guide"tabindex="1" >Guide</a></div>
-    <div class="cel tabOption"><a class="tabLink" id="projects" tabindex="2">Projects</a></div>
-    <div class="cel"></div> -->
     <header class="profile-tab">
       <div id="material-tabs">
           <a id="tab1-tab" href="#tab1" class="active">17 <br> Explore</a>
@@ -66,7 +48,7 @@
   </div>
   <div class="tab-content custom-table">
         <div id="tab1">
-          <%= render 'exploration' %>
+          <%= render 'exploration'  %>
         </div>
         <div id="tab2">
           <%= render 'guiding' %>
@@ -75,17 +57,5 @@
           <%= render 'projects' %>
         </div>
   </div>
-  <!-- <div class="tabContainer">
-      <div class="tab selected" id="tab_explore">
-
-      </div>
-      <div class="tab" id="tab_guide">
-
-      </div>
-      <div class="tab" id="tab_projects">
-
-      </div>
-  </div>                 -->
-
   <%= render 'profile_pic_ui' %>
 </div>

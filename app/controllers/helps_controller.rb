@@ -17,62 +17,6 @@ class HelpsController < ApplicationController
 
   end
 
-  # GET /helps/1
-  # GET /helps/1.json
-  # def show
-  #   @test =  Booking.find(params[:id])
-  # end
-  #
-  # # GET /helps/new
-  # def new
-  #   @help = Help.new
-  # end
-  #
-  # # GET /helps/1/edit
-  # def edit
-  #   @booking =  Booking.find(params[:id])
-  # end
-  #
-  # # POST /helps
-  # # POST /helps.json
-  # def create
-  #   @help = Help.new(help_params)
-  #
-  #   respond_to do |format|
-  #     if @help.save
-  #       format.html { redirect_to @help, notice: 'Help was successfully created.' }
-  #       format.json { render :show, status: :created, location: @help }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @help.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  #
-  # # PATCH/PUT /helps/1
-  # # PATCH/PUT /helps/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @help.update(help_params)
-  #       format.html { redirect_to @help, notice: 'Help was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @help }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @help.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  #
-  # # DELETE /helps/1
-  # # DELETE /helps/1.json
-  # def destroy
-  #   @help.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to helps_url, notice: 'Help was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
-  #
   def states
     render json: CS.states(params[:country]).to_json
   end

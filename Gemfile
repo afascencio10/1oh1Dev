@@ -39,6 +39,7 @@ gem 'filterrific'
 gem 'will_paginate'
 gem 'kaminari'
 
+gem 'rest-client'
 
 
 gem 'simple_form'

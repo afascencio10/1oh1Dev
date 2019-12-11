@@ -69,26 +69,26 @@
                             <div class="topStart"></div>
                         </div>
                     </div>
-    
+
                     <div class="cel"></div>
-    
+
       </div>
       </div>
-      <div class="cel"></div>                 
+      <div class="cel"></div>
     </div>
     <div class="interestsHeader">
         <div class="interestsTitle">Intrests</div>
         <div class="interestsIcon">
             <a href="#">
-                <img data-toggle="modal" data-target="#categoriesModal" class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
+                <img data-toggle="modal" data-target="#editExploreModal" class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
             </a>
         </div>
     </div>
     <div class="interestsContent">
         <div class="interestsImages">
             <% if @explores.blank? %>
-              <div class="gridGuidingActivity">  
-                      <button data-toggle="modal" data-target="#categoriesModal" class="btnAddActivity" >adds</button>
+              <div class="gridGuidingActivity">
+                      <button data-toggle="modal" data-target="#editExploreModal" class="btnAddActivity" >adds</button>
                   <div class="titleactivityProfile toptitleActivity">
                     <span class="titleYetAdd">Nothing added yet</span>
                   </div>
@@ -107,7 +107,7 @@
                   </div>
                <% end %>
             <% end %>
-        </div> 
+        </div>
         <div class="interestsMoreLink">
             <a id="interestsMoreLink" href="#">More</a>
         </div>
@@ -141,7 +141,7 @@
                          </div>
                    </div>
                    <div class="reviewViewAllReviews">
-                       <a id="reviewViewAllReviews" href="#">viewAllReviews</a>
+                       <a id="reviewViewAllReviews" href="/reviews">viewAllReviews</a>
                    </div>
                    <div class="commentImage">
                        <img class="commentProfileImage" src="<%= Guide.find(content.guide_id).profile.profile_photo %>">
@@ -150,13 +150,13 @@
                </div>
            </div>
          <% end %>
-      <% end %>        
-    </div>                            
-    <div class="moreLink">
+      <% end %>
+    </div>
+    <!-- <div class="moreLink">
         <div id="forMoreLink">
             <a id="moreLink" href="#">More</a>
         </div>
-    </div>  
+    </div> -->
 
    <!-- <a data-toggle="modal" data-target="#endTimes" id="moreLink" href="#">More</a> cambio prueba -->
 </div>

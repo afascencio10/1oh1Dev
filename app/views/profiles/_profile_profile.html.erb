@@ -50,16 +50,11 @@
     <div class="cel"></div>
   </div>
   <div class="celprofile tabOptions row" id="grid-menu">
-    <!-- <div class="cel"></div>
-    <div class="cel tabOption"><a class="tabLink selected" id="explore" tabindex="0">Explore</a></div>
-    <div class="cel tabOption"><a class="tabLink" id="guide"tabindex="1" >Guide</a></div>
-    <div class="cel tabOption"><a class="tabLink" id="projects" tabindex="2">Projects</a></div>
-    <div class="cel"></div> -->
     <header class="profile-tab">
       <div id="material-tabs">
-          <a id="tab1-tab" href="#tab1" class="active">17 <br> Explore</a>
-          <a id="tab2-tab" href="#tab2">17 <br> Guide</a>
-          <a id="tab3-tab" href="#tab3">19 <br> Projects</a>
+          <a id="tab1-tab" href="#tab1" class="active"><%= @explores.count%><br> Explore</a>
+          <a id="tab2-tab" href="#tab2"><%= @guides.count%> <br> Guide</a>
+          <a id="tab3-tab" href="#tab3"><%= @projects.count%> <br> Projects</a>
           <span class="yellow-bar"></span>
       </div>
     </header>

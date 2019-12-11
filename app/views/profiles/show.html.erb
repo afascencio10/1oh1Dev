@@ -1,20 +1,13 @@
-<!--<p id="notice"><%= notice %></p>
-<%= @profile.country %>
-<%= @profile.bio %>
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
--->
 <div class="profile-navbar memberview-navbar">
     <%= render 'landing/navbar' %>
 </div>
 <div class="memberview default-theme sidebar-bg bg1 profileActive">
 	<main class="page-content">
 	    <div id="overlay" class="overlay"></div>
-	    <div class="mainContent">        
+	    <div class="mainContent">
 	        <%= render 'memberview_profile' %>
 	    </div>
 	</main>
 </div>
 
-
-
+<%= render 'landing/footer'%>

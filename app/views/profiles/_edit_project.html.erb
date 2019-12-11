@@ -11,7 +11,7 @@
         </div>
         <div class="modal-body bodyEditProject" >
           <div class="container">
-             <div class="gridTitleadd">               
+             <div class="gridTitleadd">
              </div>
 
              <div class="celr" id="gridAdd">
@@ -34,7 +34,7 @@
                  </div>
              </div>
 
-                
+
 
              <div class="celr" id="griCreator">
                  <div class="cel titleCreator boldText title">Creator</div>
@@ -47,8 +47,8 @@
              <div class="gridCollaborator">
                <div class="collaborator boldText title">Collaborators</div>
                <div class="add"><a class="hrefAdd">Add</a></div>
-               <%=select_tag "colab_id", options_from_collection_for_select(User.all,"id","firstname"),class: 'collaboratorsSelect',multiple: true,:required => true%>               
-               <div class="collaborators">                
+               <%=select_tag "colab_id", options_from_collection_for_select(User.all,"id","firstname"),class: 'collaboratorsSelect',multiple: true,:required => true%>
+               <div class="collaborators">
                  <div>
                    <img class="collaboratorImage" src="<%= image_path ('People/business.jpg') %>">
                  </div>
@@ -57,12 +57,12 @@
                  </div>
                  <div>
                    <img class="collaboratorImage" src="<%= image_path ('People/man.jpg') %>">
-                 </div>                 
+                 </div>
                </div>
-               
+
                <div class=""></div>
              </div>
-             
+
              <div class="celr" id="gridText">
                  <div class="cel boldText title">Allow others to offer their help?</div>
              </div>
@@ -84,7 +84,7 @@
                <label class="switch">
                   <input type="checkbox">
                   <span class="slider round"></span>
-                </label>              
+                </label>
                 <label>Yes</label>
                <div class="cel"></div>
            </div>
@@ -95,21 +95,21 @@
                   <input type="radio" class="projectProgressButtons" name="projectProgress">
                     <img class="projectsIcons" src="<%= image_path ('Icons/Idea_icon.png') %>">
                     <div class="projectsIconsLabel">Idea</div>
-                  </input>                
-                 </div>               
+                  </input>
+                 </div>
                  <div class="cel"></div>
                  <div class="cel imgCenter">
                   <input type="radio" class="projectProgressButtons" name="projectProgress">
                     <img class="projectsIcons" src="<%= image_path ('Icons/WIP-icon.png') %>">
                     <div class="projectsIconsLabel">In-Progress</div>
-                  </input>                
+                  </input>
                  </div>
                  <div class="cel"></div>
                  <div class="cel imgCenter">
                   <input type="radio" class="projectProgressButtons" name="projectProgress">
                     <img class="projectsIcons" src="<%= image_path ('Icons/completed-icon.png') %>">
                     <div class="projectsIconsLabel">Complete</div>
-                  </input>                
+                  </input>
                  </div>
                  <div class="cel"></div>
              </div>
@@ -129,8 +129,8 @@
            </div>
         </div>
 
-      <% end %>      
-      
+      <% end %>
+
     </div>
   </div>
 </div>

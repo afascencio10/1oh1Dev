@@ -8,21 +8,21 @@
         <div class="cel"><i class="material-icons icons start"> start</i></div>
         <div class="cel"><i class="material-icons icons start"> start</i></div>
       </div>
-      <div class="cel"></div>                 
+      <div class="cel"></div>
     </div>
     <div class="interestsHeader">
         <div class="interestsTitle">Subjects</div>
         <div class="interestsIcon">
             <a href="#">
-                <img data-toggle="modal" data-target="#categoriesModal" class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
+                <img data-toggle="modal" data-target="#editGuideModal" class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
             </a>
         </div>
     </div>
     <div class="interestsContent">
         <div class="interestsImages">
             <% if @guides.blank? %>
-            <div class="gridGuidingActivity">  
-                    <button data-toggle="modal" data-target="#categoriesModal" class="btnAddActivity">add</button>
+            <div class="gridGuidingActivity">
+                    <button data-toggle="modal" data-target="#editGuideModal" class="btnAddActivity">add</button>
                 <div class="titleactivityProfile toptitleActivity">
                   <span class="titleYetAdd">Nothing added yet</span>
                 </div>
@@ -41,7 +41,7 @@
                   </div>
                <% end %>
             <% end %>
-        </div> 
+        </div>
         <div class="interestsMoreLink">
             <a id="interestsMoreLink" href="#">More</a>
         </div>
@@ -85,8 +85,8 @@
            </div>
          <% end %>
       <% end %>
-        
-   </div>                            
+
+   </div>
    <div class="moreLink">
         <div id="forMoreLink">
             <a id="moreLink" href="#">More</a>
