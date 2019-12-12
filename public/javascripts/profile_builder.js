@@ -21,12 +21,16 @@ jQuery(document).ready(function($) {
 
   var languages = 1;
   var objectLanguages = [];
+  var t = "<b>1</b>"
 	$('#addLanguageBtn').on('click', function () {
-    var clonedSelect = $('#select-languages-wrap select').first().clone(false)
-    clonedSelect.attr('id', 'language-'+languages);
-		$('#select-languages-wrap').append(clonedSelect)
+    var clonedSelect = $('#select-languages-wrap select #delete').first().clone(false)
+    console.log(clonedSelect);
+    console.log(clonedSelect2);
+    clonedSelect.attr('id','language-'+languages);
+    $('#select-languages-wrap').append(clonedSelect)
+    clonedSelect.wrap('<div></div>')
     languages += 1;
-		clonedSelect.wrap('<div></div>')
+    
   })
 
   $('.next-button').click(function(){

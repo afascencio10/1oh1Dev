@@ -67,10 +67,11 @@
               <div class="celr margin" id="gridSelect">
                 <div class="cel boldText title">Fluent Languages *</div>
               </div>
-              		<div class="form-group custom-from-group" id="select-languages-wrap">
+              		<div class="form-group custom-from-group position-relative" id="select-languages-wrap">
                       <label for="birth-day">Spoken Language(s)</label>
-                      <%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select"}%>
+                      <%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select selectdelete"} %>
                       <input type="hidden" id="check" name="languages">
+                      <img class="imgdelete" id="delete"  src="<%= image_path('People/icondelete.jpg')%>">
                   </div>
                   <button type="button" class="btn btn-link" id="addLanguageBtn">Add+</button>
               <!-- <div class="celr marginOption" id="gridOption">
@@ -236,9 +237,12 @@
   var objectLanguages = [];
 	$('#addLanguageBtn').on('click', function () {
     var clonedSelect = $('#select-languages-wrap select').first().clone(false)
+    var clonedSelect2 = $('#delete').first().clone(false)
     clonedSelect.attr('id', 'language-'+languages);
+    console.log("hola santys");
 		$('#select-languages-wrap').append(clonedSelect)
     languages += 1;
+    $('#select-languages-wrap').append(clonedSelect2)
 		clonedSelect.wrap('<div></div>')
   })
 
