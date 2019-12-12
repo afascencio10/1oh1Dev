@@ -22,7 +22,7 @@
           <td>
             <span><%= local_time(booking.start,'%B %e, %Y')%></span>
             <br>
-            <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.start,'%l:%M %P')%></span>
+            <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.end,'%l:%M %P')%></span>
           </td>
           <td class="avatar text-center">
             <img width="40px" src="<%= @companion.profile_photo %>" alt="avatar">
@@ -41,7 +41,7 @@
             </div>
           </td>
           <td>
-            <a class="secondary-success-color" href="#">Send Tip</a>
+            <a class="secondary-success-color showTipModal" href="#">Send Tip</a>
             <br>
             <!-- <a class="secondary-success-color" href="#">Message</a> -->
             <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>

@@ -7,7 +7,7 @@
       <% if user != current_user %>
         <%= link_to(user_chats_path(current_user, :other_user => user.id), method: :post) do %>
           <% if user.id == @other_user.id %>
-            <div class="contactCard contactCardActive">
+            <div class="contactCard contactCardActive shadow">
               <div class="celroja gridContact gridContactActive">
                 <% if user.profile.nil?%>
                 <div class="picture"><img src="<%= image_path('no_profile.png')  %>" class="profilePic"></div>

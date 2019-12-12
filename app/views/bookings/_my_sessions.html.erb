@@ -9,9 +9,9 @@
       <div class="col-12 col-lg-9">
         <header class="bookings-tab">
           <div id="material-tabs">
-              <a id="tab1-tab" href="#tab1" class="active">1 Pending</a>
-              <a id="tab2-tab" href="#tab2">4 Upcoming</a>
-              <a id="tab3-tab" href="#tab3">15 Previous</a>
+              <a id="tab1-tab" href="#tab1" class="active"><%= @pending_bookings.count %> Pending</a>
+              <a id="tab2-tab" href="#tab2"><%= @upcoming_bookings.count %> Upcoming</a>
+              <a id="tab3-tab" href="#tab3"><%= @completed_bookings.count %> Completed</a>
               <span class="yellow-bar"></span>
           </div>
         </header>

@@ -8,47 +8,44 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     if params["self"].to_i == 1 && params["other"].to_i == 1
+
       if params["explore_id"] !=nil
-        @reservation_bookings = Explore.find(params["explore_id"].to_i).profile.bookings.uniq + Profile.find(current_user.id).bookings.uniq
+        @reservation_bookings = (Explore.find(params["explore_id"].to_i).profile.bookings + Profile.find(current_user.id).bookings).uniq
+        all_other_user_ids = Explore.find(params["explore_id"].to_i).profile.bookings.map(&:id)
+        all_current_user_ids = current_user.profile.bookings.map(&:id)
+        @meta = {other: all_other_user_ids, self: all_current_user_ids, common: all_other_user_ids & all_current_user_ids }
       elsif params["guide_id"] !=nil
-        @reservation_bookings = Guide.find(params["guide_id"].to_i).profile.bookings.uniq + Profile.find(current_user.id).bookings.uniq
+        @reservation_bookings = (Guide.find(params["guide_id"].to_i).profile.bookings + Profile.find(current_user.id).bookings).uniq
+        all_other_user_ids = Guide.find(params["guide_id"].to_i).profile.bookings.map(&:id)
+        all_current_user_ids = current_user.profile.bookings.map(&:id)
+        @meta = {other: all_other_user_ids, self: all_current_user_ids, common: all_other_user_ids & all_current_user_ids }
       end
 
     elsif params["self"].to_i == 1 && params["other"].to_i == 0
-      @reservation_bookings = Profile.find(current_user.id).bookings.uniq
+      @reservation_bookings = current_user.profile.bookings.uniq
+
 
     elsif params["self"].to_i == 0 && params["other"].to_i == 1
+
       if params["explore_id"] != nil
         @reservation_bookings = Explore.find(params["explore_id"].to_i).profile.bookings.uniq
       elsif params["guide_id"] !=nil
         @reservation_bookings = Guide.find(params["guide_id"].to_i).profile.bookings.uniq
       end
+
     else
-      @reservation_bookings = current_user.profile.bookings.uniq
+      @reservation_bookings=[]
     end
+
     @profile_id = current_profile.id
-    @pending_bookings =  current_profile.bookings.where(:status => "pending")
-    @completed_bookings = current_profile.bookings.where(:status => "completed")
-    @upcoming_bookings = current_profile.bookings.where(:status => "upcoming")
+    @pending_bookings =  current_profile.bookings.where(:status => 0).order(created_at: :desc).uniq
+    @completed_bookings = current_profile.bookings.where(:status => 2).order(created_at: :desc).uniq
+    @upcoming_bookings = current_profile.bookings.where(:status => 1).order(created_at: :desc).uniq
 
 
     @bookings = Profile.find(current_user.id).bookings.uniq
-    # @guide_bookings = Booking.joins(:guide).where(:guides => {:profile_id => current_profile_id})
-    # @explore_bookings = Booking.joins(:explore).where(:explores => {:profile_id => current_profile_id})
-    # @all_bookings = @guide_bookings + @explore_bookings
-    # @my_bookings = @all_bookings.uniq
-    #JSON view for dipslaying Calendar
-    # if params[:type] == "undefined"
-    #   @bookings = @my_bookings
-    # elsif params[:type] == "guide"
-    #   @bookings = Booking.where(:guide_id=> params[:id])
-    # elsif params[:type] == "explore"
-    #   @bookings = Booking.where(:explore_id=> params[:id])
-    # end
   end
 
-  # GET /bookings/1
-  # GET /bookings/1.json
   def show
 
   end
@@ -158,17 +155,6 @@ class BookingsController < ApplicationController
       end
     end
 
-    # def find_booking(second_profile)
-    #   bookings = Profile.find_by(:user_id => current_user.id).bookings
-    #   bookings.each do |booking|
-    #     booking.video_sessions.each do |s|
-    #       if s.profile_id == second_profile.id
-    #         return booking
-    #       end
-    #     end
-    #   end
-    #   nil
-    # end
 
     def booking_params
       params.require(:booking).permit(:title,:date_range, :start, :end, :duration, :cancel_date, :status,:description)

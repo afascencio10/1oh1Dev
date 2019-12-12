@@ -1,28 +1,41 @@
 <% @pending_bookings.each do |booking|%>
   <div id="bookings-pending-btn-content" class="border mt-5">
     <div class="response-wrap text-right border p-3">
-      <div class="progress-circle d-inline-block align-middle mt-2 mr-2" id="bookings-circle">
-      </div>
+      <!-- <div class="progress-circle d-inline-block align-middle mt-2 mr-2" id="bookings-circle">
+      </div> -->
       <span class="secondary-success-color fz-14 align-middle">80% response rate</span>
     </div>
     <div class="content-wrap border p-3">
+      <% if booking.guide.profile_id == @profile_id %>
+        <% @type= "Guided" %>
+        <% @companion = booking.explore.profile %>
+      <% elsif booking.explore.profile_id == @profile_id %>
+        <% @type= "Explored" %>
+        <% @companion = booking.guide.profile %>
+      <%end%>
       <div>
-        <img width="40px" class="rounded-circle mr-2 active" src="<%= image_path('person_6.jpg') %>" alt="avatar">
+        <% if @companion.profile_photo.blank? %>
+          <img width="40px" class="rounded-circle mr-2 active" src="<%= image_path('People/asian.jpg') %>" alt="avatar">
+        <% else %>
+          <img width="40px" class="rounded-circle mr-2 active" src="<%= @companion.profile_photo %>" alt="avatar">
+        <% end %>
 
-        <span class="font-weight-bold fz-14">subject</span> - <span class="fz-14"><%= booking.guide.category.name %> with Claire Johnston</span>
+        <span class="font-weight-bold fz-14">Subject</span> - <span class="fz-14"><%= booking.guide.category.name %> with <%= @companion.user.firstname %> <%= @companion.user.lastname %></span>
 
         <span class="float-right fz-14 mt-1">
           <span><%= local_time(booking.start,'%B %e, %Y')%>&emsp;</span>
-          <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.start,'%l:%M %P')%>&emsp;</span>
+          <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.end,'%l:%M %P')%>&emsp;</span>
           <span class="font-weight-bold">+120 <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
         </span>
       </div>
       <p class="fz-14 my-4"><%= booking.title %></p>
 
       <div>
-        <button type="button" id="<%=booking.id%>" class="btn rounded-0 btn-primary approve">Approve</button>
-        <button type="button" class="btn rounded-0 btn-outline-secondary mx-3">Decline</button>
-        <button type="button" class="btn rounded-0 btn-outline-secondary">Respond</button>
+        <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-primary booking-approve-btn">Approve</button>
+        <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-outline-secondary mx-3 booking-decline-btn">Decline</button>
+        <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
+        <%= link_to "Respond" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "btn rounded-0 btn-outline-secondary"  %>
+
       </div>
     </div>
   </div>

@@ -207,7 +207,7 @@ jQuery(document).ready(function($) {
         endTime: endTime,
         setDate: setDate
       })
-      // set defaults 
+      // set defaults
       // $('.start_hidden').val(setDate + ' '+ startTime);
       // $('.end_hidden').val(setDate + ' '+ endTime);
 
@@ -377,7 +377,7 @@ jQuery(document).ready(function($) {
 
     $('#newEventDatePickerMoreOption').change(function(){
       globalDate = $('#newEventDatePickerMoreOption').val()
-  
+
       // newChangedDate = $('#newEventDatePickerMoreOption').val()
       // if (typeof newChangedDate !== 'undefined')
       // {
@@ -634,7 +634,7 @@ jQuery(document).ready(function($) {
             });
 
         }
-        else if(currentUserCheckBoxValue && !otherUserCheckBoxValue)
+        else if(!currentUserCheckBoxValue && otherUserCheckBoxValue)
         {
           $.ajax({
               url: "/bookings.json"+window.location.search+"&self=1&other=0",
@@ -644,7 +644,7 @@ jQuery(document).ready(function($) {
             });
 
         }
-        else if(!currentUserCheckBoxValue && otherUserCheckBoxValue)
+        else if(currentUserCheckBoxValue && !otherUserCheckBoxValue)
         {
           $.ajax({
               url: "/bookings.json"+window.location.search+"&self=0&other=1",

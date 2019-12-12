@@ -264,7 +264,7 @@ jQuery(document).ready(function($) {
       eventClick: function (info) {
 
         // is event Unavailable
-        if (info.event.title === 'Unavailable') {
+        if (info.event.className === 'unavailable') {
           $.getScript(info.event.extendedProps.unavailable_url, function() {
           })
           return
@@ -392,7 +392,7 @@ jQuery(document).ready(function($) {
           setDate: moment(info.start).format('D MMM YYYY')
         })
       },
-      events: '/bookings.json',
+      events: "/bookings.json?self=1&other=0",
       eventRender: function (info) {
         var description = info.event.extendedProps.eventDescription
         var eventName = info.event.extendedProps.eventName

@@ -34,10 +34,10 @@ hangouts-like layout*/
     .detailsCancellationText{
         font-weight: bolder;
     }
-    
+
     .isHide {
         height: auto;
-        width: 100%;    
+        width: 100%;
         color: #000;
         background: #ffffff;
         pointer-events: none;
@@ -47,7 +47,7 @@ hangouts-like layout*/
 
     .sessionHide {
         height: auto;
-        width: 100%;    
+        width: 100%;
         color: #000;
         background: #ffffff;
         pointer-events: none;
@@ -142,7 +142,7 @@ hangouts-like layout*/
     .sessionIconsNoVideo {
         cursor: pointer;
         height: 35px;
-        width: auto;    
+        width: auto;
     }
     .sessionIconsNoVideoCont {
         display: grid;
@@ -156,7 +156,7 @@ hangouts-like layout*/
     .sessionIconsMute {
         cursor: pointer;
         height: 35px;
-        width: auto;    
+        width: auto;
     }
     .sessionIconsMuteCont {
         display: grid;
@@ -225,13 +225,13 @@ hangouts-like layout*/
         grid-template-rows: auto auto auto auto;
     }
 
-    .showRoomBar {    
-        opacity: 1; 
+    .showRoomBar {
+        opacity: 1;
         pointer-events: all;
     }
 
-    .showSessionBar {    
-        opacity: 1; 
+    .showSessionBar {
+        opacity: 1;
         pointer-events: all;
     }
 
@@ -239,7 +239,7 @@ hangouts-like layout*/
         position: relative;
         width: 100vw;
         height: 100vh;
-        
+
         & video{
             position: absolute;
             width: 100%;
@@ -292,7 +292,7 @@ hangouts-like layout*/
     }
     .titleRequestTime {
         font-size:14px;
-       
+
     }
     .btnYesTime{
         text-align: center;
@@ -317,7 +317,7 @@ hangouts-like layout*/
         font-family: 'Open Sans';
         font-weight: 600;
         font-size: 13px;
-        
+
     }
     .celNoTime{
         border-right: none;
@@ -436,14 +436,14 @@ hangouts-like layout*/
         padding-left: 20px;
     }
     .titleRequestExtra {
-        
+
         font-size: 14px;
     }
 }
 
-time{
-    display: none;
-}
+// time{
+//     display: none;
+// }
 
 #sessionEnd{
 

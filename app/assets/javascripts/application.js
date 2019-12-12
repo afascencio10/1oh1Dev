@@ -63,3 +63,4 @@
 //= require payment
 //= require filterrific/filterrific-jquery
 //= require helps
+//= require local-time

@@ -124,7 +124,7 @@
          <% @explore_ratings.each do |content| %>
            <div class="reviews">
                <div class="reviewImage">
-                   <div class="reviewImageGrid"><img class="imageReview" src="<%= Guide.find(content.guide_id).category.url %>"></div>
+                   <div class="reviewImageGrid"><img class="imageReview" src="<%= image_path('Section/party.jpeg') %>"></div>
                    <div class="reviewLabel">
                      <%= Guide.find(content.guide_id).category.name %>
                    </div>

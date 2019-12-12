@@ -26,12 +26,12 @@
                     </div>
                     <div class="editProfilePic">
 
-                      <div class="editProfilePicSelect" id="editProfilePicSelect">                      
+                      <div class="editProfilePicSelect" id="editProfilePicSelect">
                        <%= file_field_tag :profilephoto,class: 'form-control fieldinput' %>
                         <i style="display:none;margin-left: 91%;float: right;margin-top: -11%;position:absolute" class="fa fa-spinner" id="loaderimageprofile"></i>
                         <i style="display:none;margin-left: 91%;float: right;margin-top: -11%;color:green;position:absolute" class="fa fa-check" id="checkprofile"></i>
                         <input type="text" hidden id="urlprofile" name="urlprofile">
-                        
+
                       </div>
                     </div>
                   </div>
@@ -70,7 +70,7 @@
               		<div class="form-group custom-from-group" id="select-languages-wrap">
                       <label for="birth-day">Spoken Language(s)</label>
                       <%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select"}%>
-
+                      <input type="hidden" id="check" name="languages">
                   </div>
                   <button type="button" class="btn btn-link" id="addLanguageBtn">Add+</button>
               <!-- <div class="celr marginOption" id="gridOption">
@@ -256,7 +256,8 @@
     for (let i = 1; i <= languages-1; i++) {
       objectLanguages[i] = $('#language-'+i).val();
     }
-    console.log(objectLanguages);
+    $('input:hidden[name=languages]').val(objectLanguages);
+    alert(objectLanguages);
   })
 
 </script>

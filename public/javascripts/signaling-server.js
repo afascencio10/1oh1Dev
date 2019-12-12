@@ -15,7 +15,6 @@ let localstream;
 window.onload = () => {
   currentUser = document.getElementById("current-user").innerHTML;
   end_time = document.getElementsByTagName("time")[0].innerHTML;
-  console.log(end_time);
   countdown_timer(end_time);
   seesionId = document.getElementById("session_id").innerHTML;
   localVideo = document.getElementById("local-video");
