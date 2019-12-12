@@ -858,3 +858,80 @@
         margin-left: 1%;
     }
 }
+
+/*hide icons in presession status*/
+.hideIcons {
+    z-index: 9000;
+    grid-column: 3/-1;
+    grid-row: 1/-1;
+    background-color: #757575;
+}
+
+/*Cancellation modal*/
+.cancelModalHead {
+    top: 0;
+    display: grid;
+    grid-template-columns: auto 60px;
+    border-bottom: 1px solid #ccc5c5a6;
+    padding-bottom: 7px;
+}
+.cancelModalTitle {
+    top: 0;
+    align-self: center;
+    font-family: Open Sans;
+    font-weight: 700;
+}
+.imgPartnerCancel {
+    top: 0;
+}
+
+.partnerPic {
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.containerCancelModal {
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+
+.cancelSessionInfo{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.infoItem{
+    font-family: Open Sans;
+    font-weight: 600;
+}
+
+.cancelDetails {
+    display: grid;
+    grid-template-columns: 40px auto; 
+}
+
+.cancelTitle {    
+    grid-column: 1/-1;
+    font-family: Open Sans;
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 14px;
+    
+}
+
+.cancelIcon {
+
+}
+
+.detailItem{
+    align-self: center;
+}
+
+.cancelPrice {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr 50%;
+}

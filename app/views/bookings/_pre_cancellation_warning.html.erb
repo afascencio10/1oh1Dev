@@ -4,34 +4,74 @@
       <%= form_tag do %>
         <div class="modal-header cancellationWarningHeadGrid">
             <%= image_tag('Icons/delete-button.png', :class => 'iconCloseModalCancellation', 'data-dismiss' => "modal", 'aria-label' => "Close") %>
-            <div class="container">
+            <div class="container cancelModalHead">
               <!-- start: title modal -->
-                  <span class="cancellationModalTitle">You are about to cancel a session</span>
+                  <div class="cancelModalTitle">
+                    Are you sure you want to cancel your session with Bell?
+                  </div>
+                  <div class="imgPartnerCancel">                  
+                    <img class="partnerPic" src="<%= image_path ('person_4.jpg') %>">
+                  </div>
               <!-- end: title modal -->
             </div>
         </div>
         <!-- start: body  -->
         <div class="modal-body customModalBoddySessions">
-          <div class="container">
+          <div class="containerCancelModal">
               
-            <div class="noticeCancelSession">
-                <p>Cancellation at this time is non-refundable
-                    you will be charged 120 tokens.</p>
+            <div class="cancelSessionInfo">
+              <div class="infoItem">
+                Your Role: Guide
+              </div>
+              <div class="infoItem">
+                Subject: Logo Design
+              </div>
+              <div class="infoItem">
+                Status: Confirmed
+              </div>
+              
             </div>
-
-            <div class="confirmationTextCancellation">
-                <span>Would you like to continue?</span>
+            <div class="cancelDetails">
+              <div class="cancelTitle">Details</div>
+              <div class="cancelIcon">
+                <i class="material-icons icons ">event</i>
+              </div>
+              <div class="detailItem">
+                July 4th, 2019
+              </div>
+              <div class="cancelIcon">
+                <i class="material-icons icons ">group</i>
+              </div>
+              <div class="detailItem">
+                4:30PM - 5:30PM PST
+              </div>
+              
             </div>
-
-            <div class="containerButtonsCancellation">
-              <button class="btn btnModalSessionConfirm">Yes</button>
-              <button class="btn btnModalSessionConfirm">No</button>
+            <div class="cancelPrice">
+              <div class="cancelTitle">Price</div>
+              <div class="detailItem">
+                Cancelation Fee:
+              </div>
+              <div class="detailItem">
+                -60
+              </div>
+              <img class="gCoin" src="<%= image_path('coin.png')  %>">
+              <div></div>
+              <div class="detailItem">
+                July 4th, 2019
+              </div>
+              
+            </div>
+            <div class="cancelNote">
+              <div class="celverde textareaChat">
+                <textarea class="txtareaChat"></textarea>
+              </div> 
             </div>
 
           </div>
         </div>
         <!-- end: body  -->
-        <div class="modal-footer containerCancelMessage">
+        <div class="modal-footer cancelFooter">
           <a class="linkCancelMessage">Back</a>
         </div>
       <% end %>      

@@ -463,6 +463,7 @@
 }
 
 .card-pre{
+	z-index: 9500;
 	grid-column: 8/19;
 	grid-row: 2;	
 }
@@ -473,5 +474,5 @@
 	position: fixed;
 }
 .wrapCardPre{
-	z-index: 9999;
+	z-index: 1999;
 }

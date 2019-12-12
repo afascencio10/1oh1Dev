@@ -53,6 +53,7 @@ hangouts-like layout*/
         pointer-events: none;
         opacity: 0;
         transition: opacity 0.1s ease-in-out;
+        z-index: 1900;
     }
 
     .roomBG {

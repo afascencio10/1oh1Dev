@@ -4,6 +4,7 @@
 <span id="session_id" hidden><%= params[:id] %></span>
 <div class='inSession'>
   <div class="toolsIconsSession wrapCardPre">
+    <div class="hideIcons"></div>
     <div class="center card-pre">
       <%= render 'pre_session' %>
     </div>
@@ -205,3 +206,8 @@
 <%= render 'report_problem' %>
 <%= render 'problem_reported' %>
 
+<%= render 'pre_running_late' %>
+<%= render 'pre_5min' %>
+<%= render 'pre_running_late_sent' %>
+<%= render 'pre_cancellation_warning' %>
+<%= render 'calendars/cancelDialogBox' %>
