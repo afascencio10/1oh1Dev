@@ -1,65 +1,92 @@
 jQuery(document).ready(function($) {
 
-	// initiate select-languages-wrap
-	initiateCustomCheckboxes()
+ // initiate select-languages-wrap
+ initiateCustomCheckboxes()
 
-	var exploreItemContainer = document.querySelector('#explore-item-container')
-	var guidingItemContainer = document.querySelector('#guiding-item-container')
-	var projectsContainer = document.querySelector('#projects-container')
-	var calendarContainer = document.querySelector('#calendar-container')
+ var exploreItemContainer = document.querySelector('#explore-item-container')
+ var guidingItemContainer = document.querySelector('#guiding-item-container')
+ var projectsContainer = document.querySelector('#projects-container')
+ var calendarContainer = document.querySelector('#calendar-container')
 
-	if (exploreItemContainer) new PerfectScrollbar(exploreItemContainer)
-	if (guidingItemContainer) new PerfectScrollbar(guidingItemContainer)
-	if (projectsContainer) new PerfectScrollbar(projectsContainer)
-	if (calendarContainer) new PerfectScrollbar(calendarContainer)
+ if (exploreItemContainer) new PerfectScrollbar(exploreItemContainer)
+ if (guidingItemContainer) new PerfectScrollbar(guidingItemContainer)
+ if (projectsContainer) new PerfectScrollbar(projectsContainer)
+ if (calendarContainer) new PerfectScrollbar(calendarContainer)
 
-	$('.date-picker').bootstrapMaterialDatePicker({
+ $('.date-picker').bootstrapMaterialDatePicker({
     weekStart: 0,
     time: false,
     format: 'D MMM YYYY'
   })
 
-  var languages = 1;
-  var objectLanguages = [];
-  var t = "<b>1</b>"
-	$('#addLanguageBtn').on('click', function () {
-    var clonedSelect = $('#select-languages-wrap select #delete').first().clone(false)
-    console.log(clonedSelect);
-    console.log(clonedSelect2);
-    clonedSelect.attr('id','language-'+languages);
-    $('#select-languages-wrap').append(clonedSelect)
-    clonedSelect.wrap('<div></div>')
-    languages += 1;
-    
-  })
+  /*code for multi language feature*/
+        function getLanguages() {
+          var arraryLanguages = [];
+          arraryLanguages.push($('#language').val());
+          for (i = 1; i < languages; i++) {
+            var idName = '#language-' + i;
+            if ($(idName).length != 0) {
+              arraryLanguages.push($(idName).val());
+            }
+          }
+          return arraryLanguages;
+        }
 
-  $('.next-button').click(function(){
-    objectLanguages[0] = $('#language').val();
-    for (let i = 1; i <= languages-1; i++) {
-      objectLanguages[i] = $('#language-'+i).val();
-    }
-    console.log(objectLanguages);
-  })
+        var languages = 1;
+        $('#addLanguageBtn').on('click', function () {
+          var clonedSelect = $('#select-languages-wrap select').first().clone(false)
+          var clonedDeleteButtom = $('#delete').first().clone(false)
+          clonedSelect.attr('id', 'language-' + languages);
+          clonedDeleteButtom.attr('id', 'delete-' + languages);
+          $('#select-languages-wrap').append(clonedSelect);
+          languages += 1;
+          $('#select-languages-wrap').append(clonedDeleteButtom)
+          setDeleteFunction();
+          setLanguagesArray();
+        })
 
-	$('.addExploreBtn').on('click', function () {
-		// alert("Clicked");
-		$(this).removeClass('btn-success').addClass('btn-outline-dark').text('Added')
+        function setLanguagesArray(){
+          var languages = getLanguages();
+          console.log(languages);
+          document.getElementById("check").value = languages;
+        }
+        
 
-	})
+        function setDeleteFunction(){
+          $('.imgdelete').on('click',function () {
+            var numberForDelete =$(this).attr('id').charAt($(this).attr('id').length-1);
+            var languageID ='#language-' + numberForDelete;
+            $(languageID).remove();
+            $(this).remove();
+            setLanguagesArray();
+          });
+          $(".selectdelete").change(setLanguagesArray)
+        }
+        setDeleteFunction();
 
-	$('.recurringAddTimePicker').on('click', function () {
+    $('.next-button').on('click', function () {
+          setLanguagesArray();
+        });
+
+ $('.addExploreBtn').on('click', function () {
+  // alert("Clicked");
+  $(this).removeClass('btn-success').addClass('btn-outline-dark').text('Added')
+
+ })
+
+ $('.recurringAddTimePicker').on('click', function () {
     addTimePicker($(this).parent().parent().find('.time-picker-wrap'))
   })
 
-	function addSelectLangTemplate () {
-		var clonedSelect = $('#select-languages-wrap select').first().clone(false)
+ function addSelectLangTemplate () {
+  //var clonedSelect = $('#select-languages-wrap select').first().clone(false)
 
-		$('#select-languages-wrap').append(clonedSelect)
+  //$('#select-languages-wrap').append(clonedSelect)
 
-		clonedSelect.wrap('<div></div>')
-	}
+  //clonedSelect.wrap('<div></div>')
+ }
 
-	function initiateCustomCheckboxes () {
+ function initiateCustomCheckboxes () {
     var checkboxButtons = $('.checkbox-switcher') // let btn = document.getElementById("btn")
     checkboxButtons.each(function (index, el) {
       el = $(el) // button

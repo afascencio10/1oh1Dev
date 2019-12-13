@@ -42,6 +42,7 @@ GEM
     bcrypt (3.1.13)
     bindex (0.8.1)
     builder (3.2.4)
+    byebug (11.0.1)
     cancancan (3.0.1)
     chartjs-ror (3.6.4)
       rails (>= 3.1)
@@ -69,6 +70,7 @@ GEM
     execjs (2.7.0)
     faker (2.8.1)
       i18n (>= 1.6, < 1.8)
+    ffi (1.11.3)
     ffi (1.11.3-x86-mingw32)
     filterrific (5.2.1)
     friendly_id (5.3.0)
@@ -120,9 +122,12 @@ GEM
     minitest (5.13.0)
     netrc (0.11.0)
     nio4r (2.5.2)
+    nokogiri (1.10.7)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.7-x86-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pg (1.1.4)
     pg (1.1.4-x86-mingw32)
     puma (3.12.2)
     rack (2.0.7)
@@ -166,6 +171,11 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rest-client (2.1.0-x86-mingw32)
       ffi (~> 1.9)
       http-accept (>= 1.7.0, < 2.0)
@@ -235,6 +245,7 @@ GEM
     will_paginate (3.2.1)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES

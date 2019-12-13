@@ -48,11 +48,13 @@
 		</div>
 	</div>
 
-	<div class="form-row position-relative">
+	<div class="form-row position-relative" id="languagesBuilder">
 
 		<div class="form-group custom-from-group" id="select-languages-wrap">
 		    <label for="birth-day">Spoken Language(s)</label>
-				<%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select"}%>
+				<%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select selectdelete"}%>
+				<input type="hidden" id="check" name="languages">
+              <img class="imgdelete" id="delete" src="<%= image_path('People/icondelete.jpg')%>">
 
 		</div>
 
@@ -70,3 +72,4 @@
 	</div>
 
 <% end %>
+

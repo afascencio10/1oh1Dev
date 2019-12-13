@@ -72,7 +72,7 @@
             </div>
             <div class="form-group custom-from-group position-relative" id="select-languages-wrap">
               <%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select selectdelete"} %>
-              <input type="hidden" id="check" name="languages">
+              <input type="hidden" id="checkLanguages" name="languages">
               <img class="imgdelete" id="delete" src="<%= image_path('People/icondelete.jpg')%>">
             </div>
             <button type="button" class="btn btn-link" id="addLanguageBtn">Add+</button>
@@ -233,19 +233,22 @@
         $('.editProfilePicIcon').click(function () {
           $('.editProfilePic').fadeIn();
         })
-        function getLenguages() {
-          var lenguages = [];
-          lenguages.push($('#language').val());
+
+
+        /*code for multi language feature*/
+        function getLanguages() {
+          var arraryLanguages = [];
+          arraryLanguages.push($('#language').val());
           for (i = 1; i < languages; i++) {
             var idName = '#language-' + i;
             if ($(idName).length != 0) {
-              lenguages.push($(idName).val());
+              arraryLanguages.push($(idName).val());
             }
           }
-          return lenguages;
+          return arraryLanguages;
         }
+
         var languages = 1;
-        var objectLanguages = [];
         $('#addLanguageBtn').on('click', function () {
           var clonedSelect = $('#select-languages-wrap select').first().clone(false)
           var clonedDeleteButtom = $('#delete').first().clone(false)
@@ -255,24 +258,35 @@
           languages += 1;
           $('#select-languages-wrap').append(clonedDeleteButtom)
           setDeleteFunction();
+          setLanguagesArray();
         })
+
+        function setLanguagesArray(){
+          var languages = getLanguages();
+          console.log(languages);
+          document.getElementById("checkLanguages").value = languages;
+        }
         
-        $('.next-button').click(function () {
-          objectLanguages[0] = $('#language').val();
-          for (let i = 1; i <= languages - 1; i++) {
-            objectLanguages[i] = $('#language-' + i).val();
-          }
-        })
 
         function setDeleteFunction(){
           $('.imgdelete').on('click',function () {
-            var numberForDelate =$(this).attr('id').charAt($(this).attr('id').length-1);
-            var languageID ='#language-'+numberForDelate;
+            var numberForDelete =$(this).attr('id').charAt($(this).attr('id').length-1);
+            var languageID ='#language-' + numberForDelete;
             $(languageID).remove();
             $(this).remove();
+            setLanguagesArray();
           });
+          $(".selectdelete").change(setLanguagesArray)
         }
         setDeleteFunction();
+
+        $('#submit').on('click', function () {
+          setLanguagesArray();
+        });
+
+        $('#addLanguageBtn').on('click', function () {
+          setLanguagesArray();
+        });
 
 
       </script>

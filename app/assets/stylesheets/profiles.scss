@@ -418,7 +418,7 @@
 }
 .celrating {
     margin-left: 35px;
-    align-self: center;
+    /*align-self: center;*/
     padding-top: 5px;
 }
 .celpop {
@@ -912,7 +912,6 @@ desktop version*/
 #gridSelect {
     display: grid;
     grid-template-columns: 20fr 70fr;
-    padding-left: 2vw;
     padding-right: 2vw;
 }
 #gridOption {
@@ -1926,10 +1925,16 @@ input:checked + .slider:before {
 .selectdelete {
   width: 90%;
   margin-right: 15px;
+  margin-bottom: 10px;
 }
 #delete{
   width: 0%;
 }
 .imgdelete{
-  width: 4%;
+  width: 16px;
+  cursor: pointer;
+}
+
+#languagesBuilder {
+  width: 350px;
 }
