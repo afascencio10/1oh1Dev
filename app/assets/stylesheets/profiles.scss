@@ -1924,8 +1924,12 @@ input:checked + .slider:before {
   display: none;
 }
 .selectdelete {
-  width: 45%;
+  width: 90%;
+  margin-right: 15px;
+}
+#delete{
+  width: 0%;
 }
 .imgdelete{
-  width: 3%;
+  width: 4%;
 }
