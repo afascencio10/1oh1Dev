@@ -345,7 +345,7 @@
     height: 100%;
 }
 .start {
-    color: #fde721;
+    color: #f1c40f;
     font-size: 35px;
 }
 .names {
@@ -1410,6 +1410,7 @@ input[type=radio]:checked {
  // grid-template-columns: 5vw 10vw 5vw;
     border: 1px solid #000000;
     border-radius: 5px;
+    padding: 10px;
  // height: auto;
 
 }
@@ -1632,8 +1633,6 @@ input:checked + .slider:before {
 .grid-Starts {
     display: grid;
     grid-template-columns: 23px 23px 23px 23px 23px 89px;
-    margin-top:11px;
-    padding-left: 5px;
 }
 .grid-Rating{
     display: grid;
@@ -1646,21 +1645,24 @@ input:checked + .slider:before {
 }
 
 .txt5 {
-    font-weight: bold;
+    font-weight: 700;
     text-align: center;
     color: #000000;
-    font-size: 13px;
+    font-size: 15px;
+    span {
+      font-size: 13px;
+      font-weight: 400;
+    }
 }
 .txt-Title{
     color: #9f9ea1;
     font-size: 13px;
-    padding-left: 11px;
 }
 .txt-Star {
-    font-weight: bold;
+    font-weight: 500;
     color: #000000;
-    font-size: 12px;
-    padding-left:11px;
+    font-size: 15px;
+    padding-right:4px;
 }
 .number{
     color:#9f9ea1;
@@ -1671,7 +1673,7 @@ input:checked + .slider:before {
    -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
-   background-color: #fde721;
+   background-color: #f1c40f;
 }
 .bar-Progress {
     height: 16px;
@@ -1696,15 +1698,15 @@ input:checked + .slider:before {
 }
 .grid-RatingsModal {
     display: grid;
-    grid-template-columns: 215px;
+    grid-template-columns: 240px;
     position: absolute;
     display: none;
     margin-top: 35px;
-    
+    background-color: #fff;
 }
 .starts{
     font-size: 24px;
-    color: #fde721;
+    color: #f1c40f;
 }
 .top-Starts{
   margin-top: 5px;

@@ -12,10 +12,10 @@
     <% @completed_bookings.each do |booking|%>
       <% if booking.guide.profile_id == @profile_id %>
         <% @type= "Guided" %>
-        <% @companion= booking.guide.profile %>
+        <% @companion= booking.explore.profile %>
       <% elsif booking.explore.profile_id == @profile_id %>
         <% @type= "Explored" %>
-        <% @companion= booking.explore.profile %>
+        <% @companion= booking.guide.profile %>
       <%end%>
       <tr>
           <td class="secondary-success-color"><%= @type %></td>

@@ -11,12 +11,12 @@
                 <div class="sortBy">
                     <div class="cell sortByText">Sort by</div>
                     <div class="cell">
-                        <div class="dropdownTitle "> 
+                        <div class="dropdownTitle ">
                             <select>
                                 <option>Most recent</option>
-                                <option>Rating ascending</option>        
-                                <option>Rating descending</option>                
-                            </select>      
+                                <option>Rating ascending</option>
+                                <option>Rating descending</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -26,8 +26,11 @@
             <div class="help grid">
                 <div class="tab-content custom-table">
                     <div id="tab-learn" class="">
-                        <div class="cell helpText">Help Jimi Learn Baking</div>
-                        <div class="cell"><button class="button">Book</button></div>
+                        <div class="cell helpText">Help <%= @info.profile.user.firstname %> Learn <%= @info.category.name %></div>
+                        <div class="cell">
+                          <%= link_to "Book" , reserve_calendar_path(explore_id: @info.id ),class: "button"%>
+                          <!-- <button class="button">Book</button> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,79 +40,32 @@
 
 <div class="cell">
     <div class="reviews grid">
-        <div class="cell">
-            <div class="review grid">
-                <div class="cell">
-                    <div class="profile2 grid">
-                        <div class="cell perfil"><%= image_tag('People/building-1080605_640.jpg', :class => 'imgperfil') %></div>
-                        <div class="cell ratingName">Sabrina Lopez</div>
-                        <div class="grid score2">
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
+      <% if @explore_ratings.nil? %>
+        No Explore Ratings Available
+      <% else %>
+        <% @explore_ratings.each do |rating| %>
+            <div class="cell">
+                <div class="review grid">
+                    <div class="cell">
+                        <div class="profile2 grid">
+                            <div class="cell perfil"><%= image_tag('People/building-1080605_640.jpg', :class => 'imgperfil') %></div>
+                            <div class="cell ratingName"><%= rating.guide.profile.user.firstname %> <%= rating.explore.profile.user.lastname %></div>
+                            <%= rating.explore.category.name %>
+                            <div class="grid score2">
+                                <div class="cell"><i class="material-icons md-36"> start</i></div>
+                                <div class="cell"><i class="material-icons md-36"> start</i></div>
+                                <div class="cell"><i class="material-icons md-36"> start</i></div>
+                                <div class="cell"><i class="material-icons md-36"> start</i></div>
+                                <div class="cell"><i class="material-icons md-36"> start</i></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="cell ratingText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Ut eu nibh et turpis eleifend dignissim. Donec sed nulla at purus tristique vulputate.
-                    Mauris fermentum mattis orci nec porttitor. Nullam
-                </div>
-            </div>
-        </div>
-        <div class="cell">
-            <div class="review grid">
-                <div class="cell">
-                    <div class="profile2 grid">
-                        <div class="cell perfil"><%= image_tag('People/auto-repair-3691962_1920.jpg', :class => 'imgperfil') %></div>
-                        <div class="cell ratingName">Clara Li</div>
-                        <div class="grid score2">
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                        </div>
+                    <div class="cell ratingText">
+                      <%= rating.review %>
                     </div>
                 </div>
-                <div class="cell ratingText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Ut eu nibh et turpis eleifend dignissim. Donec sed nulla at purus tristique vulputate.
-                    Mauris fermentum mattis orci nec porttitor. Nullam
-                </div>
             </div>
-        </div>
-        <div class="cell">
-            <div class="review grid">
-                <div class="cell">
-                    <div class="profile2 grid">
-                        <div class="cell perfil"><%= image_tag('People/asian-square.jpg', :class => 'imgperfil') %></div>
-                        <div class="cell ratingName">Clara Li</div>
-                        <div class="grid score2">
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                            <div class="cell"><i class="material-icons md-36"> start</i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cell ratingText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Ut eu nibh et turpis eleifend dignissim. Donec sed nulla at purus tristique vulputate.
-                    Mauris fermentum mattis orci nec porttitor. Nullam libero dui, sagittis ac blandit a, pulvinar ut
-                    nulla.
-                    Phasellus sapien lorem, efficitur sed dolor id, gravida elementum metus.
-                    Praesent pulvinar efficitur aliquam. Aliquam a congue ipsum.
-                    Pellentesque vehicula diam eu pharetra rhoncus.
-                    Etiam rutrum dapibus nisi id auctor. Vestibulum pulvinar felis vel lorem maximus, sed porta lacus
-                    aliquet.
-                    Nunc vel felis a ligula congue ornare a vel leo. Vivamus bibendum nulla in quam maximus, sed tempus
-                    est gravida.
-                    Donec dictum mattis lorem vel ultricies. Quisque suscipit tincidunt tellus.
-                    Donec eu est vel ipsum malesuada convallis id nec augue.
-                    Nullam mi ex, fringilla non lectus pretium, scelerisque lobortis ligula.
-                </div>
-            </div>
-        </div>
+          <%end%>
+        <%end%>
     </div>
 </div>

@@ -145,6 +145,8 @@ jQuery(document).ready(function($) {
         } else {
           timelineCalendar.gotoDate(info.start)
           setCurrentDateTitle(moment(info.start))
+
+          activeSpecificMonth(moment(info.start).format('M'))
         }
      }
   })
@@ -535,6 +537,7 @@ jQuery(document).ready(function($) {
           // check for time conflicts
           var events = timelineCalendar.getEvents()
           var hasConflict = events.some(function (event) {
+            if (!event.start || !event.end) return false
             return hasOverlap(event.start.getTime(), info.start.getTime(), event.end.getTime(), info.end.getTime())
           })
 

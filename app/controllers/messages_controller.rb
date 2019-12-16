@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @filterrific = initialize_filterrific(
-      User,
+      User.includes(:profile),
       params[:filterrific]
     ) or return
    @users = @filterrific.find.page(params[:page])

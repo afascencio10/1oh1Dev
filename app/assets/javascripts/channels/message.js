@@ -30,3 +30,10 @@ function createMessageChannel() {
       
 return App.messages;
 }
+jQuery(document).ready(function($) {
+  var contactListScroll = document.getElementById('messages_contact_list_scroll')
+  var messagesScroll = document.getElementById('messages_scroll_container')
+
+  if (contactListScroll) new PerfectScrollbar(contactListScroll)
+  if (messagesScroll) new PerfectScrollbar(messagesScroll)
+})

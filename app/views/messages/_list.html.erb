@@ -1,8 +1,8 @@
 <div id="filterrific_results">
-  <div class="counterMessage">
+<!--   <div class="counterMessage">
     <%= page_entries_info users, entry_name: "user"%>
-  </div>
-  <div class="contactListScroll">
+  </div> -->
+  <div class="contactListScroll" id="messages_contact_list_scroll">
     <% users.each do |user| %>
       <% if user != current_user %>
         <%= link_to(user_chats_path(current_user, :other_user => user.id), method: :post) do %>
@@ -17,7 +17,7 @@
                 <div class="contactLabel"><div id="forName">Name</div></div>
                 <div class="contactLabel"><div id="forDate">02 Feb</div></div>
                 <div class="contactLabel"><div id="forHobby"><%= user.firstname %></div></div>
-                <!-- <div class="notification"><div class="redCircle"><%= user.email %></div></div> -->
+                <div class="notification"><div class="redCircle">5</div></div>
             </div>
           </div>
         <%end%>

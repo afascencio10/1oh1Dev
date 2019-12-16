@@ -75,12 +75,14 @@
                          </div>
                    </div>
                    <div class="reviewViewAllReviews">
-                       <a id="reviewViewAllReviews" href="#">viewAllReviews</a>
+                       <a href="">View All Reviews</a> 
                    </div>
+                   <%= link_to reviews_path(:explore_id => content.explore_id) do%>
                    <div class="commentImage">
                        <img class="commentProfileImage" src="<%= Explore.find(content.explore_id).profile.profile_photo %>">
                    </div>
                    <div class="comment">"<%= content.review %>"</div>
+                   <%end%>
                </div>
            </div>
          <% end %>

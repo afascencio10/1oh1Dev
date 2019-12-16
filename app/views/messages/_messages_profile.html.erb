@@ -2,7 +2,7 @@
       <div class="contactList background">
           <div class="celroja">
               <div class="messagesTitle">Messages</div>
-              <div class="celverde" id="forSearchInput">
+              <div id="forSearchInput">
                 <div>
                   <div class="form-group col-md-12">
 
@@ -13,7 +13,7 @@
                   <div class="searchContainer">
                     <%= f.text_field(
                       :search_query,
-                      class: 'filterrific-periodically-observed searchInput background',
+                      class: 'filterrific-periodically-observed searchInput',
                       placeholder: 'Search'
                     ) %>
                   </div>
@@ -27,7 +27,7 @@
             ) %>
           </div>
            <div class="celdaroja chat background">
-              <div class="chatHeader">                  
+              <div class="chatHeader">
               </div>
               <div class="card-body msg_card_body">
                   <h5 class="notSelectedTitle">You don't have a message selected</h5>
@@ -35,7 +35,7 @@
                   <img class="imgYet" src="<%= image_path('Icons/yet.png') %>" >
                 </div>
                 <div class="inputChat">
-                  
+
                 </div>
           </div>
       </div>

@@ -127,7 +127,7 @@
     display: grid;
     grid-template-columns: 1fr;    
     grid-template-rows: 18vh 64vh 9vh;
-
+    padding-right: 50px;
 }
 
 #chatIcon {
@@ -139,12 +139,10 @@
 }
 .contactListScroll {
   height: calc(73vh - 27px);
-  overflow-y: scroll;
+  position: relative;
 }
 
 #filterrific_results {
-  height: 73vh;
-  
   & .counterMessage{
     margin-left: 13%;
     font-family: 'Source Sans Pro';
@@ -178,10 +176,10 @@
 }
 #forChatHeader{
   left: 5%;
-  top: 53px;
+  top: 78px;
   position: absolute;
   width: 95%;
-  border-bottom: solid 2px #d1d4e1;
+  border-bottom: solid 1px #d1d4e1;
   padding-bottom: 15px;  
 }
 .chatTitle{
@@ -189,26 +187,29 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 22px;
+  color: black;
 }
 .chatSub{
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 400;
   line-height: 20px;
+  color: rgb(139, 149, 158);
 }
 .inputChat{
-  position: relative;  
+  padding-left: 20px;
+  margin-top: 10px;
+  position: relative;
 }
 #forInputChat{
-  position: absolute;
   border: none;
   outline: none;
-  width: 93%;
-  left: 2.5%;
+  width: 100%;
   font-size: 15px;
   padding-bottom: 12px;
   padding-top: 12px;
   padding-left: 25px;
-  border-radius: 10px;  
+  border-radius: 2px;
   margin-top: 10px;
 }
 ::placeholder {
@@ -218,22 +219,27 @@
 .send{
   top: 17px;
   position: absolute;
-  right: 40px;
-  background: #2a8bf2;
+  right: 14px;
+  background: rgb(140, 198, 63);
   border-radius: 50%;
+  text-align: center;
+  height: 35px;
+  width: 35px;
 }
 .sendIcon{
-  height: 34px;
-  width: auto;
+  margin: 0 !important;
+  margin-top: 2px !important;
+  font-size: 22px;
+  color: white;
+  transform: rotate(-45deg);
 }
 .attach{
-  top: 25px;
+  top: 21px;
   position: absolute;
-  right: 82px;
+  right: 45px;
 }
 .attachIcon{
-  height: 20px;
-  width: auto;
+  color: rgb(236, 238, 238);
 }
 .tempButtons {
   position: fixed;
@@ -273,15 +279,11 @@
   position: relative;
   display: grid;
   grid-template-columns: 18fr 52fr 15fr;
-  height: 80px;
-  margin-top: 1vw;
+  height: 100px;
   margin-bottom: 1vw;
   background: #ffffff;
   margin-left: 13%;
-  margin-right: 2%;  
-  -webkit-box-shadow: -5px 3px 14px -4px rgba(0,0,0,0.9);
-  -moz-box-shadow: -5px 3px 14px -4px rgba(0,0,0,0.9);
-  box-shadow: -5px 3px 14px -4px rgba(0,0,0,0.9);
+  border-radius: 5px;
 }
 .contactCardActive{
   position: relative;
@@ -299,13 +301,14 @@
   font-size: 34px;
   margin-left: 12%;
   margin-bottom: 17px;
-  margin-top: 20px;
-  font-weight: 700;
+  margin-top: 45px;
+  font-weight: 600;
   line-height: 34px;
+  color: black;
 }
 #forSearchInput{  
   display: grid;
-  grid-template-columns: 15fr 5fr 80fr;
+  grid-template-columns: 13fr 5fr 80fr;
 }
 .searchInput{   
   height: 30px;
@@ -313,14 +316,21 @@
   border: none; 
   outline: none;  
   font-size: 16px;
+  background-color: transparent;
+}
+.searchInput::placeholder {
+  color: rgb(171, 176, 187);
+  font-weight: 400;
+  font-size: 14px;
 }
 .searchIcon{  
   height: 20px;
   position: relative;
-  top: 8px;   
+  top: 0px;
+  margin-right: 10px;
 }
 .searchContainer{
-  border-bottom: solid 2px #d1d4e1;
+  border-bottom: solid 1px #d1d4e1;
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
@@ -346,7 +356,7 @@
   position: absolute;
   bottom: 0px;
   font-size: 15px;
-  color: #000000;
+  color: rgb(69, 77, 87);
 }
 #forHobby{
   position: absolute;
@@ -359,10 +369,11 @@
 #forDate{
   position: absolute;
   font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   bottom: 12px;
+  left: 22px;
   font-size: 12px;
-  color: #000000;
+  color: rgb(139, 149, 158);
 }
 .notification{
   position: relative;
@@ -370,13 +381,12 @@
 .redCircle{
   position: absolute;
   background: #e72c37;
-  height: 19px;
-  width: 18px;
   text-align: center;
   border-radius: 50%;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 11px;
   left: 30%;
+  padding: 1px 7px;
 }
 .font{
   font-family: monospace;
@@ -392,6 +402,7 @@
 
 .msg_card_body {
     overflow-y: auto;
+    position: relative;
 }
 .card-body {
     -ms-flex: 1 1 auto;
@@ -531,18 +542,18 @@ cursor: pointer;
 margin-right: 20px;
 }
 .msg_cotainer{
-font-family: 'Open Sans', sans-serif;
-font-weight: 400;
-margin-top: auto;
-margin-bottom: auto;
-margin-left: 10px;
-border-radius: 25px;
-background-color: #eae8ed;
-padding: 10px;
-position: relative;
-font-size: 12px;
-color: #000000;
-min-width: 50px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  border-radius: 25px;
+  background-color: #eae8ed;
+  position: relative;
+  font-size: 12px;
+  color: #000000;
+  min-width: 50px;
+  padding: 10px 16px;
 }
 .msg_cotainer_send{
 font-family: 'Open Sans', sans-serif;
@@ -552,17 +563,18 @@ margin-bottom: auto;
 margin-right: -50px;
 border-radius: 25px;
 background-color: #2a8bf2;
-padding: 10px;
+padding: 10px 16px;
 position: relative;
 color: #ffff;
 font-size: 12px;
 }
 .msg_time{
 position: absolute;
-left: -43px;
-bottom: -15px;
+left: 0px;
+bottom: -25px;
 color: #000000;
 font-size: 12px;
+width: 100px;
 }
 .msg_time_send{
 position: absolute;
@@ -661,7 +673,7 @@ background-color: rgba(0,0,0,0.2);
 .notSelectedTitle{
   text-align: center;
   vertical-align: middle;
-  margin-top: 3%; 
+  margin-top: 3%;
   font-weight: bold;
 }
 .notSelectedText{

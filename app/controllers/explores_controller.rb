@@ -6,19 +6,23 @@ class ExploresController < ApplicationController
   # GET /explores.json
   def index
     @explores = Explore.all
-    @top_explores = ExploreRating.rate_desc.where(explore_id: explore_category_ids)
-    @popular_explore_category = Category.joins(:explores => :profile).where(:profiles => {:country => country}).distinct
-    @popular_guide_category = Category.joins(:guides => :profile).where(:profiles => {:country => country}).distinct
+    category_explores_profiles_join = Category.joins(explores: :profile)
+    category_guides_profiles_join = Category.joins(guides: :profile)
+
+    @top_explores = ExploreRating.rate_desc.where(explore_id: not_self_explore_category_ids)
+    @popular_explore_category = category_explores_profiles_join.distinct_country(country)
+    @popular_guide_category = category_guides_profiles_join.distinct_country(country)
     @popular_incountry = @popular_explore_category.merge(@popular_guide_category)
-    @world_popular_explore_category= Category.joins(:explores => :profile).where(:profiles =>{:country => all_countries}).distinct
-    @world_popular_guide_category= Category.joins(:guides => :profile).where(:profiles =>{:country => all_countries}).distinct
+    @world_popular_explore_category= category_explores_profiles_join.distinct_country(country)
+    @world_popular_guide_category= category_guides_profiles_join.distinct_country(country)
     @popular_inworld = @world_popular_explore_category.merge(@world_popular_guide_category)
 
     if !@top_explores.empty?
-      @firt_category_name_explore = @top_explores[0].explore.category.name
-      @first_category_explore= Explore.where(:category_id => @top_explores[0].explore.category.id).where.not(:profile_id => current_profile_id)
+      @category = @top_explores[0].explore.category
+      @first_category_name_explore =  @category.name
+      @first_category_explore= @explores.includes(:category,profile: :user).where(:category_id => @category.id).where.not(:profile_id => current_profile_id)
     else
-      @firt_category_name_explore = "None"
+      @first_category_name_explore = "None"
       @first_category_explore = []
     end
 
@@ -111,21 +115,10 @@ class ExploresController < ApplicationController
       end
     end
 
-    def explore_category_ids
+    def not_self_explore_category_ids
       if current_user.profile
-        profile_id = current_user.profile.id
-        category_ids_checked= current_user.profile.explores.map(&:category_id)
-        Explore.all.where(category_id: category_ids_checked).where.not(:profile_id => profile_id).map(&:id)
-      else
-        []
-      end
-    end
-
-    def guide_category_ids
-      if current_user.profile
-        profile = current_user.profile
-        guide_ids_checked = profile.guides.map(&:category_id)
-        Guide.all.where(category_id: guide_ids_checked).where.not(:profile_id => profile.id).map(&:id)
+        category_ids_checked= current_user.profile.explores.pluck(:category_id)
+        Explore.where(category_id: category_ids_checked).where.not(:profile_id => current_profile_id).pluck(:id)
       else
         []
       end
@@ -139,7 +132,7 @@ class ExploresController < ApplicationController
     end
 
     def all_countries
-      Profile.all.map(&:country)
+      Profile.pluck(:country).uniq
     end
 
 end

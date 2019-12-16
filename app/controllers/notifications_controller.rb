@@ -2,8 +2,9 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notifications = Notification.where(:recipient => current_user).unread
-    @earlier_notifications = Notification.where(:recipient => current_user).read.earlier_notification
+    @notification = Notification.includes(:recipient,:user,:notifiable)
+    @notifications = @notification.where(:recipient => current_user).unread
+    @earlier_notifications = @notification.where(:recipient => current_user).read.earlier_notification
   end
 
   def mark_as_read

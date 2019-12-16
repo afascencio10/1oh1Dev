@@ -6,19 +6,23 @@ class GuidesController < ApplicationController
   # GET /guides.json
   def index
     @guides = Guide.all
-    @top_guides = GuideRating.rate_desc.where(guide_id: guide_category_ids)
-    @popular_explore_category = Category.joins(:explores => :profile).where(:profiles => {:country => country}).distinct
-    @popular_guide_category = Category.joins(:guides => :profile).where(:profiles => {:country => country}).distinct
+    category_explores_profiles_join = Category.joins(explores: :profile)
+    category_guides_profiles_join = Category.joins(guides: :profile)
+
+    @top_guides = GuideRating.rate_desc.where(guide_id: not_self_guide_category_ids)
+    @popular_explore_category = category_explores_profiles_join.distinct_country(country)
+    @popular_guide_category = category_guides_profiles_join.distinct_country(country)
     @popular_incountry = @popular_explore_category.merge(@popular_guide_category)
-    @world_popular_explore_category= Category.joins(:explores => :profile).where(:profiles =>{:country => all_countries}).distinct
-    @world_popular_guide_category= Category.joins(:guides => :profile).where(:profiles =>{:country => all_countries}).distinct
+    @world_popular_explore_category= category_explores_profiles_join.distinct_country(all_countries)
+    @world_popular_guide_category= category_guides_profiles_join.distinct_country(all_countries)
     @popular_inworld = @world_popular_explore_category.merge(@world_popular_guide_category)
 
     if !@top_guides.empty?
-      @firt_category_name_guide = @top_guides[0].guide.category.name
-      @first_category_guide= Guide.where(:category_id => @top_guides[0].guide.category.id).where.not(:profile_id => current_profile_id)
+      @first_category = @top_guides[0].guide.category
+      @first_category_name_guide = @first_category.name
+      @first_category_guide= @guides.includes(:category,profile: :user).where(:category_id => @first_category.id).where.not(:profile_id => current_profile_id)
     else
-      @firt_category_name_guide = "None"
+      @first_category_name_guide = "None"
       @first_category_guide = []
     end
 
@@ -27,7 +31,7 @@ class GuidesController < ApplicationController
   # GET /guides/1
   # GET /guides/1.json
   def show
-    @guide = Guide.find(params[:id])
+    # @guide = Guide.find(params[:id])
   end
 
   # GET /guides/new
@@ -69,43 +73,6 @@ class GuidesController < ApplicationController
     end
   end
 
-  def current_profile_id
-    if current_user.profile
-      current_user.profile.id
-    end
-  end
-
-  def explore_category_ids
-    if current_user.profile
-      profile_id = current_user.profile.id
-      category_ids_checked= current_user.profile.explores.map(&:category_id)
-      Explore.all.where(category_id: category_ids_checked).where.not(:profile_id => profile_id).map(&:id)
-    else
-      []
-    end
-  end
-
-  def guide_category_ids
-    if current_user.profile
-      profile = current_user.profile
-      guide_ids_checked = profile.guides.map(&:category_id)
-      Guide.all.where(category_id: guide_ids_checked).where.not(:profile_id => profile.id).map(&:id)
-    else
-      []
-    end
-  end
-
-  def country
-    if current_user.profile
-      current_user.profile.country
-    end
-
-  end
-
-  def all_countries
-    Profile.all.map(&:country)
-  end
-
   private
     def set_guide
       @guide = Guide.find(params[:id])
@@ -113,5 +80,29 @@ class GuidesController < ApplicationController
 
     def guide_params
       params.permit(category:[])
+    end
+    def current_profile_id
+      if current_user.profile
+        current_user.profile.id
+      end
+    end
+
+    def not_self_guide_category_ids
+      if current_user.profile
+        guide_ids_checked = current_user.profile.guides.pluck(:category_id)
+        Guide.where(category_id: guide_ids_checked).where.not(:profile_id => current_profile_id).pluck(:id)
+      else
+        []
+      end
+    end
+
+    def country
+      if current_user.profile
+        current_user.profile.country
+      end
+    end
+
+    def all_countries
+      Profile.pluck(:country).uniq
     end
 end

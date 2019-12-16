@@ -21,6 +21,15 @@ class ProfilesController < ApplicationController
       @explores = []
       @guides = []
     end
+    @filterrific = initialize_filterrific(
+      Category,
+      params[:filterrific]
+    ) or return
+    @categories = @filterrific.find.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
     @category = Category.all
   end
 
@@ -55,8 +64,8 @@ class ProfilesController < ApplicationController
         @params["state"] = @states[profile_params[:state].to_sym]
       end
 
-      @params["languages"]= []
-      @params["languages"] = params["languages"].map!{|x| LanguageList::LanguageInfo.find(x).name}
+      @lan_array = @params["languages"].split(',')
+      @params["languages"] = @lan_array.map!{|x| LanguageList::LanguageInfo.find(x).name}
 
       if(params[:first_signup] == "true")
         respond_to do |format|
@@ -124,19 +133,22 @@ class ProfilesController < ApplicationController
     end
 
     @profile = current_user.profile
-    @list = @profile.guide_categories.uniq.map{|x| x.id}
+    @list = @profile.explore_categories.pluck(:id).uniq
   end
 
   def guides
-   #  @filterrific = initialize_filterrific(
-   #    Category,
-   #    params[:filterrific]
-   #  ) or return
-   # @categories = @filterrific.find.page(params[:page])
-   #  respond_to do |format|
-   #    format.html
-   #    format.js
-   #  end
+    @filterrific = initialize_filterrific(
+      Category,
+      params[:filterrific]
+    ) or return
+   @categories = @filterrific.find.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+    @profile = current_user.profile
+    @list = @profile.guide_categories.uniq.pluck(:id).uniq
   end
 
   def projects
@@ -158,7 +170,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.permit(:state,:country,:profile_photo,:banner_photo,:bio,:contact_no,:profile_photo,:banner_photo,:birth_date,:city,:state,:languages=>[])
+      params.permit(:state,:country,:profile_photo,:banner_photo,:bio,:contact_no,:profile_photo,:banner_photo,:birth_date,:city,:state,:languages)
     end
 
 end

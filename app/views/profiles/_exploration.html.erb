@@ -25,7 +25,7 @@
                             <div class="celp">
                                 <i class="material-icons icons starts">start</i>
                             </div>
-                            <div class="celp txt5">5 out of 5</div>
+                            <div class="celp txt5">5 <span>out of</span> 5</div>
                         </div>
                         <div class="grid-Rating celpop">
                             <div class="celp txt-Title">14 ratings</div>
@@ -141,12 +141,14 @@
                          </div>
                    </div>
                    <div class="reviewViewAllReviews">
-                       <a id="reviewViewAllReviews" href="/reviews">viewAllReviews</a>
+                       <a href="">View All Reviews</a>
                    </div>
+                   <%= link_to reviews_path(:guide_id => content.guide_id) do%>
                    <div class="commentImage">
                        <img class="commentProfileImage" src="<%= Guide.find(content.guide_id).profile.profile_photo %>">
                    </div>
                    <div class="comment">"<%= content.review %>"</div>
+                  <%end%>
                </div>
            </div>
          <% end %>

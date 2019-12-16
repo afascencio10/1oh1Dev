@@ -5,7 +5,7 @@
       <img class="attachIcon" src="<%= image_path('Icons/attach.png') %>">
   </a> -->
   <a class="send"  href="javascript:$('#chat_form').submit();">
-      <img class="sendIcon" src="<%= image_path('Icons/send.png')  %>">
+      <i class="material-icons sendIcon align-middle mr-3">send</i>
   </a>
 <!-- this hidden field is for the MessagesController and Action Cable to keep track of what chat this message belongs to -->
 <%= f.hidden_field :chat_id, value: chat.id %>

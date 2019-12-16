@@ -68,11 +68,7 @@ jQuery(document).ready(function($) {
           setLanguagesArray();
         });
 
- $('.addExploreBtn').on('click', function () {
-  // alert("Clicked");
-  $(this).removeClass('btn-success').addClass('btn-outline-dark').text('Added')
-
- })
+ 
 
  $('.recurringAddTimePicker').on('click', function () {
     addTimePicker($(this).parent().parent().find('.time-picker-wrap'))

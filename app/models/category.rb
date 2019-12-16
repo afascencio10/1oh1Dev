@@ -8,7 +8,8 @@ class Category < ApplicationRecord
   has_many :guide_profiles, :through => :guides,:source => :profile,:dependent => :destroy
 
   self.per_page = 10
-
+  scope :distinct_country, -> (country) { where(:profiles => {:country => country}).distinct }
+  
   scope :search_query, lambda { |query|
    return nil  if query.blank?
 

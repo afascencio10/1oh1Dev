@@ -30,10 +30,11 @@
         <nav class="site-navigation position-relative text-right" role="navigation">
           <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
             <% if user_signed_in? %>
-              <li><%= text_field_tag :what,nil,class: 'form-control what',placeholder: 'Search' %></li>
+              <!-- <li><%= text_field_tag :what,nil,class: 'form-control what',placeholder: 'Search' %></li> -->
               <li><a href="/markets" class="nav-link">Market</a></li>
               <li><a href="/guides" class="nav-link">Guide</a></li>
               <li><a href="/explores" class="nav-link">Explore</a></li>
+              <li><a href="/projects" class="nav-link">Project</a></li>
               <!-- <li><a href="/messages" class="nav-link">Messages</a></li> -->
               <% if current_user.admin? %>
                 <li><a href="/categories" class="nav-link">Categories</a></li>

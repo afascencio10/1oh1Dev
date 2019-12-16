@@ -12,17 +12,17 @@ class BookingsController < ApplicationController
       if params["explore_id"] !=nil
         @reservation_bookings = (Explore.find(params["explore_id"].to_i).profile.bookings + Profile.find(current_user.id).bookings).uniq
         all_other_user_ids = Explore.find(params["explore_id"].to_i).profile.bookings.map(&:id)
-        all_current_user_ids = current_user.profile.bookings.map(&:id)
+        all_current_user_ids = current_user.profile.bookings.pluck(:id).uniq
         @meta = {other: all_other_user_ids, self: all_current_user_ids, common: all_other_user_ids & all_current_user_ids }
       elsif params["guide_id"] !=nil
         @reservation_bookings = (Guide.find(params["guide_id"].to_i).profile.bookings + Profile.find(current_user.id).bookings).uniq
         all_other_user_ids = Guide.find(params["guide_id"].to_i).profile.bookings.map(&:id)
-        all_current_user_ids = current_user.profile.bookings.map(&:id)
+        all_current_user_ids = current_user.profile.bookings.pluck(:id).uniq
         @meta = {other: all_other_user_ids, self: all_current_user_ids, common: all_other_user_ids & all_current_user_ids }
       end
 
     elsif params["self"].to_i == 1 && params["other"].to_i == 0
-      @reservation_bookings = current_user.profile.bookings.uniq
+      @reservation_bookings = current_user.profile.bookings.includes(:guide,:explore).uniq
 
 
     elsif params["self"].to_i == 0 && params["other"].to_i == 1
@@ -38,9 +38,10 @@ class BookingsController < ApplicationController
     end
 
     @profile_id = current_profile.id
-    @pending_bookings =  current_profile.bookings.where(:status => 0).order(created_at: :desc).uniq
-    @completed_bookings = current_profile.bookings.where(:status => 2).order(created_at: :desc).uniq
-    @upcoming_bookings = current_profile.bookings.where(:status => 1).order(created_at: :desc).uniq
+    @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :category,:profile])
+    @pending_bookings =  @bookings.where(:status => 0).order(created_at: :desc).uniq
+    @completed_bookings = @bookings.where(:status => 2).order(created_at: :desc).uniq
+    @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
 
 
     @bookings = Profile.find(current_user.id).bookings.uniq
@@ -68,9 +69,9 @@ class BookingsController < ApplicationController
     @companion_id = params["type"].split("=")[1].to_i
 
     #next 3 lines of code for changing local time to UTC (Manage Timezones)
-    timezone = timezone(current_user)
-    @booking.start = timezone.local_to_utc(@booking.start)
-    @booking.end = timezone.local_to_utc(@booking.end)
+    # timezone = timezone(current_user)
+    # @booking.start = timezone.local_to_utc(@booking.start)
+    # @booking.end = timezone.local_to_utc(@booking.end)
 
     @diff_seconds = (params[:booking][:end].to_time-params[:booking][:start].to_time).to_i
     @booking.duration = format_time(@diff_seconds)
