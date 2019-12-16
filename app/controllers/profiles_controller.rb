@@ -30,6 +30,8 @@ class ProfilesController < ApplicationController
       format.html
       format.js
     end
+    @list = current_user.profile.explore_categories.pluck(:id).uniq
+
     @category = Category.all
   end
 

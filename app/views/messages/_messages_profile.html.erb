@@ -9,7 +9,7 @@
                   </div>
                 </div>
                 <div class="searchContainer"><img class="searchIcon" src="<%= image_path('Icons/search.png')  %>"></div>
-                <%= form_for_filterrific @filterrific do |f| %>
+                <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
                   <div class="searchContainer">
                     <%= f.text_field(
                       :search_query,

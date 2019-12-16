@@ -11,7 +11,7 @@
         </div> -->
 
         <!-- <input type="text" class="form-control" placeholder="Oil painting, 3D printing, Electric cars etc."> -->
-				<%= form_for_filterrific @filterrific do |f| %>
+				<%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
 					<div>
 						Search
 						<%= f.text_field(
@@ -61,7 +61,7 @@
 		exploreCategories = JSON.parse(exploreCategories);
 	}else{
 		exploreCategories = {categories:[]};
-	}	
+	}
 	exploreCategories.categories.forEach(cat=>{
 		$("#explorerCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
 	});
@@ -69,14 +69,14 @@
 
 	$('.addExploreBtnn').on('click', function () {
 	  // alert("Clicked  ");
-	  var id = this.id;	  
+	  var id = this.id;
 	  id = id.split("-")[1];
 	  var isSelected = $(this).hasClass("btn-outline-dark");
 	  if(isSelected){
 	  	unselecCategory(id);
 	  }else {
 	  	selectCategory(id);
-	  } 
+	  }
 	  setExploreCategories();
 
 	})
@@ -89,7 +89,7 @@
 
 	function unselecCategory(category){
 		deleteCategory(category);
-		$("#explorerCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');	
+		$("#explorerCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
 	}
 
 	function addCategory(category){
@@ -109,7 +109,7 @@
 		}else{
 			array = {categories:[]};
 		}
-		
+
 		array.categories = array.categories.filter(cat=>{
 			return cat!=category;
 		});
@@ -117,7 +117,7 @@
 	}
 
 	function setExploreCategories(){
-		/*this function keeps updating the value of the hidden tag 
+		/*this function keeps updating the value of the hidden tag
 		to use it anytime in the backend*/
 		var array = window.localStorage.getItem('exploreCategories');
 		if(array){
@@ -129,4 +129,3 @@
       document.getElementById("exploreCategories").value = array;
 	}
 </script>
-

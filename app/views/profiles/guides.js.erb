@@ -1,5 +1,5 @@
 <% js = escape_javascript(
-  render(partial: 'list', locals: { categories: @categories })
+  render(partial: 'listg', locals: { categories: @categories })
 ) %>
 $("#filterrific_results").html("<%= js %>");
 
@@ -12,7 +12,7 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 		guideCategories = JSON.parse(guideCategories);
 	}else{
 		guideCategories = {categories:[]};
-	}	
+	}
 	guideCategories.categories.forEach(cat=>{
 		$("#guideCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
 	});
@@ -20,14 +20,14 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 
 	$('.addGuideBtnn').on('click', function () {
 	  // alert("Clicked  ");
-	  var id = this.id;	  
+	  var id = this.id;
 	  id = id.split("-")[1];
 	  var isSelected = $(this).hasClass("btn-outline-dark");
 	  if(isSelected){
 	  	unselecCategoryG(id);
 	  }else {
 	  	selectCategoryG(id);
-	  } 
+	  }
 	  setGuideCategories();
 
 	})
@@ -40,7 +40,7 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 
 	function unselecCategoryG(category){
 		deleteCategoryG(category);
-		$("#guideCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');	
+		$("#guideCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
 	}
 
 	function addCategoryG(category){
@@ -60,7 +60,7 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 		}else{
 			array = {categories:[]};
 		}
-		
+
 		array.categories = array.categories.filter(cat=>{
 			return cat!=category;
 		});
@@ -68,7 +68,7 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 	}
 
 	function setGuideCategories(){
-		/*this function keeps updating the value of the hidden tag 
+		/*this function keeps updating the value of the hidden tag
 		to use it anytime in the backend*/
 		var array = window.localStorage.getItem('guideCategories');
 		if(array){
@@ -79,4 +79,3 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 		console.log(array);
       document.getElementById("guideCategories").value = array;
 	}
-

@@ -17,15 +17,29 @@
   				</div>
   			</div>
   		</div>
-      <% if @list.include?(category.id) %>
-        <div class="col-auto pr-0">
-    			<button id="explorerCat-<%= category.id %>" type="button" class="btn btn-success p-2 addExploreBtnn">Add</button>
-    		</div>
-      <% else %>
-        <div class="col-auto pr-0">
-    			<button id="explorerCat-<%= category.id %>" type="button" class="btn btn-success p-2 addExploreBtnn">Add</button>
-    		</div>
-      <% end %>
+
+        <% if request.env['PATH_INFO'] == "/profile/guides" %>
+          <% if @list.include?(category.id) %>
+            <div class="col-auto pr-0">
+              <button id="guideCat-<%= category.id %>" type="button" class="btn btn-success p-2 addGuideBtnn">Add</button>
+            </div>
+          <% else %>
+            <div class="col-auto pr-0">
+              <button id="guideCat-<%= category.id %>" type="button" class="btn btn-success p-2 addGuideBtnn">Add</button>
+            </div>
+        <% end %>
+        <% else %>
+          <% if @list.include?(category.id) %>
+            <div class="col-auto pr-0">
+        			<button id="explorerCat-<%= category.id %>" type="button" class="btn btn-success p-2 addExploreBtnn">Add</button>
+        		</div>
+            <% else %>
+            <div class="col-auto pr-0">
+        			<button id="explorerCat-<%= category.id %>" type="button" class="btn btn-success p-2 addExploreBtnn">Add</button>
+        		</div>
+          <% end %>
+        <% end %>
+
 
   	</div>
   <% end %>
