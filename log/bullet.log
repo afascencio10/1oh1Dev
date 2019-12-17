@@ -1,0 +1,20 @@
+2019-12-16 16:09:33[WARN] user: salar
+GET /categories/signing
+USE eager loading detected
+  Explore => [:profile]
+  Add to your finder: :includes => [:profile]
+Call stack
+  C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/_explorers.html.erb:15:in `block in _app_views_categories__explorers_html_erb__296282180_119082912'
+  C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/_explorers.html.erb:8:in `_app_views_categories__explorers_html_erb__296282180_119082912'
+  C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/show.html.erb:37:in `_app_views_categories_show_html_erb___193486067_148467816'
+
+2019-12-16 16:09:37[WARN] user: salar
+GET /categories/signing
+USE eager loading detected
+  Explore => [:profile]
+  Add to your finder: :includes => [:profile]
+Call stack
+  C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/_explorers.html.erb:15:in `block in _app_views_categories__explorers_html_erb__296282180_137403924'
+  C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/_explorers.html.erb:8:in `_app_views_categories__explorers_html_erb__296282180_137403924'
+  C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/show.html.erb:37:in `_app_views_categories_show_html_erb___193486067_144066840'
+

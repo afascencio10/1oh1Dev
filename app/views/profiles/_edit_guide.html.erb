@@ -50,7 +50,114 @@
           </div>
         </div>
       </div>
+        <div class="modal-body">
+              <!-- <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div> -->
+      
+              <!-- <input type="text" class="form-control" placeholder="Oil painting, 3D printing, Electric cars etc."> -->
+              <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+                <div>
+                  Search
+                  <%= f.text_field(
+                    :search_query,
+                    class: 'filterrific-periodically-observed form-control',
+                    placeholder: 'Oil painting, 3D printing, Electric cars etc.'
+                  ) %>
+                </div>
+      
+                <div>
+                  <%= link_to(
+                    'Reset filters',
+                    reset_filterrific_url,
+                  ) %>
+                </div>
+                <%= render_filterrific_spinner %>
+              <% end %>
 
+        <div class="my-5 p-3 border rounded position-relative auxiliar-container" id="explore-item-container">
+          <%= render(
+            partial: 'listg',
+            locals: { categories: @categories }
+          ) %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+	var guideCategories = window.localStorage.getItem('guideCategories');
+	if(guideCategories){
+		guideCategories = JSON.parse(guideCategories);
+	}else{
+		guideCategories = {categories:[]};
+	}
+	guideCategories.categories.forEach(cat=>{
+		$("#guideCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
+	});
+	setGuideCategories();
+
+	$('.addGuideBtnn').on('click', function () {
+	  // alert("Clicked  ");
+	  var id = this.id;
+	  id = id.split("-")[1];
+	  var isSelected = $(this).hasClass("btn-outline-dark");
+	  if(isSelected){
+	  	unselecCategoryG(id);
+	  }else {
+	  	selectCategoryG(id);
+	  }
+	  setGuideCategories();
+
+	})
+
+
+	function selectCategoryG(category){
+		addCategoryG(category);
+		$("#guideCat-"+category).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
+	}
+
+	function unselecCategoryG(category){
+		deleteCategoryG(category);
+		$("#guideCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
+	}
+
+	function addCategoryG(category){
+		var array = window.localStorage.getItem('guideCategories');
+		if(array){
+			array = JSON.parse(array);
+		}else{
+			array = {categories:[]};
+		}
+		array.categories.push(category);
+		window.localStorage.setItem('guideCategories', JSON.stringify(array));
+	}
+	function deleteCategoryG(category){
+		var array = window.localStorage.getItem('guideCategories');
+		if(array){
+			array = JSON.parse(array);
+		}else{
+			array = {categories:[]};
+		}
+
+		array.categories = array.categories.filter(cat=>{
+			return cat!=category;
+		});
+		window.localStorage.setItem('guideCategories', JSON.stringify(array));
+	}
+
+	function setGuideCategories(){
+		/*this function keeps updating the value of the hidden tag
+		to use it anytime in the backend*/
+		var array = window.localStorage.getItem('guideCategories');
+		if(array){
+			array = JSON.parse(array);
+		}else{
+			array = {categories:[]};
+		}
+		console.log(array);
+    //document.getElementById("guideCategories").value = array;
+	}
+
+</script>
