@@ -38,7 +38,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @profile = Profile.friendly.find(params[:id])
+    @profile = Profile.includes(:user).friendly.find(params[:id])
+    @explore_categories = @profile.explore_categories.uniq
+    @guide_categories = @profile.guide_categories.uniq
+    @projects = @profile.projects
+    @explore_ratings = @profile.explore_ratings.order("created_at DESC")
+    @guide_ratings = @profile.guide_ratings.order("created_at DESC")
   end
 
   # GET /profiles/new
@@ -136,6 +141,7 @@ class ProfilesController < ApplicationController
 
     @profile = current_user.profile
     @list = @profile.explore_categories.pluck(:id).uniq
+    @explore = Explore.new(profile_params)
   end
 
   def guides
@@ -151,6 +157,7 @@ class ProfilesController < ApplicationController
 
     @profile = current_user.profile
     @list = @profile.guide_categories.uniq.pluck(:id).uniq
+    @guide = Guide.new(profile_params)
   end
 
   def projects

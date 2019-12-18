@@ -7,7 +7,7 @@
     <%else%>
       <% @popular_incountry.each do |category|%>
         <div class="col center text-left">
-          <%= link_to category_path(category.name.downcase) do %>
+          <%= link_to category_path(category.name.downcase,:type=>"explores") do %>
             <div class="card-skill border">
               <div class="cover"
                    style="background-image: url(<%= category.url %>);">
@@ -20,60 +20,8 @@
         </div>
       <% end %>
     <%end%>
-    <!-- <div class="col center text-center">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div>
-    <div class="col center text-right">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div> -->
   </div>
 
-  <!-- <div class="row my-4">
-    <div class="col center text-left">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div>
-    <div class="col center text-center">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div>
-    <div class="col center text-right">
-      <div class="card-skill border">
-        <div class="cover"
-             style="background-image: url(<%= image_path('Skills/ballet.jpg') %>);">
-        </div>
-        <h5 class="font-weight-bold">
-          Ballet
-        </h5>
-      </div>
-    </div>
-  </div> -->
   <div class="row">
     <div class="col text-right">
       <button type="button" class="btn btn-link show-more-button">Show more</button>

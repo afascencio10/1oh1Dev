@@ -68,12 +68,13 @@
           <%= render_filterrific_spinner %>
         <% end %>
 
-        <div class="my-5 p-3 border rounded position-relative auxiliar-container" id="explore-item-container">
+        <div class="my-5 p-3 border rounded position-relative auxiliar-container" id="explore-item-containerP">
         		<%= render(
         			partial: 'list',
         			locals: { categories: @categories }
         		) %>
         </div>
+        <input type="hidden" id="exploreCategories" name="exploreCategories">
 
       </div>
 
@@ -81,76 +82,5 @@
   </div>
 </div>
 <script type="text/javascript">
-	var exploreCategories = window.localStorage.getItem('exploreCategories');
-	if(exploreCategories){
-		exploreCategories = JSON.parse(exploreCategories);
-	}else{
-		exploreCategories = {categories:[]};
-	}
-	exploreCategories.categories.forEach(cat=>{
-		$("#explorerCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
-	});
-	setExploreCategories();
-
-	$('.addExploreBtnn').on('click', function () {
-	  // alert("Clicked  ");
-	  var id = this.id;
-	  id = id.split("-")[1];
-	  var isSelected = $(this).hasClass("btn-outline-dark");
-	  if(isSelected){
-	  	unselecCategory(id);
-	  }else {
-	  	selectCategory(id);
-	  }
-	  setExploreCategories();
-
-	})
-
-
-	function selectCategory(category){
-		addCategory(category);
-		$("#explorerCat-"+category).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
-	}
-
-	function unselecCategory(category){
-		deleteCategory(category);
-		$("#explorerCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
-	}
-
-	function addCategory(category){
-		var array = window.localStorage.getItem('exploreCategories');
-		if(array){
-			array = JSON.parse(array);
-		}else{
-			array = {categories:[]};
-		}
-		array.categories.push(category);
-		window.localStorage.setItem('exploreCategories', JSON.stringify(array));
-	}
-	function deleteCategory(category){
-		var array = window.localStorage.getItem('exploreCategories');
-		if(array){
-			array = JSON.parse(array);
-		}else{
-			array = {categories:[]};
-		}
-
-		array.categories = array.categories.filter(cat=>{
-			return cat!=category;
-		});
-		window.localStorage.setItem('exploreCategories', JSON.stringify(array));
-	}
-
-	function setExploreCategories(){
-		/*this function keeps updating the value of the hidden tag
-		to use it anytime in the backend*/
-		var array = window.localStorage.getItem('exploreCategories');
-		if(array){
-			array = JSON.parse(array);
-		}else{
-			array = {categories:[]};
-		}
-		console.log(array);
-    //document.getElementById("exploreCategories").value = array;
-	}
+	
 </script>

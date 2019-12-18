@@ -47,30 +47,51 @@ class GuidesController < ApplicationController
   # POST /guides.json
   def create
     @profile = current_user.profile
-    if @profile.nil?
-      redirect_to profiles_path, notice: 'Please update about your yourself'
+    @saved_categories = @profile.guide_categories.pluck(:id).uniq
+
+    if params[:first_signup] == "true"
+      #first signup explores update
+      @selected_categories = JSON.parse(params["guideCategories"])["categories"]
+      @categories_to_add = @selected_categories.reject{|x| @saved_categories.include? x.to_i}
+
+      @categories_to_add.each do |x|
+         @guide= Guide.new
+         @guide.profile = @profile
+         @guide.category = Category.find(x)
+         @guide.save
+       end
+
+       respond_to do |format|
+         format.html { redirect_to '/profile/projects', notice: 'Guides was successfully added.' }
+         format.json { render :show, status: :ok, location: @profile }
+       end
     else
-      @list = @profile.guide_categories.uniq.map{|x| x.id}
+      if @profile.nil?
+        redirect_to profiles_path, notice: 'Please update about your yourself'
+      else
+        @list = @profile.guide_categories.uniq.map{|x| x.id}
 
-      @category=params[:category].map{|x| x.to_i}
+        @category=params[:category].map{|x| x.to_i}
 
-      @category.each do|x|
-        if !@list.include?(x.to_i)
-          @guide = Guide.new
-          @guide.profile = @profile
-          @guide.category = Category.find(x.to_i)
-          @guide.save
+        @category.each do|x|
+          if !@list.include?(x.to_i)
+            @guide = Guide.new
+            @guide.profile = @profile
+            @guide.category = Category.find(x.to_i)
+            @guide.save
+          end
         end
-      end
 
-      @list.each do|x|
-        if !@category.include?(x)
-          @profile.guide_categories.destroy(Category.find(x))
+        @list.each do|x|
+          if !@category.include?(x)
+            @profile.guide_categories.destroy(Category.find(x))
+          end
         end
+         flash[:success] = "Guide was successfully created."
+        redirect_to profiles_path
       end
-       flash[:success] = "Guide was successfully created."
-      redirect_to profiles_path
     end
+
   end
 
   private

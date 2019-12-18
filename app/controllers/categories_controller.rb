@@ -7,9 +7,17 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @type = params[:type]
     @category = Category.friendly.find(params[:id])
+    if @type =="explores"
+      @model = Explore.includes(profile: :user)
+    elsif params[:type]=="guides"
+      @model = Guide.includes(profile: :user)
+    else
+      @model = Explore.includes(profile: :user)
+    end
     @filterrific = initialize_filterrific(
-      Profile,
+      @model,
       params[:filterrific],
       select_options: {
         :with_country_name => Profile.options_for_select
@@ -17,10 +25,8 @@ class CategoriesController < ApplicationController
     ) or return
     @profiles = @filterrific.find.page(params[:page])
 
-
-    @explorers= Explore.all.where(category_id: @category.id, profile_id: @profiles.map(&:id)).where.not(:profile_id => current_user.id)
-    # @explorers = @explorers.paginate(:page => params[:page], :per_page => 1)
-
+    @profiles= @profiles.where(category_id: @category.id).where.not(:profile => current_user.profile)
+    # @profiles = @profiles.paginate(:page => params[:page], :per_page => 3)
 
     respond_to do |format|
       format.html

@@ -48,18 +48,19 @@
 		</div>
 	</div>
 
-	<div class="form-row position-relative" id="languagesBuilder">
-
-		<div class="form-group custom-from-group" id="select-languages-wrap">
+	<div class="position-relative form-row" id="languagesBuilder">
+		<div class="form-group custom-from-group mb-0 col pl-0" id="select-languages-wrap">
 		    <label for="birth-day">Spoken Language(s)</label>
-				<%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select selectdelete"}%>
+				<%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select selectdelete", id: 'profile-builder-languages-select'}%>
 				<input type="hidden" id="check" name="languages">
-              <img class="imgdelete" id="delete" src="<%= image_path('People/icondelete.jpg')%>">
-
 		</div>
-
-		<button type="button" class="btn btn-link" id="addLanguageBtn">Add+</button>
+		
+		<i class="material-icons profile-builder-select-language-add" id="addLanguageBtn">add</i>  
 	</div>
+	<div id="profile-builder-languages" class="mb-3 mt-2 form-row">
+			
+	</div>
+
 	<div class="form-row">
 		<div class="form-group custom-from-group w-100">
 		    <label for="about">About</label>

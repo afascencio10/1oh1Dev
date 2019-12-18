@@ -15,9 +15,9 @@
       <%end%>
       <div>
         <% if @companion.profile_photo.blank? %>
-          <img width="40px" class="rounded-circle mr-2 active" src="<%= image_path('People/asian.jpg') %>" alt="avatar">
+          <img width="40px" height="40px" class="rounded-circle mr-2 active" src="<%= image_path('People/asian.jpg') %>" alt="avatar">
         <% else %>
-          <img width="40px" class="rounded-circle mr-2 active" src="<%= @companion.profile_photo %>" alt="avatar">
+          <img width="40px" height="40px" class="rounded-circle mr-2 active" src="<%= @companion.profile_photo %>" alt="avatar">
         <% end %>
 
         <span class="font-weight-bold fz-14">Subject</span> - <span class="fz-14"><%= booking.guide.category.name %> with <%= @companion.user.firstname %> <%= @companion.user.lastname %></span>

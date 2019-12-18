@@ -1,0 +1,25 @@
+// override default bootstrap form component
+.form-group {
+	label {
+		font-size: 13px;
+	}
+	input, select, textarea {
+		background-color: #f9f9f9;
+		font-size: 14px;
+		border-color: #f3f3f3 !important;
+		border-radius: 3px;
+	}
+}
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+	background-color: #2196F3;
+}
+.custom-radio-with-image {
+	.custom-control-label {
+		&::before {
+			margin-top: 2px;
+		}
+		&::after {
+			top: 6px;
+		}
+	}
+}

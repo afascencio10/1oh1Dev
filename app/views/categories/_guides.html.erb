@@ -1,20 +1,20 @@
-<div id="filterrific_results_explores">
+<div id="filterrific_results_guides">
   <!-- <div>
-    <%= page_entries_info explores, entry_name: "prof" %>
+    <%= page_entries_info guides, entry_name: "prof" %>
   </div> -->
-    <h4 class="mt-5 font-weight-bold">Top Explorers for <%= @category.name %></h4>
+    <h4 class="mt-5 font-weight-bold">Top Guides for <%= @category.name %></h4>
     <table class="table table-condensed table-hover table-striped mt-5">
           <tbody>
-            <% explores.each do |explore| %>
+            <% guides.each do |guide| %>
               <tr>
                   <td class="avatar text-center">
                     <img class="large" width="40px" src="<%= image_path('person_6.jpg') %>" alt="avatar">
                   </td>
 
                   <td>
-                    <span class="font-weight-bold"><%= explore.profile.user.firstname %> <%= explore.profile.user.lastname %></span>
+                    <span class="font-weight-bold"><%= guide.profile.user.firstname %> <%= guide.profile.user.lastname %></span>
                     <br>
-                    <span><%= explore.profile.city %>, <%= explore.profile.country%></span>
+                    <span><%= guide.profile.city %>, <%= guide.profile.country%></span>
                     <br>
                     <span>English</span>
                   </td>
@@ -31,14 +31,14 @@
                     <div class="rateYo d-inline-block p-0"></div>
                   </td>
                   <td>
-                    <%= link_to 'Book', reserve_calendar_path(explore_id: explore.id ),class: "btn btn-primary px-3 py-1"%>
+                    <%= link_to 'Book', reserve_calendar_path(guide_id: guide.id ),class: "btn btn-primary px-3 py-1"%>
 
                     <br>
-                    <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>explore.profile.user_id).map(&:chat_id) %>
-                    <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => explore.profile_id), class: "secondary-success-color"  %>
+                    <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>guide.profile.user_id).map(&:chat_id) %>
+                    <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => guide.profile_id), class: "secondary-success-color"  %>
 
                     <br>
-                    <%= link_to 'Profile', profile_path(explore.profile_id ),class: "secondary-success-color"%>
+                    <%= link_to 'Profile', profile_path(guide.profile_id ),class: "secondary-success-color"%>
 
                     <br>
                   </td>
@@ -51,6 +51,6 @@
             See more
           </button> -->
 
-          <%= will_paginate explores,:container => false  %>
+          <%= will_paginate guides,:container => false  %>
 
 </div>

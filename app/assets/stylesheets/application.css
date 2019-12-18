@@ -58,4 +58,11 @@
 *= require fullcalendar/timeGrid/main
 *= require jquery.rateyo.min.css
 *= require post_session
+*= require components/form
+*= require components/modal
+*= require components/buttons
+*= require components/chips
+*= require utils/layout
+*= require utils/typography
+*= require utils/colors
  */

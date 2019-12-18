@@ -1,7 +1,27 @@
 jQuery(document).ready(function($) {
+  var profileBuilderLanguages = ['eng']
+  var profileBuilderLanguagesHiddenElm = document.getElementById('check')
 
+  var chipTemplate = '\
+    <div class="base-chips d-inline-block">\
+      <span class="base-chips-name"></span>\
+      <button type="button" class="close">\
+        <span aria-hidden="true">&times;</span>\
+      </button>\
+    </div>\
+    '
  // initiate select-languages-wrap
  initiateCustomCheckboxes()
+ // initiate languages
+ profileBuilderLanguages.forEach(function (language) {
+  generateDefaultChipForSelectElement(
+    language,
+    'profile-builder-languages-select',
+    $('#profile-builder-languages'),
+    profileBuilderLanguagesHiddenElm,
+    profileBuilderLanguages
+  )
+ })
 
  var exploreItemContainer = document.querySelector('#explore-item-container')
  var guidingItemContainer = document.querySelector('#guiding-item-container')
@@ -19,54 +39,97 @@ jQuery(document).ready(function($) {
     format: 'D MMM YYYY'
   })
 
-  /*code for multi language feature*/
-        function getLanguages() {
-          var arraryLanguages = [];
-          arraryLanguages.push($('#language').val());
-          for (i = 1; i < languages; i++) {
-            var idName = '#language-' + i;
-            if ($(idName).length != 0) {
-              arraryLanguages.push($(idName).val());
-            }
-          }
-          return arraryLanguages;
-        }
+  function generateDefaultChipForSelectElement (value, selectId, wrapper, hiddenInput, storage) {
+    if (hiddenInput && storage) {
+      hiddenInput.text = JSON.stringify(storage)
+    }
+    var select = document.getElementById(selectId)
+    var selectItem = Array.from(select.options).filter(function (option) {
+      if (value === option.value) return option
+    })
+    var selectText
+    if (selectItem[0]) {
+      selectText = selectItem[0].text
+    }
+    addChips(
+      wrapper,
+      selectText,
+      value,
+      null,
+      removeChipFromArray(storage, hiddenInput)
+    )
+  }
+  function addChips(wrapper, chipName, chipValue, addClb, removeClb, storage) {
+      var element = $(chipTemplate)
+      if (storage) {
+        if (storage.findIndex(function (item) {
+          return item === chipValue
+        }) !== -1) return
+      }
 
-        var languages = 1;
-        $('#addLanguageBtn').on('click', function () {
-          var clonedSelect = $('#select-languages-wrap select').first().clone(false)
-          var clonedDeleteButtom = $('#delete').first().clone(false)
-          clonedSelect.attr('id', 'language-' + languages);
-          clonedDeleteButtom.attr('id', 'delete-' + languages);
-          $('#select-languages-wrap').append(clonedSelect);
-          languages += 1;
-          $('#select-languages-wrap').append(clonedDeleteButtom)
-          setDeleteFunction();
-          setLanguagesArray();
-        })
+      element.find('.base-chips-name').text(chipName)
+      element.find('button').click(function () {
+        removeChips($(this), chipValue, removeClb)
+      })
 
-        function setLanguagesArray(){
-          var languages = getLanguages();
-          console.log(languages);
-          document.getElementById("check").value = languages;
-        }
-        
+      wrapper.append(element)
+      if (addClb) addClb(chipValue)
+  }
 
-        function setDeleteFunction(){
-          $('.imgdelete').on('click',function () {
-            var numberForDelete =$(this).attr('id').charAt($(this).attr('id').length-1);
-            var languageID ='#language-' + numberForDelete;
-            $(languageID).remove();
-            $(this).remove();
-            setLanguagesArray();
-          });
-          $(".selectdelete").change(setLanguagesArray)
-        }
-        setDeleteFunction();
+  function removeChips (chip, chipName, clb) {
+    if (clb) clb(chipName)
 
-    $('.next-button').on('click', function () {
-          setLanguagesArray();
-        });
+    chip.parent().remove()
+  }
+
+  function addSelectedItemAsChips(wrapper, selectId, addClb, removeClb, storage) {
+    var select = document.getElementById(selectId)
+    if (!select) return
+
+    var selectText = select.selectedOptions[0].text
+    var selectValue = select.selectedOptions[0].value
+
+    addChips(wrapper, selectText, selectValue, addClb, removeClb, storage)
+  }
+
+  function storeChipInArray (array, hiddenInput) {
+    return function (chipName) {
+      array.push(chipName)
+      console.log(array)
+      if (hiddenInput) {
+        hiddenInput.text = JSON.stringify(array)
+        console.log(hiddenInput.text)
+      }
+    }
+  }
+
+  function removeChipFromArray (array, hiddenInput) {
+    return function (chipName) {
+      array.splice(array.findIndex(function (item) {
+        return item === chipName
+      }), 1)
+
+      console.log(array)
+      if (hiddenInput) {
+        hiddenInput.text = JSON.stringify(array)
+        console.log(hiddenInput.text)
+      }
+    }
+  }
+
+  $('#addLanguageBtn').on('click', function () {
+    addSelectedItemAsChips(
+      $('#profile-builder-languages'),
+      'profile-builder-languages-select',
+      storeChipInArray(profileBuilderLanguages, profileBuilderLanguagesHiddenElm),
+      removeChipFromArray(profileBuilderLanguages, profileBuilderLanguagesHiddenElm),
+      profileBuilderLanguages
+    )
+  })
+
+
+  $('.next-button').on('click', function () {
+  });
 
  
 
@@ -74,13 +137,6 @@ jQuery(document).ready(function($) {
     addTimePicker($(this).parent().parent().find('.time-picker-wrap'))
   })
 
- function addSelectLangTemplate () {
-  //var clonedSelect = $('#select-languages-wrap select').first().clone(false)
-
-  //$('#select-languages-wrap').append(clonedSelect)
-
-  //clonedSelect.wrap('<div></div>')
- }
 
  function initiateCustomCheckboxes () {
     var checkboxButtons = $('.checkbox-switcher') // let btn = document.getElementById("btn")

@@ -51,83 +51,16 @@
 </div>
 
 
-<input type="hidden" id="guideCategories" name="guideCategories">
+<%= form_for(@guide) do |f| %>
+
+	<input type="hidden" id="guideCategories" name="guideCategories">
+	<input type="hidden" name="first_signup" value="true" >
+
+	<div class="form-row justify-content-end mb-5" id="action-buttons">
+		<a class="btn btn-outline-dark p-2 mr-3" href="/profile/explores">Prev</a>
+
+		<button class="btn btn-success p-2 next-button" type="submit" >Next</button>
+	</div>
+<%end%>
 
 <%= render 'new_category_modal' %>
-
-<!-- Felipe to do: change the js code to the right file -->
-<script type="text/javascript">
-	var guideCategories = window.localStorage.getItem('guideCategories');
-	if(guideCategories){
-		guideCategories = JSON.parse(guideCategories);
-	}else{
-		guideCategories = {categories:[]};
-	}
-	guideCategories.categories.forEach(cat=>{
-		$("#guideCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
-	});
-	setGuideCategories();
-
-	$('.addGuideBtnn').on('click', function () {
-	  // alert("Clicked  ");
-	  var id = this.id;
-	  id = id.split("-")[1];
-	  var isSelected = $(this).hasClass("btn-outline-dark");
-	  if(isSelected){
-	  	unselecCategoryG(id);
-	  }else {
-	  	selectCategoryG(id);
-	  }
-	  setGuideCategories();
-
-	})
-
-
-	function selectCategoryG(category){
-		addCategoryG(category);
-		$("#guideCat-"+category).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
-	}
-
-	function unselecCategoryG(category){
-		deleteCategoryG(category);
-		$("#guideCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
-	}
-
-	function addCategoryG(category){
-		var array = window.localStorage.getItem('guideCategories');
-		if(array){
-			array = JSON.parse(array);
-		}else{
-			array = {categories:[]};
-		}
-		array.categories.push(category);
-		window.localStorage.setItem('guideCategories', JSON.stringify(array));
-	}
-	function deleteCategoryG(category){
-		var array = window.localStorage.getItem('guideCategories');
-		if(array){
-			array = JSON.parse(array);
-		}else{
-			array = {categories:[]};
-		}
-
-		array.categories = array.categories.filter(cat=>{
-			return cat!=category;
-		});
-		window.localStorage.setItem('guideCategories', JSON.stringify(array));
-	}
-
-	function setGuideCategories(){
-		/*this function keeps updating the value of the hidden tag
-		to use it anytime in the backend*/
-		var array = window.localStorage.getItem('guideCategories');
-		if(array){
-			array = JSON.parse(array);
-		}else{
-			array = {categories:[]};
-		}
-		console.log(array);
-      document.getElementById("guideCategories").value = array;
-	}
-
-</script>

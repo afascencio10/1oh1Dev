@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
       end
 
     elsif params["self"].to_i == 1 && params["other"].to_i == 0
-      @reservation_bookings = current_user.profile.bookings.includes(:guide,:explore).uniq
+      @reservation_bookings = current_user.profile.bookings.includes(:explore,:guide).uniq
 
 
     elsif params["self"].to_i == 0 && params["other"].to_i == 1
@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
     end
 
     @profile_id = current_profile.id
-    @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :category,:profile])
+    @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
     @pending_bookings =  @bookings.where(:status => 0).order(created_at: :desc).uniq
     @completed_bookings = @bookings.where(:status => 2).order(created_at: :desc).uniq
     @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq

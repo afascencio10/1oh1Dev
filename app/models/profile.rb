@@ -16,7 +16,7 @@ class Profile < ApplicationRecord
   has_many :transactions
   serialize :languages, Array
 
-  self.per_page = 4
+  self.per_page = 3
 
   def full_user_name
     "#{user.firstname.downcase}-#{user.lastname.downcase}"
@@ -50,7 +50,7 @@ class Profile < ApplicationRecord
   def self.options_for_select
    # profile = Profile.arel_table
    # order(profile[:country].lower).pluck(:country, :country)
-   Profile.distinct.pluck(:country)
+   Profile.where.not(country: nil).distinct.pluck(:country)
   end
 
 end

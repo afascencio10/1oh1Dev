@@ -1,8 +1,4 @@
-<!-- <div class="message">
-  <p><%= message.content %></p>
-</div> -->
 <% if current_user.id == message.user_id%>
-  <!-- <p id="<%=message.user_id %>">&emsp;&emsp;&emsp;<%= message.user.firstname %>: <%=message.content%></p> -->
   <div class="d-flex justify-content-end mb-4">
     <div class="msg_cotainer_send">
       <%=message.content%>
@@ -13,7 +9,6 @@
   </div>
 
 <% else %>
-  <!-- <p id="<%=message.user_id %>"><%= message.user.firstname %>: <%=message.content%></p> -->
   <div class="d-flex justify-content-start mb-4">
     <div class="img_cont_msg">
       <img src="<%= Profile.find_by(:user_id => message.user_id).profile_photo%> " class="rounded-circle user_img_msg">

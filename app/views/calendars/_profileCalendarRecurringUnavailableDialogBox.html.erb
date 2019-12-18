@@ -24,224 +24,37 @@
 				<%= f.input_field :start, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
 				<%= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
 
+				<% Date::DAYNAMES.each do |day| %>
+					<div class="row m-0">
+						<div class="col-4 pl-0">
+							<div>
+								<div class="checkbox-switcher">
+									<div class="checkbox h_cb">
+										<div class="tick">
+											<div class="rect-1 h_rects"></div>
+											<div class="rect-2 h_rects"></div>
+										</div>
+									</div>
+								</div>
 
-				<!-- Monday -->
-				<div class="row m-0">
-					<div class="col-4 pl-0">
-						<div>
-							<div class="checkbox-switcher">
-							  <div class="checkbox h_cb">
-							    <div class="tick">
-							      <div class="rect-1 h_rects"></div>
-							      <div class="rect-2 h_rects"></div>
-							    </div>
-							  </div>
+								<span class="align-middle ml-2">
+									<%= day %>
+								</span>
+							</div>
+						</div>
+						<div class="col-8">
+							<div class="time-picker-wrap d-none" id="<%= day%>">
+
 							</div>
 
-							<span class="align-middle ml-2">
-								Monday
-							</span>
-						</div>
-					</div>
-					<div class="col-8">
-						<div class="time-picker-wrap d-none">
-
-						</div>
-
-						<div class="mt-2 d-none">
-							<button class="fz-14 btn btn-link recurringAddTimePicker">
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tuesday -->
-				<div class="row m-0 mt-2">
-					<div class="col-4 pl-0">
-						<div>
-							<div class="checkbox-switcher">
-							  <div class="checkbox h_cb">
-							    <div class="tick">
-							      <div class="rect-1 h_rects"></div>
-							      <div class="rect-2 h_rects"></div>
-							    </div>
-							  </div>
+							<div class="mt-2 d-none">
+								<button class="fz-14 btn btn-link recurringAddTimePicker">
+									Add
+								</button>
 							</div>
-
-							<span class="align-middle ml-2">
-								Tuesday
-							</span>
 						</div>
 					</div>
-					<div class="col-8">
-						<div class="time-picker-wrap d-none">
-
-						</div>
-
-						<div class="mt-2 d-none">
-							<button class="fz-14 btn btn-link recurringAddTimePicker">
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<!-- Wednesday -->
-				<div class="row m-0 mt-2">
-					<div class="col-4 pl-0">
-						<div>
-							<div class="checkbox-switcher">
-							  <div class="checkbox h_cb">
-							    <div class="tick">
-							      <div class="rect-1 h_rects"></div>
-							      <div class="rect-2 h_rects"></div>
-							    </div>
-							  </div>
-							</div>
-
-							<span class="align-middle ml-2">
-								Wednesday
-							</span>
-						</div>
-					</div>
-					<div class="col-8">
-						<div class="time-picker-wrap d-none">
-
-						</div>
-
-						<div class="mt-2 d-none">
-							<button class="fz-14 btn btn-link recurringAddTimePicker">
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<!-- Thursday -->
-				<div class="row m-0 mt-2">
-					<div class="col-4 pl-0">
-						<div>
-							<div class="checkbox-switcher">
-							  <div class="checkbox h_cb">
-							    <div class="tick">
-							      <div class="rect-1 h_rects"></div>
-							      <div class="rect-2 h_rects"></div>
-							    </div>
-							  </div>
-							</div>
-
-							<span class="align-middle ml-2">
-								Thursday
-							</span>
-						</div>
-					</div>
-					<div class="col-8">
-						<div class="time-picker-wrap d-none">
-
-						</div>
-
-						<div class="mt-2 d-none">
-							<button class="fz-14 btn btn-link recurringAddTimePicker">
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<!-- Friday -->
-				<div class="row m-0 mt-2">
-					<div class="col-4 pl-0">
-						<div>
-							<div class="checkbox-switcher">
-							  <div class="checkbox h_cb">
-							    <div class="tick">
-							      <div class="rect-1 h_rects"></div>
-							      <div class="rect-2 h_rects"></div>
-							    </div>
-							  </div>
-							</div>
-
-							<span class="align-middle ml-2">
-								Friday
-							</span>
-						</div>
-					</div>
-					<div class="col-8">
-						<div class="time-picker-wrap d-none">
-
-						</div>
-
-						<div class="mt-2 d-none">
-							<button class="fz-14 btn btn-link recurringAddTimePicker">
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<!-- Saturday -->
-				<div class="row m-0 mt-2">
-					<div class="col-4 pl-0">
-						<div>
-							<div class="checkbox-switcher">
-							  <div class="checkbox h_cb">
-							    <div class="tick">
-							      <div class="rect-1 h_rects"></div>
-							      <div class="rect-2 h_rects"></div>
-							    </div>
-							  </div>
-							</div>
-
-							<span class="align-middle ml-2">
-								Saturday
-							</span>
-						</div>
-					</div>
-					<div class="col-8">
-						<div class="time-picker-wrap d-none">
-
-						</div>
-
-						<div class="mt-2 d-none">
-							<button class="fz-14 btn btn-link recurringAddTimePicker">
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<!-- Saturday -->
-				<div class="row m-0 mt-2">
-					<div class="col-4 pl-0">
-						<div>
-							<div class="checkbox-switcher">
-							  <div class="checkbox h_cb">
-							    <div class="tick">
-							      <div class="rect-1 h_rects"></div>
-							      <div class="rect-2 h_rects"></div>
-							    </div>
-							  </div>
-							</div>
-
-							<span class="align-middle ml-2">
-								Sunday
-							</span>
-						</div>
-					</div>
-					<div class="col-8">
-						<div class="time-picker-wrap d-none">
-
-						</div>
-
-						<div class="mt-2 d-none">
-							<button class="fz-14 btn btn-link recurringAddTimePicker">
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
+				<% end %>
 
 			<div class="modal-footer border-0 px-5">
 		      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

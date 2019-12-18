@@ -9,7 +9,7 @@ class ExploresController < ApplicationController
     category_explores_profiles_join = Category.joins(explores: :profile)
     category_guides_profiles_join = Category.joins(guides: :profile)
 
-    @top_explores = ExploreRating.rate_desc.where(explore_id: not_self_explore_category_ids)
+    @top_explores = ExploreRating.includes(profile: :user,explore: [:category]).rate_desc.where(explore_id: not_self_explore_category_ids)
     @popular_explore_category = category_explores_profiles_join.distinct_country(country)
     @popular_guide_category = category_guides_profiles_join.distinct_country(country)
     @popular_incountry = @popular_explore_category.merge(@popular_guide_category)
@@ -47,31 +47,54 @@ class ExploresController < ApplicationController
   # POST /explores.json
   def create
     @profile = current_user.profile
-    if @profile.nil?
-      redirect_to profiles_path, notice: 'Please update about your yourself'
+    @saved_categories = @profile.explore_categories.pluck(:id).uniq
+
+    if (params[:first_signup] == "true")
+      #first signup explores update
+      @selected_categories = JSON.parse(params["exploreCategories"])["categories"]
+      @categories_to_add = @selected_categories.reject{|x| @saved_categories.include? x.to_i}
+
+      @categories_to_add.each do |x|
+         @explore= Explore.new
+         @explore.profile = @profile
+         @explore.category = Category.find(x)
+         @explore.save
+       end
+
+       respond_to do |format|
+         format.html { redirect_to '/profile/guides', notice: 'Explores was successfully added.' }
+         format.json { render :show, status: :ok, location: @profile }
+       end
+
     else
+      #edit categories from profile page
+       if @profile.nil?
+         redirect_to profiles_path, notice: 'Please update about your yourself'
+       else
 
-      @list = @profile.explore_categories.uniq.map{|x| x.id}
+         @list = @profile.explore_categories.uniq.map{|x| x.id}
 
-      @category=params[:category].map{|x| x.to_i}
+         @category=params[:category].map{|x| x.to_i}
 
-      @category.each do|x|
-        if !@list.include?(x.to_i)
-          @explore= Explore.new
-          @explore.profile = @profile
-          @explore.category = Category.find(x.to_i)
-          @explore.save
-        end
+         @category.each do|x|
+           if !@list.include?(x.to_i)
+             @explore= Explore.new
+             @explore.profile = @profile
+             @explore.category = Category.find(x.to_i)
+             @explore.save
+           end
+         end
+
+         @list.each do|x|
+           if !@category.include?(x)
+             @profile.explore_categories.destroy(Category.find(x))
+           end
+         end
+        flash[:success] = "Explore was successfully created"
+        redirect_to profiles_path
       end
+    end
 
-      @list.each do|x|
-        if !@category.include?(x)
-          @profile.explore_categories.destroy(Category.find(x))
-        end
-      end
-     flash[:success] = "Explore was successfully created"
-     redirect_to profiles_path
-   end
   end
   #
   # # PATCH/PUT /explores/1
