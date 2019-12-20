@@ -13,69 +13,76 @@
             <div class="title boldText redcel">
               Add an interest
             </div>
-            <div class="redcel">
-            </div>
-            <div class="inputContainer redcel">
-              <input placeholder="Electric cars, oil painting, guitar..." type="text" name="searchInput" class="oh1SearchInput">
-              <img class="inputRightIcon" src="<%= image_path('Icons/search.png')  %>">
-            </div>
+            <div class="redcel"> </div>
+            <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+              <div>
+                Search
+                <%= f.text_field(
+                  :search_query,
+                  class: 'filterrific-periodically-observed form-control',
+                  placeholder: 'Oil painting, 3D printing, Electric cars etc.'
+                ) %>
+              </div>
+              <div>
+                <%= link_to(
+                  'Reset filters',
+                  reset_filterrific_url,
+                ) %>
+              </div>
+              <%= render_filterrific_spinner %>
+            <% end %>
             <div class="newCategoryMessage boldText redcel">
               Can't find a category? <span data-toggle="modal" data-target="#newCategoryModal" class="createCategory boldText"> Create a new category.</span>
             </div>
           </div>
-          <div class="title boldText redcel" id="yourInterests">
-            Your interests
-          </div>
-          <div class="categoriesGrid redcel">
-            <% if @explores.blank? %>
-              <div class="gridGuidingActivity">
-                  <div class="titleactivityProfile toptitleActivity">
-                    <span class="titleYetAdd">Nothing added yet</span>
-                  </div>
-                  <div class="gridImgActivity">
-                      <div class=""></div>
-                      <div class="">
-                          <img src="<%= image_path('Icons/yet.png') %>" alt="Image" class="imgYet">
-                      </div>
-                      <div class=""></div>
-                  </div>
+
+          <ul class="nav nav-tabs pt-4" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="addCategory-tab" data-toggle="tab" href="#addCategory" role="tab" aria-controls="home" aria-selected="true">Add Category</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="yourInterest-tab" data-toggle="tab" href="#yourInterest" role="tab" aria-controls="profile" aria-selected="false">Your Interest</a>
+			      </li>
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="addCategory" role="tabpanel" aria-labelledby="home-tab">
+              <div class="my-1 p-3 border rounded position-relative auxiliar-container" id="explore-item-containerP">
+                <%= render(
+                  partial: 'list',
+                  locals: { categories: @categories }
+                ) %>
               </div>
-            <% else %>
-                <% @explores.each do|explore| %>
-                  <div class="interestsImage">
-                     <img class="imagesInterests" src="<%= explore.url %>">
+              <input type="hidden" id="exploreCategories" name="exploreCategories">
+            </div>
+
+            <div class="tab-pane fade" id="yourInterest" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="categoriesGrid redcel border rounded">
+                <% if @explores.blank? %>
+                  <div class="gridGuidingActivity">
+                      <div class="titleactivityProfile toptitleActivity">
+                        <span class="titleYetAdd">Nothing added yet</span>
+                      </div>
+                      <div class="gridImgActivity">
+                          <div class=""></div>
+                          <div class="">
+                              <img src="<%= image_path('Icons/yet.png') %>" alt="Image" class="imgYet">
+                          </div>
+                          <div class=""></div>
+                      </div>
                   </div>
-               <% end %>
-            <% end %>
+                <% else %>
+                    <% @explores.each do|explore| %>
+                      <div class="interestsImage py-2">
+                         <img class="imagesInterests" src="<%= explore.url %>">
+                      </div>
+                   <% end %>
+                <% end %>
+              </div>
+            </div>
+
           </div>
         </div>
-        <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
-          <div>
-            Search
-            <%= f.text_field(
-              :search_query,
-              class: 'filterrific-periodically-observed form-control',
-              placeholder: 'Oil painting, 3D printing, Electric cars etc.'
-            ) %>
-          </div>
-
-          <div>
-            <%= link_to(
-              'Reset filters',
-              reset_filterrific_url,
-            ) %>
-          </div>
-          <%= render_filterrific_spinner %>
-        <% end %>
-
-        <div class="my-5 p-3 border rounded position-relative auxiliar-container" id="explore-item-containerP">
-        		<%= render(
-        			partial: 'list',
-        			locals: { categories: @categories }
-        		) %>
-        </div>
-        <input type="hidden" id="exploreCategories" name="exploreCategories">
-
       </div>
 
     </div>

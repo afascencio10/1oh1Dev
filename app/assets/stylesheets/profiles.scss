@@ -778,6 +778,7 @@ desktop version*/
 .newCategoryMessage {
   font-size: 14px;
   align-self: center;
+  padding-left: 3%;
 }
 
 .createCategory {
@@ -808,7 +809,6 @@ desktop version*/
 .modalCategories {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 70px auto;
 }
 
 .addInterests {
@@ -1935,4 +1935,10 @@ input:checked + .slider:before {
 }
 .profile-builder-select-language-add {
   right: 13px;
+}
+#myTab {
+  border-bottom: 0px solid #dee2e6;
+}
+#GuideTab {
+  border-bottom: 0px solid #dee2e6;
 }
