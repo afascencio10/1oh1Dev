@@ -62,4 +62,18 @@ jQuery(document).ready(function($) {
 
 		$(this).addClass('active')
 	})
+
+	var $rateYo = $(".rateYoInput").rateYo({
+ 		rating: 3,
+ 		ratedFill: "#f1c40f",
+		normalFill: "#e4e4e4",
+		onSet: function (){
+			var rating = $rateYo.rateYo("rating");
+			var input = document.getElementById("rateExperience");
+		 	if (input) {
+		 		input.value = rating;
+		 		console.log(input.value);		 		
+		 	}
+		}
+ 	});
 })

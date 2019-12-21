@@ -43,44 +43,48 @@
               </div>
             </div>
 
-      <% else %>
-         <% @projects.each do|project| %>
-           <div class="projectContainer">
-               <div class="projectImages">
-                   <div class="projectPhoto">
-                       <img class="projectPicture" src="<%= project.image %>">
-                       <% if project.status == 1 %>
-                            <img src="<%= image_path('Icons/Idea_icon.png') %>" alt="Image" class="projectIcon">
-                          <% elsif project.status == 2 %>
-                            <img src="<%= image_path('Icons/WIP-icon.png') %>" alt="Image" class="projectIcon">
-                          <% else %>
-                            <img src="<%= image_path('Icons/completed-icon.png') %>" alt="Image" class="projectIcon">
-                        <% end %>
-                   </div>
+      <% else %>        
+         <% @projects.each do|project| %>            
+              <div class="projectInContainer projectContainer">
+                 <div class="projectImages">
+                     <div class="projectPhoto">
+                         <img class="projectPicture" src="<%= project.image %>">
+                         <% if project.status == 1 %>
+                              <img src="<%= image_path('Icons/Idea_icon.png') %>" alt="Image" class="projectIcon">
+                            <% elsif project.status == 2 %>
+                              <img src="<%= image_path('Icons/WIP-icon.png') %>" alt="Image" class="projectIcon">
+                            <% else %>
+                              <img src="<%= image_path('Icons/completed-icon.png') %>" alt="Image" class="projectIcon">
+                          <% end %>
+                     </div>
 
-                   <div class="projectProfiles">
-                     <% project.colab_id.each do |x|%>
-                       <div class="profilePict">
-                         <% if User.find(x).profile.nil?%>
-                         <img class="profileImage" src="<%= image_path('no_profile.png')  %>">
-                         <%else%>
-                         <img class="profileImage" src="<%= User.find(x).profile.profile_photo %>">
-                         <%end%>
-                       </div>
-                     <% end %>
-                   </div>
-               </div>
-               <div class="projectInfo">
-                   <div class="projectTitle"><%= project.name %></div>
-                   <div class="editIconProject">
-                       <i data-toggle="modal" data-target="#projectsModal" class="material-icons icons create">create</i>
-                   </div>
-                   <div class="projectDescription"><h3 class="descriptionTitle">Description</h3> <p class="descriptionText"> <%= project.description %></p></div>
-                   <div class="projectSkills"><h3 class="descriptionTitle">Skills needed</h3>
-                   </div>
-               </div>
-           </div>
-         <% end %>
+                     <div class="projectProfiles">
+                       <% project.colab_id.each do |x|%>
+                         <div class="profilePict">
+                           <% if User.find(x).profile.nil?%>
+                           <img class="profileImage" src="<%= image_path('no_profile.png')  %>">
+                           <%else%>
+                           <img class="profileImage" src="<%= User.find(x).profile.profile_photo %>">
+                           <%end%>
+                         </div>
+                       <% end %>
+                     </div>
+                 </div>
+                 <div class="projectInfo">
+                     <div class="projectTitle"><%= project.name %></div>
+                     <div class="editIconProject">
+                         <i data-toggle="modal" data-target="#projectsModal" class="material-icons icons create">create</i>
+                     </div>
+                     <div class="projectDescription"><h3 class="descriptionTitle">Description</h3> <p class="descriptionText"> <%= project.description %></p></div>
+                     <div class="projectSkills"><h3 class="descriptionTitle">Skills needed</h3>
+                     </div>
+                 </div>
+             </div>            
+         <% end %>         
       <% end %>
+      <div>
+        <button id="showLessButton">Show Less</button>
+        <button id="showMoreButton">Show More</button>        
+      </div>      
     </div>
 </div>
