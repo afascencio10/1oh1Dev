@@ -1,9 +1,4 @@
-<div class="modal fade"
-	id="declineBookingDialog"
-	tabindex="-1"
-	role="dialog"
-	aria-labelledby="declineBookingDialog"
-	aria-hidden="true">
+<div class="modal fade" id="declineBookingDialog" tabindex="-1" role="dialog" aria-labelledby="declineBookingDialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header px-5">
@@ -19,16 +14,13 @@
 		    </div>
 
 		    <div class="modal-footer border-0 px-5">
-		    	<div class="w-100">
-		    		<button type="button" class="btn btn-outline-secondary">
-			      	Decline
-			      </button>
-		    	</div>
-		    	<button type="button" class="btn btn-outline-secondary mr-3">
-			     	Message
-			    </button>
-
-		      <button type="button" class="btn btn-danger" data-dismiss="modal">
+					<%= form_tag(booking_path(Booking.first), :method => "delete", remote: true) do %>
+			    	<div class="w-100">
+							<input type="hidden" name="booking_id" id="decline_booking_id">
+							<%= submit_tag 'Decline', class:"btn btn-outline-secondary", id:"submit_decline",data: { disable_with: "Declining..." } %>
+			    	</div>
+					<%end%>
+		      <button type="button" class="btn btn-danger" id="cancel_decline" data-dismiss="modal">
 		      	Cancel
 		      </button>
 		    </div>

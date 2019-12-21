@@ -25,15 +25,27 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+    changed_params = project_params
+    changed_params[:colab_id]=JSON.parse(params["create-project-collaborators"])
+    project_categories = JSON.parse(params["create-project-categories"])
+    @project = Project.new(changed_params)
+    @project.profile = current_user.profile
 
-    @profile = current_user.profile
-    if @profile.nil?
+    if @project.nil?
       redirect_to profiles_path, notice: 'Please update about your yourself'
     else
       respond_to do |format|
-        if @profile.projects.create(project_params)
+        if @project.save
+          project_categories.each do |i|
+            @project.categories << Category.find(i.to_i)
+          end
+
+          flash.now[:success]= 'Project was successfully created.'
+          @flashing = flash
+
+          @projects = current_user.profile.projects.includes(:categories).sort_by_created_desc
           format.html { redirect_to profiles_path, notice: 'Project was successfully created.' }
-          format.json { render :show, status: :created, location: @project }
+          format.js
         else
           format.html { render :new }
           format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -74,6 +86,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.permit(:name,:description,:image,:status,colab_id:[])
+      params.permit(:name,:description,:image,:status,:help,:colab_id)
     end
 end

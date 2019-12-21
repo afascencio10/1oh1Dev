@@ -39,9 +39,9 @@
   <div class="celprofile tabOptions row" id="grid-menu">
     <header class="profile-tab">
       <div id="material-tabs">
-          <a id="tab1-tab" href="#tab1" class="active">17 <br> Explore</a>
-          <a id="tab2-tab" href="#tab2">17 <br> Guide</a>
-          <a id="tab3-tab" href="#tab3">19 <br> Projects</a>
+          <a id="tab1-tab" href="#tab1" class="active"><%= @explores.count %> <br> Explore</a>
+          <a id="tab2-tab" href="#tab2"><%= @guides.count %> <br> Guide</a>
+          <a id="tab3-tab" href="#tab3"><%= @projects.count %> Projects</a>
           <span class="yellow-bar"></span>
       </div>
     </header>

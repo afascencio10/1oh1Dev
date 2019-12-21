@@ -29,33 +29,33 @@ jQuery(document).ready(function($) {
 
 	// assign listeners
 	// to approve button
-	$('.booking-approve-btn').click(function () {
-		$('#bookingApproveDialog').modal()
-	})
+	$(document).on("click", ".booking-approve-btn", function(e) {
+			$("#approve_booking_id").val($(this).attr("id"))
+			$('#bookingApproveDialog').modal()
+	});
+	$(document).on("click", ".booking-decline-btn", function(e) {
+			$("#decline_booking_id").val($(this).attr("id"))
+			$('#declineBookingDialog').modal()
+	});
 
-	// to decline button declineBookingDialog
-	$('.booking-decline-btn').click(function () {
-		$('#declineBookingDialog').modal()
-	})
-
-	// to change or cancel
-	$('.upcomming-change-or-cancel').click(function () {
-		$('#chagneOrCancelDialog').modal()
-	})
+	$(document).on("click", ".upcomming-change-or-cancel", function(e) {
+			$("#change_booking_id").val($(this).attr("id"))
+			$("#cancel_booking_id").val($(this).attr("id"))
+			$('#chagneOrCancelDialog').modal()
+	});
 
 	// on change or cancel dialog box
-	$('#chagneOrCancelDialogChangeReservation').on('click', function () {
-    $('#bookingChangeRequestDialog').modal()
-  })
+	$(document).on("click", "#chagneOrCancelDialogChangeReservation", function(e) {
+			$('#bookingChangeRequestDialog').modal()
+	});
 
+	$(document).on("click", "#chagneOrCancelDialogCancelReservationBtn", function(e) {
+			$('#cancelSessionDialog').modal()
+	});
 
 	$('.showTipModal').on('click', function () {
     $('#sendTipDialog').modal()
   })
-
-  $('#chagneOrCancelDialogCancelReservationBtn').on('click', function () {
-	  $('#cancelSessionDialog').modal()
-	})
 
 	$('#send-tip-options .btn').click(function () {
 		$('#send-tip-options .btn').removeClass('active')

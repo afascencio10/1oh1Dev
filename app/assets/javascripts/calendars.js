@@ -1,4 +1,6 @@
 jQuery(document).ready(function($) {
+  var recurringCalendarData = {}
+  var recurringCalnedarDataHiddenInput = document.getElementById('profile-calendar-hidden-recurring-unavailable')
   var calendars = document.querySelectorAll('.personal-timeline-calendar')
 
   if (!calendars.length) return
@@ -215,6 +217,14 @@ jQuery(document).ready(function($) {
       setDate: $('#newEventDatePickerMoreOption').val()
     })
   })
+
+  $('#availabiltyNextBtn').on('click', function (event) {
+   if (recurringCalnedarDataHiddenInput) {
+     recurringCalnedarDataHiddenInput.text = JSON.stringify(getRecurringTimes())
+   }
+   console.log(getRecurringTimes())
+  })
+
   // methods
   function activeSpecificMonth (currentMonth, scrollToThatMonth) {
     document.getElementById('month-' + prevMonth).classList.remove('active')
@@ -455,12 +465,12 @@ jQuery(document).ready(function($) {
 
   function addTimePicker (el) {
     var template = `
-      <div>
-        <input type="text" value="" class="time-picker gray-input"/>
+      <div class="time-picker-row">
+        <input type="text" value="" class="time-picker gray-input time-picker-start"/>
 
         <span class="mx-2">to</span>
 
-        <input type="text" value="" class="time-picker gray-input"/>
+        <input type="text" value="" class="time-picker gray-input time-picker-end"/>
 
         <button type="button" class="d-inline-block btn btn-link btn-link-close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -478,6 +488,43 @@ jQuery(document).ready(function($) {
     $(element).find('.btn-link-close').on('click', function () {
       $(this).parent().parent().remove()
     })
+  }
+
+  function storeRecurringTime (day, t1, t2) {
+    if (!recurringCalendarData[day]) {
+      recurringCalendarData[day] = []
+    }
+
+    recurringCalendarData[day].push([t1, t2])
+  }
+
+  function getRecurringTimes () {
+    recurringCalendarData = {}
+
+    var rows = $('.recurring-calendar-row')
+
+    rows.each(function (index, row) {
+      row = $(row)
+      // is selected
+      if (!row.find('.checkbox-switcher .checkbox').hasClass('h_cb')) {
+        // now get input values
+        var timePickerRows = row.find('.time-picker-row')
+        var dayName = row.find('.recurring-day-name').text().trim()
+
+        timePickerRows.each(function (index, timeRow) {
+          timeRow = $(timeRow)
+          // now store input values
+          var startTime = timeRow.find('.time-picker-start').val()
+          var endTime = timeRow.find('.time-picker-end').val()
+
+          storeRecurringTime(dayName, startTime, endTime)
+        })
+      }
+    })
+
+    $("#availabilty").val(JSON.stringify(recurringCalendarData));
+
+    return recurringCalendarData
   }
 
   function setUnavailableDialogContent (info) {

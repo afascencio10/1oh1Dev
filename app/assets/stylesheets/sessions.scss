@@ -102,22 +102,22 @@
 		font-size: 15px;
 		color: rgb(255, 190, 129);
 	}
-	.fc-event.unavailable {	
+	.fc-event.unavailable {
 		border-color: rgb(252, 227, 233);
 		border-left: 5px solid rgb(249, 147, 168);
 		background-color: rgb(252, 227, 233);
 	}
-	.fc-event.pending {	
+	.fc-event.pending {
 		border-color: rgb(255, 240, 220);
 		border-left: 5px solid #ffbc7d;
 		background-color: rgb(255, 240, 220);
 	}
-	.fc-event.guiding {	
+	.fc-event.guiding {
 		border-color: rgb(233, 227, 241);
 		border-left: 5px solid rgb(182, 134, 224);
 		background-color: rgb(233, 227, 241);
 	}
-	.fc-event.exploring {	
+	.fc-event.exploring {
 		border-color: #e6e7e7;
 		border-left: 5px solid #aaaaaa;
 		background-color: #e6e7e7;
@@ -145,7 +145,7 @@
 			min-height: 100px;
 			overflow: hidden;
 			.fc-title {
-				font-size: 12px;	
+				font-size: 12px;
 			}
 		}
 
@@ -279,7 +279,7 @@
 	.fc-day-top {
 		text-align: center;
 	}
-	
+
 	.fc-row.fc-widget-header {
 		border-right: none!important;
 		padding: 15px 0;
@@ -300,7 +300,7 @@
 		border: none;
 	}
 	.fc-day-header.fc-widget-header {
-		border-right: 1px solid white;	
+		border-right: 1px solid white;
 		border-left: 1px solid white;
 		font-weight: normal;
 		text-transform: uppercase;
@@ -324,7 +324,7 @@
 		color: #ccc;
 	}
 	.fc-day.fc-widget-content.fc-today {
-		background-color: #ac8bec;		
+		background-color: #ac8bec;
 	}
 }
 .months-slider {
@@ -531,7 +531,7 @@ input.gray-input, select.gray-input{
 	}
 	.modal-content {
 		max-width: 960px;
-		margin: 0 auto;	
+		margin: 0 auto;
 	}
 	#material-tabs a {
 		text-transform: none;
@@ -752,6 +752,10 @@ input.gray-input, select.gray-input{
     border-color: transparent;
     background-color: currentColor;
 }
+
+.pure-material-checkbox.pink > span::before {
+	background-color: #fce3e9 !important;
+}
 // backdrop
 .modal-backdrop.show {
 	z-index: 1999;
@@ -772,7 +776,7 @@ input.gray-input, select.gray-input{
    transform: translate(-50%, -50%);
    bottom: initial!important;
 }
-// date picker 
+// date picker
 .dtp {
 	z-index: 10000;
 }

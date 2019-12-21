@@ -52,7 +52,7 @@
 <script>
     $(document).ready(function(){
         $("input[type=file]").change(function(e){
-            
+
             var storage = firebase.storage();
             var storageRef = firebase.storage().ref();
             if(e.target.id == "cat_url"){

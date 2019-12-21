@@ -1,51 +1,54 @@
-<table id="bookings-upcomming-btn-content" class="table table-condensed table-hover table-striped mt-5">
-  <thead>
-    <tr>
-      <th class="has-sort-icon secondary-success-color">Type</th>
-      <th class="has-sort-icon active date-time-column">date and times</th>
-      <th>Companion</th>
-      <th>Details</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @completed_bookings.each do |booking|%>
-      <% if booking.guide.profile_id == @profile_id %>
-        <% @type= "Guided" %>
-        <% @companion= booking.explore.profile %>
-      <% elsif booking.explore.profile_id == @profile_id %>
-        <% @type= "Explored" %>
-        <% @companion= booking.guide.profile %>
-      <%end%>
+<div id="upcoming_bookings">
+  <table id="bookings-upcomming-btn-content" class="table table-condensed table-hover table-striped mt-5">
+    <thead>
       <tr>
-          <td class="secondary-success-color"><%= @type %></td>
-          <td>
-            <span><%= local_time(booking.start,'%B %e, %Y')%></span>
-            <br>
-            <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.end,'%l:%M %P')%></span>
-          </td>
-          <td class="avatar text-center">
-            <img width="40px" src="<%= @companion.profile_photo %>" alt="avatar">
-            <br>
-            <span><%= @companion.user.firstname %></span>
-          </td>
-          <td>
-            <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
+        <th class="has-sort-icon secondary-success-color">Type</th>
+        <th class="has-sort-icon active date-time-column">date and times</th>
+        <th>Companion</th>
+        <th>Details</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @upcoming_bookings.each do |booking|%>
+        <% if booking.guide.profile_id == @profile_id %>
+          <% @type= "Guided" %>
+          <% @companion= booking.explore.profile %>
+        <% elsif booking.explore.profile_id == @profile_id %>
+          <% @type= "Explored" %>
+          <% @companion= booking.guide.profile %>
+        <%end%>
+        <tr>
+            <td class="secondary-success-color"><%= @type %></td>
+            <td>
+              <span><%= local_time(booking.start,'%B %e, %Y')%></span>
+              <br>
+              <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.end,'%l:%M %P')%></span>
+            </td>
+            <td class="avatar text-center">
+              <img width="40px" src="<%= @companion.profile_photo %>" alt="avatar">
+              <br>
+              <span><%= @companion.user.firstname %></span>
+            </td>
+            <td>
+              <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
 
 
-            <br>
-            <div class="booking-description">
-              <span class="font-weight-bold"><%= booking.guide.category.name %></span> - <span title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."><%= booking.title %></span>
-            </div>
-          </td>
-          <td>
-            <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
-            <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "secondary-success-color"  %>
-            <br>
-            <a class="secondary-success-color upcomming-change-or-cancel" href="#">Change or Cancel</a>
-            <br>
-          </td>
-        </tr>
-      <%end%>
-  </tbody>
-</table>
+              <br>
+              <div class="booking-description">
+                <span class="font-weight-bold"><%= booking.guide.category.name %></span> - <span title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."><%= booking.title %></span>
+              </div>
+            </td>
+            <td>
+              <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
+              <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "secondary-success-color"  %>
+              <br>
+              <a class="secondary-success-color upcomming-change-or-cancel" id="<%=booking.id %>" href="#">Change or Cancel</a>
+              <br>
+            </td>
+          </tr>
+        <%end%>
+
+    </tbody>
+  </table>
+</div>

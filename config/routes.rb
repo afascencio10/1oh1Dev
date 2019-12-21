@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get '/profile/guides', to: 'profiles#guides'
   get '/profile/projects', to: 'profiles#projects'
   get '/profile/availabilty', to: 'profiles#availabilty'
+  post '/profile/availabilty', to: 'profiles#availabilty_booking_create', as: :availabilty_booking
   get '/profile/completed', to: 'profiles#completed'
 
   resources :users, only:[:new] do
@@ -51,6 +52,10 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show] do
    resources :bookings, only: [:show,:create]
   end
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
 
 
   if Rails.env.development?

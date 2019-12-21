@@ -1,2 +1,24 @@
-$('.calendar').fullCalendar('removeEvents', [<%= @booking.id %>])
-$('.modal').modal('hide');
+$('#declineBookingDialog').modal('hide')
+$('#cancelSessionDialog').modal('hide')
+
+
+var x = <%= @pending_bookings.count %>
+var y = <%= @upcoming_bookings.count %>
+$("#tab1-tab").text(x+" Pending")
+$("#tab2-tab").text(y+" Upcoming")
+
+<% js = escape_javascript(
+  render(partial: 'upcoming_bookings', locals: { upcoming_bookings: @upcoming_bookings, profile_id: @profile_id })
+) %>
+$("#upcoming_bookings").html("<%= js %>");
+
+
+<% js = escape_javascript(
+  render(partial: 'pending_bookings', locals: { pending_bookings: @pending_bookings, profile_id: @profile_id })
+) %>
+$("#pending_bookings").html("<%= js %>");
+
+<% flash = escape_javascript(
+  render partial: "shared/flash_messages", locals: { flash: @flashing}
+) %>
+$("#flash").html('<%= flash %>');

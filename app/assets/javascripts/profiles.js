@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
-	var createProjectCollaborators = ['1']
-	var createProjectCategories = ['2']
-	var editProjectCollaborators = ['2']
-	var editProjectCategories = ['2']
-	var editProfileLanguages = ['eng']
+	var createProjectCollaborators = []
+	var createProjectCategories = []
+	var editProjectCollaborators = ["2","3"]
+	var editProjectCategories = ["2"]
+	var editProfileLanguages = []
 
 	var editProfileLanguagesHiddenElm = document.getElementById('edit-profile-hidden-languages')
 	var createProjectCategoriesHiddenElm = document.getElementById('create-project-hidden-categories')
@@ -116,12 +116,10 @@ jQuery(document).ready(function($) {
     return function (chipName) {
       array.push(chipName)
 
-      console.log(hiddenInput)
       if (hiddenInput) {
-        hiddenInput.text = JSON.stringify(array)
-        console.log(hiddenInput.text)
+        hiddenInput.value = JSON.stringify(array)
+        console.log(hiddenInput.value)
       }
-      console.log(array)
     }
   }
 
@@ -131,11 +129,10 @@ jQuery(document).ready(function($) {
     		return item === chipName
     	}), 1)
 
-      console.log(hiddenInput)
       console.log(array)
       if (hiddenInput) {
-        hiddenInput.text = JSON.stringify(array)
-        console.log(hiddenInput.text)
+        hiddenInput.value = JSON.stringify(array)
+        console.log(hiddenInput.value)
       }
     }
   }

@@ -1,6 +1,5 @@
 require 'securerandom'
 class BookingsController < ApplicationController
-  include BookingsHelper
   before_action :authenticate_user!
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
@@ -67,11 +66,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @companion_type = params["type"].split("=")[0]
     @companion_id = params["type"].split("=")[1].to_i
-
-    #next 3 lines of code for changing local time to UTC (Manage Timezones)
-    # timezone = timezone(current_user)
-    # @booking.start = timezone.local_to_utc(@booking.start)
-    # @booking.end = timezone.local_to_utc(@booking.end)
+    @booking.start = @booking.start.to_time.utc
+    @booking.end = @booking.end.to_time.utc
 
     @diff_seconds = (params[:booking][:end].to_time-params[:booking][:start].to_time).to_i
     @booking.duration = format_time(@diff_seconds)
@@ -98,7 +94,12 @@ class BookingsController < ApplicationController
       @booking.video_sessions.create(profile_id: @other_profile.id)
       flash[:notice] = "Booking Created"
 
-      Notification.create(recipient: @companion.profile.user, user: current_user, action: "booking", notifiable: current_user, url: profile_booking_path(@companion.profile.id, @booking,  :peer_id => current_user.id) )
+
+      Notification.create(recipient: @companion.profile.user, user: current_user, action: "booking", notifiable: current_user, url: "/bookings" )
+
+      # mailer_time = timezone.utc_to_local(@booking.start) - 5.minute
+      #
+      # StartSessionJob.set(wait_until: mailer_time).perform_later @booking, profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)
 
       render js: "window.location='#{calendars_path}'"
       # render js: "window.location = '#{profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)}'"
@@ -115,19 +116,55 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
   def update
-    @booking = Booking.find(params[:id])
-    @booking.update_columns(title: booking_params['title'],start:booking_params['start'],end: booking_params['end'], description: booking_params['description'])
-    flash[:notice] = "Booking Updated"
-    render js: "window.location='#{calendars_path}'"
+    @profile_id = current_profile.id
+    @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
+    @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
+    @pending_bookings = @bookings.where(:status => 0).order(created_at: :desc).uniq
+    if !params[:booking_id].nil? && params[:change_request].nil? #for Approving request from Pending State
+      @booking = Booking.find(params[:booking_id])
+      @booking.update(:status => "upcoming")
+      flash.now[:success] = "Booking Approved!!"
+      @flashing = flash
+      respond_to do |format|
+        format.js
+      end
+    elsif !params[:booking_id].nil? && params[:change_request] == "true"  #for Changing request from Upcoming state to Pending
+      @booking = Booking.find(params[:booking_id])
+      @booking.update(:status => "pending")
+      flash.now[:notice] = "Booking Change Requested!!"
+      @flashing = flash
+      respond_to do |format|
+        format.js
+      end
+    else
+      @booking = Booking.find(params[:id])
+      @booking.update_columns(title: booking_params['title'],start:booking_params['start'],end: booking_params['end'], description: booking_params['description'])
+      flash[:notice] = "Booking Updated"
+      render js: "window.location='#{calendars_path}'"
+    end
+
   end
 
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy
-    @booking = Booking.find(params[:id])
-    @booking.destroy
-    flash[:notice] = "Booking Deleted"
-    render js: "window.location='#{calendars_path}'"
+    if !params[:booking_id].nil?
+      @booking = Booking.find(params[:booking_id])
+      @booking.destroy
+      @profile_id = current_profile.id
+      flash.now[:success] = "Booking Deleted!!"
+      @flashing = flash
+      @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
+      @pending_bookings = @bookings.where(:status => 0).order(created_at: :desc).uniq
+      @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
+
+      if !params[:cancel_message].blank?
+        @message_mail = params[:cancel_message]
+      end
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def in_session

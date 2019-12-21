@@ -1,7 +1,7 @@
 module BookingsHelper
   def timezone(current_user)
-    state = current_user.profile.state
-    coordinates = Geocoder.search(state).first.coordinates
-    return Timezone.lookup(coordinates[0],coordinates[1])
+    latitude = current_user.profile.latitude
+    longitude = current_user.profile.longitude
+    return Timezone.lookup(latitude,longitude)
   end
 end

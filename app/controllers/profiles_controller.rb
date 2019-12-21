@@ -11,9 +11,9 @@ class ProfilesController < ApplicationController
       @profile = current_user.profile
       @explores = @profile.explore_categories.uniq
       @guides = @profile.guide_categories.uniq
-      @projects = @profile.projects
-      @explore_ratings = @profile.explore_ratings.order("created_at DESC").first(3)
-      @guide_ratings = @profile.guide_ratings.order("created_at DESC").first(3)
+      @projects = @profile.projects.includes(:categories).sort_by_created_desc
+      @explore_ratings = @profile.explore_ratings.sort_by_created_desc
+      @guide_ratings = @profile.guide_ratings.sort_by_created_desc
       @new_profile = false
     else
       @new_profile = true
@@ -48,7 +48,6 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
   end
 
   # GET /profiles/1/edit
@@ -61,6 +60,7 @@ class ProfilesController < ApplicationController
     # Update
     if current_user.profile #if Profile already exits
       @profile = current_user.profile
+      @projects = @profile.projects
       @params = profile_params
       puts @params
       if @params["country"]
@@ -125,7 +125,12 @@ class ProfilesController < ApplicationController
   end
 
   def introduction
-    @profile = Profile.new(profile_params)
+    if current_user.profile.nil?
+      @profile = Profile.new(profile_params)
+    else
+      @profile = current_user.profile
+    end
+
   end
 
   def explores
@@ -161,10 +166,48 @@ class ProfilesController < ApplicationController
   end
 
   def projects
+    @projects = current_user.profile.projects.includes(:categories).sort_by_created_desc
   end
 
   def availabilty
   end
+
+  def availabilty_booking_create
+    profile_id = current_user.profile.id
+    @availabilty = JSON.parse(params[:availabilty])
+    @availabilty.each do |day,time_array|
+      time_array.each do |time|
+        @process = process_time(day,time)
+        @start_time = @process[:start]
+        @end_time = @process[:end]
+        @booking = Booking.new()
+        @booking.title = "Unavailable"
+        @booking.description = "Busy Schedule"
+        @booking.status = "unavailable"
+        @booking.start = @start_time.to_time.utc
+        @booking.end = @end_time.to_time.utc
+
+        @diff_seconds = (@end_time.to_time-@start_time.to_time).to_i
+        @booking.duration = format_time(@diff_seconds)
+
+        @booking.guide_id = 1
+        @booking.explore_id = 1
+        @booking.identifier = SecureRandom.base64(10)
+
+        if @booking.save
+          @booking.video_sessions.create(profile_id: profile_id )
+        end
+      end
+    end
+    flash[:success] = "Unavailabilty Schedule Updated"
+    if params[:first].to_i == 1
+      redirect_to profile_completed_path
+    else
+      redirect_to calendars_path
+    end
+
+  end
+
 
   def completed
   end
@@ -175,6 +218,27 @@ class ProfilesController < ApplicationController
       if params[:id].to_i == current_user.id
         @profile = Profile.find(params[:id])
       end
+    end
+
+    def format_time (timeElapsed)
+      @timeElapsed = timeElapsed
+      seconds = @timeElapsed % 60
+      minutes = (@timeElapsed / 60) % 60
+      hours = (@timeElapsed/3600)
+      return hours.to_s + ":" + format("%02d",minutes.to_s) + ":" + format("%02d",seconds.to_s)
+    end
+
+    def date_of_next(day)
+      date  = Date.parse(day)
+      delta = date > Date.today ? 0 : 7
+      date + delta
+    end
+
+    def process_time(day,time)
+      @raw_start = time[0].to_time.to_s.split(' ')[1]
+      @raw_end = time[1].to_time.to_s.split(' ')[1]
+      @date_next = date_of_next(day).to_s
+      {start: @date_next + "T" + @raw_start, end: @date_next + "T" + @raw_end}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

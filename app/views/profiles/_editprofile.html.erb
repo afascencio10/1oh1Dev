@@ -31,7 +31,7 @@
                         <i class="material-icons centerXY">edit</i>
                       </button>
 
-                      <%= file_field_tag :profilephoto,class: 'form-control fieldinput d-none' %>                      
+                      <%= file_field_tag :profilephoto,class: 'form-control fieldinput d-none' %>
                     </div>
                   </div>
                 </div>
@@ -58,11 +58,11 @@
                   <div class="form-group custom-from-group m-3" id="select-languages-wrap">
                       <label>Fluent Language(s)</label>
                       <%= select_tag "language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_3", "name"), {class:"custom-select"}%>
-                      <input type="hidden"
-                             id="edit-profile-hidden-languages"
-                             name="edit-profile-languages">
-                             
-                      <i class="material-icons edit-profile-select-language-add" id="edit-profile-languages-add">add</i>                      
+                      <input type="hidden" id="edit-profile-hidden-languages" name="edit-profile-languages">
+
+
+
+                      <i class="material-icons edit-profile-select-language-add" id="edit-profile-languages-add">add</i>
                   </div>
 
                   <div class="edit-profile-languages m-3" id="edit-profile-languages">
@@ -73,9 +73,13 @@
                   <div class="form-group col-md-4 custom-from-group pl-0">
                     <label>Country</label>
                     <select id="countries" class="custom-select" name="country">
-                      <option value="" selected=<%=@profile.country%>>Select Your Country</option>
+                      <option value="">Select Your Country</option>
                       <% CS.countries.each do |key, value| %>
-                      <option value="<%= key %>"><%= value %></option>
+                       <% if value == @profile.country %>
+                        <option value="<%= key %>" selected><%= value %></option>
+                        <%else%>
+                        <option value="<%= key %>"><%= value %></option>
+                        <%end%>
                       <% end %>
                     </select>
                   </div>
@@ -83,17 +87,25 @@
                   <div class="form-group col-md-4 custom-from-group">
                     <label>State/Provience</label>
                     <select id="states-of-country" class="custom-select" name="state">
-                      <option value="" selected=<%=@profile.state%>>Select Your Country</option>
+                      <%if @profile.state.present? %>
+                        <option value="<%=@profile.state%>" selected><%=@profile.state%></option>
+                      <%else%>
+                        <option value="">Select Your Country</option>
+                      <%end%>
                     </select>
                   </div>
 
                   <div class="form-group col-md-4 custom-from-group pr-0">
                     <label>City</label>
                     <select id="cities-of-state" class="custom-select" name="city">
-                      <option value="" selected=<%=@profile.city%>>Select Your Country</option>
+                      <%if @profile.city.present? %>
+                        <option value="<%=@profile.city%>" selected><%=@profile.city%></option>
+                      <%else%>
+                        <option value="">Select Your Country</option>
+                      <%end%>
                     </select>
                   </div>
-                </div>  
+                </div>
               </form>
       </div>
     </div>

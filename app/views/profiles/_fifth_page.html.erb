@@ -4,220 +4,53 @@
 
 <div class="mb-5 mt-2 p-3 border rounded position-relative"
 	 id="calendar-container">
-	<!-- Monday -->
-	<div class="row m-0">
-		<div class="col-4 pl-0">
-			<div>
-				<div class="checkbox-switcher">
-				  <div class="checkbox h_cb">
-				    <div class="tick">
-				      <div class="rect-1 h_rects"></div>
-				      <div class="rect-2 h_rects"></div>
-				    </div>
-				  </div>
-				</div>
 
-				<span class="align-middle ml-2">
-					Monday
-				</span>
-			</div>
-		</div>
-		<div class="col-8">
-			<div class="time-picker-wrap d-none">
+	 <% Date::DAYNAMES.each do |day| %>
+		 <div class="row m-0 recurring-calendar-row">
+			 <div class="col-4 pl-0">
+				 <div>
+					 <div class="checkbox-switcher">
+						 <div class="checkbox h_cb">
+							 <div class="tick">
+								 <div class="rect-1 h_rects"></div>
+								 <div class="rect-2 h_rects"></div>
+							 </div>
+						 </div>
+					 </div>
 
-			</div>
+					 <span class="align-middle ml-2 recurring-day-name">
+						 <%= day %>
+					 </span>
+				 </div>
+			 </div>
+			 <div class="col-8">
+				 <div class="time-picker-wrap d-none" id="<%= day%>">
 
-			<div class="mt-2 d-none">
-				<button class="fz-14 btn btn-link recurringAddTimePicker">
-					Add
-				</button>
-			</div>
-		</div>
-	</div>
+				 </div>
 
-	<!-- Tuesday -->
-	<div class="row m-0 mt-2">
-		<div class="col-4 pl-0">
-			<div>
-				<div class="checkbox-switcher">
-				  <div class="checkbox h_cb">
-				    <div class="tick">
-				      <div class="rect-1 h_rects"></div>
-				      <div class="rect-2 h_rects"></div>
-				    </div>
-				  </div>
-				</div>
-
-				<span class="align-middle ml-2">
-					Tuesday
-				</span>
-			</div>
-		</div>
-		<div class="col-8">
-			<div class="time-picker-wrap d-none">
-
-			</div>
-
-			<div class="mt-2 d-none">
-				<button class="fz-14 btn btn-link recurringAddTimePicker">
-					Add
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- Wednesday -->
-	<div class="row m-0 mt-2">
-		<div class="col-4 pl-0">
-			<div>
-				<div class="checkbox-switcher">
-				  <div class="checkbox h_cb">
-				    <div class="tick">
-				      <div class="rect-1 h_rects"></div>
-				      <div class="rect-2 h_rects"></div>
-				    </div>
-				  </div>
-				</div>
-
-				<span class="align-middle ml-2">
-					Wednesday
-				</span>
-			</div>
-		</div>
-		<div class="col-8">
-			<div class="time-picker-wrap d-none">
-
-			</div>
-
-			<div class="mt-2 d-none">
-				<button class="fz-14 btn btn-link recurringAddTimePicker">
-					Add
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- Thursday -->
-	<div class="row m-0 mt-2">
-		<div class="col-4 pl-0">
-			<div>
-				<div class="checkbox-switcher">
-				  <div class="checkbox h_cb">
-				    <div class="tick">
-				      <div class="rect-1 h_rects"></div>
-				      <div class="rect-2 h_rects"></div>
-				    </div>
-				  </div>
-				</div>
-
-				<span class="align-middle ml-2">
-					Thursday
-				</span>
-			</div>
-		</div>
-		<div class="col-8">
-			<div class="time-picker-wrap d-none">
-
-			</div>
-
-			<div class="mt-2 d-none">
-				<button class="fz-14 btn btn-link recurringAddTimePicker">
-					Add
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- Friday -->
-	<div class="row m-0 mt-2">
-		<div class="col-4 pl-0">
-			<div>
-				<div class="checkbox-switcher">
-				  <div class="checkbox h_cb">
-				    <div class="tick">
-				      <div class="rect-1 h_rects"></div>
-				      <div class="rect-2 h_rects"></div>
-				    </div>
-				  </div>
-				</div>
-
-				<span class="align-middle ml-2">
-					Friday
-				</span>
-			</div>
-		</div>
-		<div class="col-8">
-			<div class="time-picker-wrap d-none">
-
-			</div>
-
-			<div class="mt-2 d-none">
-				<button class="fz-14 btn btn-link recurringAddTimePicker">
-					Add
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- Saturday -->
-	<div class="row m-0 mt-2">
-		<div class="col-4 pl-0">
-			<div>
-				<div class="checkbox-switcher">
-				  <div class="checkbox h_cb">
-				    <div class="tick">
-				      <div class="rect-1 h_rects"></div>
-				      <div class="rect-2 h_rects"></div>
-				    </div>
-				  </div>
-				</div>
-
-				<span class="align-middle ml-2">
-					Saturday
-				</span>
-			</div>
-		</div>
-		<div class="col-8">
-			<div class="time-picker-wrap d-none">
-
-			</div>
-
-			<div class="mt-2 d-none">
-				<button class="fz-14 btn btn-link recurringAddTimePicker">
-					Add
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- Saturday -->
-	<div class="row m-0 mt-2">
-		<div class="col-4 pl-0">
-			<div>
-				<div class="checkbox-switcher">
-				  <div class="checkbox h_cb">
-				    <div class="tick">
-				      <div class="rect-1 h_rects"></div>
-				      <div class="rect-2 h_rects"></div>
-				    </div>
-				  </div>
-				</div>
-
-				<span class="align-middle ml-2">
-					Sunday
-				</span>
-			</div>
-		</div>
-		<div class="col-8">
-			<div class="time-picker-wrap d-none">
-
-			</div>
-
-			<div class="mt-2 d-none">
-				<button class="fz-14 btn btn-link recurringAddTimePicker">
-					Add
-				</button>
-			</div>
-		</div>
-	</div>
+				 <div class="mt-2 d-none">
+					 <button class="fz-14 btn btn-link recurringAddTimePicker">
+						 Add
+					 </button>
+				 </div>
+			 </div>
+		 </div>
+	 <%end%>
 </div>
+
+<%= form_tag(availabilty_booking_path, :method => "post") do %>
+	<input type="hidden" name="first" value="<%=locals[:first]%>">
+ <input type="hidden" name="availabilty" id="availabilty">
+ <div class="form-row justify-content-end mb-5" id="action-buttons">
+	 <% if locals[:first].to_s == "0" %>
+	 	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		<%= submit_tag("Submit",:class=>"btn btn-primary",:id=>"availabiltyNextBtn", :data=>{disable_with: "Updating..."}) %>
+
+	 <% else %>
+	   <a class="btn btn-outline-dark p-2 mr-3" href="/profile/projects">Prev</a>
+		 <%= submit_tag("Next",:class=>"btn btn-success p-",:id=>"availabiltyNextBtn", :data=>{disable_with: "Updating..."}) %>
+	 <% end %>
+
+  <!-- <a class="btn btn-success p-2" id="availabiltyNextBtn">Next</a> -->
+ </div>
+ <% end %>

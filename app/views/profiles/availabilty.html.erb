@@ -61,15 +61,7 @@
 
 
  <div class="mt-5 page-5">
-   <%= render 'fifth_page'%>
- </div>
-
-
-
- <div class="form-row justify-content-end mb-5" id="action-buttons">
-  <a class="btn btn-outline-dark p-2 mr-3" href="/profile/projects">Prev</a>
-
-  <a class="btn btn-success p-2" href="/profile/completed">Next</a>
+   <%= render 'fifth_page',:locals => {:first => 1}%>
  </div>
 </div>
 

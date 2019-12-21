@@ -26,15 +26,15 @@
     <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type =>  'image/x-icon'  %>
   </head>
   <body>
-    <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %> alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times; </span>
-        </button>
-        <strong><%= value %></strong>
-      </div>
-    <% end %>
+    <div id="flash">
+      <% if flash.present? %>
+        <%= render partial: "shared/flash_messages", locals: { flash: flash} %>
+      <% end %>
+    </div>
 
+    <audio id="notification_sound" preload="none" src="https://firebasestorage.googleapis.com/v0/b/oh1-b365f.appspot.com/o/check.wav?alt=media&token=d214e82d-c59d-4c91-8222-6f8c6e924a8f" muted></audio>
+
+    <%= render 'bookings/bookingsApproveDialog' %>
     <%= yield(:head) %>
     <%= yield %>
   </body>

@@ -1,7 +1,8 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="modal fade" id="projectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <%= form_tag( {id: 'editProject' }) do %>
+      <%= form_tag( {:controller=>"projects", :action => :create, }, { :method => :post }) do %>
         <div class="modal-header">
           <h5 class="modal-title">Edit Project</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -12,18 +13,18 @@
           <!-- Project Title -->
           <div class="form-group m-3">
             <label>Project Title</label>
-            <%= text_field_tag :name,nil,class: 'form-control', placeholder: "Name", id:"project_name", :required => true %>
+            <%= text_field_tag :name,nil,class: 'form-control', placeholder: "Name",:required => true %>
           </div>
-
+          
           <!-- Description -->
           <div class="form-group m-3">
             <label>Description</label>
-            <%= text_area_tag :description,nil,class: 'form-control',id:"project_description", placeholder: "Describe It",:required => true, rows: "3" %>
+            <%= text_area_tag :description,nil,class: 'form-control', placeholder: "Describe It",:required => true, rows: "3" %>
           </div>
 
           <!-- Project Image -->
-          <div class="form-group m-3">
-            <label for="edit_url">Project Image</label>
+          <div class="form-group m-3"> 
+            <label for="edit_url">Project Image</label>  
             <div class="custom-file">
               <%= file_field_tag :edit_url,
                   class: 'custom-file-label',
@@ -46,17 +47,19 @@
               <span class="c-black fw-500 ml-2">Jimi Hendrix</span>
             </div>
           </div>
-
+          
           <!-- Collaborators -->
-          <div class="create-project-collaborators-select-wrap">
+          <div class="create-project-collaborators-select-wrap">          
             <div class="form-group custom-from-group m-3">
               <label>Collaborators</label>
 
               <%=select_tag "colab_id", options_from_collection_for_select(User.all,"id","firstname"),class: 'custom-select',:required => true, id: 'edit_project_colab'%>
-              <input type="hidden" id="edit-project-hidden-collaborators" name="edit-project-collaborators">
+              <input type="hidden"
+                     id="edit-project-hidden-collaborators"
+                     name="edit-project-collaborators">
 
               <i class="material-icons create-project-select-collaborator-add"
-                 id="edit-project-collaborator-add">add</i>
+                 id="edit-project-collaborator-add">add</i>  
             </div>
 
             <div class="create-project-collaborators m-3" id="edit-project-collaborators">
@@ -79,28 +82,30 @@
           </div>
 
           <!-- categories -->
-          <div class="create-project-categories-select-wrap">
+          <div class="create-project-categories-select-wrap">          
             <div class="form-group custom-from-group m-3">
               <label>categories</label>
 
               <%=select_tag "“category_id”", options_from_collection_for_select(Category.all,"id","name"),class: 'custom-select',:required => true, id: 'edit_project_category_select'%>
-              <input type="hidden" id="edit-project-hidden-categories" name="edit-project-categories">
+              <input type="hidden"
+                     id="edit-project-hidden-categories"
+                     name="edit-project-categories">
 
               <i class="material-icons create-project-select-categories-add"
-                 id="edit-project-categories-add">add</i>
+                 id="edit-project-categories-add">add</i>  
             </div>
 
             <div class="create-project-categories m-3" id="edit-project-categories">
             </div>
           </div>
-
+          
           <!-- projects -->
           <div class="form-group mx-3 mb-0">
-            <label>Project Status</label>
+            <label>Project Status</label>              
           </div>
           <div class="form-row mx-3 mb-3">
             <div class="custom-control form-group custom-radio custom-radio-with-image mr-3">
-              <input type="radio" class="custom-control-input" id="edit-project-raido-0" name="help" required>
+              <input type="radio" class="custom-control-input" id="edit-project-raido-2" name="edit_project_radio-stacked" required>
               <label class="custom-control-label" for="edit-project-raido-2">
                 <img width="30px" src="<%= image_path ('Icons/Idea_icon.png') %>">
                 Idea
@@ -108,7 +113,7 @@
             </div>
 
             <div class="custom-control form-group custom-radio custom-radio-with-image mx-3">
-              <input type="radio" class="custom-control-input" id="edit-project-raido-1" name="help" required>
+              <input type="radio" class="custom-control-input" id="edit-project-raido-3" name="edit_project_radio-stacked" required>
               <label class="custom-control-label" for="edit-project-raido-3">
                 <img width="30px" src="<%= image_path ('Icons/WIP-icon.png') %>">
                 In Progress
@@ -116,7 +121,7 @@
             </div>
 
             <div class="custom-control form-group custom-radio custom-radio-with-image">
-              <input type="radio" class="custom-control-input" id="edit-project-raido-2" name="help" required>
+              <input type="radio" class="custom-control-input" id="edit-project-raido-4" name="edit_project_radio-stacked" required>
               <label class="custom-control-label" for="edit-project-raido-4">
                 <img width="30px" src="<%= image_path ('Icons/completed-icon.png') %>">
                 Complete
@@ -131,7 +136,9 @@
         <div class="modal-footer">
            <div class="celr" id="gridbtnSave">
                <div class="cel btnSave">
-                <%= submit_tag("Edit Project",:id=>"submit", :class=>'btn btn-success',data: { disable_with: "Editing..." })%>
+                <a href="/projects" id="submit" class="btn btn-success">Edit Projects</a>
+                <!--<%= submit_tag("Create Project",:id=>"submit", :class=>'buttonSaveProject')%>
+                <button type="button" class="buttonSave">Save</button> -->
               </div>
            </div>
         </div>
