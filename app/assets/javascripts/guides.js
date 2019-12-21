@@ -64,15 +64,15 @@ jQuery(document).ready(function($) {
 		}
 	});	
 	$('#tabExplorers').click(function(){
-		var URLsearch = window.location.search;
-		history.pushState(null, "", "/categories/ella?type=explorers");
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+"?type=explorers");
 	})
 	$('#tabGuides').click(function(){
-		var URLsearch = window.location.search;
-		history.pushState(null, "", "/categories/ella?type=guides");
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+"?type=guides");
 	})
 	$('#tabProjects').click(function(){
-		var URLsearch = window.location.search;
-		history.pushState(null, "", "/categories/ella?type=projects");
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+"?type=projects");
 	})
 })
