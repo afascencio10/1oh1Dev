@@ -462,16 +462,87 @@ jQuery(document).ready(function($) {
  		ratedFill: "#f1c40f",
 		normalFill: "#e4e4e4",
 		onSet: function (){
-			var rating = $rateYo.rateYo("rating");
-			window.alert("Its " + rating + " Yo!");
-			console.log(rating);
+			var rating = $rateYo.rateYo("rating");						
 			var input = document.getElementById("rateExperience");
 		 	if (input) {
-		 		input.value = rating;
-		 		console.log(input.value, rating);
+		 		input.value = rating;		 		
 		 	}
 		}
- 	}); 	 	
+ 	}); 
+
+ 	
+ 	function showMoreLess(idContainer,idShowMore,idShowLess) {
+ 		var idContainerString = "#" + idContainer;
+ 		var idShowMoreString = "#" + idShowMore;
+ 		var idShowLessString = "#" + idShowLess;
+ 		$("#projectInContainer").each(function(index){ 			
+ 			$("#showMoreButton").click(function(){
+ 				if (index < showCount + 5) {
+ 					$("#projectInContainer")[index].css("display","block");
+ 				}else{
+ 					$("#projectInContainer")[index].css("display","none");
+ 				}
+ 			});
+ 			$("#showLessButton").click(function(){
+ 				if (showCount > 5) {
+ 					if (index < showCount - 5) {
+	 					$("#projectInContainer")[index].css("display","block");
+	 				}else{
+	 					$("#projectInContainer")[index].css("display","none");
+	 				}
+ 				}	 				
+ 			});
+ 		});
+ 	}
+
+
+
+
+
+
+ 	//Ids for buttons and class of the items
+ 	var idShowMore = "showMoreButton";
+ 	var idShowLess = "showLessButton";
+ 	var idContainer = "projectInContainer";
+
+ 	//Show less, show more function
+ 	var showCount;
+ 	var showCountTotal;
+ 	var idShowMoreString = "#" + idShowMore;
+ 	var idShowLessString = "#" + idShowLess;
+ 	var idContainerString = "." + idContainer;
+
+ 	showCountTotal = $(idContainerString).length;
+ 	showCount = showCountTotal;
+
+ 	$(idShowMoreString).click(function(){  		
+ 		if (showCount < showCountTotal) {
+ 			$(idContainerString).each(function(index){
+				if (index < showCount + 5) {
+					$(this).show();
+				}else{
+					$(this).hide();
+				}
+			});
+			showCount = showCount + 5;
+ 		}			
+	});
+
+	$(idShowLessString).click(function(){		
+		if (showCount > 5) {
+			$(idContainerString).each(function(index){
+				if (index < showCount - 5) {
+					$(this).show();
+				}else{
+					$(this).hide();
+				}
+			});
+			showCount = showCount - 5;
+		}					
+	});
+
+
+
  });
 
 })
