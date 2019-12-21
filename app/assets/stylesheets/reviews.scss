@@ -149,7 +149,7 @@ body {
 
 .score1 {
     display: grid;
-    grid-template-columns: repeat(5,40px) 30px;
+    grid-template-columns: 200px 30px;
     color: #fde721;
     font-size: 35px;
     margin-left: 2%;
@@ -158,7 +158,7 @@ body {
 
 .score2 {
     display: grid;
-    grid-template-columns: repeat(5,40px) 30px;
+    grid-template-columns: 200px 30px;
     color: #fde721;
     font-size: 35px;
     align-items: start;

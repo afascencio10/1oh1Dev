@@ -164,7 +164,7 @@
 }
 #subgridscore {
     display: grid;
-    grid-template-columns: 40px 40px 40px 40px 40px 14px;
+    grid-template-columns: 200px 14px;
 }
 .create {
     color: #838383;
@@ -610,7 +610,7 @@
 }
 #subgridscoreXs {
     display: grid;
-    grid-template-columns: repeat(5,27px) 12px;
+    grid-template-columns: 135px 12px;
 }
 #moreLink{
     color: #9f9ea1;
@@ -1606,7 +1606,7 @@ input:checked + .slider:before {
 
 .grid-Starts {
     display: grid;
-    grid-template-columns: 23px 23px 23px 23px 23px 89px;
+    grid-template-columns: 115px 89px;
 }
 .grid-Rating{
     display: grid;
@@ -1936,6 +1936,7 @@ input:checked + .slider:before {
 .profile-builder-select-language-add {
   right: 13px;
 }
+
 #myTab {
   border-bottom: 0px solid #dee2e6;
 }
