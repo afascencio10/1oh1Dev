@@ -661,6 +661,26 @@
     grid-column: 2/3;
     grid-column-gap: 20px;
 }
+.showButtonsContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 2/3;
+  grid-column-gap: 20px;
+}
+#showLessButton{
+  background: none;
+  text-decoration: underline;
+  color: #9f9ea1;
+  border: none;
+  justify-self: end;
+}
+#showMoreButton{
+  background: none;
+  text-decoration: underline;
+  color: #9f9ea1;
+  border: none;
+  justify-self: start;
+}
 .projectImages{
     display: grid;
     grid-template-rows: 200px 45px;
