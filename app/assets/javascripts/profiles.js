@@ -19,7 +19,6 @@ jQuery(document).ready(function($) {
       </button>\
     </div>\
     '
-
 	$('#img-Profile').click(function (event) {
 		$('#profile-pic-ui').toggleClass('d-none')
 	})

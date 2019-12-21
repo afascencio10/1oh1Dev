@@ -43,4 +43,36 @@ jQuery(document).ready(function($) {
 		$(this).toggleClass('active')
 		$('.schedule-popup-wrap').toggleClass('d-none')
 	})
+
+	/*
+	** Read te search value and change the beahivor
+	*/
+	var URLsearch = window.location.search;
+	URLsearch=URLsearch.slice(6,15);
+	$( document ).ready(function() {
+		console.log( "ready!" );
+		switch(URLsearch){
+			case "explorers":
+				$('#tabExplorers').trigger( "click" );
+			break;
+			case "guides":
+				$('#tabGuides').trigger('click');
+			break;
+			case "projects":
+				$('#tabProjects').trigger( "click" );
+			break;
+		}
+	});	
+	$('#tabExplorers').click(function(){
+		var URLsearch = window.location.search;
+		history.pushState(null, "", "/categories/ella?type=explorers");
+	})
+	$('#tabGuides').click(function(){
+		var URLsearch = window.location.search;
+		history.pushState(null, "", "/categories/ella?type=guides");
+	})
+	$('#tabProjects').click(function(){
+		var URLsearch = window.location.search;
+		history.pushState(null, "", "/categories/ella?type=projects");
+	})
 })
