@@ -1,30 +1,12 @@
 <div class="exploreSection">
     <div class="celprofile" id="score">
-      <div class="cel celrating"><p class="txtrating">Average Rating</p></div>
+      <div class="cel celrating"><p class="txtrating" data-target="#timesUp" data-toggle="modal">Average Rating</p></div>
       <div class="icons-Starts" id="subgridscore">
-        <div class="cel"><i class="material-icons icons start"> start</i></div>
-        <div class="cel"><i class="material-icons icons start"> start</i></div>
-        <div class="cel"><i class="material-icons icons start"> start</i></div>
-        <div class="cel"><i class="material-icons icons start"> start</i></div>
-        <div class="cel"><i class="material-icons icons start"> start</i></div>
+        <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>
         <div class="grid-RatingsModal">
-                <div class="grid-Pop celpop">
+                <div class="grid-Pop celpop">                        
                         <div class="grid-Starts celpop">
-                            <div class="celp">
-                                <i class="material-icons icons starts">start</i>
-                            </div>
-                            <div class="celp">
-                                <i class="material-icons icons starts">start</i>
-                            </div>
-                            <div class="celp">
-                                <i class="material-icons icons starts">start</i>
-                            </div>
-                            <div class="celp">
-                                <i class="material-icons icons starts">start</i>
-                            </div>
-                            <div class="celp">
-                                <i class="material-icons icons starts">start</i>
-                            </div>
+                            <div id="" class="rateYoCustom" starsSize="small" rating="3"></div>
                             <div class="celp txt5">5 <span>out of</span> 5</div>
                         </div>
                         <div class="grid-Rating celpop">
@@ -132,13 +114,9 @@
                <div class="reviewInfo">
                    <div class="reviewRate">
                        <div class="celXs" id="subgridscoreXs">
-                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
-                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
-                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
-                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
-                           <div class="cel"><i class="material-icons icons startXs"> start</i></div>
-                           <div class="rateNumber">5</div>
-                         </div>
+                           <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>
+                           <input type="" id="rateExperience" style="visibility: hidden;" name="">
+                        </div>
                    </div>
                    <div class="reviewViewAllReviews">
                        <a href="">View All Reviews</a>
@@ -162,3 +140,5 @@
 
    <!-- <a data-toggle="modal" data-target="#endTimes" id="moreLink" href="#">More</a> cambio prueba -->
 </div>
+
+<%= render 'bookings/times_up' %>
