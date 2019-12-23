@@ -140,6 +140,7 @@
 .contactListScroll {
   height: calc(73vh - 27px);
   position: relative;
+  overflow: scroll;
 }
 
 #filterrific_results {

@@ -45,10 +45,10 @@ jQuery(document).ready(function($) {
 	})
 
 	/*
-	** Read te search value and change the beahivor
+	** Read the search value and change the beahivor
 	*/
-	var URLsearch = window.location.search;
-	URLsearch=URLsearch.slice(6,15);
+	var URLsearch = window.location.search;		
+	URLsearch=URLsearch.slice(6,15);	
 	$( document ).ready(function() {
 		console.log( "ready!" );
 		switch(URLsearch){
@@ -65,14 +65,14 @@ jQuery(document).ready(function($) {
 	});	
 	$('#tabExplorers').click(function(){
 		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+"?type=explorers");
+		history.pushState(null, "", pathname+"?type=explorers");		
 	})
 	$('#tabGuides').click(function(){
 		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+"?type=guides");
+		history.pushState(null, "", pathname+"?type=guides");		
 	})
 	$('#tabProjects').click(function(){
 		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+"?type=projects");
+		history.pushState(null, "", pathname+"?type=projects");		
 	})
 })
