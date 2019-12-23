@@ -18,6 +18,7 @@ Call stack
   C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/_explorers.html.erb:8:in `_app_views_categories__explorers_html_erb__296282180_137403924'
   C:/Users/salar/Documents/GitHub/1oh1Dev/app/views/categories/show.html.erb:37:in `_app_views_categories_show_html_erb___193486067_144066840'
 
+
 2019-12-22 09:00:24[WARN] user: andresascencio
 PUT /bookings/mnkdrcyzdmhing
 AVOID eager loading detected
@@ -61,18 +62,22 @@ AVOID eager loading detected
 Call stack
 
 2019-12-22 21:49:13[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
 
+
 2019-12-22 22:05:05[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
+
 
 2019-12-22 22:05:12[WARN] user: andresascencio
 GET /bookings
@@ -96,6 +101,7 @@ AVOID eager loading detected
 Call stack
 
 2019-12-22 22:09:25[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
@@ -117,11 +123,13 @@ AVOID eager loading detected
 Call stack
 
 2019-12-23 11:53:37[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
+
 
 2019-12-23 11:53:43[WARN] user: andresascencio
 GET /bookings
@@ -145,18 +153,22 @@ AVOID eager loading detected
 Call stack
 
 2019-12-23 11:54:38[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
 
+
 2019-12-23 11:56:01[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
+
 
 2019-12-23 11:56:12[WARN] user: andresascencio
 POST /users/1/chats?other_user=7
@@ -179,20 +191,25 @@ Call stack
   /Users/andresascencio/Local Files/Web Development/Dev1oh1/1oh1Dev/app/controllers/chats_controller.rb:10:in `create'
 
 2019-12-23 15:27:24[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
+
 
 2019-12-23 15:32:20[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
 
+
 2019-12-23 15:32:57[WARN] user: andresascencio
+
 GET /profiles
 AVOID eager loading detected
   Project => [:categories, :projects_categories]

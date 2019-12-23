@@ -1,4 +1,41 @@
 jQuery(document).ready(function($) {
+
+	/*
+	** Read te search value and change the beahivor
+	*/
+	var URLsearchProfile = window.location.href;
+	URLsearchProfile = URLsearchProfile.split("#");
+	console.log (URLsearchProfile[1]);
+	$( document ).ready(function() {		
+		console.log( "ready!" );		
+		switch(URLsearchProfile[1]){			
+			case "explore":				
+				$('#tab1-tab').trigger( "click" );
+			break;
+			case "guide":				
+				$('#tab2-tab').trigger('click');
+			break;
+			case "projects":				
+				$('#tab3-tab').trigger( "click" );
+			break;
+			case null || "" || undefined:
+				$('#tab1-tab').trigger( "click" );
+			break;
+		}		
+	});	
+	$('#tab1-tab').click(function(){
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+'#'+"explore");		
+	})
+	$('#tab2-tab').click(function(){
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+'#'+"guide");
+	})
+	$('#tab3-tab').click(function(){
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+'#'+"projects");
+	})
+
 	var createProjectCollaborators = []
 	var createProjectCategories = []
 	var editProjectCollaborators = ["2","3"]
