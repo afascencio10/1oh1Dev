@@ -494,51 +494,48 @@ jQuery(document).ready(function($) {
 
 
 
+ 	//CODE FOR SHOW MORE AND LESS FEATURE
+ 	if(!showMoreLessInfo){
+ 		var showMoreLessInfo = {};
+ 	}
 
-
-
- 	//Ids for buttons and class of the items
- 	var idShowMore = "showMoreButton";
- 	var idShowLess = "showLessButton";
- 	var idContainer = "projectInContainer";
-
- 	//Show less, show more function
- 	var showCount;
- 	var showCountTotal;
- 	var idShowMoreString = "#" + idShowMore;
- 	var idShowLessString = "#" + idShowLess;
- 	var idContainerString = "." + idContainer;
-
- 	showCountTotal = $(idContainerString).length;
- 	showCount = showCountTotal;
-
- 	$(idShowMoreString).click(function(){  		
- 		if (showCount < showCountTotal) {
- 			$(idContainerString).each(function(index){
-				if (index < showCount + 5) {
+ 	function showMoreAndLess(params){
+ 		showMoreLessInfo[params.name].totalItems = $(params.classItem).length;
+ 		showMoreLessInfo[params.name].showItems = 5;
+ 		$(params.idShowMore).click(function(){  		
+ 			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;
+ 			if(hiddenItems > 0){
+ 				showMoreLessInfo[params.name].showItems = showMoreLessInfo[params.name].showItems + 5;
+ 			}
+ 			$(params.classItem).each(function(index){
+				if (index <= showMoreLessInfo[params.name].showItems){
 					$(this).show();
 				}else{
 					$(this).hide();
 				}
 			});
-			showCount = showCount + 5;
- 		}			
-	});
+		});
 
-	$(idShowLessString).click(function(){		
-		if (showCount > 5) {
-			$(idContainerString).each(function(index){
-				if (index < showCount - 5) {
+		$(params.idShowLess).click(function(){  		
+ 			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
+ 			$(params.classItem).each(function(index){
+				if (index <= showMoreLessInfo[params.name].showItems){
 					$(this).show();
 				}else{
 					$(this).hide();
 				}
 			});
-			showCount = showCount - 5;
-		}					
-	});
+		});
+ 	}
 
+ 	var params = {
+ 		idShowMore:"showMoreButton", 
+ 		idShowLess:"showLessButton",  
+ 		classItem:"projectInContainer", 
+ 		name:"projectsProfile"
+ 	};
 
+ 	showMoreAndLess(params);
 
  });
 
