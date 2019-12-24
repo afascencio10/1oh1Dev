@@ -73,7 +73,12 @@
 	        </div>
 
 			<div class="modal-footer border-0 px-5">
-				<!--FORM TAG DELETED-->
+				<%= form_tag(booking_path(Booking.first), :method => "put", remote: true) do %>
+					<div class="w-100">
+						<input type="hidden" name="booking_id" id="approve_booking_id">
+						<%= submit_tag 'Approve', class:"btn btn-primary", id:"submit_approve",data: { disable_with: "Approving..." } %>
+					</div>
+				<%end%>
 		      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
 		    </div>
 		</div>
