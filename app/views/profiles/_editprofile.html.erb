@@ -15,9 +15,11 @@
                   id="gridBackground"
                   style="background-image: url(<%= image_path ('life-862972_1920.jpg') %>);">
                 <div>
-                  <button class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" onclick="selectProfilePic()">
+                  <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" onclick="selectProfilePic()">
                     <i class="material-icons centerXY">edit</i>
-                  </button>
+                  </a>
+                  <i style="display:none;margin-left: 91%;margin-top: 100px;z-index: 100" class="fa fa-spinner" id="loaderimagebackground"></i>
+                  <i style="display:none;margin-left: 91%;margin-top: 100px;color:green;z-index: 100" class="fa fa-check" id="checkbackground"></i>
                   <%= file_field_tag :profileBackground,class: 'form-control fieldinput d-none' %>
                 </div>
                 <div class="cel">
@@ -122,17 +124,18 @@
         </div>
     </div>
     </div>
+    <input type="" id="urlprofileBackground" name="" style="display: none;">
     </div>
   <%end%>
 <script>
   function selectPic() {
     var uploadInput = document.getElementById('profilephoto')
-    uploadInput.click()
+    uploadInput.click()    
   }
 
   function selectProfilePic() {
     var uploadProfileInput = document.getElementById('profileBackground')
-    uploadProfileInput.click()
+    uploadProfileInput.click()    
   }
 
 </script>

@@ -8,28 +8,29 @@
         <th>Details</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
-      <% @upcoming_bookings.each do |booking|%>
-        <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
-          <div class="date">
-            <%= local_time(booking.start,'%B %e')%>  
+
+    </thead>    
+      <tbody id="mainUpcomingBookings">        
+        <% @upcoming_bookings.each do |booking|%>
+          <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
+            <div class="date">
+              <%= local_time(booking.start,'%B %e')%>  
+            </div>
+            <div class="start_time">
+              <%= local_time(booking.start,'%l:%M %P')%>  
+            </div>
+            <div class="end_time">
+              <%= local_time(booking.end,'%l:%M %P')%>  
+            </div>
           </div>
-          <div class="start_time">
-            <%= local_time(booking.start,'%l:%M %P')%>  
-          </div>
-          <div class="end_time">
-            <%= local_time(booking.end,'%l:%M %P')%>  
-          </div>
-        </div>
-        <% if booking.guide.profile_id == @profile_id %>
-          <% @type= "Guided" %>
-          <% @companion= booking.explore.profile %>
-        <% elsif booking.explore.profile_id == @profile_id %>
-          <% @type= "Explored" %>
-          <% @companion= booking.guide.profile %>
-        <%end%>
-        <tr>
+          <% if booking.guide.profile_id == @profile_id %>
+            <% @type= "Guided" %>
+            <% @companion= booking.explore.profile %>
+          <% elsif booking.explore.profile_id == @profile_id %>
+            <% @type= "Explored" %>
+            <% @companion= booking.guide.profile %>
+          <%end%>
+          <tr class="upcomingBookingsItem">
             <td class="secondary-success-color"><%= @type %></td>
             <td>
               <span><%= local_time(booking.start,'%B %e, %Y')%></span>
@@ -58,8 +59,14 @@
               <br>
             </td>
           </tr>
-        <%end%>
-
-    </tbody>
-  </table>
+        <%end%>          
+      </tbody>      
+  </table> 
+  <div class="upcomingBookingsLinks gridLinksShow">
+    <a class="gridLessLink" id="lessUpcomingBookings">Less</a>
+    <div class="showMoreLessMessage" id="upcomingBookingsMessage">
+      Showing x of y items
+    </div>
+    <a class="gridMoreLink" id="moreUpcomingBookings">More</a>
+  </div>      
 </div>
