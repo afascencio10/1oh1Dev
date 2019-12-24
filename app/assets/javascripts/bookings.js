@@ -76,4 +76,110 @@ jQuery(document).ready(function($) {
 		 	}
 		}
  	});
+
+
+ 	/*
+	** Read te search value and change the beahivor
+	*/
+	var URLsearchBooking = window.location.href;
+	URLsearchBooking = URLsearchBooking.split("#");
+	console.log (URLsearchBooking[1]);
+	$( document ).ready(function() {		
+		console.log( "ready!" );		
+		switch(URLsearchBooking[1]){			
+			case "pending":				
+				$('.tab1-tabBooking').trigger( "click" );
+			break;
+			case "upcoming":				
+				$('.tab2-tabBooking').trigger('click');
+			break;
+			case "completed":				
+				$('.tab3-tabBooking').trigger( "click" );
+			break;
+			case null || "" || undefined:
+				$('.tab1-tabBooking').trigger( "click" );
+			break;
+		}		
+	});	
+	$('.tab1-tabBooking').click(function(){
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+'#'+"pending");		
+	})
+	$('.tab2-tabBooking').click(function(){
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+'#'+"upcoming");
+	})
+	$('.tab3-tabBooking').click(function(){
+		var pathname = window.location.pathname;
+		history.pushState(null, "", pathname+'#'+"completed");
+	})
+
+
+
+	//CODE FOR SHOW MORE AND LESS FEATURE
+ 	if(!showMoreLessInfo){
+ 		var showMoreLessInfo = {};
+ 	}
+
+ 	function showMoreAndLess(params){
+ 		showMoreLessInfo[params.name] = {};
+ 		showMoreLessInfo[params.name].totalItems = $(params.idMainDiv+" "+params.classItem).length;
+ 		console.log(params.name+" "+showMoreLessInfo[params.name].totalItems);
+ 		showMoreLessInfo[params.name].showItems = 5;
+ 		$(params.idShowMore).click(function(){  		
+ 			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;
+ 			if(hiddenItems > 0){
+ 				showMoreLessInfo[params.name].showItems = showMoreLessInfo[params.name].showItems + 5;
+ 			}
+ 			updateShowItems(params);
+		});
+
+		$(params.idShowLess).click(function(){  		
+ 			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
+			updateShowItems(params); 			
+		});
+		updateShowItems(params);
+		//function to update which items should be shown
+		function updateShowItems(params){
+			$(params.idMainDiv+" "+params.classItem).each(function(index){
+				if (index + 1 <= showMoreLessInfo[params.name].showItems){
+					$(this).show();
+				}else{
+					$(this).hide();
+				}
+			});
+			var itemsShow = Math.min(showMoreLessInfo[params.name].showItems,showMoreLessInfo[params.name].totalItems);
+			$(params.idMessage).html("Showing " + itemsShow + " of " + showMoreLessInfo[params.name].totalItems + " items");
+		}
+ 	}
+
+ 	var params = {
+ 		idMainDiv: "#projectsListProfile",
+ 		idMessage: "#projectsProfileMessage",
+ 		idShowMore:"#showMoreButton", 
+ 		idShowLess:"#showLessButton",  
+ 		classItem:".projectInContainer", 
+ 		name:"projectsProfile"
+ 	};
+
+ 	showMoreAndLess(params);
+
+ 	var paramsUpcomingBookings = {
+ 		idMainDiv: "#mainUpcomingBookings",
+ 		idMessage: "#upcomingBookingsMessage",
+ 		idShowMore:"#moreUpcomingBookings", 
+ 		idShowLess:"#lessUpcomingBookings",  
+ 		classItem:".upcomingBookingsItem", 
+ 		name:"upcomingBookingsList"
+ 	};
+ 	var paramsPendingBookings = {
+ 		idMainDiv: "#mainPendingBookings",
+ 		idMessage: "#pendingBookingsMessage",
+ 		idShowMore:"#morePendingBookings", 
+ 		idShowLess:"#lessPendingBookings",  
+ 		classItem:".pendingBookingsItem", 
+ 		name:"pendingBookingsList"
+ 	};
+ 	showMoreAndLess(paramsUpcomingBookings); 	
+
 })
