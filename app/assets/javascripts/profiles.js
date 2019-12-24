@@ -492,50 +492,63 @@ jQuery(document).ready(function($) {
  		});
  	}
 
-
-
  	//CODE FOR SHOW MORE AND LESS FEATURE
  	if(!showMoreLessInfo){
  		var showMoreLessInfo = {};
  	}
 
  	function showMoreAndLess(params){
- 		showMoreLessInfo[params.name].totalItems = $(params.classItem).length;
+ 		showMoreLessInfo[params.name] = {};
+ 		showMoreLessInfo[params.name].totalItems = $(params.idMainDiv+" "+params.classItem).length;
+ 		console.log(params.name+" "+showMoreLessInfo[params.name].totalItems);
  		showMoreLessInfo[params.name].showItems = 5;
  		$(params.idShowMore).click(function(){  		
  			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;
  			if(hiddenItems > 0){
  				showMoreLessInfo[params.name].showItems = showMoreLessInfo[params.name].showItems + 5;
  			}
- 			$(params.classItem).each(function(index){
-				if (index <= showMoreLessInfo[params.name].showItems){
-					$(this).show();
-				}else{
-					$(this).hide();
-				}
-			});
+ 			updateShowItems(params);
 		});
 
 		$(params.idShowLess).click(function(){  		
  			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
- 			$(params.classItem).each(function(index){
-				if (index <= showMoreLessInfo[params.name].showItems){
+			updateShowItems(params); 			
+		});
+		updateShowItems(params);
+		//function to update which items should be shown
+		function updateShowItems(params){
+			$(params.idMainDiv+" "+params.classItem).each(function(index){
+				if (index + 1 <= showMoreLessInfo[params.name].showItems){
 					$(this).show();
 				}else{
 					$(this).hide();
 				}
 			});
-		});
+			var itemsShow = Math.min(showMoreLessInfo[params.name].showItems,showMoreLessInfo[params.name].totalItems);
+			$(params.idMessage).html("Showing " + itemsShow + " of " + showMoreLessInfo[params.name].totalItems + " items");
+		}
  	}
 
  	var params = {
- 		idShowMore:"showMoreButton", 
- 		idShowLess:"showLessButton",  
- 		classItem:"projectInContainer", 
+ 		idMainDiv: "#projectsListProfile",
+ 		idMessage: "#projectsProfileMessage",
+ 		idShowMore:"#showMoreButton", 
+ 		idShowLess:"#showLessButton",  
+ 		classItem:".projectInContainer", 
  		name:"projectsProfile"
  	};
 
  	showMoreAndLess(params);
+
+ 	var paramsExplores = {
+ 		idMainDiv: "#exploreCategoriesGrid",
+ 		idMessage: "#exploresProfileMessage",
+ 		idShowMore:"#moreExploresProfile", 
+ 		idShowLess:"#lessExploresProfile",  
+ 		classItem:".interestsImage", 
+ 		name:"exploresProfile"
+ 	};
+ 	showMoreAndLess(paramsExplores);
 
  });
 

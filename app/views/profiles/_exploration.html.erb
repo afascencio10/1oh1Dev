@@ -67,7 +67,7 @@
         </div>
     </div>
     <div class="interestsContent">
-        <div class="interestsImages">
+        <div class="interestsImages" id="exploreCategoriesGrid">
             <% if @explores.blank? %>
               <div class="gridGuidingActivity">
                       <button data-toggle="modal" data-target="#editExploreModal" class="btnAddActivity" >adds</button>
@@ -91,7 +91,11 @@
             <% end %>
         </div>
         <div class="interestsMoreLink">
-            <a id="interestsMoreLink" href="#">More</a>
+          <a class="gridLessLink" id="lessExploresProfile">Less</a>
+          <div class="showMoreLessMessage" id="exploresProfileMessage">
+            Showing x of y items
+          </div>
+          <a class="gridMoreLink" id="moreExploresProfile">More</a>
         </div>
     </div>
     <div class="reviewsTitle">
