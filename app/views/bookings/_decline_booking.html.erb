@@ -14,7 +14,12 @@
 		    </div>
 
 		    <div class="modal-footer border-0 px-5">
-					<!--deleted-->
+					<%= form_tag(booking_path(Booking.first), :method => "delete", remote: true) do %>
+			    	<div class="w-100">
+							<input type="hidden" name="booking_id" id="decline_booking_id">
+							<%= submit_tag 'Decline', class:"btn btn-outline-secondary", id:"submit_decline",data: { disable_with: "Declining..." } %>
+			    	</div>
+					<%end%>
 		      <button type="button" class="btn btn-danger" id="cancel_decline" data-dismiss="modal">
 		      	Cancel
 		      </button>
