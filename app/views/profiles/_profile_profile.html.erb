@@ -1,6 +1,6 @@
 <div class="celprofile">
   <a id="toggle-sidebar" href="#">
-    <div class="memberView">
+    <div class="memberView shadow">
       <div class="profileView">
         Profile
       </div>
@@ -10,7 +10,7 @@
     </div>
   </a>
   <div class="exit">
-    <button type="button" class="btnExit" id="toggle-exit">Exit View</button>
+    <button type="button" class="btnExit btn btn-success" id="toggle-exit">Exit View</button>
   </div>
   <div class="fondo"><img class="imgfondo" src="<%= image_path('life-862972_1920.jpg')  %>"></div>
   <div class="celprofile" id="description">
@@ -27,7 +27,7 @@
         <% if @profile.state.nil? && @profile.country.nil? %>
         Location : None
         <% else %>
-        <%= @profile.state%>,<%= @profile.country%></h3>
+        <%= @profile.state%>,<%= @profile.country%>
         <% end %>
       </p>
     </div>
@@ -36,13 +36,13 @@
     <div class="pLanguages medialanguages">
       <p class="languages">
         <% if @profile.languages.empty? %>
-        None
+          None
         <% else %>
-        <% for p in @profile.languages.split(",") %>
-          <div class="base-chips d-inline-block">
-            <span class="base-chips-name"> <%= p %> </span>
-          </div> 
-        <% end %>
+          <% @profile.languages.each do |language| %>
+            <div class="base-chips d-inline-block">
+              <span class="base-chips-name"> <%= LanguageList::LanguageInfo.find(language).name %> </span>
+            </div>
+          <% end %>
         <% end %>
       </p>
     </div>
@@ -61,11 +61,11 @@
   </div>
   <div class="celprofile tabOptions row" id="grid-menu">
     <header class="profile-tab">
-      <div id="material-tabs">
-        <a id="tab1-tab" class="tab1-tabProfile" href="#tab1" class="active"><%= @explores.count%><br> Explore</a>
-        <a id="tab2-tab" class="tab2-tabProfile" href="#tab2"><%= @guides.count%> <br> Guide</a>
-        <a id="tab3-tab" class="tab3-tabProfile" href="#tab3"> <%= @projects.count%> <br> Projects</a>
-        <span class="yellow-bar"></span>
+      <div id="material-tabs" class="border-0">
+          <a id="tab1-tab-project" href="#tab1" class="tab1-tabProfile active"><%= @explores.count%><br> Explore</a>
+          <a id="tab2-tab-project" class="tab2-tabProfile" href="#tab2"><%= @guides.count%> <br> Guide</a>
+          <a id="tab3-tab-project" class="tab3-tabProfile" href="#tab3"> <%= @projects.count%> <br> Projects</a>
+          <span class="yellow-bar"></span>
 
       </div>
     </header>
@@ -81,17 +81,6 @@
       <%= render 'projects' %>
     </div>
   </div>
-  <!-- <div class="tabContainer">
-      <div class="tab selected" id="tab_explore">
-
-      </div>
-      <div class="tab" id="tab_guide">
-
-      </div>
-      <div class="tab" id="tab_projects">
-
-      </div>
-  </div>                 -->
 
   <%= render 'profile_pic_ui' %>
 </div>

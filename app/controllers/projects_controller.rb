@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @profile = current_user.profile
+    @project = Project.first
   end
 
   # GET /projects/1
@@ -77,6 +78,13 @@ class ProjectsController < ApplicationController
   #     format.json { head :no_content }
   #   end
   # end
+
+  def open_edit_project_modal
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 	var createProjectCategories = []
 	var editProjectCollaborators = ["2","3"]
 	var editProjectCategories = ["2"]
-	var editProfileLanguages = []
+	var editProfileLanguages = window.test || []
 
 	var editProfileLanguagesHiddenElm = document.getElementById('edit-profile-hidden-languages')
 	var createProjectCategoriesHiddenElm = document.getElementById('create-project-hidden-categories')
@@ -224,6 +224,10 @@ jQuery(document).ready(function($) {
 		)
 	})
 
+	$('.explore-item-status-button-add').click(function () {
+		$(this).parent().toggleClass('active')
+	})
+
 	$('.tabLink').click(function(event){
 	     var tabId = "#tab_" + $(this).attr("id");
 	     $('.tabLink').removeClass("selected");
@@ -378,7 +382,7 @@ jQuery(document).ready(function($) {
   console.log(array);
   var input = document.getElementById("guideCategories");
   if (input){
-  	input.value = array;
+  	input.value = JSON.stringify(array);
   }
 
  }
@@ -467,7 +471,7 @@ jQuery(document).ready(function($) {
 
  }
 
- $(function () {	
+ $(function () {
 	$(".rateYoCustom").each(function(){
 		if ( $(this).attr("rating") != null || $(this).attr("rating") != undefined || $(this).attr("rating") != "" ) {
 			if ($(this).attr("starsSize") == "normal") {
@@ -486,9 +490,9 @@ jQuery(document).ready(function($) {
 					normalFill: "#e4e4e4",
 					readOnly: true,
 					starWidth: "20px"
-				});	
+				});
 			}
-		}			
+		}
  	});
 
  	var $rateYo = $(".rateYoInput").rateYo({
@@ -496,13 +500,13 @@ jQuery(document).ready(function($) {
  		ratedFill: "#f1c40f",
 		normalFill: "#e4e4e4",
 		onSet: function (){
-			var rating = $rateYo.rateYo("rating");						
+			var rating = $rateYo.rateYo("rating");
 			var input = document.getElementById("rateExperience");
 		 	if (input) {
-		 		input.value = rating;		 		
+		 		input.value = rating;
 		 	}
 		}
- 	}); 
+ 	});
 
  	//CODE FOR SHOW MORE AND LESS FEATURE
  	if(!showMoreLessInfo){
@@ -541,6 +545,7 @@ jQuery(document).ready(function($) {
 		}
  	}
 
+
  	var params = {
  		idMainDiv: "#projectsListProfile",
  		idMessage: "#projectsProfileMessage",
@@ -575,5 +580,3 @@ jQuery(document).ready(function($) {
  });
 
 })
-
-

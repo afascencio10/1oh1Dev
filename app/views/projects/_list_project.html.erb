@@ -37,8 +37,16 @@
     				<h6 class="mt-1 font-weight-bold fz-13">Description</h6>
     				<p class="fz-12"><%= project.description %></p>
 
-    				<h6 class="mt-2 font-weight-bold fz-13">Skills needed</h6>
-    				<p class="fz-12"><%= project.categories.pluck(:name) %></p>
+    				<h6 class="mt-2 font-weight-bold fz-13">Skills</h6>
+    				<p class="fz-12">
+              <% project.categories.pluck(:name).each do |name| %>
+              <div class="base-chips d-inline-block p-1">
+                <div class="base-chips-name fz-13">
+                  <%= name %>
+                </div>
+              </div>
+              <%end%>
+            </p>
     			</div>
     		</div>
     	<% end %>

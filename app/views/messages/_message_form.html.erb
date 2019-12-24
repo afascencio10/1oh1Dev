@@ -1,6 +1,6 @@
 
 <%=form_for message, remote: true,authenticity_token: true, :html => { :id => "chat_form"} do |f|%>
-  <%= f.text_field :content, data: {textarea: "message"}, :placeholder => 'Type a message...', :id => 'forInputChat' %>
+  <%= f.text_field :content, data: {textarea: "message"}, :placeholder => 'Type a message...', :id => 'forInputChat', :class => 'shadow' %>
     <!-- <a class="attach" href="#">
       <img class="attachIcon" src="<%= image_path('Icons/attach.png') %>">
   </a> -->

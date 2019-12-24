@@ -37,13 +37,13 @@ class BookingsController < ApplicationController
     end
 
     @profile_id = current_profile.id
-    @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
+    @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :category,profile: :user])
     @pending_bookings =  @bookings.where(:status => 0).order(created_at: :desc).uniq
     @completed_bookings = @bookings.where(:status => 2).order(created_at: :desc).uniq
     @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
 
 
-    @bookings = Profile.find(current_user.id).bookings.uniq
+    @bookings = Profile.find_by_id(current_user.profile.id).bookings.uniq
   end
 
   def show

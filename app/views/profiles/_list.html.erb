@@ -1,24 +1,9 @@
 <div id="filterrific_results">
-  <div>
-    <%= page_entries_info categories, entry_name: "category" %>
-  </div>
   <% categories.each do |category| %>
-  	<div class="row mx-0 explore-item">
-  		<div class="col">
-  			<div>
-  				<div class="row">
-  					<div class="col-auto pl-0">
-  						<img width="100px" height="100px" src="<%= image_path('Skills/poly.jpg')%>" alt="poly">
-  					</div>
-  					<div class="col pr-0">
-  						<h5 class="font-weight-bold explore-item-head"><%= category.name%></h5>
-  						<p class="explore-item-sub-head">260 Explores</p>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-
-        <% if request.env['PATH_INFO'] == "/profile/guides" %>
+  	<div class="explore-item border rounded"
+         style="background-image: url(<%= image_path('Skills/poly.jpg')%>)">
+<!-- 
+      <% if request.env['PATH_INFO'] == "/profile/guides" %>
           <% if @list.include?(category.id) %>
             <div class="col-auto pr-0">
               <button id="guideCat-<%= category.id %>" type="button" class="btn btn-success p-2 addGuideBtnn">Add</button>
@@ -31,15 +16,24 @@
         <% else %>
           <% if @list.include?(category.id) %>
             <div class="col-auto pr-0">
-        			<button id="explorerCat-<%= category.id %>" type="button" class="btn btn-success p-2 addExploreBtnn">Add</button>
-        		</div>
+              <button id="explorerCat-<%= category.id %>" type="button" class="btn btn-link btn-icon-fab position-relative shadow rounded-circle explore-item-status-button addExploreBtnn">add</button>
+            </div>
             <% else %>
             <div class="col-auto pr-0">
-        			<button id="explorerCat-<%= category.id %>" type="button" class="btn btn-success p-2 addExploreBtnn">Add</button>
-        		</div>
+              <button id="explorerCat-<%= category.id %>" type="button" class="btn btn-link btn-icon-fab position-relative shadow rounded-circle explore-item-status-button addExploreBtnn">add</button>
+            </div>
           <% end %>
         <% end %>
+ -->
+      <button class="btn btn-link btn-icon-fab position-relative shadow rounded-circle explore-item-status-button explore-item-status-button-add">
+        <i class="material-icons centerXY">add</i>
+      </button>
 
+      <div class="explore-item-footer p-2">
+        <h5 class="fw-600 c-black"><%= category.name%></h5>
+
+        <span class="fz-14 explore-item-sub-head">260 Explores</span>
+      </div>
 
   	</div>
   <% end %>

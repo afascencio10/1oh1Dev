@@ -11,7 +11,7 @@ var exploreCategories = window.localStorage.getItem('exploreCategories');
 		exploreCategories = JSON.parse(exploreCategories);
 	}else{
 		exploreCategories = {categories:[]};
-	}	
+	}
 	exploreCategories.categories.forEach(cat=>{
 		$("#explorerCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
 	});
@@ -19,14 +19,14 @@ var exploreCategories = window.localStorage.getItem('exploreCategories');
 
 	$('.addExploreBtnn').on('click', function () {
 	  // alert("Clicked  ");
-	  var id = this.id;	  
+	  var id = this.id;
 	  id = id.split("-")[1];
 	  var isSelected = $(this).hasClass("btn-outline-dark");
 	  if(isSelected){
 	  	unselecCategory(id);
 	  }else {
 	  	selectCategory(id);
-	  } 
+	  }
 	  setExploreCategories();
 
 	})
@@ -39,7 +39,7 @@ var exploreCategories = window.localStorage.getItem('exploreCategories');
 
 	function unselecCategory(category){
 		deleteCategory(category);
-		$("#explorerCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');	
+		$("#explorerCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
 	}
 
 	function addCategory(category){
@@ -59,7 +59,7 @@ var exploreCategories = window.localStorage.getItem('exploreCategories');
 		}else{
 			array = {categories:[]};
 		}
-		
+
 		array.categories = array.categories.filter(cat=>{
 			return cat!=category;
 		});
@@ -67,7 +67,7 @@ var exploreCategories = window.localStorage.getItem('exploreCategories');
 	}
 
 	function setExploreCategories(){
-		/*this function keeps updating the value of the hidden tag 
+		/*this function keeps updating the value of the hidden tag
 		to use it anytime in the backend*/
 		var array = window.localStorage.getItem('exploreCategories');
 		if(array){
@@ -76,5 +76,5 @@ var exploreCategories = window.localStorage.getItem('exploreCategories');
 			array = {categories:[]};
 		}
 		console.log(array);
-      document.getElementById("exploreCategories").value = array;
+      document.getElementById("exploreCategories").value = JSON.stringify(array);
 	}

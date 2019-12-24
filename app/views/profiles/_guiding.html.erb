@@ -1,20 +1,77 @@
 <div class="guideSection">
     <div class="celprofile" id="score">
-      <div class="cel celrating"><p class="txtrating">Average Rating</p></div>
-      <div class="cel" id="subgridscore">
-        <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>
+      <div class="cel celrating"><p class="txtrating c-black">Average Rating:</p></div>
+      <div class="cel icons-Starts" id="subgridscore">
+        <div class="cel mt-1">
+          <div class="rateYo d-inline-block p-0"></div>
+        </div>
+        <span class="cel fz-13 mt-3 fw-600 c-gray">58</span>
+        <div class="grid-RatingsModal">
+                <div class="grid-Pop celpop">
+                        <div class="grid-Starts celpop">
+                          <div class="celp">
+                            <div class="rateYo d-inline-block p-0"></div>
+                          </div>
+                          <div class="celp txt5 mt-1">5 <span>out of</span> 5</div>
+                        </div>
+                        <div class="grid-Rating celpop">
+                            <div class="celp txt-Title">14 ratings</div>
+                        </div>
+                        <div class="grid-Star celpop">
+                            <div class="celp txt-Star top-Starts">5 Star</div>
+                            <div class="celp top-Starts">
+                                <div class="progress bar-Progress">
+                                    <div class="progress-bar bary" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                            </div>
+                            <div class="celp number top-Starts">100%</div>
+                            <div class="celp txt-Star top-Starts">4 Star</div>
+                            <div class="celp top-Starts">
+                                <div class="progress bar-Progress">
+                                    <div class="progress-bar bary" role="progressbar" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="celp number top-Starts">0%</div>
+                            <div class="celp txt-Star top-Starts">3 Star</div>
+                            <div class="celp top-Starts">
+                                <div class="progress bar-Progress">
+                                    <div class="progress-bar bary" role="progressbar" style="width: 70%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="celp number top-Starts">0%</div>
+                            <div class="celp txt-Star top-Starts">2 Star</div>
+                            <div class="celp top-Starts">
+                                <div class="progress bar-Progress">
+                                    <div class="progress-bar bary" role="progressbar" style="width: 50%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="celp number top-Starts">0%</div>
+                            <div class="celp txt-Star top-Starts">1 Star</div>
+                            <div class="celp top-Starts">
+                                <div class="progress bar-Progress">
+                                    <div class="progress-bar bary" role="progressbar" style="width: 10%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="celp number top-Starts">0%</div>
+                            <div class="topStart"></div>
+                        </div>
+                    </div>
+
+                    <div class="cel"></div>
+        </div>
       </div>
       <div class="cel"></div>
     </div>
-    <div class="interestsHeader">
-        <div class="interestsTitle">Subjects</div>
+    <div class="interestsHeader mt-3">
+        <div class="interestsTitle c-black">Subjects</div>
         <div class="interestsIcon">
-            <a href="#">
-                <img data-toggle="modal" data-target="#editGuideModal" class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
+            <a href="#" data-toggle="modal" data-target="#editGuideModal">
+                <i class="material-icons c-dark-gray">edit</i>
             </a>
         </div>
     </div>
-    <div class="interestsContent">
+
+    <div class="interestsContent mb-3">
         <div class="interestsImages" id="profileGuideMain">
             <% if @guides.blank? %>
             <div class="gridGuidingActivity">
@@ -47,7 +104,7 @@
         </div>
     </div>    
     <div class="reviewsTitle">
-        <div id="forReviewsTitle">Reviews</div>
+        <div id="forReviewsTitle" class="c-black">Reviews</div>
     </div>
    <div class="reviewsContent">
       <% if @guide_ratings.blank? %>
@@ -71,7 +128,7 @@
                          </div>
                    </div>
                    <div class="reviewViewAllReviews">
-                       <a href="">View All Reviews</a> 
+                       <a href="">View All Reviews</a>
                    </div>
                    <%= link_to reviews_path(:explore_id => content.explore_id) do%>
                    <div class="commentImage">

@@ -1,6 +1,8 @@
 <div id="pending_bookings">
-
-  <div id="mainPendingBookings">    
+  <% if @pending_bookings.empty? %>
+    No Pending Bookings
+  <%else%>
+  <div id="mainPendingBookings">   
     <% @pending_bookings.each do |booking|%>    
       <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
         <div class="date">
@@ -32,6 +34,7 @@
               <img width="40px" height="40px" class="rounded-circle mr-2 active" src="<%= image_path('People/asian.jpg') %>" alt="avatar">
             <% else %>
               <img width="40px" height="40px" class="rounded-circle mr-2 active" src="<%= @companion.profile_photo %>" alt="avatar">
+
             <% end %>
 
             <span class="font-weight-bold fz-14">Subject</span> - <span class="fz-14"><%= booking.guide.category.name %> with <%= @companion.user.firstname %> <%= @companion.user.lastname %></span>
@@ -62,4 +65,5 @@
     </div>
     <a class="gridMoreLink" id="morePendingBookings">More</a>
   </div>
+  <%end%>
 </div>

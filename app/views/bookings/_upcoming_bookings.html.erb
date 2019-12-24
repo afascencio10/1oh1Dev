@@ -8,21 +8,24 @@
         <th>Details</th>
         <th></th>
       </tr>
-
     </thead>    
-      <tbody id="mainUpcomingBookings">        
+    <tbody id="mainUpcomingBookings"> 
+      <% if @upcoming_bookings.empty? %>
+        No Upcoming Bookings
+      <%else%>   
         <% @upcoming_bookings.each do |booking|%>
-          <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
-            <div class="date">
-              <%= local_time(booking.start,'%B %e')%>  
-            </div>
-            <div class="start_time">
-              <%= local_time(booking.start,'%l:%M %P')%>  
-            </div>
-            <div class="end_time">
-              <%= local_time(booking.end,'%l:%M %P')%>  
-            </div>
-          </div>
+            <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
+              <div class="date">
+                <%= local_time(booking.start,'%B %e')%>  
+              </div>
+              <div class="start_time">
+                <%= local_time(booking.start,'%l:%M %P')%>  
+              </div>
+              <div class="end_time">
+                <%= local_time(booking.end,'%l:%M %P')%>  
+              </div>
+            </div>    
+
           <% if booking.guide.profile_id == @profile_id %>
             <% @type= "Guided" %>
             <% @companion= booking.explore.profile %>
@@ -30,6 +33,7 @@
             <% @type= "Explored" %>
             <% @companion= booking.guide.profile %>
           <%end%>
+
           <tr class="upcomingBookingsItem">
             <td class="secondary-success-color"><%= @type %></td>
             <td>
@@ -69,4 +73,5 @@
     </div>
     <a class="gridMoreLink" id="moreUpcomingBookings">More</a>
   </div>      
+
 </div>

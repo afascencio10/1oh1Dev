@@ -9,30 +9,22 @@
       </div>
       <div class="modal-body">
         <div class="modalCategories redcel">
-          <div class="addInterests redcel">
-            <div class="title boldText redcel">
-              Add an interest
-            </div>
+          <div>
             <div class="redcel"> </div>
             <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
-              <div>
-                Search
+              <div class="form-group">
+                <label for="">Search in categories</label>
                 <%= f.text_field(
                   :search_query,
                   class: 'filterrific-periodically-observed form-control',
-                  placeholder: 'Oil painting, 3D printing, Electric cars etc.'
-                ) %>
-              </div>
-              <div>
-                <%= link_to(
-                  'Reset filters',
-                  reset_filterrific_url,
+                  placeholder: 'Oil painting, 3D printing, Electric cars etc...'
                 ) %>
               </div>
               <%= render_filterrific_spinner %>
             <% end %>
-            <div class="newCategoryMessage boldText redcel">
-              Can't find a category? <span data-toggle="modal" data-target="#newCategoryModal" class="createCategory boldText"> Create a new category.</span>
+            <div>
+              <span class="fz-14 fw-400 c-black">Can't find a category?</span>
+              <span data-toggle="modal" data-target="#newCategoryModal" class="c-blue fz-14 fw-400 cursor-p"> Create a new category.</span>
             </div>
           </div>
 
@@ -47,7 +39,7 @@
 
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="addCategory" role="tabpanel" aria-labelledby="home-tab">
-              <div class="my-1 p-3 border rounded position-relative auxiliar-container" id="explore-item-containerP">
+              <div class="p-3 border position-relative auxiliar-container" id="explore-item-containerP">
                 <%= render(
                   partial: 'list',
                   locals: { categories: @categories }

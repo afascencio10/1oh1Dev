@@ -15,7 +15,7 @@
             <label>Project Title</label>
             <%= text_field_tag :name,nil,class: 'form-control', placeholder: "Name",:required => true %>
           </div>
-          
+          <%= @project.description%>
           <!-- Description -->
           <div class="form-group m-3">
             <label>Description</label>
@@ -23,8 +23,8 @@
           </div>
 
           <!-- Project Image -->
-          <div class="form-group m-3"> 
-            <label for="edit_url">Project Image</label>  
+          <div class="form-group m-3">
+            <label for="edit_url">Project Image</label>
             <div class="custom-file">
               <%= file_field_tag :edit_url,
                   class: 'custom-file-label',
@@ -47,9 +47,9 @@
               <span class="c-black fw-500 ml-2">Jimi Hendrix</span>
             </div>
           </div>
-          
+
           <!-- Collaborators -->
-          <div class="create-project-collaborators-select-wrap">          
+          <div class="create-project-collaborators-select-wrap">
             <div class="form-group custom-from-group m-3">
               <label>Collaborators</label>
 
@@ -59,7 +59,7 @@
                      name="edit-project-collaborators">
 
               <i class="material-icons create-project-select-collaborator-add"
-                 id="edit-project-collaborator-add">add</i>  
+                 id="edit-project-collaborator-add">add</i>
             </div>
 
             <div class="create-project-collaborators m-3" id="edit-project-collaborators">
@@ -82,7 +82,7 @@
           </div>
 
           <!-- categories -->
-          <div class="create-project-categories-select-wrap">          
+          <div class="create-project-categories-select-wrap">
             <div class="form-group custom-from-group m-3">
               <label>categories</label>
 
@@ -92,16 +92,16 @@
                      name="edit-project-categories">
 
               <i class="material-icons create-project-select-categories-add"
-                 id="edit-project-categories-add">add</i>  
+                 id="edit-project-categories-add">add</i>
             </div>
 
             <div class="create-project-categories m-3" id="edit-project-categories">
             </div>
           </div>
-          
+
           <!-- projects -->
           <div class="form-group mx-3 mb-0">
-            <label>Project Status</label>              
+            <label>Project Status</label>
           </div>
           <div class="form-row mx-3 mb-3">
             <div class="custom-control form-group custom-radio custom-radio-with-image mr-3">

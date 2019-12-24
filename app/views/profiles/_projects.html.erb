@@ -1,34 +1,10 @@
 <div class="projectsSection" id="view_projects">
     <div class="projectsContent" id="projectsListProfile">
       <div class="projectsSearchCreate">
-       <div class="inputSearchProjects">
-          <div class="inputProjectsSearch">
-            <img class="searchProjectIcon" src="<%= image_path ('Icons/search.png') %>">
-            <input class="searchProjectsInput" type="" name="">
-          </div>
+       <div class="text-right">
+         <button class="buttonCreate btn btn-success mt-3 mr-3" data-toggle="modal" data-target="#createProjectsModal">Create New Project</button>
        </div>
-       <div class="checkBoxProjectIcon">
-         <img class="projectProgressIcon" src="<%= image_path ('Icons/Idea_icon.png') %>">
-       </div>
-       <div class="checkBoxProjectIcon">
-         <img class="projectProgressIconWip" src="<%= image_path ('Icons/WIP-icon.png') %>">
-       </div>
-       <div class="checkBoxProjectIcon">
-         <img class="projectProgressIconCompleted" src="<%= image_path ('Icons/completed-icon.png') %>">
-       </div>
-       <div class="checkBoxProject boxIdea">
-         <input type="checkbox" class="checkProjectIdea" name="">
-       </div>
-       <div class="checkBoxProject boxWip">
-         <input type="checkbox" class="checkProjectWip" name="">
-       </div>
-       <div class="checkBoxProject boxCompleted">
-         <input type="checkbox" class="checkProjectCompleted" name="">
-       </div>
-       <div class="buttonCreateProject">
-         <button class="buttonCreate" data-toggle="modal" data-target="#createProjectsModal">CREATE</button>
-       </div>
-     </div>
+      </div>
       <% if @projects.blank? %>
             <div class="gridProfileActivity">
               <div class="titleactivityProfile">
@@ -43,8 +19,8 @@
               </div>
             </div>
 
-      <% else %>        
-         <% @projects.each do|project| %>            
+      <% else %>
+         <% @projects.each do|project| %>
               <div class="projectInContainer projectContainer">
                  <div class="projectImages">
                      <div class="projectPhoto">
@@ -57,33 +33,49 @@
                               <img src="<%= image_path('Icons/completed-icon.png') %>" alt="Image" class="projectIcon">
                           <% end %>
                      </div>
+                   <div>
+                     <button class="btn btn-success float-right">Offer Help</button>
+                     <% project.colab_id.each do |x|%>
+                       <div class="profilePict mt-1">
+                         <% if User.find(x).profile.nil?%>
+                         <img class="profileImage" src="<%= image_path('no_profile.png')  %>">
+                         <%else%>
+                         <img class="profileImage mr-1" src="<%= User.find(x).profile.profile_photo %>">
+                         <%end%>
+                       </div>
+                     <% end %>
+                   </div>
+               </div>
+               <div class="projectInfo">
+                   <div class="projectTitle c-black"><%= project.name %></div>
+                   <div class="editIconProject">
+                         <%= link_to open_edit_project_modal_path(id: project), remote: true do%>
+                          <i class="material-icons icons create">create</i>
+                         <%end%>
+                   </div>
+                   <div class="projectDescription">
+                      <h3 class="descriptionTitle mb-1 c-black">Description:</h3>
+                      <p class="descriptionText fz-14 fw-500"> <%= project.description %></p>
+                      <div class="projectSkills">
+                        <h3 class="descriptionTitle c-black mb-0">Tags:</h3>
+                        <div>
+                           <% project.categories.each do |category|%>
+                            <div class="base-chips d-inline-block p-1">
+                              <div class="base-chips-name fz-13">
+                                <%= category.name %>
+                              </div>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                   </div>
+               </div>
+           </div>
+         <% end %>
+         <%end%>
 
 
-                     <div class="projectProfiles">
-                       <% project.colab_id.each do |x|%>
-                         <div class="profilePict">
-                           <% if User.find(x).profile.nil?%>
-                           <img class="profileImage" src="<%= image_path('no_profile.png')  %>">
-                           <%else%>
-                           <img class="profileImage" src="<%= User.find(x).profile.profile_photo %>">
-                           <%end%>
-                         </div>
-                       <% end %>
-                     </div>
-                 </div>
-                 <div class="projectInfo">
-                     <div class="projectTitle"><%= project.name %></div>
-                     <div class="editIconProject">
-                         <i data-toggle="modal" data-target="#projectsModal" class="material-icons icons create">create</i>
-                     </div>
-                     <div class="projectDescription"><h3 class="descriptionTitle">Description</h3> <p class="descriptionText"> <%= project.description %></p></div>
-                     <div class="projectSkills"><h3 class="descriptionTitle">Skills needed</h3>
-                     </div>
-                 </div>
-             </div>            
-         <% end %>         
-
-      <% end %>
+                     
       <div class="showButtonsContainer">        
         <button id="showMoreButton">Show More</button>        
         <div class="showMoreLessMessage" id="projectsProfileMessage">

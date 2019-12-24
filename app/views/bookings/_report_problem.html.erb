@@ -4,27 +4,27 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content reportProblemModalContent">
       <!-- --  -->
-      <div class="modal-header">    
+      <div class="modal-header">
         <h5 class="modal-title text-secondary text-center" id="exampleModalLabel">Report Problem</h5>
         <div class="reportProblemBack">Back</div>
       </div>
       <div class="modal-body grid-reportProblem">
         <div class="dateInputReportProblemCont">
           <input class="dateInputReportProblem" type="date" name="">
-        </div>        
+        </div>
         <div class="whoReportProblem">Who:</div>
-        <div class="whoReportProblemName">Dan Black</div>        
+        <div class="whoReportProblemName">Dan Black</div>
         <div class="reportProblemIssueTitle">Issue:</div>
-      
+
         <div class="reportProblemType">Technical issue</div>
         <div class="reportProblemTypeCheckbox"><input class="reportProblemTypeCheckboxItem" type="checkbox" name=""></div>
-      
+
         <div class="reportProblemType">False identity</div>
         <div class="reportProblemTypeCheckbox"><input class="reportProblemTypeCheckboxItem" type="checkbox" name=""></div>
-      
+
         <div class="reportProblemType">Harasment</div>
         <div class="reportProblemTypeCheckbox"><input class="reportProblemTypeCheckboxItem" type="checkbox" name=""></div>
-        
+
         <div class="reportProblemDescriptionTitle">Description</div>
         <div class="reportProblemTextArea">
           <textarea class="reportProblemTextAreaItem" placeholder="Please provide information regarding the problem" rows="6"></textarea>
@@ -33,10 +33,10 @@
           <div class="buttosReportProblem">
             <button class="reportPorblemCancelButton">Cancel</button>
             <button class="reportPorblemSubmitButton" data-toggle="modal" data-target="#problemReported">Submit</button>
-          </div>          
-        </div>        
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<%= render 'problem_reported' %>
+<%= render 'bookings/problem_reported' %>

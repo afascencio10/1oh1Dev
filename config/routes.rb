@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/profile/availabilty', to: 'profiles#availabilty'
   post '/profile/availabilty', to: 'profiles#availabilty_booking_create', as: :availabilty_booking
   get '/profile/completed', to: 'profiles#completed'
+  get '/edit/project', to: 'projects#open_edit_project_modal', as: :open_edit_project_modal
 
   resources :users, only:[:new] do
    resources :chats, only: [:show,:create]

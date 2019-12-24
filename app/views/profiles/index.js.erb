@@ -34,15 +34,6 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 
  })
 
-
-
-  $('.newCategoryMessage').on('click', function () {
-    // alert("Clicked  ");
-    console.log("Hey, im keep here!");
-
-  })
-
-
  function selectCategoryG(category){
   addCategoryG(category);
   $("#guideCat-"+category).removeClass('btn-success').addClass('btn-outline-dark').text('Added');

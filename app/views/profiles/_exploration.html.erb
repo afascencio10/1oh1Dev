@@ -1,13 +1,19 @@
 <div class="exploreSection">
     <div class="celprofile" id="score">
-      <div class="cel celrating"><p class="txtrating">Average Rating</p></div>
+      <div class="cel celrating"><p class="txtrating c-black">Average Rating:</p></div>
       <div class="icons-Starts" id="subgridscore">
-        <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>
+        <div class="cel mt-1">
+          <div class="rateYo d-inline-block p-0"></div>
+        </div>
+        <span class="cel fz-13 mt-3 fw-600 c-gray">58</span>
+
         <div class="grid-RatingsModal">
-                <div class="grid-Pop celpop">                        
+                <div class="grid-Pop celpop">
                         <div class="grid-Starts celpop">
-                            <div id="" class="rateYoCustom" starsSize="small" rating="3"></div>
-                            <div class="celp txt5">5 <span>out of</span> 5</div>
+                          <div class="celp">
+                            <div class="rateYo d-inline-block p-0"></div>
+                          </div>
+                          <div class="celp txt5 mt-1">5 <span>out of</span> 5</div>
                         </div>
                         <div class="grid-Rating celpop">
                             <div class="celp txt-Title">14 ratings</div>
@@ -58,16 +64,21 @@
       </div>
       <div class="cel"></div>
     </div>
-    <div class="interestsHeader">
-        <div class="interestsTitle">Interests</div>
+    <div class="interestsHeader mt-3">
+        <div class="interestsTitle c-black">Interests</div>
         <div class="interestsIcon">
-            <a href="#">
-                <img data-toggle="modal" data-target="#editExploreModal" class="editIcon" src="<%= image_path('Icons/edit.png')  %>">
+            <a href="#" data-toggle="modal" data-target="#editExploreModal">
+                <i class="material-icons c-dark-gray">edit</i>
             </a>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="interestsContent">
         <div class="interestsImages" id="exploreCategoriesGrid">
+=======
+    <div class="interestsContent mb-3">
+        <div class="interestsImages">
+>>>>>>> 1c73d4824e1f555ca2b033ffc576544a8e512772
             <% if @explores.blank? %>
               <div class="gridGuidingActivity">
                       <button data-toggle="modal" data-target="#editExploreModal" class="btnAddActivity" >adds</button>
@@ -99,7 +110,7 @@
         </div>
     </div>
     <div class="reviewsTitle">
-        <div id="forReviewsTitle">Reviews</div>
+        <div id="forReviewsTitle" class="c-black">Reviews</div>
     </div>
     <div class="reviewsContent">
       <% if @explore_ratings.blank? %>
@@ -118,7 +129,7 @@
                <div class="reviewInfo">
                    <div class="reviewRate">
                        <div class="celXs" id="subgridscoreXs">
-                           <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>                           
+                           <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>
                         </div>
                    </div>
                    <div class="reviewViewAllReviews">

@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
       @explore_ratings = @profile.explore_ratings.sort_by_created_desc
       @guide_ratings = @profile.guide_ratings.sort_by_created_desc
       @new_profile = false
+      # @project = Project.first
     else
       @new_profile = true
       @profile = Profile.new
@@ -39,6 +40,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.includes(:user).friendly.find(params[:id])
+    @explores = @profile.explore_categories.uniq
+    @guides = @profile.guide_categories.uniq
     @explore_categories = @profile.explore_categories.uniq
     @guide_categories = @profile.guide_categories.uniq
     @projects = @profile.projects
@@ -57,24 +60,40 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
-    # Update
-    if current_user.profile #if Profile already exits
+
+    @params = profile_params
+    if @params["country"]
+      @params["country"] = CS.get[profile_params[:country].to_sym]
+    end
+    if @params["state"]
+      @states = CS.get profile_params[:country].to_sym
+      @params["state"] = @states[profile_params[:state].to_sym]
+    end
+
+    @lan_array = JSON.parse(params["edit-profile-languages"]).split(',')
+    @params["languages"] = @lan_array
+
+
+    if current_user.profile #if Profile already exists
       @profile = current_user.profile
       @projects = @profile.projects
-      @params = profile_params
-      puts @params
-      if @params["country"]
-        @params["country"] = CS.get[profile_params[:country].to_sym]
+      respond_to do |format|
+        if @profile.update(@params)
+          format.html { redirect_to profiles_path, notice: 'Profile was successfully updated.' }
+          format.json { render :show, status: :ok, location: @profile }
+        else
+          format.html { render :edit }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        end
       end
-      if @params["state"]
-        @states = CS.get profile_params[:country].to_sym
-        @params["state"] = @states[profile_params[:state].to_sym]
-      end
-
-      @lan_array = @params["languages"].split(',')
-      @params["languages"] = @lan_array.map!{|x| LanguageList::LanguageInfo.find(x).name}
-
+    else
       if(params[:first_signup] == "true")
+        @user = current_user
+        @profile = Profile.new()  #create new Profile
+        @user.profile = @profile
+        @lan_array = JSON.parse(params["edit-profile-languages"]).split(',')
+        @params["languages"] = @lan_array.map!{|x| LanguageList::LanguageInfo.find(x).name}
+
         respond_to do |format|
           if @profile.update(@params)
             format.html { redirect_to '/profile/explores', notice: 'Profile was successfully updated.' }
@@ -84,45 +103,9 @@ class ProfilesController < ApplicationController
             format.json { render json: @profile.errors, status: :unprocessable_entity }
           end
         end
-      else
-        respond_to do |format|
-          if @profile.update(@params)
-            format.html { redirect_to profiles_path, notice: 'Profile was successfully updated.' }
-            format.json { render :show, status: :ok, location: @profile }
-          else
-            format.html { render :edit }
-            format.json { render json: @profile.errors, status: :unprocessable_entity }
-          end
-        end
-      end
-
-
-
-    else
-      # Create
-      @user = current_user
-      @profile = Profile.new(profile_params)  #create new Profile
-      @user.profile = @profile
-      @profile.country = CS.get[profile_params[:country].to_sym]
-      @profile.state = CS.get[profile_params[:state].to_sym]
-
-      @params["languages"]= []
-      @params["languages"] = params["languages"].map!{|x| LanguageList::LanguageInfo.find(x).name}
-
-      respond_to do |format|
-        if @profile.save
-          flash[:success] = "Profile was successfully created!"
-          format.html { redirect_to profiles_path}
-          format.json { render :show, status: :created, location: @profile }
-        else
-          format.html { render :new }
-          format.json { render json: @profile.errors, status: :unprocessable_entity }
-        end
-      end
     end
-
-
   end
+end
 
   def introduction
     if current_user.profile.nil?

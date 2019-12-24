@@ -48,7 +48,7 @@ class ExploresController < ApplicationController
   def create
     @profile = current_user.profile
     @saved_categories = @profile.explore_categories.pluck(:id).uniq
-
+    puts JSON.parse(params["exploreCategories"])
     if (params[:first_signup] == "true")
       #first signup explores update
       @selected_categories = JSON.parse(params["exploreCategories"])["categories"]
