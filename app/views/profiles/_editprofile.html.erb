@@ -18,6 +18,8 @@
                   <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" onclick="selectProfilePic()">
                     <i class="material-icons centerXY">edit</i>
                   </a>
+                  <i style="display:none;margin-left: 91%;margin-top: 100px;z-index: 100" class="fa fa-spinner" id="loaderimagebackground"></i>
+                  <i style="display:none;margin-left: 91%;margin-top: 100px;color:green;z-index: 100" class="fa fa-check" id="checkbackground"></i>
                   <%= file_field_tag :profileBackground,class: 'form-control fieldinput d-none' %>
                 </div>
                 <div class="cel">
@@ -122,6 +124,7 @@
         </div>
     </div>
     </div>
+    <input type="" id="urlprofileBackground" name="" style="display: none;">
     </div>
   <%end%>
 <script>
