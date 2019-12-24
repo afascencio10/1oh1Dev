@@ -216,3 +216,241 @@ AVOID eager loading detected
   Remove from your finder: :includes => [:categories, :projects_categories]
 Call stack
 
+2019-12-23 15:43:02[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 15:43:06[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Explore => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
+2019-12-23 15:43:06[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Profile => [:user]
+  Remove from your finder: :includes => [:user]
+Call stack
+
+2019-12-23 15:43:06[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Guide => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
+2019-12-23 16:47:03[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 16:47:13[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Explore => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
+2019-12-23 16:47:13[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Profile => [:user]
+  Remove from your finder: :includes => [:user]
+Call stack
+
+2019-12-23 16:47:13[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Guide => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
+2019-12-23 17:10:58[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 17:28:17[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 17:28:17[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 17:30:13[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 17:31:35[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 17:40:37[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 18:05:58[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 18:07:00[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 18:46:23[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 19:26:23[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 19:26:53[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 19:30:00[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:31:55[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:34:03[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:38:03[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:38:03[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:45:58[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:50:19[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:50:24[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:51:22[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Explore => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
+2019-12-23 22:51:22[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Profile => [:user]
+  Remove from your finder: :includes => [:user]
+Call stack
+
+2019-12-23 22:51:22[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Guide => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
+2019-12-23 22:52:07[WARN] user: andresascencio
+GET /profiles
+AVOID eager loading detected
+  Project => [:categories, :projects_categories]
+  Remove from your finder: :includes => [:categories, :projects_categories]
+Call stack
+
+2019-12-23 22:52:39[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Explore => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
+2019-12-23 22:52:39[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Profile => [:user]
+  Remove from your finder: :includes => [:user]
+Call stack
+
+2019-12-23 22:52:39[WARN] user: andresascencio
+GET /bookings
+AVOID eager loading detected
+  Guide => [:profile]
+  Remove from your finder: :includes => [:profile]
+Call stack
+
