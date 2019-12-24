@@ -7,8 +7,8 @@
         <th>Details</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
+    </thead>    
+    <tbody id="mainPreviousBookings">      
       <% @completed_bookings.each do |booking|%>
         <% if booking.guide.profile_id == @profile_id %>
           <% @type= "Guided" %>
@@ -17,7 +17,7 @@
           <% @type= "Explored" %>
           <% @companion= booking.guide.profile %>
         <%end%>
-        <tr>
+        <tr class="previousBookingsItem">
           <td class="secondary-success-color"><%= @type %></td>
           <td>
             <span><%= local_time(booking.start,'%B %e, %Y')%></span>
@@ -52,5 +52,12 @@
           </td>
         </tr>
       <%end%>
-      </tbody>
+    </tbody>    
     </table>
+    <div class="upcomingBookingsLinks gridLinksShow">
+      <a class="gridLessLink" id="lessPreviousBookings">Less</a>
+      <div class="showMoreLessMessage" id="previousBookingsMessage">
+        Showing x of y items
+      </div>
+      <a class="gridMoreLink" id="morePreviousBookings">More</a>
+    </div>

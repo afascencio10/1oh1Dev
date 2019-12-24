@@ -136,7 +136,7 @@ jQuery(document).ready(function($) {
 
 		$(params.idShowLess).click(function(){  		
  			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
-			updateShowItems(params); 			
+			updateShowItems(params);			
 		});
 		updateShowItems(params);
 		//function to update which items should be shown
@@ -172,6 +172,7 @@ jQuery(document).ready(function($) {
  		classItem:".upcomingBookingsItem", 
  		name:"upcomingBookingsList"
  	};
+ 	showMoreAndLess(paramsUpcomingBookings);
  	var paramsPendingBookings = {
  		idMainDiv: "#mainPendingBookings",
  		idMessage: "#pendingBookingsMessage",
@@ -180,6 +181,15 @@ jQuery(document).ready(function($) {
  		classItem:".pendingBookingsItem", 
  		name:"pendingBookingsList"
  	};
- 	showMoreAndLess(paramsUpcomingBookings); 	
+ 	showMoreAndLess(paramsPendingBookings);
+ 	var paramsPreviousBookings = {
+ 		idMainDiv: "#mainPreviousBookings",
+ 		idMessage: "#previousBookingsMessage",
+ 		idShowMore:"#morePreviousBookings", 
+ 		idShowLess:"#lessPreviousBookings",  
+ 		classItem:".previousBookingsItem", 
+ 		name:"previousBookingsList"
+ 	}; 	 	
+ 	showMoreAndLess(paramsPreviousBookings);
 
 })

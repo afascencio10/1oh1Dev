@@ -1,7 +1,7 @@
 <div id="pending_bookings">
-  <% @pending_bookings.each do |booking|%>
-    <div id="mainPendingBookings" class="pendingBookingsItem">
-      <div id="bookings-pending-btn-content" class="border mt-5">
+  <div id="mainPendingBookings">    
+    <% @pending_bookings.each do |booking|%>    
+      <div id="bookings-pending-btn-content" class="pendingBookingsItem border mt-5">
         <div class="response-wrap text-right border p-3">
           <!-- <div class="progress-circle d-inline-block align-middle mt-2 mr-2" id="bookings-circle">
           </div> -->
@@ -41,8 +41,8 @@
           </div>
         </div>
       </div>
-    </div>      
-  <% end %>
+    <% end %>
+  </div>    
   <div class="upcomingBookingsLinks gridLinksShow">
     <a class="gridLessLink" id="lessPendingBookings">Less</a>
     <div class="showMoreLessMessage" id="pendingBookingsMessage">

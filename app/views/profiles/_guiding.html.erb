@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="interestsContent">
-        <div class="interestsImages">
+        <div class="interestsImages" id="profileGuideMain">
             <% if @guides.blank? %>
             <div class="gridGuidingActivity">
                     <button data-toggle="modal" data-target="#editGuideModal" class="btnAddActivity">add</button>
@@ -30,18 +30,22 @@
                     <div class=""></div>
                 </div>
             </div>
-            <% else %>
-               <% @guides.each do|guide| %>
+            <% else %>              
+                <% @guides.each do|guide| %>
                   <div class="interestsImage">
                      <img class="imagesInterests" src="<%= guide.url %>">
                   </div>
                <% end %>
             <% end %>
-        </div>
+        </div>         
         <div class="interestsMoreLink">
-            <a id="interestsMoreLink" href="#">More</a>
+          <a class="gridLessLink" id="lessProfileGuides">Less</a>
+          <div class="showMoreLessMessage" id="profileGuideMessage">
+            Showing x of y items
+          </div>
+          <a class="gridMoreLink" id="moreProfileGuides">More</a>
         </div>
-    </div>
+    </div>    
     <div class="reviewsTitle">
         <div id="forReviewsTitle">Reviews</div>
     </div>
