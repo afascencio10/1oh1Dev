@@ -587,6 +587,16 @@ jQuery(document).ready(function($) {
  	};
  	showMoreAndLess(paramsExplores);
 
+ 	var paramsProfileGuide = {
+ 		idMainDiv: "#profileGuideMain",
+ 		idMessage: "#profileGuideMessage",
+ 		idShowMore:"#moreProfileGuides", 
+ 		idShowLess:"#lessProfileGuides",  
+ 		classItem:".interestsImage", 
+ 		name:"profileGuidesList"
+ 	};
+ 	showMoreAndLess(paramsProfileGuide);
+
  });
 
 })

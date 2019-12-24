@@ -8,18 +8,17 @@
         <th>Details</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
-      <% @upcoming_bookings.each do |booking|%>
-        <% if booking.guide.profile_id == @profile_id %>
-          <% @type= "Guided" %>
-          <% @companion= booking.explore.profile %>
-        <% elsif booking.explore.profile_id == @profile_id %>
-          <% @type= "Explored" %>
-          <% @companion= booking.guide.profile %>
-        <%end%>
-        <tr id="mainUpcomingBookings">
-          <div class="upcomingBookingsItem">
+    </thead>    
+      <tbody id="mainUpcomingBookings">        
+        <% @upcoming_bookings.each do |booking|%>
+          <% if booking.guide.profile_id == @profile_id %>
+            <% @type= "Guided" %>
+            <% @companion= booking.explore.profile %>
+          <% elsif booking.explore.profile_id == @profile_id %>
+            <% @type= "Explored" %>
+            <% @companion= booking.guide.profile %>
+          <%end%>
+          <tr class="upcomingBookingsItem">
             <td class="secondary-success-color"><%= @type %></td>
             <td>
               <span><%= local_time(booking.start,'%B %e, %Y')%></span>
@@ -47,16 +46,15 @@
               <a class="secondary-success-color upcomming-change-or-cancel" id="<%=booking.id %>" href="#">Change or Cancel</a>
               <br>
             </td>
-          </div>            
-          </tr>          
+          </tr>
         <%end%>          
-    </tbody>
-  </table>
+      </tbody>      
+  </table> 
   <div class="upcomingBookingsLinks gridLinksShow">
     <a class="gridLessLink" id="lessUpcomingBookings">Less</a>
     <div class="showMoreLessMessage" id="upcomingBookingsMessage">
       Showing x of y items
     </div>
     <a class="gridMoreLink" id="moreUpcomingBookings">More</a>
-  </div>
+  </div>      
 </div>
