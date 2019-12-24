@@ -18,7 +18,8 @@
           <% @type= "Explored" %>
           <% @companion= booking.guide.profile %>
         <%end%>
-        <tr>
+        <tr id="mainUpcomingBookings">
+          <div class="upcomingBookingsItem">
             <td class="secondary-success-color"><%= @type %></td>
             <td>
               <span><%= local_time(booking.start,'%B %e, %Y')%></span>
@@ -46,9 +47,16 @@
               <a class="secondary-success-color upcomming-change-or-cancel" id="<%=booking.id %>" href="#">Change or Cancel</a>
               <br>
             </td>
-          </tr>
-        <%end%>
-
+          </div>            
+          </tr>          
+        <%end%>          
     </tbody>
   </table>
+  <div class="upcomingBookingsLinks gridLinksShow">
+    <a class="gridLessLink" id="lessUpcomingBookings">Less</a>
+    <div class="showMoreLessMessage" id="upcomingBookingsMessage">
+      Showing x of y items
+    </div>
+    <a class="gridMoreLink" id="moreUpcomingBookings">More</a>
+  </div>
 </div>

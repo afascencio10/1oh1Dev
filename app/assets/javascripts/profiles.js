@@ -10,28 +10,28 @@ jQuery(document).ready(function($) {
 		console.log( "ready!" );		
 		switch(URLsearchProfile[1]){			
 			case "explore":				
-				$('#tab1-tab').trigger( "click" );
+				$('.tab1-tabProfile').trigger( "click" );
 			break;
 			case "guide":				
-				$('#tab2-tab').trigger('click');
+				$('.tab2-tabProfile').trigger('click');
 			break;
 			case "projects":				
-				$('#tab3-tab').trigger( "click" );
+				$('.tab3-tabProfile').trigger( "click" );
 			break;
 			case null || "" || undefined:
-				$('#tab1-tab').trigger( "click" );
+				$('.tab1-tabProfile').trigger( "click" );
 			break;
 		}		
 	});	
-	$('#tab1-tab').click(function(){
+	$('.tab1-tabProfile').click(function(){
 		var pathname = window.location.pathname;
 		history.pushState(null, "", pathname+'#'+"explore");		
 	})
-	$('#tab2-tab').click(function(){
+	$('.tab2-tabProfile').click(function(){
 		var pathname = window.location.pathname;
 		history.pushState(null, "", pathname+'#'+"guide");
 	})
-	$('#tab3-tab').click(function(){
+	$('.tab3-tabProfile').click(function(){
 		var pathname = window.location.pathname;
 		history.pushState(null, "", pathname+'#'+"projects");
 	})

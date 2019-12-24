@@ -61,22 +61,7 @@
 			</h5>
 
 
-				<%= form_tag(booking_path(Booking.first), :method => "delete", remote: true) do %>
-					<input type="hidden" name="booking_id" id="cancel_booking_id">
-					<div class="form-group pt-3 border-top">
-	  				<label for="cancelSessionDialogNote"><b>Add a note</b></label>
-	  				<textarea class="form-control"
-									name="cancel_message"
-	  						  maxlength="140"
-	  						  id="cancelSessionDialogNote"
-	  						  rows="3"></textarea>
-					</div>
-					<div class="modal-footer align-items-start px-0 border-0">
-			      <button type="button" class="btn btn-secondary" id="cancelDialogBoxBackBtn" data-dismiss="modal">Back</button>
-						<%= submit_tag 'Cancel Session', class:"btn btn-danger cancel-session",data: { disable_with: "Cancelling..." } %>
-
-			    </div>
-			<%end%>
+				<!--deleted-->
 		</div>
 	</div>
 </div>

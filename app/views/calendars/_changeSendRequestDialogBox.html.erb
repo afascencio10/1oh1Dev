@@ -72,11 +72,7 @@
 
 			<div class="modal-footer align-items-start px-0 border-0">
 		      <button type="button" class="btn btn-secondary" id="changeSendRequestBackBtn" data-dismiss="modal">Back</button>
-					<%= form_tag(booking_path(Booking.first), :method => "put", remote: true) do %>
-						<input type="hidden" name="booking_id" id="change_booking_id">
-						<input type="hidden" name="change_request" value="true">
-						<%= submit_tag 'Send request', class:"btn btn-primary edit-booking",data: { disable_with: "Requesting..." } %>
-					<%end%>
+					<!--deleted-->
 		    </div>
 		</div>
 	</div>
