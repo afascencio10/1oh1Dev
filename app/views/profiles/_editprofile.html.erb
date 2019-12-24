@@ -15,9 +15,9 @@
                   id="gridBackground"
                   style="background-image: url(<%= image_path ('life-862972_1920.jpg') %>);">
                 <div>
-                  <button class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" onclick="selectProfilePic()">
+                  <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" onclick="selectProfilePic()">
                     <i class="material-icons centerXY">edit</i>
-                  </button>
+                  </a>
                   <%= file_field_tag :profileBackground,class: 'form-control fieldinput d-none' %>
                 </div>
                 <div class="cel">
@@ -127,12 +127,12 @@
 <script>
   function selectPic() {
     var uploadInput = document.getElementById('profilephoto')
-    uploadInput.click()
+    uploadInput.click()    
   }
 
   function selectProfilePic() {
     var uploadProfileInput = document.getElementById('profileBackground')
-    uploadProfileInput.click()
+    uploadProfileInput.click()    
   }
 
 </script>
