@@ -156,6 +156,9 @@
             }else if(e.target.id == "profilephoto"){
               $('#loaderimageprofile').fadeIn();
               $('#loaderimageprofile').addClass('fa-spin');
+            }else if(e.target.id == "profileBackground"){
+              $('#loaderimagebackground').fadeIn();
+              $('#loaderimagebackground').addClass('fa-spin');
             }else if(e.target.id == "edit_url"){
               $('#loaderedit').fadeIn();
               $('#loaderedit').addClass('fa-spin');
@@ -206,6 +209,7 @@
                       {
                         $('#urlprofileBackground').val(downloadURL);
                           profile = document.getElementById("urlprofileBackground").value = downloadURL;
+                          console.log(downloadURL);
                       }
                       else if(e.target.id=="edit_url")
                       {
@@ -217,6 +221,9 @@
                       }else if(e.target.id == "profilephoto"){
                         $('#loaderimageprofile').fadeOut();
                         $('#checkprofile').fadeIn();
+                      }else if(e.target.id == "profileBackground"){
+                        $('#loaderimagebackground').fadeOut();
+                        $('#checkbackground').fadeIn();
                       }else if(e.target.id == "edit_url"){
                         $('#loaderedit').fadeOut();
                         $('#checkedit').fadeIn();
