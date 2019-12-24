@@ -29,10 +29,50 @@ jQuery(document).ready(function($) {
 
 	// assign listeners
 	// to approve button
-	$(document).on("click", ".booking-approve-btn", function(e) {
+	/*$(document).on("click", ".booking-approve-btn", function(e) {
 			$("#approve_booking_id").val($(this).attr("id"))
 			$('#bookingApproveDialog').modal()
+	});*/
+	$(".booking-approve-btn").click(function(){  		
+		$("#approve_booking_id").val($(this).attr("id"));
+		var dateInfo = getBookingInfo($(this).attr("id"));			
+		var classesDateInfo = {
+			date:".today-placeholder",
+			start_time:".start-time-placeholder",
+			end_time:".end-time-placeholder"
+		};
+		showBookingInfo(dateInfo, classesDateInfo)
+		$('#bookingApproveDialog').modal();
+		
 	});
+
+	function getBookingInfo(id){
+		var startSelector = "#infoBooking-"+id+" .{_class} time";
+		var dateInfo = {
+			date:getLabel("date",startSelector),
+			start_time:getLabel("start_time",startSelector),
+			end_time:getLabel("end_time",startSelector)
+		};
+		function getLabel(classTime,startSelector){
+			var selector = (""+startSelector).replace("{_class}",classTime);
+			return $(selector).attr("aria-label");
+		};
+		return dateInfo;
+	}
+
+	function showBookingInfo(dateInfo, classesInfo){
+		$(classesInfo.date).each(function(index){
+			$(this).html(dateInfo.date);
+		});
+		$(classesInfo.start_time).each(function(index){
+			$(this).html(dateInfo.start_time);
+		});
+		$(classesInfo.end_time).each(function(index){
+			$(this).html(dateInfo.end_time);
+		});
+	}
+
+
 	$(document).on("click", ".booking-decline-btn", function(e) {
 			$("#decline_booking_id").val($(this).attr("id"))
 			$('#declineBookingDialog').modal()
@@ -41,6 +81,13 @@ jQuery(document).ready(function($) {
 	$(document).on("click", ".upcomming-change-or-cancel", function(e) {
 			$("#change_booking_id").val($(this).attr("id"))
 			$("#cancel_booking_id").val($(this).attr("id"))
+			var dateInfo = getBookingInfo($(this).attr("id"));			
+			var classesDateInfo = {
+				date:".today-placeholder",
+				start_time:".start-time-placeholder",
+				end_time:".end-time-placeholder"
+			};
+			showBookingInfo(dateInfo, classesDateInfo);
 			$('#chagneOrCancelDialog').modal()
 	});
 

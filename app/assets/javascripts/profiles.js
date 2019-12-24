@@ -504,31 +504,6 @@ jQuery(document).ready(function($) {
 		}
  	}); 
 
- 	
- 	function showMoreLess(idContainer,idShowMore,idShowLess) {
- 		var idContainerString = "#" + idContainer;
- 		var idShowMoreString = "#" + idShowMore;
- 		var idShowLessString = "#" + idShowLess;
- 		$("#projectInContainer").each(function(index){ 			
- 			$("#showMoreButton").click(function(){
- 				if (index < showCount + 5) {
- 					$("#projectInContainer")[index].css("display","block");
- 				}else{
- 					$("#projectInContainer")[index].css("display","none");
- 				}
- 			});
- 			$("#showLessButton").click(function(){
- 				if (showCount > 5) {
- 					if (index < showCount - 5) {
-	 					$("#projectInContainer")[index].css("display","block");
-	 				}else{
-	 					$("#projectInContainer")[index].css("display","none");
-	 				}
- 				}	 				
- 			});
- 		});
- 	}
-
  	//CODE FOR SHOW MORE AND LESS FEATURE
  	if(!showMoreLessInfo){
  		var showMoreLessInfo = {};
