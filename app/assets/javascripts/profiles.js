@@ -545,7 +545,6 @@ jQuery(document).ready(function($) {
 		}
  	}
 
-
  	var params = {
  		idMainDiv: "#projectsListProfile",
  		idMessage: "#projectsProfileMessage",

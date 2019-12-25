@@ -1,13 +1,13 @@
 <section class="my-5">
   <h3 class="my-5 c-black">Top Explorers</h3>
 
-  <div class="row my-4">
+  <div class="row my-4" id="mainTopExplore">    
     <% if @top_explores.empty? %>
       <h6 class="my-7 c-black">No Explorers Available</h6>
     <% else %>
       <% @top_explores.each do |explorer|%>
         <%= link_to explore_path(explorer.explore_id) do %>
-          <div class="col">
+          <div class="col topExploreItem">
             <div class="minimal-card-wrap text-left">
               <div class="minimal-card border animating">
                 <div class="avatar center animating"
@@ -28,9 +28,11 @@
     <% end %>
   </div>
 
-  <div class="row">
-    <div class="col text-right">
-      <button type="button" class="btn btn-link show-more-button">Show more</button>
+  <div class="upcomingBookingsLinks gridLinksShow">
+    <a class="gridLessLink" id="showLessTopExplore">Less</a>
+    <div class="showMoreLessMessage" id="topExploreMessage">
+      Showing x of y items
     </div>
+    <a class="gridMoreLink" id="showMoreTopExplore">More</a>
   </div>
 </section>
