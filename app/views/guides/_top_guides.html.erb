@@ -1,13 +1,13 @@
 <section class="my-5">
   <h3 class="my-5 c-black">Top Guides</h3>
 
-  <div class="row my-4">
+  <div class="row my-4" id="mainTopGuides">    
     <% if @top_guides.empty? %>
       <h6 class="my-7 c-black">No Guides Available</h6>
     <% else %>
       <% @top_guides.each do |guide|%>
         <%= link_to guide_path(guide.guide_id) do %>
-          <div class="col">
+          <div class="col topGuidesItem">
             <div class="minimal-card-wrap text-left">
               <div class="minimal-card border animating">
                 <div class="avatar center animating"
@@ -28,9 +28,11 @@
     <% end %>
   </div>
 
-  <div class="row">
-    <div class="col text-right">
-      <button type="button" class="btn btn-link show-more-button">Show more</button>
+  <div class="upcomingBookingsLinks gridLinksShow">
+    <a class="gridLessLink" id="showLessTop">Less</a>
+    <div class="showMoreLessMessage" id="topGuidesMessage">
+      Showing x of y items
     </div>
+    <a class="gridMoreLink" id="showMoreTop">More</a>
   </div>
 </section>

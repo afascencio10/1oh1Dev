@@ -75,4 +75,124 @@ jQuery(document).ready(function($) {
 		var pathname = window.location.pathname;
 		history.pushState(null, "", pathname+"?type=projects");		
 	})
+
+	//CODE FOR SHOW MORE AND LESS FEATURE
+ 	if(!showMoreLessInfo){
+ 		var showMoreLessInfo = {};
+ 	}
+
+ 	function showMoreAndLess(params){
+ 		showMoreLessInfo[params.name] = {};
+ 		showMoreLessInfo[params.name].totalItems = $(params.idMainDiv+" "+params.classItem).length;
+ 		console.log(params.name+" "+showMoreLessInfo[params.name].totalItems);
+ 		showMoreLessInfo[params.name].showItems = 5;
+ 		$(params.idShowMore).click(function(){  		
+ 			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;
+ 			if(hiddenItems > 0){
+ 				showMoreLessInfo[params.name].showItems = showMoreLessInfo[params.name].showItems + 5;
+ 			}
+ 			updateShowItems(params);
+		});
+
+		$(params.idShowLess).click(function(){  		
+ 			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
+			updateShowItems(params); 			
+		});
+		updateShowItems(params);
+		//function to update which items should be shown
+		function updateShowItems(params){
+			$(params.idMainDiv+" "+params.classItem).each(function(index){
+				if (index + 1 <= showMoreLessInfo[params.name].showItems){
+					$(this).show();
+				}else{
+					$(this).hide();
+				}
+			});
+			var itemsShow = Math.min(showMoreLessInfo[params.name].showItems,showMoreLessInfo[params.name].totalItems);
+			$(params.idMessage).html("Showing " + itemsShow + " of " + showMoreLessInfo[params.name].totalItems + " items");
+		}
+ 	}
+
+ 	var paramsPopularGuides = {
+ 		idMainDiv: "#mainPopularGuides",
+ 		idMessage: "#popularGuidesMessage",
+ 		idShowMore:"#showMorePopular", 
+ 		idShowLess:"#showLessPopular",  
+ 		classItem:".popularGuidesItem", 
+ 		name:"popularGuides"
+ 	};
+ 	showMoreAndLess(paramsPopularGuides);
+
+ 	var paramsPopularRol = {
+ 		idMainDiv: "#mainPopularRol",
+ 		idMessage: "#popularRolMessage",
+ 		idShowMore:"#showMoreRol", 
+ 		idShowLess:"#showLessRol",  
+ 		classItem:".popularRolItem", 
+ 		name:"popularRolGuides"
+ 	};
+ 	showMoreAndLess(paramsPopularRol);
+
+ 	var paramsTopGuides = {
+ 		idMainDiv: "#mainTopGuides",
+ 		idMessage: "#topGuidesMessage",
+ 		idShowMore:"#showMoreTop",
+ 		idShowLess:"#showLessTop", 
+ 		classItem:".topGuidesItem",
+ 		name:"topGuides"
+ 	};
+ 	showMoreAndLess(paramsTopGuides);
+
+ 	var paramsCategorieGuides = {
+ 		idMainDiv: "#mainCategoryGuides",
+ 		idMessage: "#categoryGuidesMessage",
+ 		idShowMore:"#showMoreCategory",
+ 		idShowLess:"#showLessCategory",
+ 		classItem:".categoryGuidesItem",
+ 		name:"categoryGuides"
+ 	};
+ 	showMoreAndLess(paramsCategorieGuides);
+
+
+ 	//FOR EXPLORES
+ 	var paramsPopularExplore = {
+ 		idMainDiv: "#mainPopularExplore",
+ 		idMessage: "#popularExploreMessage",
+ 		idShowMore:"#showMorePopular", 
+ 		idShowLess:"#showLessPopular",  
+ 		classItem:".popularExploreItem", 
+ 		name:"popularExplore"
+ 	};
+ 	showMoreAndLess(paramsPopularExplore);
+
+ 	var paramsPopularRolExplore = {
+ 		idMainDiv: "#mainPopularRolExplore",
+ 		idMessage: "#popularRolExploreMessage",
+ 		idShowMore:"#showMoreRolExplore", 
+ 		idShowLess:"#showLessRolExplore",  
+ 		classItem:".popularRolExploreItem", 
+ 		name:"popularRolExplore"
+ 	};
+ 	showMoreAndLess(paramsPopularRolExplore);
+
+ 	var paramsTopExplore = {
+ 		idMainDiv: "#mainTopExplore",
+ 		idMessage: "#topExploreMessage",
+ 		idShowMore:"#showMoreTopExplore",
+ 		idShowLess:"#showLessTopExplore", 
+ 		classItem:".topExploreItem",
+ 		name:"topExplore"
+ 	};
+ 	showMoreAndLess(paramsTopExplore);
+
+ 	var paramsCategorieExplore = {
+ 		idMainDiv: "#mainCategoryExplore",
+ 		idMessage: "#categoryExploreMessage",
+ 		idShowMore:"#showMoreCategoryExplore",
+ 		idShowLess:"#showLessCategoryExplore",
+ 		classItem:".categoryExploreItem",
+ 		name:"categoryGuides"
+ 	};
+ 	showMoreAndLess(paramsCategorieExplore);
+
 })
