@@ -8,23 +8,23 @@
         <th>Details</th>
         <th></th>
       </tr>
-    </thead>    
-    <tbody id="mainUpcomingBookings"> 
+    </thead>
+    <tbody id="mainUpcomingBookings">
       <% if @upcoming_bookings.empty? %>
         No Upcoming Bookings
-      <%else%>   
+      <%else%>
         <% @upcoming_bookings.each do |booking|%>
             <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
               <div class="date">
-                <%= local_time(booking.start,'%B %e')%>  
+                <%= local_time(booking.start,'%B %e')%>
               </div>
               <div class="start_time">
-                <%= local_time(booking.start,'%l:%M %P')%>  
+                <%= local_time(booking.start,'%l:%M %P')%>
               </div>
               <div class="end_time">
-                <%= local_time(booking.end,'%l:%M %P')%>  
+                <%= local_time(booking.end,'%l:%M %P')%>
               </div>
-            </div>    
+            </div>
 
           <% if booking.guide.profile_id == @profile_id %>
             <% @type= "Guided" %>
@@ -63,9 +63,10 @@
               <br>
             </td>
           </tr>
-        <%end%>          
-      </tbody>      
-  </table> 
+        <%end%>
+      <%end%>       
+      </tbody>
+  </table>
   <div class="upcomingBookingsLinks gridLinksShow">
     <a class="gridLessLink" id="lessUpcomingBookings">Less</a>
     <div class="showMoreLessMessage" id="upcomingBookingsMessage">

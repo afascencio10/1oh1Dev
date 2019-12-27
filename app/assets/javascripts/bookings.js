@@ -29,21 +29,16 @@ jQuery(document).ready(function($) {
 
 	// assign listeners
 	// to approve button
-	/*$(document).on("click", ".booking-approve-btn", function(e) {
-			$("#approve_booking_id").val($(this).attr("id"))
-			$('#bookingApproveDialog').modal()
-	});*/
-	$(".booking-approve-btn").click(function(){  		
-		$("#approve_booking_id").val($(this).attr("id"));
-		var dateInfo = getBookingInfo($(this).attr("id"));			
-		var classesDateInfo = {
-			date:".today-placeholder",
-			start_time:".start-time-placeholder",
-			end_time:".end-time-placeholder"
-		};
-		showBookingInfo(dateInfo, classesDateInfo)
-		$('#bookingApproveDialog').modal();
-		
+	$(document).on("click", ".booking-approve-btn", function(e) {
+			$("#approve_booking_id").val($(this).attr("id"));
+			var dateInfo = getBookingInfo($(this).attr("id"));
+			var classesDateInfo = {
+				date:".today-placeholder",
+				start_time:".start-time-placeholder",
+				end_time:".end-time-placeholder"
+			};
+			showBookingInfo(dateInfo, classesDateInfo)
+			$('#bookingApproveDialog').modal();
 	});
 
 	function getBookingInfo(id){
@@ -81,7 +76,7 @@ jQuery(document).ready(function($) {
 	$(document).on("click", ".upcomming-change-or-cancel", function(e) {
 			$("#change_booking_id").val($(this).attr("id"))
 			$("#cancel_booking_id").val($(this).attr("id"))
-			var dateInfo = getBookingInfo($(this).attr("id"));			
+			var dateInfo = getBookingInfo($(this).attr("id"));
 			var classesDateInfo = {
 				date:".today-placeholder",
 				start_time:".start-time-placeholder",
@@ -119,7 +114,7 @@ jQuery(document).ready(function($) {
 			var input = document.getElementById("rateExperience");
 		 	if (input) {
 		 		input.value = rating;
-		 		console.log(input.value);		 		
+		 		console.log(input.value);
 		 	}
 		}
  	});
@@ -131,26 +126,26 @@ jQuery(document).ready(function($) {
 	var URLsearchBooking = window.location.href;
 	URLsearchBooking = URLsearchBooking.split("#");
 	console.log (URLsearchBooking[1]);
-	$( document ).ready(function() {		
-		console.log( "ready!" );		
-		switch(URLsearchBooking[1]){			
-			case "pending":				
+	$( document ).ready(function() {
+		console.log( "ready!" );
+		switch(URLsearchBooking[1]){
+			case "pending":
 				$('.tab1-tabBooking').trigger( "click" );
 			break;
-			case "upcoming":				
+			case "upcoming":
 				$('.tab2-tabBooking').trigger('click');
 			break;
-			case "completed":				
+			case "completed":
 				$('.tab3-tabBooking').trigger( "click" );
 			break;
 			case null || "" || undefined:
 				$('.tab1-tabBooking').trigger( "click" );
 			break;
-		}		
-	});	
+		}
+	});
 	$('.tab1-tabBooking').click(function(){
 		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"pending");		
+		history.pushState(null, "", pathname+'#'+"pending");
 	})
 	$('.tab2-tabBooking').click(function(){
 		var pathname = window.location.pathname;
@@ -173,7 +168,7 @@ jQuery(document).ready(function($) {
  		showMoreLessInfo[params.name].totalItems = $(params.idMainDiv+" "+params.classItem).length;
  		console.log(params.name+" "+showMoreLessInfo[params.name].totalItems);
  		showMoreLessInfo[params.name].showItems = 5;
- 		$(params.idShowMore).click(function(){  		
+ 		$(params.idShowMore).click(function(){
  			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;
  			if(hiddenItems > 0){
  				showMoreLessInfo[params.name].showItems = showMoreLessInfo[params.name].showItems + 5;
@@ -181,9 +176,9 @@ jQuery(document).ready(function($) {
  			updateShowItems(params);
 		});
 
-		$(params.idShowLess).click(function(){  		
+		$(params.idShowLess).click(function(){
  			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
-			updateShowItems(params);			
+			updateShowItems(params);
 		});
 		updateShowItems(params);
 		//function to update which items should be shown
@@ -203,9 +198,9 @@ jQuery(document).ready(function($) {
  	var params = {
  		idMainDiv: "#projectsListProfile",
  		idMessage: "#projectsProfileMessage",
- 		idShowMore:"#showMoreButton", 
- 		idShowLess:"#showLessButton",  
- 		classItem:".projectInContainer", 
+ 		idShowMore:"#showMoreButton",
+ 		idShowLess:"#showLessButton",
+ 		classItem:".projectInContainer",
  		name:"projectsProfile"
  	};
 
@@ -214,29 +209,29 @@ jQuery(document).ready(function($) {
  	var paramsUpcomingBookings = {
  		idMainDiv: "#mainUpcomingBookings",
  		idMessage: "#upcomingBookingsMessage",
- 		idShowMore:"#moreUpcomingBookings", 
- 		idShowLess:"#lessUpcomingBookings",  
- 		classItem:".upcomingBookingsItem", 
+ 		idShowMore:"#moreUpcomingBookings",
+ 		idShowLess:"#lessUpcomingBookings",
+ 		classItem:".upcomingBookingsItem",
  		name:"upcomingBookingsList"
  	};
  	showMoreAndLess(paramsUpcomingBookings);
  	var paramsPendingBookings = {
  		idMainDiv: "#mainPendingBookings",
  		idMessage: "#pendingBookingsMessage",
- 		idShowMore:"#morePendingBookings", 
- 		idShowLess:"#lessPendingBookings",  
- 		classItem:".pendingBookingsItem", 
+ 		idShowMore:"#morePendingBookings",
+ 		idShowLess:"#lessPendingBookings",
+ 		classItem:".pendingBookingsItem",
  		name:"pendingBookingsList"
  	};
  	showMoreAndLess(paramsPendingBookings);
  	var paramsPreviousBookings = {
  		idMainDiv: "#mainPreviousBookings",
  		idMessage: "#previousBookingsMessage",
- 		idShowMore:"#morePreviousBookings", 
- 		idShowLess:"#lessPreviousBookings",  
- 		classItem:".previousBookingsItem", 
+ 		idShowMore:"#morePreviousBookings",
+ 		idShowLess:"#lessPreviousBookings",
+ 		classItem:".previousBookingsItem",
  		name:"previousBookingsList"
- 	}; 	 	
+ 	};
  	showMoreAndLess(paramsPreviousBookings);
 
 })
