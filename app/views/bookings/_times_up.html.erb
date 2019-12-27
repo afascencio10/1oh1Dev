@@ -1,19 +1,20 @@
 
 <!-- Modal -->
 <div class="modal fade timeUpModal" id="timesUp" tabindex="-1" role="dialog" aria-labelledby="timesUp" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <!-- --  -->
       <div class="modal-header">
         <span class="modal-title titleModalTimesUp text-center" id="exampleModalLabel">Times up!</span>
-        <input type="" id="rateExperience" style="visibility: hidden;" name="">
       </div>
       <div class="modal-body grid-timeUpModal">
         <!-- --  -->
         <div class="main">
           <div class="top-body">
             <span class="notice">Please rate your experience with</span>
-            <span class="name">Dan Black</span>
+            <% if params["peer_id"]%>
+              <span class="name"><%= User.find(params["peer_id"]).firstname %> <%= User.find(params["peer_id"]).lastname %></span>
+            <%end%>
           </div>
             <!-- person image  -->
           <div class="midle-body">
@@ -28,10 +29,14 @@
 
           <div class="end-body">
             <div class="comments">
-              <form action="">
-                <input type="text" placeholder="Leave a comment" class="form-control commentField">
-                <button class="btn btn-submit w-100">Submit</button>
-              </form>
+              <%= form_tag(reviews_path, :method => "post", remote: true) do %>
+                <input type="hidden" id="rateExperience" value="3" name="rating">
+                <input type="hidden" id="peer_id" value="<%= params["peer_id"] %>" name="peer_id">
+                <input type="hidden" id="booking_id" value="<%= params["id"] %>" name="booking_id">
+                <input type="hidden" id="user_id" value="<%= params["profile_id"] %>" name="user_id">
+                <input type="text" placeholder="Leave a comment" name="review" class="form-control commentField">
+                <%= submit_tag 'Submit', class:"btn btn-submit w-100",data: { disable_with: "Submitting..." } %>
+              <%end%>
             </div>
 
             <div class="last-text-body">

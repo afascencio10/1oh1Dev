@@ -1,9 +1,12 @@
 class Booking < ApplicationRecord
   extend FriendlyId
   friendly_id :identifier
-
   belongs_to :explore
   belongs_to :guide
+
+  scope :my_pending, -> (profile_id){where(:status=>0,:recipient_id=>profile_id)}
+
+
   has_many :video_sessions, dependent: :destroy
   #if chat is destroyed all video_sessions will also be  destroyed
   has_many :profiles, through: :video_sessions

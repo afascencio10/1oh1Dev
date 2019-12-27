@@ -1,2 +1,2 @@
-$('.modal-body .bodyEditProject').html("<%= escape_javascript render('edit_project',locals:{:project => @project}) %>");
+$('.modal-body .bodyEditProject').html("<%= escape_javascript render('profiles/edit_project',locals:{:project => @project}) %>");
 $('#projectsModal').modal('show');

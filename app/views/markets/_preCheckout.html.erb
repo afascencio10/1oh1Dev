@@ -1,5 +1,3 @@
-<script src="https://js.stripe.com/v3"></script>
-
 <div class="modal fade"
 	id="preCheckoutDialog"
 	tabindex="-1"
@@ -45,28 +43,28 @@
 
 <script>
 (function() {
-  var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
+	var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
 
 	var checkout = document.getElementsByClassName('checkout-button');
-  var checkoutButton = checkout[0];
-  checkoutButton.addEventListener('click', function () {
+	var checkoutButton = checkout[0];
+	checkoutButton.addEventListener('click', function () {
 		var type = checkoutButton.id.split('_')[0];
 		var email = $("#current-user").val();
-    stripe.redirectToCheckout({
+		stripe.redirectToCheckout({
 			// items: [{[type]: checkoutButton.id, quantity: 1}],
 
 			// items: [{[type]: 'sku_G5nYYuuMxCe93q', quantity: 1}],
 			customerEmail: email,
-      items: [{'plan': 'plan_G7zVZUMUk8WPZv', quantity: 1}],
-      successUrl: window.location.origin +'/payment?session_id={CHECKOUT_SESSION_ID}',
-      cancelUrl: window.location.origin + '/canceled',
-    })
-    .then(function (result) {
-      if (result.error) {
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
-    });
-  });
+			items: [{'plan': 'plan_G7zVZUMUk8WPZv', quantity: 1}],
+			successUrl: window.location.origin +'/payment?session_id={CHECKOUT_SESSION_ID}',
+			cancelUrl: window.location.origin + '/canceled',
+		})
+		.then(function (result) {
+			if (result.error) {
+				var displayError = document.getElementById('error-message');
+				displayError.textContent = result.error.message;
+			}
+		});
+	});
 })();
 </script>

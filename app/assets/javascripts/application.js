@@ -60,6 +60,7 @@
 //= require profiles
 //= require sidebar
 //= require reviews
+//= require projects
 //= require filterrific/filterrific-jquery
 //= require helps
 //= require local-time

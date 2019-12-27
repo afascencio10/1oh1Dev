@@ -1,6 +1,5 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="modal" id="myModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <%= form_tag( { :action => :create, }, { :method => :post }) do %>
       <!-- Modal Header -->
@@ -32,7 +31,7 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Category Image :</label>
 
-                 <input type="file" class="form-control" id="cat_url">
+                 <input type="file" class="form-control categories" id="cat_url">
                  <i style="display:none;margin-left: 91%;float: right;margin-top: -11%;position:absolute" class="fa fa-spinner" id="loaderCategoryImage"></i>
                   <i style="display:none;margin-left: 91%;float: right;margin-top: -11%;color:green;position:absolute" class="fa fa-check" id="checkCategoryImage"></i>
                  <input type="text" hidden id="url" name="url">

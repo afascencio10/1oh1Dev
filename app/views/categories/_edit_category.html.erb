@@ -1,5 +1,5 @@
 <div class="modal" id="editModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <%= form_tag( category_path(Category.find(4).id), { :method => :patch }) do %>
       <!-- Modal Header -->
@@ -31,7 +31,7 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Category Image :</label>
                    <img alt="Image" id="editurl" style="height:60px">
-                   <input type="file" class="form-control" id="edit_url">
+                   <input type="file" class="form-control categories" id="edit_url">
                    <input type="text" hidden id="edurl" name="url">
                 </div>
 

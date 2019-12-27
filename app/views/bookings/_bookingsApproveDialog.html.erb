@@ -2,7 +2,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header px-5">
-		        <h4 class="modal-title">Confirm Booking</h6>
+		        <h4 class="modal-title">Confirm Booking</h4>
 
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
@@ -76,7 +76,7 @@
 				<%= form_tag(booking_path(Booking.first), :method => "put", remote: true) do %>
 					<div class="w-100">
 						<input type="hidden" name="booking_id" id="approve_booking_id">
-						<%= submit_tag 'Approve', class:"btn btn-primary", id:"submit_approve",data: { disable_with: "Approving..." } %>
+						<%= submit_tag 'Approve', class:"btn btn-success", id:"submit_approve_modal",data: { disable_with: "Approving..." } %>
 					</div>
 				<%end%>
 		      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>

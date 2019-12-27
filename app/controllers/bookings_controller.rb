@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
 
     @profile_id = current_profile.id
     @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :category,profile: :user])
-    @pending_bookings =  @bookings.where(:status => 0).order(created_at: :desc).uniq
+    @pending_bookings =  @bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
     @completed_bookings = @bookings.where(:status => 2).order(created_at: :desc).uniq
     @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
 
@@ -117,21 +117,25 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1.json
   def update
     @profile_id = current_profile.id
-    @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
-    @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
-    @pending_bookings = @bookings.where(:status => 0).order(created_at: :desc).uniq
     if !params[:booking_id].nil? && params[:change_request].nil? #for Approving request from Pending State
       @booking = Booking.find(params[:booking_id])
-      @booking.update(:status => "upcoming")
+      puts @booking.update(:status => 1)
       flash.now[:success] = "Booking Approved!!"
+      @new_bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
+      @upcoming_bookings = @new_bookings.where(:status => 1).order(created_at: :desc).uniq
+      @pending_bookings =  @new_bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
       @flashing = flash
       respond_to do |format|
         format.js
       end
     elsif !params[:booking_id].nil? && params[:change_request] == "true"  #for Changing request from Upcoming state to Pending
       @booking = Booking.find(params[:booking_id])
-      @booking.update(:status => "pending")
+      @other_profile_id = @booking.profile_ids.select{|x| x!= current_profile_id}[0]
+      @booking.update_columns(:status => "pending",:client_id=>current_profile_id,:recipient_id=>@other_profile_id)
       flash.now[:notice] = "Booking Change Requested!!"
+      @new_bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
+      @upcoming_bookings = @new_bookings.where(:status => 1).order(created_at: :desc).uniq
+      @pending_bookings =  @new_bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
       @flashing = flash
       respond_to do |format|
         format.js
@@ -155,7 +159,7 @@ class BookingsController < ApplicationController
       flash.now[:success] = "Booking Deleted!!"
       @flashing = flash
       @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
-      @pending_bookings = @bookings.where(:status => 0).order(created_at: :desc).uniq
+      @pending_bookings =  @bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
       @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
 
       if !params[:cancel_message].blank?

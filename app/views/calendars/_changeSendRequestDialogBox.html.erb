@@ -75,7 +75,7 @@
 					<%= form_tag(booking_path(Booking.first), :method => "put", remote: true) do %>
 						<input type="hidden" name="booking_id" id="change_booking_id">
 						<input type="hidden" name="change_request" value="true">
-						<%= submit_tag 'Send request', class:"btn btn-primary edit-booking",data: { disable_with: "Requesting..." } %>
+						<%= submit_tag 'Send request', class:"btn btn-success edit-booking",data: { disable_with: "Requesting..." } %>
 					<%end%>
 		    </div>
 		</div>

@@ -22,7 +22,6 @@
 *= require owl.theme.default.min
 *= require style
 *= require bootstrap/bootstrap.min
-*= require bootstrap/bootstrap
 *= require bootstrap/bootstrap-grid
 *= require bootstrap/bootstrap-reboot
 *= require bootstrap-material-datetimepicker

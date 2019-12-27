@@ -29,7 +29,6 @@
                         <div class="cell helpText">Help <%= @info.profile.user.firstname %> Learn <%= @info.category.name %></div>
                         <div class="cell">
                           <%= link_to "Book" , reserve_calendar_path(explore_id: @info.id ),class: "button"%>
-                          <!-- <button class="button">Book</button> -->
                         </div>
                     </div>
                 </div>
@@ -43,21 +42,21 @@
       <% if @explore_ratings.nil? %>
         No Explore Ratings Available
       <% else %>
-        <% @explore_ratings.each do |rating| %>
+        <% @explore_ratings.each do |explore_rating| %>
             <div class="cell">
                 <div class="review grid">
                     <div class="cell">
                         <div class="profile2 grid">
                             <div class="cell perfil"><%= image_tag('People/building-1080605_640.jpg', :class => 'imgperfil') %></div>
-                            <div class="cell ratingName"><%= rating.guide.profile.user.firstname %> <%= rating.explore.profile.user.lastname %></div>
-                            <%= rating.explore.category.name %>
+                            <div class="cell ratingName"><%= explore_rating.guide.profile.user.firstname %> <%= explore_rating.explore.profile.user.lastname %></div>
+                            <%= explore_rating.explore.category.name %>
                             <div class="grid score2">
-                                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>
+                              <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%=explore_rating.rating%>"></div>
                             </div>
                         </div>
                     </div>
                     <div class="cell ratingText">
-                      <%= rating.review %>
+                      <%= explore_rating.review %>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <div class="modal fade" id="projectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <%= form_tag( {id: 'editProject' }) do %>
+      <%= form_tag(Project.first,:url => {:controller => :projects, action: :update},method: :put ,remote: true,:id => 'edit_project' ) do %>
         <div class="modal-header">
           <h5 class="modal-title">Edit Project</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -14,7 +14,7 @@
             <label>Project Title</label>
             <%= text_field_tag :name,nil,class: 'form-control', placeholder: "Name", id:"project_name", :required => true %>
           </div>
-
+          <input type="hidden" name="id" id="edit_project_id">
           <!-- Description -->
           <div class="form-group m-3">
             <label>Description</label>
@@ -101,7 +101,7 @@
           <div class="form-row mx-3 mb-3">
             <div class="custom-control form-group custom-radio custom-radio-with-image mr-3">
               <input type="radio" class="custom-control-input" id="edit-project-raido-0" name="help" required>
-              <label class="custom-control-label" for="edit-project-raido-2">
+              <label class="custom-control-label" for="edit-project-raido-0">
                 <img width="30px" src="<%= image_path ('Icons/Idea_icon.png') %>">
                 Idea
               </label>
@@ -109,7 +109,7 @@
 
             <div class="custom-control form-group custom-radio custom-radio-with-image mx-3">
               <input type="radio" class="custom-control-input" id="edit-project-raido-1" name="help" required>
-              <label class="custom-control-label" for="edit-project-raido-3">
+              <label class="custom-control-label" for="edit-project-raido-1">
                 <img width="30px" src="<%= image_path ('Icons/WIP-icon.png') %>">
                 In Progress
               </label>
@@ -117,7 +117,7 @@
 
             <div class="custom-control form-group custom-radio custom-radio-with-image">
               <input type="radio" class="custom-control-input" id="edit-project-raido-2" name="help" required>
-              <label class="custom-control-label" for="edit-project-raido-4">
+              <label class="custom-control-label" for="edit-project-raido-2">
                 <img width="30px" src="<%= image_path ('Icons/completed-icon.png') %>">
                 Complete
               </label>
@@ -131,7 +131,7 @@
         <div class="modal-footer">
            <div class="celr" id="gridbtnSave">
                <div class="cel btnSave">
-                <%= submit_tag("Edit Project",:id=>"submit", :class=>'btn btn-success',data: { disable_with: "Editing..." })%>
+                <%= submit_tag("Edit Project",:id=>"submit_edit_project", :class=>'btn btn-success',data: { disable_with: "Editing..." })%>
               </div>
            </div>
         </div>

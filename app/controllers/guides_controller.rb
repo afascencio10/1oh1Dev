@@ -51,14 +51,22 @@ class GuidesController < ApplicationController
 
     if params[:first_signup] == "true"
       #first signup explores update
-      @selected_categories = JSON.parse(params["guideCategories"])["categories"]
-      @categories_to_add = @selected_categories.reject{|x| @saved_categories.include? x.to_i}
+      # @selected_categories = JSON.parse(params["guideCategories"])["categories"]
+      # @categories_to_add = @selected_categories.reject{|x| @saved_categories.include? x.to_i}
+      @listg = @profile.guide_categories.pluck(:id).uniq
+      @category = JSON.parse(params["guideCategories"])["guid_categories"]
+      @add_cat = @category - @listg
+      @del_cat = @listg - @category
 
-      @categories_to_add.each do |x|
+        @add_cat.each do |x|
          @guide= Guide.new
          @guide.profile = @profile
          @guide.category = Category.find(x)
          @guide.save
+        end
+
+       @del_cat.each do |x|
+         @profile.guide_categories.destroy(Category.find(x))
        end
 
        respond_to do |format|
@@ -69,24 +77,39 @@ class GuidesController < ApplicationController
       if @profile.nil?
         redirect_to profiles_path, notice: 'Please update about your yourself'
       else
-        @list = @profile.guide_categories.uniq.map{|x| x.id}
+        @listg = @profile.guide_categories.pluck(:id).uniq
+        @category = JSON.parse(params["guideCategories"])["guid_categories"]
 
-        @category=params[:category].map{|x| x.to_i}
+        @add_cat = @category - @listg
+        @del_cat = @listg - @category
 
-        @category.each do|x|
-          if !@list.include?(x.to_i)
-            @guide = Guide.new
-            @guide.profile = @profile
-            @guide.category = Category.find(x.to_i)
-            @guide.save
-          end
+        @add_cat.each do |x|
+          @explore= Guide.new
+          @explore.profile = @profile
+          @explore.category = Category.find(x.to_i)
+          @explore.save
         end
 
-        @list.each do|x|
-          if !@category.include?(x)
-            @profile.guide_categories.destroy(Category.find(x))
-          end
+        @del_cat.each do |x|
+          @profile.guide_categories.destroy(Category.find(x))
         end
+
+        # @category=params[:category].map{|x| x.to_i}
+        #
+        # @category.each do|x|
+        #   if !@list.include?(x.to_i)
+        #     @guide = Guide.new
+        #     @guide.profile = @profile
+        #     @guide.category = Category.find(x.to_i)
+        #     @guide.save
+        #   end
+        # end
+        #
+        # @list.each do|x|
+        #   if !@category.include?(x)
+        #     @profile.guide_categories.destroy(Category.find(x))
+        #   end
+        # end
          flash[:success] = "Guide was successfully created."
         redirect_to profiles_path
       end

@@ -28,6 +28,7 @@
     			<div class="col-6">
     				<h5 class="font-weight-bold">
     					<%= project.name %>
+
     					<button data-toggle="modal" data-target="#projectsModal" data-val="<%=project.to_json%>" data-project="<%=project.categories.to_json%>" id="transferval" type="button" class="btn btn-link">
     						<img src="<%= image_path('Icons/edit.png')%>"
     							 width="24px"

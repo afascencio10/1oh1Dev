@@ -1,5 +1,13 @@
 .modal-content {
 	border-radius: 25px;
+	margin: 0 auto;
+
+	&.medium-size {
+		max-width: 600px;
+	}
+	&.large-size {
+		max-width: 800px;
+	}
 }
 .modal-header {
 	border-bottom: none;
@@ -13,12 +21,14 @@
 }
 .modal-footer {
 	border-top: none;
-	.btn-success {
+	.btn {
 		padding: 0.5rem !important;
 		text-transform: none;
 		min-width: 80px;
 		font-size: 13px;
 		letter-spacing: 1px;
+	}
+	.btn-success {
 		color: #fff;
 	}
 }

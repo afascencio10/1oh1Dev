@@ -11,7 +11,6 @@ jQuery(document).ready(function($) {
       rating: 3.5,
       readOnly: true
     };
-
     // Your web app's Firebase configuration
     const firebaseConfig = {
         apiKey: "AIzaSyCrwMYEa32U63xD3JeLsL8eQ5AiLTav37Q",

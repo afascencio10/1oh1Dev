@@ -1,8 +1,32 @@
 <% flash.each do |key, value| %>
-  <div class="<%= flash_class(key) %> alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times; </span>
-    </button>
-    <strong><%= value %></strong>
-  </div>
+		<div class="toast"
+				 role="alert"
+				 aria-live="assertive"
+				 aria-atomic="true"
+				 style="position: fixed;
+								top: 28px;
+								right: 15px;
+								min-width: 250px;
+								z-index: 11000;">
+		  <div class="toast-body <%=flash_class(key)%>">
+				<i class="material-icons align-middle">
+					<%= flash_icon(key) %>
+				</i>
+
+				<span class="align-middle ml-1">
+		    	<%= value %>
+				</span>
+
+		    <button type="button" class="ml-2 mb-1 close" style="margin-top: 1px" data-dismiss="toast" aria-label="Close">
+		      <span aria-hidden="true">&times;</span>
+		    </button>
+		  </div>
+		</div>
+  <script>
+		$('.toast').toast({
+			delay: 7000
+		})
+
+		$('.toast').toast('show')
+	</script>
 <% end %>

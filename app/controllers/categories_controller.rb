@@ -11,8 +11,12 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:id])
     if @type =="explores"
       @model = Explore.includes(profile: :user)
+      @explore_rate = ExploreRating.average_rating(current_profile,@category.id)
+
     elsif params[:type]=="guides"
       @model = Guide.includes(profile: :user)
+      @guide_rate = GuideRating.average_rating(current_profile,@category.id)
+
     else
       @model = Explore.includes(profile: :user)
     end
@@ -39,8 +43,13 @@ class CategoriesController < ApplicationController
     # authorize! :create, @category
     @category.save!
     # Notification.create(recipient: User.first, user: User.last, action: "followed", notifiable: User.first)
-    flash[:success] = "Category was successfully created!"
-    redirect_to categories_path
+    flash.now[:success] = "Category was successfully created!"
+    @flashing = flash
+    respond_to do |format|
+      format.html {redirect_to categories_path}
+      format.js
+    end
+
   end
 
   def update
@@ -62,6 +71,9 @@ class CategoriesController < ApplicationController
   end
   private
 
+    def current_profile
+      current_user.profile
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def catgeory_params
       params.permit(:name,:url,:description)

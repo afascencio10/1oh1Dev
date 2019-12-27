@@ -105,6 +105,7 @@ jQuery(document).ready(function($) {
 		$(this).addClass('active')
 	})
 
+// block of code for rating the user after sessions
 	var $rateYo = $(".rateYoInput").rateYo({
  		rating: 3,
  		ratedFill: "#f1c40f",
@@ -114,7 +115,6 @@ jQuery(document).ready(function($) {
 			var input = document.getElementById("rateExperience");
 		 	if (input) {
 		 		input.value = rating;
-		 		console.log(input.value);
 		 	}
 		}
  	});
@@ -125,9 +125,7 @@ jQuery(document).ready(function($) {
 	*/
 	var URLsearchBooking = window.location.href;
 	URLsearchBooking = URLsearchBooking.split("#");
-	console.log (URLsearchBooking[1]);
 	$( document ).ready(function() {
-		console.log( "ready!" );
 		switch(URLsearchBooking[1]){
 			case "pending":
 				$('.tab1-tabBooking').trigger( "click" );
@@ -166,7 +164,6 @@ jQuery(document).ready(function($) {
  	function showMoreAndLess(params){
  		showMoreLessInfo[params.name] = {};
  		showMoreLessInfo[params.name].totalItems = $(params.idMainDiv+" "+params.classItem).length;
- 		console.log(params.name+" "+showMoreLessInfo[params.name].totalItems);
  		showMoreLessInfo[params.name].showItems = 5;
  		$(params.idShowMore).click(function(){
  			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;

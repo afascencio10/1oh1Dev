@@ -1,28 +1,50 @@
 jQuery(document).ready(function($) {
-	var bookingCalendar = document.querySelector('.category-calendar') // .category-calendar
-	if (!bookingCalendar) return
-	var calendars = new FullCalendar.Calendar(bookingCalendar, {
-	    plugins: [ 'dayGrid', 'interaction' ],
-	    header: {
-	      left: 'title',
-	      center: '',
-	      right: 'prev,next'
-	    },
-	    showNonCurrentDates: false,
-	    aspectRatio: 0.85,
-	    columnHeaderFormat: {
-			weekday: 'narrow'
-	    },
-	    dayRender: function (info) {
-	      if (Math.round(Math.random() * 10 + 1) % 2 === 0) {
-	      	var el = $(info.el)
-	        var index = el.index()
-	        var tdContent = el.closest('.fc-bg').next().find('td.fc-day-top')[index]
 
-	        $(tdContent).addClass('done')
-	      }
-	    }
-	})
+	$(document).on("click", ".category_modal", function () {
+		 var category = $(this).data('val');
+		 $("#editid").val(category.split(',')[0]) ;
+		 $("#editname").val(category.split(',')[1]);
+		 $("#editdescription").val(category.split(',')[2]);
+		 $('img#editurl').attr('src', category.split(',')[3]);
 
-	calendars.render()
+	 });
+	 
+	$("input[type=file].categories").change(function(e){
+		alert('paras')
+			var storage = firebase.storage();
+			var storageRef = firebase.storage().ref();
+			if(e.target.id == "cat_url"){
+				$('#loaderCategoryImage').fadeIn();
+				$('#loaderCategoryImage').addClass('fa-spin');
+					var file=document.getElementById("cat_url").files[0];
+					console.log(file);
+					var thisref = storageRef.child("category/"+file.name).put(file);
+
+			}
+			else if(e.target.id == "edit_url"){
+					var file=document.getElementById("edit_url").files[0];
+					console.log(file);
+					var thisref = storageRef.child("category/"+file.name).put(file);
+
+			}
+
+			thisref.on('state_changed',function(snapshot){
+					console.log("File Uploaded Successfully");
+			},function (error) {
+
+			},function() {
+					thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+							if(e.target.id=="cat_url")
+							{
+									profile = document.getElementById("url").value = downloadURL;
+									$('#loaderCategoryImage').fadeOut();
+									$('#checkCategoryImage').fadeIn();
+							}
+							else if(e.target.id=="edit_url")
+							{
+									profile = document.getElementById("edurl").value = downloadURL;
+							}
+							//alert("\nFile is here successfully");
+					})});
+	});
 })

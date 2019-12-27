@@ -4,10 +4,12 @@ class Category < ApplicationRecord
 
   has_many :explores,:dependent => :delete_all
   has_many :guides,:dependent => :delete_all
+  has_many :explore_ratings
+  has_many :guide_ratings
   has_many :explore_profiles, :through => :explores,:source => :profile,:dependent => :destroy
   has_many :guide_profiles, :through => :guides,:source => :profile,:dependent => :destroy
   has_and_belongs_to_many :projects
-  self.per_page = 10
+  self.per_page = 9
   scope :distinct_country, -> (country) { where(:profiles => {:country => country}).distinct }
 
   scope :search_query, lambda { |query|

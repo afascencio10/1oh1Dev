@@ -43,21 +43,21 @@
       <% if @guide_ratings.nil? %>
         No Guide Ratings Available
       <% else %>
-        <% @guide_ratings.each do |rating| %>
+        <% @guide_ratings.each do |guide_rating| %>
             <div class="cell">
                 <div class="review grid">
                     <div class="cell">
                         <div class="profile2 grid">
                             <div class="cell perfil"><%= image_tag('People/women.jpg', :class => 'imgperfil') %></div>
-                            <div class="cell ratingName"><%= rating.explore.profile.user.firstname %> <%= rating.explore.profile.user.lastname %></div>
-                            <%= rating.guide.category.name %>
+                            <div class="cell ratingName"><%= guide_rating.explore.profile.user.firstname %> <%= guide_rating.explore.profile.user.lastname %></div>
+                            <%= guide_rating.guide.category.name %>
                             <div class="grid score2">
-                                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="4"></div>
+                              <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%=guide_rating.rating%>"></div>
                             </div>
                         </div>
                     </div>
                     <div class="cell ratingText">
-                      <%= rating.review %>
+                      <%= guide_rating.review %>
                     </div>
                 </div>
             </div>

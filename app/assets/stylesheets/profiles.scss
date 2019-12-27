@@ -802,10 +802,6 @@ desktop version*/
   padding-bottom: 2vw;
 }
 
-#editExploreModal .modal-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
 .inputContainer {
   position: relative;
 }
@@ -1902,7 +1898,7 @@ input:checked + .slider:before {
   width: 350px;
 }
 
-.auxiliar-container .explore-item {
+.explore-item {
   overflow: hidden;
   margin: 5px;
   width: 200px;
@@ -1924,12 +1920,14 @@ input:checked + .slider:before {
   .explore-item-status-button {
     position: absolute!important;
     top: 5px;
+    min-width: 50px;
+    min-height: 50px;
     right: 5px;
     &:hover {
       background-color: #fff;
     }
   }
-  .explore-item-status-button-add {
+  .explore-item-status-button-add, .guide-item-status-button-add {
     transition-property: all;
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
@@ -1949,7 +1947,7 @@ input:checked + .slider:before {
     transform: translateY(-2px);
   }
   &.active {
-    .explore-item-status-button-add {
+    .explore-item-status-button-add, .guide-item-status-button-add {
       transform: rotate(45deg);
       &:hover {
         i {

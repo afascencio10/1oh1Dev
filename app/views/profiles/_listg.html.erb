@@ -1,35 +1,29 @@
+<%= javascript_tag do %>
+  var guide_ids = <%= @listg.to_json.html_safe %>;
+<% end %>
 <div id="filterrific_resultsG">
-  <div>
-    <%= page_entries_info categories, entry_name: "category" %>
-  </div>
-  <% categories.each do |category| %>
-  	<div class="row mx-0 explore-item">
-  		<div class="col">
-  			<div>
-  				<div class="row">
-  					<div class="col-auto pl-0">
-  						<img width="100px" height="100px" src="<%= image_path('Skills/poly.jpg')%>" alt="poly">
-  					</div>
-  					<div class="col pr-0">
-  						<h5 class="font-weight-bold explore-item-head"><%= category.name%></h5>
-  						<p class="explore-item-sub-head">260 Explores</p>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-      <% if @list.include?(category.id) %>
-        <div class="col-auto pr-0">
-    			<button id="guideCat-<%= category.id %>" type="button" class="btn btn-success p-2 addGuideBtnn">Add</button>
-    		</div>
-      <% else %>
-        <div class="col-auto pr-0">
-    			<button id="guideCat-<%= category.id %>" type="button" class="btn btn-success p-2 addGuideBtnn">Add</button>
-    		</div>
-      <% end %>
+  <% if categories.blank? %>
+    No categories found
+  <% else %>
+    <% categories.each do |category| %>
+      <div class="explore-item border rounded <%= @listg.include?(category.id) ? 'active' : ''%>"
+           id="guideCat-<%= category.id.to_s %>"
+           style="background-image: url(<%= image_path('Skills/poly.jpg')%>)">
+        <button class="btn btn-link btn-icon-fab position-relative shadow rounded-circle explore-item-status-button guide-item-status-button-add">
+          <i class="material-icons centerXY">add</i>
+        </button>
 
-  	</div>
-  <% end %>
-<div class="row pt-3" id="skipLine">
+        <div class="explore-item-footer px-2 py-1">
+          <h5 class="fw-600 c-black mb-1"><%= category.name%></h5>
+          <% if !(category.guides.count == 0)%>
+            <span class="fz-14 explore-item-sub-head"><%= category.guides.count %> Guides</span>
+          <%end%>
+        </div>
+        <!-- addGuideBtnn -->
+      </div>
+    <% end %>
+  <%end%>
+<!-- <div class="row pt-3" id="skipLine">
   <%= will_paginate categories  %>
-</div>
+</div> -->
 </div>

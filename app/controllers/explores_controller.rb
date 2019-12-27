@@ -47,18 +47,24 @@ class ExploresController < ApplicationController
   # POST /explores.json
   def create
     @profile = current_user.profile
-    @saved_categories = @profile.explore_categories.pluck(:id).uniq
-    puts JSON.parse(params["exploreCategories"])
+
     if (params[:first_signup] == "true")
       #first signup explores update
-      @selected_categories = JSON.parse(params["exploreCategories"])["categories"]
-      @categories_to_add = @selected_categories.reject{|x| @saved_categories.include? x.to_i}
+      @list = @profile.explore_categories.pluck(:id).uniq
+      @category = JSON.parse(params["exploreCategories"])["exp_categories"]
+      # @categories_to_add = @selected_categories.reject{|x| @saved_categories.include? x.to_i}
 
-      @categories_to_add.each do |x|
+      @add_cat = @category - @list
+      @del_cat = @list - @category
+
+      @add_cat.each do |x|
          @explore= Explore.new
          @explore.profile = @profile
          @explore.category = Category.find(x)
          @explore.save
+       end
+       @del_cat.each do |x|
+         @profile.explore_categories.destroy(Category.find(x))
        end
 
        respond_to do |format|
@@ -68,34 +74,28 @@ class ExploresController < ApplicationController
 
     else
       #edit categories from profile page
-       if @profile.nil?
-         redirect_to profiles_path, notice: 'Please update about your yourself'
-       else
+       @list = @profile.explore_categories.pluck(:id).uniq
+       @category = JSON.parse(params["exploreCategories"])["exp_categories"]
 
-         @list = @profile.explore_categories.uniq.map{|x| x.id}
+       @add_cat = @category - @list
+       @del_cat = @list - @category
 
-         @category=params[:category].map{|x| x.to_i}
+       @add_cat.each do |x|
+         @explore= Explore.new
+         @explore.profile = @profile
+         @explore.category = Category.find(x.to_i)
+         @explore.save
+       end
 
-         @category.each do|x|
-           if !@list.include?(x.to_i)
-             @explore= Explore.new
-             @explore.profile = @profile
-             @explore.category = Category.find(x.to_i)
-             @explore.save
-           end
-         end
+       @del_cat.each do |x|
+         @profile.explore_categories.destroy(Category.find(x))
+       end
 
-         @list.each do|x|
-           if !@category.include?(x)
-             @profile.explore_categories.destroy(Category.find(x))
-           end
-         end
-        flash[:success] = "Explore was successfully created"
-        redirect_to profiles_path
-      end
+      flash[:success] = "Explore was successfully created"
+      redirect_to profiles_path
     end
-
   end
+
   #
   # # PATCH/PUT /explores/1
   # # PATCH/PUT /explores/1.json

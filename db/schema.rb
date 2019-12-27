@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191218205621) do
+ActiveRecord::Schema.define(version: 20191227151512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,15 @@ ActiveRecord::Schema.define(version: 20191218205621) do
     t.string   "duration"
     t.datetime "cancel_date"
     t.integer  "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "guide_id"
     t.integer  "explore_id"
     t.string   "identifier"
     t.string   "slug"
     t.string   "description"
+    t.integer  "client_id"
+    t.integer  "recipient_id"
     t.index ["explore_id"], name: "index_bookings_on_explore_id", using: :btree
     t.index ["guide_id"], name: "index_bookings_on_guide_id", using: :btree
   end
@@ -61,12 +63,14 @@ ActiveRecord::Schema.define(version: 20191218205621) do
 
   create_table "explore_ratings", force: :cascade do |t|
     t.string   "review"
-    t.integer  "rating"
+    t.float    "rating"
     t.integer  "profile_id"
     t.integer  "guide_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "explore_id"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_explore_ratings_on_category_id", using: :btree
     t.index ["explore_id"], name: "index_explore_ratings_on_explore_id", using: :btree
     t.index ["guide_id"], name: "index_explore_ratings_on_guide_id", using: :btree
     t.index ["profile_id"], name: "index_explore_ratings_on_profile_id", using: :btree
@@ -94,12 +98,14 @@ ActiveRecord::Schema.define(version: 20191218205621) do
 
   create_table "guide_ratings", force: :cascade do |t|
     t.string   "review"
-    t.integer  "rating"
+    t.float    "rating"
     t.integer  "profile_id"
     t.integer  "explore_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "guide_id"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_guide_ratings_on_category_id", using: :btree
     t.index ["explore_id"], name: "index_guide_ratings_on_explore_id", using: :btree
     t.index ["guide_id"], name: "index_guide_ratings_on_guide_id", using: :btree
     t.index ["profile_id"], name: "index_guide_ratings_on_profile_id", using: :btree
@@ -252,11 +258,13 @@ ActiveRecord::Schema.define(version: 20191218205621) do
 
   add_foreign_key "bookings", "explores", on_delete: :nullify
   add_foreign_key "bookings", "guides", on_delete: :nullify
+  add_foreign_key "explore_ratings", "categories"
   add_foreign_key "explore_ratings", "explores", on_delete: :cascade
   add_foreign_key "explore_ratings", "guides", on_delete: :cascade
   add_foreign_key "explore_ratings", "profiles"
   add_foreign_key "explores", "categories", on_delete: :cascade
   add_foreign_key "explores", "profiles"
+  add_foreign_key "guide_ratings", "categories"
   add_foreign_key "guide_ratings", "explores", on_delete: :cascade
   add_foreign_key "guide_ratings", "guides", on_delete: :cascade
   add_foreign_key "guide_ratings", "profiles"

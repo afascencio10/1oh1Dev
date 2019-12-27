@@ -7,54 +7,44 @@ $("#filterrific_resultsG").html("<%= js %>");
 console.log("this is the guide code");
 /*why is this code never running?*/
 
-var guideCategories = window.localStorage.getItem('guideCategories');
+var guideCategories = window.sessionStorage.getItem('guideCategories');
 	if(guideCategories){
 		guideCategories = JSON.parse(guideCategories);
 	}else{
 		guideCategories = {categories:[]};
 	}
-	guideCategories.categories.forEach(cat=>{
-		$("#guideCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
+	guideCategories.categories.forEach(cat => {
+		$("#" + cat).addClass('active')
 	});
+
 	setGuideCategories();
 
-	$('.addGuideBtnn').on('click', function () {
-	  // alert("Clicked  ");
-	  var id = this.id;
-	  id = id.split("-")[1];
-	  var isSelected = $(this).hasClass("btn-outline-dark");
-	  if(isSelected){
-	  	unselecCategoryG(id);
-	  }else {
-	  	selectCategoryG(id);
-	  }
-	  setGuideCategories();
 
+	$('.guide-item-status-button-add').click(function () {
+		var parent = $(this).parent() 
+
+		var id = parent.attr('id')
+
+		parent.toggleClass('active')
+
+		if (parent.hasClass('active')) addCategoryG(id)
+		else deleteCategoryG(id)
+
+		setGuideCategories()
 	})
 
-
-	function selectCategoryG(category){
-		addCategoryG(category);
-		$("#guideCat-"+category).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
-	}
-
-	function unselecCategoryG(category){
-		deleteCategoryG(category);
-		$("#guideCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
-	}
-
 	function addCategoryG(category){
-		var array = window.localStorage.getItem('guideCategories');
+		var array = window.sessionStorage.getItem('guideCategories');
 		if(array){
 			array = JSON.parse(array);
 		}else{
 			array = {categories:[]};
 		}
 		array.categories.push(category);
-		window.localStorage.setItem('guideCategories', JSON.stringify(array));
+		window.sessionStorage.setItem('guideCategories', JSON.stringify(array));
 	}
 	function deleteCategoryG(category){
-		var array = window.localStorage.getItem('guideCategories');
+		var array = window.sessionStorage.getItem('guideCategories');
 		if(array){
 			array = JSON.parse(array);
 		}else{
@@ -64,13 +54,13 @@ var guideCategories = window.localStorage.getItem('guideCategories');
 		array.categories = array.categories.filter(cat=>{
 			return cat!=category;
 		});
-		window.localStorage.setItem('guideCategories', JSON.stringify(array));
+		window.sessionStorage.setItem('guideCategories', JSON.stringify(array));
 	}
 
 	function setGuideCategories(){
 		/*this function keeps updating the value of the hidden tag
 		to use it anytime in the backend*/
-		var array = window.localStorage.getItem('guideCategories');
+		var array = window.sessionStorage.getItem('guideCategories');
 		if(array){
 			array = JSON.parse(array);
 		}else{

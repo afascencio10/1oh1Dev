@@ -5,27 +5,24 @@ jQuery(document).ready(function($) {
 	*/
 	var URLsearchProfile = window.location.href;
 	URLsearchProfile = URLsearchProfile.split("#");
-	console.log (URLsearchProfile[1]);
-	$( document ).ready(function() {		
-		console.log( "ready!" );		
-		switch(URLsearchProfile[1]){			
-			case "explore":				
-				$('.tab1-tabProfile').trigger( "click" );
-			break;
-			case "guide":				
-				$('.tab2-tabProfile').trigger('click');
-			break;
-			case "projects":				
-				$('.tab3-tabProfile').trigger( "click" );
-			break;
-			case null || "" || undefined:
-				$('.tab1-tabProfile').trigger( "click" );
-			break;
-		}		
-	});	
+	switch(URLsearchProfile[1]){
+		case "explore":
+			$('.tab1-tabProfile').trigger( "click" );
+		break;
+		case "guide":
+			$('.tab2-tabProfile').trigger('click');
+		break;
+		case "projects":
+			$('.tab3-tabProfile').trigger( "click" );
+		break;
+		case null || "" || undefined:
+			$('.tab1-tabProfile').trigger( "click" );
+		break;
+	}
+
 	$('.tab1-tabProfile').click(function(){
 		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"explore");		
+		history.pushState(null, "", pathname+'#'+"explore");
 	})
 	$('.tab2-tabProfile').click(function(){
 		var pathname = window.location.pathname;
@@ -155,7 +152,6 @@ jQuery(document).ready(function($) {
 
       if (hiddenInput) {
         hiddenInput.value = JSON.stringify(array)
-        console.log(hiddenInput.value)
       }
     }
   }
@@ -166,10 +162,8 @@ jQuery(document).ready(function($) {
     		return item === chipName
     	}), 1)
 
-      console.log(array)
       if (hiddenInput) {
         hiddenInput.value = JSON.stringify(array)
-        console.log(hiddenInput.value)
       }
     }
   }
@@ -224,8 +218,14 @@ jQuery(document).ready(function($) {
 		)
 	})
 
-	$('.explore-item-status-button-add').click(function () {
-		$(this).parent().toggleClass('active')
+	$('form#update_guide').submit(function () {
+		window.sessionStorage.clear()
+		return true
+	})
+
+	$('form#update_explore').submit(function () {
+		window.sessionStorage.clear()
+		return true
 	})
 
 	$('.tabLink').click(function(event){
@@ -301,85 +301,74 @@ jQuery(document).ready(function($) {
 							}
 				});
 
-	// Select the node that will be observed for mutations
-	var guideCategories = window.localStorage.getItem('guideCategories');
+// initial first time call for guide_categories
+	var guideCategories = window.sessionStorage.getItem('guideCategories');
  if(guideCategories){
   guideCategories = JSON.parse(guideCategories);
  }else{
-  guideCategories = {categories:[]};
+  guideCategories = {guid_categories:[]};
+	category_gds = window.guide_ids || []
+	category_gds.forEach(id =>{
+		guideCategories.guid_categories.push(id);
+	  window.sessionStorage.setItem('guideCategories', JSON.stringify(guideCategories));
+	})
  }
- guideCategories.categories.forEach(cat=>{
-  $("#guideCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
+ guideCategories.guid_categories.forEach(cat=>{
+	 id = "guideCat-"+cat
+ 	$("#" + id).addClass('active')
  });
  setGuideCategories();
 
- $('.addGuideBtnn').on('click', function () {
-   // alert("Clicked  ");
-   var id = this.id;
-   id = id.split("-")[1];
-   var isSelected = $(this).hasClass("btn-outline-dark");
-   if(isSelected){
-    unselecCategoryG(id);
-   }else {
-    selectCategoryG(id);
-   }
-   setGuideCategories();
+ // add Edit Explore on button click
+ $('.guide-item-status-button-add').click(function () {
+    var parent = $(this).parent()
 
- })
+    var id = Number(parent.attr('id').split('-')[1])
 
+    parent.toggleClass('active')
 
+    if (parent.hasClass('active')) addCategoryG(id)
+    else deleteCategoryG(id)
 
-  $('.newCategoryMessage').on('click', function () {
-    // alert("Clicked  ");
-    console.log("Hey, im keep here!");
-
+    setGuideCategories()
   })
 
 
- function selectCategoryG(category){
-  addCategoryG(category);
-  $("#guideCat-"+category).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
- }
-
- function unselecCategoryG(category){
-  deleteCategoryG(category);
-  $("#guideCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
- }
 
  function addCategoryG(category){
-  var array = window.localStorage.getItem('guideCategories');
+  var array = window.sessionStorage.getItem('guideCategories');
   if(array){
    array = JSON.parse(array);
   }else{
-   array = {categories:[]};
+   array = {guid_categories:[]};
   }
-  array.categories.push(category);
-  window.localStorage.setItem('guideCategories', JSON.stringify(array));
+  array.guid_categories.push(category);
+  window.sessionStorage.setItem('guideCategories', JSON.stringify(array));
  }
+
  function deleteCategoryG(category){
-  var array = window.localStorage.getItem('guideCategories');
+  var array = window.sessionStorage.getItem('guideCategories');
   if(array){
    array = JSON.parse(array);
   }else{
-   array = {categories:[]};
+   array = {guid_categories:[]};
   }
 
-  array.categories = array.categories.filter(cat=>{
+  array.guid_categories = array.guid_categories.filter(cat=>{
    return cat!=category;
   });
-  window.localStorage.setItem('guideCategories', JSON.stringify(array));
+  window.sessionStorage.setItem('guideCategories', JSON.stringify(array));
  }
 
  function setGuideCategories(){
   /*this function keeps updating the value of the hidden tag
   to use it anytime in the backend*/
-  var array = window.localStorage.getItem('guideCategories');
+  var array = window.sessionStorage.getItem('guideCategories');
   if(array){
    array = JSON.parse(array);
   }else{
-   array = {categories:[]};
+   array = {guid_categories:[]};
   }
-  console.log(array);
   var input = document.getElementById("guideCategories");
   if (input){
   	input.value = JSON.stringify(array);
@@ -387,86 +376,77 @@ jQuery(document).ready(function($) {
 
  }
 
-
- var exploreCategories = window.localStorage.getItem('exploreCategories');
+// initial first time call for explore_categories
+ var exploreCategories = window.sessionStorage.getItem('exploreCategories');
  if(exploreCategories){
   exploreCategories = JSON.parse(exploreCategories);
  }else{
-  exploreCategories = {categories:[]};
+  exploreCategories = {exp_categories:[]};
+	category_exds = window.explore_ids || []
+	category_exds.forEach(id =>{
+		exploreCategories.exp_categories.push(id);
+	  window.sessionStorage.setItem('exploreCategories', JSON.stringify(exploreCategories));
+	})
  }
- exploreCategories.categories.forEach(cat=>{
-  $("#explorerCat-"+cat).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
- });
- setExploreCategories();
 
- $('.addExploreBtnn').on('click', function () {
-   // alert("Clicked  ");
-   var id = this.id;
-   id = id.split("-")[1];
-   var isSelected = $(this).hasClass("btn-outline-dark");
-   if(isSelected){
-    unselecCategory(id);
-   }else {
-    selectCategory(id);
-   }
-   setExploreCategories();
-
+ exploreCategories.exp_categories.forEach(cat => {
+	id = "exploreCat-"+cat
+  $("#" + id).addClass('active')
  })
 
-  $('.title').on('click', function () {
-    // alert("Clicked  ");
-    console.log("Hey, im still here!");
+ setExploreCategories();
 
-  })
+// add Edit Explore on button click
+ $('.explore-item-status-button-add').click(function () {
+	 var parent = $(this).parent()
+	 var id = Number(parent.attr('id').split('-')[1])
 
+	 parent.toggleClass('active')
 
- function selectCategory(category){
-  addCategory(category);
-  $("#explorerCat-"+category).removeClass('btn-success').addClass('btn-outline-dark').text('Added');
- }
+	 if (parent.hasClass('active')) addCategory(id)
+	 else deleteCategory(id)
 
- function unselecCategory(category){
-  deleteCategory(category);
-  $("#explorerCat-"+category).removeClass('btn-outline-dark').addClass('btn-success').text('Add');
- }
+	 setExploreCategories()
+ })
+
 
  function addCategory(category){
-  var array = window.localStorage.getItem('exploreCategories');
+  var array = window.sessionStorage.getItem('exploreCategories');
   if(array){
    array = JSON.parse(array);
   }else{
-   array = {categories:[]};
+   array = {exp_categories:[]};
   }
-  array.categories.push(category);
-  window.localStorage.setItem('exploreCategories', JSON.stringify(array));
+  array.exp_categories.push(category);
+  window.sessionStorage.setItem('exploreCategories', JSON.stringify(array));
  }
+
  function deleteCategory(category){
-  var array = window.localStorage.getItem('exploreCategories');
+  var array = window.sessionStorage.getItem('exploreCategories');
   if(array){
    array = JSON.parse(array);
   }else{
-   array = {categories:[]};
+   array = {exp_categories:[]};
   }
 
-  array.categories = array.categories.filter(cat=>{
+  array.exp_categories = array.exp_categories.filter(cat=>{
    return cat!=category;
   });
-  window.localStorage.setItem('exploreCategories', JSON.stringify(array));
+  window.sessionStorage.setItem('exploreCategories', JSON.stringify(array));
  }
 
  function setExploreCategories(){
   /*this function keeps updating the value of the hidden tag
   to use it anytime in the backend*/
-  var array = window.localStorage.getItem('exploreCategories');
+  var array = window.sessionStorage.getItem('exploreCategories');
   if(array){
    array = JSON.parse(array);
   }else{
-   array = {categories:[]};
+   array = {exp_categories:[]};
   }
-  console.log(array);
   var input = document.getElementById("exploreCategories");
   if (input){
-  	input.value = array;
+  	input.value = JSON.stringify(array);
   }
 
  }
@@ -516,9 +496,8 @@ jQuery(document).ready(function($) {
  	function showMoreAndLess(params){
  		showMoreLessInfo[params.name] = {};
  		showMoreLessInfo[params.name].totalItems = $(params.idMainDiv+" "+params.classItem).length;
- 		console.log(params.name+" "+showMoreLessInfo[params.name].totalItems);
  		showMoreLessInfo[params.name].showItems = 5;
- 		$(params.idShowMore).click(function(){  		
+ 		$(params.idShowMore).click(function(){
  			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;
  			if(hiddenItems > 0){
  				showMoreLessInfo[params.name].showItems = showMoreLessInfo[params.name].showItems + 5;
@@ -526,9 +505,9 @@ jQuery(document).ready(function($) {
  			updateShowItems(params);
 		});
 
-		$(params.idShowLess).click(function(){  		
+		$(params.idShowLess).click(function(){
  			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
-			updateShowItems(params); 			
+			updateShowItems(params);
 		});
 		updateShowItems(params);
 		//function to update which items should be shown
@@ -548,9 +527,9 @@ jQuery(document).ready(function($) {
  	var params = {
  		idMainDiv: "#projectsListProfile",
  		idMessage: "#projectsProfileMessage",
- 		idShowMore:"#showMoreButton", 
- 		idShowLess:"#showLessButton",  
- 		classItem:".projectInContainer", 
+ 		idShowMore:"#showMoreButton",
+ 		idShowLess:"#showLessButton",
+ 		classItem:".projectInContainer",
  		name:"projectsProfile"
  	};
 
@@ -559,9 +538,9 @@ jQuery(document).ready(function($) {
  	var paramsExplores = {
  		idMainDiv: "#exploreCategoriesGrid",
  		idMessage: "#exploresProfileMessage",
- 		idShowMore:"#moreExploresProfile", 
- 		idShowLess:"#lessExploresProfile",  
- 		classItem:".interestsImage", 
+ 		idShowMore:"#moreExploresProfile",
+ 		idShowLess:"#lessExploresProfile",
+ 		classItem:".interestsImage",
  		name:"exploresProfile"
  	};
  	showMoreAndLess(paramsExplores);
@@ -569,9 +548,9 @@ jQuery(document).ready(function($) {
  	var paramsProfileGuide = {
  		idMainDiv: "#profileGuideMain",
  		idMessage: "#profileGuideMessage",
- 		idShowMore:"#moreProfileGuides", 
- 		idShowLess:"#lessProfileGuides",  
- 		classItem:".interestsImage", 
+ 		idShowMore:"#moreProfileGuides",
+ 		idShowLess:"#lessProfileGuides",
+ 		classItem:".interestsImage",
  		name:"profileGuidesList"
  	};
  	showMoreAndLess(paramsProfileGuide);

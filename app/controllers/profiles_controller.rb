@@ -12,10 +12,12 @@ class ProfilesController < ApplicationController
       @explores = @profile.explore_categories.uniq
       @guides = @profile.guide_categories.uniq
       @projects = @profile.projects.includes(:categories).sort_by_created_desc
-      @explore_ratings = @profile.explore_ratings.sort_by_created_desc
-      @guide_ratings = @profile.guide_ratings.sort_by_created_desc
+      @explore_ratings = @profile.explore_ratings.includes(:category).sort_by_created_desc.group_by(&:category)
+      @guide_ratings = @profile.guide_ratings.includes(:category).sort_by_created_desc.group_by(&:category)
       @new_profile = false
-      # @project = Project.first
+      @explore_rate = ExploreRating.where(:profile => current_user.profile).average(:rating).to_f
+      @guide_rate = GuideRating.where(:profile => current_user.profile).average(:rating).to_f
+
     else
       @new_profile = true
       @profile = Profile.new
@@ -32,6 +34,7 @@ class ProfilesController < ApplicationController
       format.js
     end
     @list = current_user.profile.explore_categories.pluck(:id).uniq
+    @listg = current_user.profile.guide_categories.pluck(:id).uniq
 
     @category = Category.all
   end
@@ -45,8 +48,8 @@ class ProfilesController < ApplicationController
     @explore_categories = @profile.explore_categories.uniq
     @guide_categories = @profile.guide_categories.uniq
     @projects = @profile.projects
-    @explore_ratings = @profile.explore_ratings.order("created_at DESC")
-    @guide_ratings = @profile.guide_ratings.order("created_at DESC")
+    @explore_ratings = @profile.explore_ratings.includes(:category).sort_by_created_desc.group_by(&:category)
+    @guide_ratings = @profile.guide_ratings.includes(:category).sort_by_created_desc.group_by(&:category)
   end
 
   # GET /profiles/new
@@ -65,14 +68,14 @@ class ProfilesController < ApplicationController
     if @params["country"]
       @params["country"] = CS.get[profile_params[:country].to_sym]
     end
-    if @params["state"]
+    if @params["state"].size==2
       @states = CS.get profile_params[:country].to_sym
       @params["state"] = @states[profile_params[:state].to_sym]
     end
-
-    @lan_array = JSON.parse(params["edit-profile-languages"]).split(',')
-    @params["languages"] = @lan_array
-
+    if !params["edit-profile-languages"].empty?
+      @lan_array = JSON.parse(params["edit-profile-languages"])
+      @params["languages"] = @lan_array
+    end
 
     if current_user.profile #if Profile already exists
       @profile = current_user.profile
@@ -91,8 +94,8 @@ class ProfilesController < ApplicationController
         @user = current_user
         @profile = Profile.new()  #create new Profile
         @user.profile = @profile
-        @lan_array = JSON.parse(params["edit-profile-languages"]).split(',')
-        @params["languages"] = @lan_array.map!{|x| LanguageList::LanguageInfo.find(x).name}
+        @lan_array = JSON.parse(params["edit-profile-languages"])
+        @params["languages"] = @lan_array
 
         respond_to do |format|
           if @profile.update(@params)
@@ -144,7 +147,7 @@ end
     end
 
     @profile = current_user.profile
-    @list = @profile.guide_categories.uniq.pluck(:id).uniq
+    @listg = @profile.guide_categories.uniq.pluck(:id).uniq
     @guide = Guide.new(profile_params)
   end
 

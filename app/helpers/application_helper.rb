@@ -19,10 +19,19 @@ module ApplicationHelper
 
   def flash_class(level)
     case level
-      when 'notice' then "alert alert-info"
-      when 'success' then "alert alert-success"
-      when 'error' then "alert alert-danger"
-      when 'alert' then "alert alert-warning"
+      when 'notice' then "alert-info"
+      when 'success' then "alert-success"
+      when 'error' then "alert-danger"
+      when 'alert' then "alert-warning"
+    end
+  end
+
+  def flash_icon(level)
+    case level
+      when 'notice' then "info"
+      when 'success' then "check"
+      when 'error' then "error"
+      when 'alert' then "warning"
     end
   end
 
