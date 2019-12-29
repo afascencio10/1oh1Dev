@@ -17,8 +17,8 @@
                     <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" onclick="selectProfilePic()">
                       <i class="material-icons centerXY">edit</i>
                     </a>
-                    <i style="display:none;margin-left: 91%;margin-top: 100px;z-index: 100" class="fa fa-spinner" id="loaderimagebackground"></i>
-                    <i style="display:none;margin-left: 91%;margin-top: 100px;color:green;z-index: 100" class="fa fa-check" id="checkbackground"></i>
+                    <i style="display:none;margin-left: 91%;margin-top: 95px;" class="material-icons" id="loaderimagebackground">autorenew</i>
+                    <i style="display:none;margin-left: 91%;margin-top: 95px;color:green;" class="material-icons" id="checkbackground">done</i>
                     <%= file_field_tag :profileBackground,class: 'form-control fieldinput d-none' %>
                   </div>
                   <div class="cel">
@@ -29,10 +29,12 @@
                         <img src="<%= @profile.profile_photo %>" alt="Image" class="profileImg">
                       <% end %>
                       <div class="editProfilePicIconCont">
-                        <button class="btn btn-link btn-icon-fab position-relative shadow rounded-circle"
+                        <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle"
                              onclick="selectPic()">
                           <i class="material-icons centerXY">edit</i>
-                        </button>
+                          <i style="display:none;position: absolute;left: 50px;" class="material-icons" id="loaderimageprofile">autorenew</i>
+                          <i style="display:none;position: absolute;left: 50px;color: green !important;" class="material-icons" id="checkprofile">done</i>
+                        </a>
 
                         <%= file_field_tag :profilephoto,class: 'form-control fieldinput d-none' %>
                       </div>
@@ -123,7 +125,13 @@
           </div>
       </div>
       </div>
+      <input type="" id="url" name="" style="display: none;">
+      </div>
+      <input type="" id="urlprofile" name="" style="display: none;">
+      </div>
       <input type="" id="urlprofileBackground" name="" style="display: none;">
+      <input type="" id="url_edit" name="" style="display: none;">
+      </div>
       </div>
   <%end%>
 <script>

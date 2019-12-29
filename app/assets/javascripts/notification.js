@@ -1,5 +1,10 @@
 jQuery(document).ready(function($){
   notification();
+ 
+  $("#notification").on('click',function(){
+    console.log($(".site-menu li.has-children"))
+    $(".site-menu li.has-children").focus();
+  });
 
   jQuery(document.body).on('click', 'a.unread', function(event){
     var notif_id =  $(this).attr("id");
@@ -42,9 +47,8 @@ function notification()
 
     // $("#nav-data").html(items);
     jQuery(document.body).on('click', '#notification', function(){
-      $("#nav-data").html(items);
-});
-
+      $("#nav-data").html(items);      
+    });
 
   }});
 }
