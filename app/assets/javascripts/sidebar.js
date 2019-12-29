@@ -155,6 +155,12 @@ jQuery(function ($) {
       }
     }
 
+    var URLMarket = window.location.href;
+    if (URLMarket.indexOf("markets") != -1) {
+        console.log(URLMarket);
+        var topbarMarket = document.querySelector("#site-navbar");
+        topbarMarket.classList.add("markettopbarSide");
+    }
 
 });
 
