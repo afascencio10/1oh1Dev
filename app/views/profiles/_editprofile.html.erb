@@ -14,7 +14,7 @@
                     id="gridBackground"
                     style="background-image: url(<%= image_path ('life-862972_1920.jpg') %>);">
                   <div>
-                    <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" onclick="selectProfilePic()">
+                    <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle m-2" id="editBackgroundPic" >
                       <i class="material-icons centerXY">edit</i>
                     </a>
                     <i style="display:none;margin-left: 91%;margin-top: 95px;" class="material-icons" id="loaderimagebackground">autorenew</i>
@@ -29,7 +29,7 @@
                         <img src="<%= @profile.profile_photo %>" alt="Image" class="profileImg">
                       <% end %>
                       <div class="editProfilePicIconCont">
-                        <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle"
+                        <a class="btn btn-link btn-icon-fab position-relative shadow rounded-circle" id="editProfilePic" 
                              onclick="selectPic()">
                           <i class="material-icons centerXY">edit</i>
                           <i style="display:none;position: absolute;left: 50px;" class="material-icons" id="loaderimageprofile">autorenew</i>
@@ -134,17 +134,6 @@
       </div>
       </div>
   <%end%>
-<script>
-  function selectPic() {
-    var uploadInput = document.getElementById('profilephoto')
-    uploadInput.click()
-  }
 
-  function selectProfilePic() {
-    var uploadProfileInput = document.getElementById('profileBackground')
-    uploadProfileInput.click()
-  }
-
-</script>
 </div>
 </div>

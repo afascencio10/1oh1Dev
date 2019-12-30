@@ -1,2 +1,21 @@
 $('.modal-body .bodyEditProject').html("<%= escape_javascript render('profiles/edit_project',locals:{:project => @project}) %>");
 $('#projectsModal').modal('show');
+
+
+ var raw_ids = "<%=  @colab_ids.to_json %>";
+ var format = raw_ids.replace(/&quot;/g, '\"');
+ var colab_ids = JSON.parse(format);
+ var categories_id = JSON.parse("<%=  @categories_id %>");
+// console.log(categories_id);
+// console.log("<%=  @project.help %>")
+var status = "<%=  @project.status %>";
+
+// console.log("<%=  @project.image %>")
+
+
+
+// console.log(String(project.status));
+
+$("#project_name").val("<%=@project.name%>")
+$("#project_description").val("<%=@project.description%>")
+$("#edit-project-raido-"+String(status)).prop("checked", true);

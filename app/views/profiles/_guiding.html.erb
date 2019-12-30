@@ -106,7 +106,57 @@
     <div class="reviewsTitle">
         <div id="forReviewsTitle" class="c-black">Reviews</div>
     </div>
-   <div class="reviewsContent">
+    <div class="exploration-reviews mt-2">
+      <% if @guide_ratings.blank? %>
+        <div class="text-center no-result-text">
+          No Guide Ratings Available
+        </div>
+      <% else %>
+      <% @guide_ratings.each do |category,guide_rating| %>
+        <div class="exploration-review row mt-4">
+          <div class="col-auto">
+            <div class="card-skill small border">
+              <div class="cover"
+                   style="background-image: url(<%= category.url %>);">
+              </div>
+              <h5 class="font-weight-bold">
+                <%= category.name %>
+              </h5>
+            </div>
+          </div>
+          <div class="col">
+            <!-- rate -->
+            <div class="row">
+              <div class="col">
+                <div class="rateYo d-inline-block p-0 mb-3 align-middle"></div>
+
+                <span class="fz-13 fw-600 c-gray">3</span>
+              </div>
+
+              <div class="col-auto">
+                <a class="navigation-link">View All Reviews</a>
+              </div>
+            </div>
+
+            <!-- comment -->
+            <% guide_rating.each do |content| %>
+              <%= link_to reviews_path(:explore_id => content.explore_id) do %>
+                <div class="exploration-review-comment mt-2">
+                  <!-- avatar -->
+                  <div class="commentProfileImage d-inline-block align-middle mr-2"
+                       style="background-image: url(<%= Guide.find(content.explore_id).profile.profile_photo %>)"></div>
+
+                  <!-- comment -->
+                  <span class="fw-500 c-black"><%= content.review %></span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+<!--    <div class="reviewsContent">
       <% if @guide_ratings.blank? %>
          <div class="emptyReviews">
             No Guide Ratings available
@@ -143,7 +193,7 @@
          <% end %>
       <% end %>
 
-   </div>
+   </div> -->
    <div class="moreLink">
         <div id="forMoreLink">
             <a id="moreLink" href="#">More</a>

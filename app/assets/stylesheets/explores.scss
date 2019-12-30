@@ -131,6 +131,10 @@
 	height: 270px;
 	border-radius: 10px;
 	overflow-x: hidden;
+	&.small {
+		width: 220px;
+    	height: 190px;
+	}
 	.cover {
 		width: 100%;
 		height: 70%;
@@ -141,9 +145,11 @@
 	h5 {
 		text-align: left;
 		font-size: 18px;
-		margin-top: 30px;
 		margin-left: 15px;
 		color: #000;
+	    position: absolute;
+	    bottom: 15%;
+	    transform: translateY(50%);
 	}
 }
 .cursor-p {

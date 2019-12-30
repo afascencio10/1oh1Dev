@@ -25,18 +25,17 @@
                  <div class="projectImages">
                      <div class="projectPhoto">
                          <img class="projectPicture" src="<%= project.image %>">
-                         <% if project.status == 1 %>
+                         <% if project.status == 0 %>
                               <img src="<%= image_path('Icons/Idea_icon.png') %>" alt="Image" class="projectIcon">
-                            <% elsif project.status == 2 %>
+                            <% elsif project.status == 1 %>
                               <img src="<%= image_path('Icons/WIP-icon.png') %>" alt="Image" class="projectIcon">
                             <% else %>
                               <img src="<%= image_path('Icons/completed-icon.png') %>" alt="Image" class="projectIcon">
                           <% end %>
                      </div>
                    <div>
-                     <button class="btn btn-success float-right">Offer Help</button>
                      <% project.colab_id.each do |x|%>
-                       <div class="profilePict mt-1">
+                       <div class="profilePict d-inline-block mt-1">
                          <% if User.find(x).profile.nil?%>
                          <img class="profileImage" src="<%= image_path('no_profile.png')  %>">
                          <%else%>
@@ -44,6 +43,7 @@
                          <%end%>
                        </div>
                      <% end %>
+                     <button class="btn btn-success float-right">Offer Help</button>
                    </div>
                </div>
                <div class="projectInfo">
@@ -75,9 +75,9 @@
          <%end%>
 
 
-                     
-      <div class="showButtonsContainer">        
-        <button id="showMoreButton">Show More</button>        
+
+      <div class="showButtonsContainer">
+        <button id="showMoreButton">Show More</button>
         <div class="showMoreLessMessage" id="projectsProfileMessage">
           Showing x of y items
         </div>

@@ -35,10 +35,26 @@ jQuery(document).ready(function($) {
 		history.pushState(null, "", pathname+'#'+"projects");
 	})
 
+	$('#editBackgroundPic').click(function(){
+		var uploadProfileInput = document.getElementById('profileBackground')
+		if(uploadProfileInput){
+			uploadProfileInput.click();
+		}
+	});
+
+	$('#editProfilePic').click(function(){
+		var uploadInput = document.getElementById('profilephoto')
+		if(uploadInput){
+			uploadInput.click();
+		}
+	});
+
+	
+
 	var createProjectCollaborators = []
 	var createProjectCategories = []
-	var editProjectCollaborators = ["2","3"]
-	var editProjectCategories = ["2"]
+	var editProjectCollaborators = []
+	var editProjectCategories = []
 	var editProfileLanguages = window.test || []
 
 	var editProfileLanguagesHiddenElm = document.getElementById('edit-profile-hidden-languages')

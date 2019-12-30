@@ -512,6 +512,12 @@
     height: 60px;
     border-radius: 5px;
 }
+.exploration-reviews {
+  padding:0 35px;
+}
+.exploration-review {
+  max-width: 800px;
+}
 .reviewsTitle{
     display: grid;
     grid-template-columns: 35px 85px auto;
@@ -577,6 +583,7 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
+    background-size: cover;
 }
 .comment{
     grid-column: 2/5;

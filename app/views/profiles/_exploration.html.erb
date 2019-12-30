@@ -8,57 +8,57 @@
         <span class="cel fz-13 mt-3 fw-600 c-gray">58</span>
 
         <div class="grid-RatingsModal">
-                <div class="grid-Pop celpop">
-                        <div class="grid-Starts celpop">
-                          <div class="celp">
-                            <div class="rateYo d-inline-block p-0"></div>
-                          </div>
-                          <div class="celp txt5 mt-1">5 <span>out of</span> 5</div>
-                        </div>
-                        <div class="grid-Rating celpop">
-                            <div class="celp txt-Title">14 ratings</div>
-                        </div>
-                        <div class="grid-Star celpop">
-                            <div class="celp txt-Star top-Starts">5 Star</div>
-                            <div class="celp top-Starts">
-                                <div class="progress bar-Progress">
-                                    <div class="progress-bar bary" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                            </div>
-                            <div class="celp number top-Starts">100%</div>
-                            <div class="celp txt-Star top-Starts">4 Star</div>
-                            <div class="celp top-Starts">
-                                <div class="progress bar-Progress">
-                                    <div class="progress-bar bary" role="progressbar" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="celp number top-Starts">0%</div>
-                            <div class="celp txt-Star top-Starts">3 Star</div>
-                            <div class="celp top-Starts">
-                                <div class="progress bar-Progress">
-                                    <div class="progress-bar bary" role="progressbar" style="width: 70%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="celp number top-Starts">0%</div>
-                            <div class="celp txt-Star top-Starts">2 Star</div>
-                            <div class="celp top-Starts">
-                                <div class="progress bar-Progress">
-                                    <div class="progress-bar bary" role="progressbar" style="width: 50%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="celp number top-Starts">0%</div>
-                            <div class="celp txt-Star top-Starts">1 Star</div>
-                            <div class="celp top-Starts">
-                                <div class="progress bar-Progress">
-                                    <div class="progress-bar bary" role="progressbar" style="width: 10%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="celp number top-Starts">0%</div>
-                            <div class="topStart"></div>
-                        </div>
+          <div class="grid-Pop celpop">
+                  <div class="grid-Starts celpop">
+                    <div class="celp">
+                      <div class="rateYo d-inline-block p-0"></div>
                     </div>
+                    <div class="celp txt5 mt-1">5 <span>out of</span> 5</div>
+                  </div>
+                  <div class="grid-Rating celpop">
+                      <div class="celp txt-Title">14 ratings</div>
+                  </div>
+                  <div class="grid-Star celpop">
+                      <div class="celp txt-Star top-Starts">5 Star</div>
+                      <div class="celp top-Starts">
+                          <div class="progress bar-Progress">
+                              <div class="progress-bar bary" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                      </div>
+                      <div class="celp number top-Starts">100%</div>
+                      <div class="celp txt-Star top-Starts">4 Star</div>
+                      <div class="celp top-Starts">
+                          <div class="progress bar-Progress">
+                              <div class="progress-bar bary" role="progressbar" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </div>
+                      <div class="celp number top-Starts">0%</div>
+                      <div class="celp txt-Star top-Starts">3 Star</div>
+                      <div class="celp top-Starts">
+                          <div class="progress bar-Progress">
+                              <div class="progress-bar bary" role="progressbar" style="width: 70%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </div>
+                      <div class="celp number top-Starts">0%</div>
+                      <div class="celp txt-Star top-Starts">2 Star</div>
+                      <div class="celp top-Starts">
+                          <div class="progress bar-Progress">
+                              <div class="progress-bar bary" role="progressbar" style="width: 50%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </div>
+                      <div class="celp number top-Starts">0%</div>
+                      <div class="celp txt-Star top-Starts">1 Star</div>
+                      <div class="celp top-Starts">
+                          <div class="progress bar-Progress">
+                              <div class="progress-bar bary" role="progressbar" style="width: 10%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </div>
+                      <div class="celp number top-Starts">0%</div>
+                      <div class="topStart"></div>
+                  </div>
+              </div>
 
-                    <div class="cel"></div>
+              <div class="cel"></div>
 
       </div>
       </div>
@@ -74,7 +74,7 @@
     </div>
 
     <div class="interestsContent mb-3">
-        <div class="interestsImages">
+        <div class="interestsImages" id="exploreCategoriesGrid">
             <% if @explores.blank? %>
               <div class="gridGuidingActivity">
                       <button data-toggle="modal" data-target="#editExploreModal" class="btnAddActivity" >adds</button>
@@ -108,7 +108,59 @@
     <div class="reviewsTitle">
         <div id="forReviewsTitle" class="c-black">Reviews</div>
     </div>
-    <div class="reviewsContent">
+    <div class="exploration-reviews mt-2">
+      <% if @explore_ratings.blank? %>
+        <div class="text-center no-result-text">
+          No Explore Ratings Available
+        </div>
+      <% else %>
+      <% @explore_ratings.each do |category,explore_rating| %>
+        <div class="exploration-review row mt-4">
+          <div class="col-auto">
+            <div class="card-skill small border">
+              <div class="cover"
+                   style="background-image: url(<%= category.url %>);">
+              </div>
+              <h5 class="font-weight-bold">
+                <%= category.name %>
+              </h5>
+            </div>
+          </div>
+          <div class="col">
+            <!-- rate -->
+            <div class="row">
+              <div class="col">
+                <div class="rateYo d-inline-block p-0 mb-3 align-middle"></div>
+
+                <span class="fz-13 fw-600 c-gray">3</span>
+              </div>
+
+              <div class="col-auto">
+                <a class="navigation-link">View All Reviews</a>
+              </div>
+            </div>
+
+            <!-- comment -->
+            <% explore_rating.each do |content| %>
+              <%= link_to reviews_path(:guide_id => content.guide_id) do %>
+                <div class="exploration-review-comment mt-2">
+                  <!-- avatar -->
+                  <div class="commentProfileImage d-inline-block align-middle mr-2"
+                       style="background-image: url(<%= Guide.find(content.guide_id).profile.profile_photo %>)"></div>
+
+                  <!-- comment -->
+                  <span class="fw-500 c-black"><%= content.review %></span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+
+<!--     <div class="reviewsContent">
       <% if @explore_ratings.blank? %>
          <div class="emptyReviews">
             No Explore Ratings Available
@@ -129,9 +181,9 @@
                              <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%=content.rating%>"></div>
                           </div>
                      </div>
-                     <!-- <div class="reviewViewAllReviews">
+                     <div class="reviewViewAllReviews">
                          <a href="">View All Reviews</a>
-                     </div> -->
+                     </div>
                      <%= link_to reviews_path(:guide_id => content.guide_id) do %>
                        <div class="commentImage">
                            <img class="commentProfileImage" src="<%= Guide.find(content.guide_id).profile.profile_photo %>">
@@ -143,7 +195,7 @@
            </div>
          <% end %>
       <% end %>
-    </div>
+    </div> -->
     <!-- <div class="moreLink">
         <div id="forMoreLink">
             <a id="moreLink" href="#">More</a>

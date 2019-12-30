@@ -6,7 +6,9 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @profile = current_user.profile
-    @project = Project.first
+    @project = Project.includes(:profile,:categories)
+    @popular_projects = @project.where(:profiles=>{:country=>"India"}).limit(4)
+    @popular_in_country = @project.where(:profiles=>{:country=>current_profile.country}).where.not("profile_id = ?",current_profile.id )
   end
 
   # GET /projects/1
@@ -97,6 +99,8 @@ class ProjectsController < ApplicationController
 
   def open_edit_project_modal
     @project = Project.find(params[:id])
+    @colab_ids = @project.colab_id
+    @categories_id = @project.categories.pluck(:id)
     respond_to do |format|
       format.js
     end
@@ -108,6 +112,9 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
+    def current_profile
+      current_user.profile
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.permit(:name,:description,:image,:status,:help,:colab_id)

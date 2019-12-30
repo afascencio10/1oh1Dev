@@ -69,6 +69,7 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, notice: 'Category was successfully deleted.'
 
   end
+
   private
 
     def current_profile

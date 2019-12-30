@@ -22,18 +22,20 @@
     					 height="200px"
     					 class="rounded"
     					 src="<%= image_path('Skills/poly.jpg')%>" alt="poly">
-
-    				<img class="project_status" src="<%= image_path('Icons/project_status.png')%>" alt="status">
+               <% if project.status == 0 %>
+                    <img src="<%= image_path('Icons/Idea_icon.png') %>" alt="Image" class="projectIcon">
+                  <% elsif project.status == 1 %>
+                    <img src="<%= image_path('Icons/WIP-icon.png') %>" alt="Image" class="projectIcon">
+                  <% else %>
+                    <img src="<%= image_path('Icons/completed-icon.png') %>" alt="Image" class="projectIcon">
+                <% end %>
     			</div>
     			<div class="col-6">
     				<h5 class="font-weight-bold">
     					<%= project.name %>
-
-    					<button data-toggle="modal" data-target="#projectsModal" data-val="<%=project.to_json%>" data-project="<%=project.categories.to_json%>" id="transferval" type="button" class="btn btn-link">
-    						<img src="<%= image_path('Icons/edit.png')%>"
-    							 width="24px"
-    							 alt="status">
-    					</button>
+              <%= link_to open_edit_project_modal_path(id: project), remote: true do%>
+               <i class="material-icons icons create" style="display:block">create</i>
+              <%end%>
     				</h5>
     				<h6 class="mt-1 font-weight-bold fz-13">Description</h6>
     				<p class="fz-12"><%= project.description %></p>
@@ -54,47 +56,3 @@
     <%end%>
   </div>
 </div>
-<script type="text/javascript">
-  $( "#editProject" ).submit(function( event ) {
-    alert( "Handler for .submit() called." );
-    event.preventDefault();
-  });
-
-  $(document).on("click","#transferval",function(){
-  		var project = $(this).data('val');
-      var categories = $(this).data('project');
-      list =[]
-      categories.forEach(myFunction);
-       function myFunction(item, index)
-       {
-           list.push(item.id);
-       }
-
-      $('#project_name').val(project.name);
-      $('#project_description').val(project.description);
-      $('#edit-project-hidden-collaborators').val(project.colab_id);
-      $('#edit-project-hidden-categories').val(list);
-
-  		$("#edit-project-raido-"+String(project.status)).prop("checked", true);
-
-
-
-    //   $("form#editProject").submit(function() {
-    //     var id = project.id
-    //     console.log(mydata); // it's only for test
-    //     // $.ajax({
-    //     //     type: "PUT",
-    //     //     url: "myUrlToPostData.php",
-    //     //     data: mydata,
-    //     //     success: function(response, textStatus, xhr) {
-    //     //         console.log("success");
-    //     //     },
-    //     //     error: function(xhr, textStatus, errorThrown) {
-    //     //         console.log("error");
-    //     //     }
-    //     // });
-    //     return false;
-    // });
-  })
-
-</script>

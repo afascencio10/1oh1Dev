@@ -25,6 +25,7 @@ function notification()
     check = result;
     if (result["unread"].length == 0)    
     {
+      $("#notification > #unread_count").addClass("d-none");
       unread = ["<li>New:</li><li><a class=\"nav-link\">No new notifications</a></li><hr><li>Earlier:</li>"]
       read = result["read"].map((item) => {
         return "<li><a href=\""+window.location.origin+item.url+"\" class=\"nav-link\">"+item.actor.firstname+ " "+ item.action+" you\!</a></li>"

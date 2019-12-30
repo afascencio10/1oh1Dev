@@ -15,8 +15,10 @@
 
 			<header class="mt-5 category-tabs">
 	          <div id="material-tabs">
-	              <a id="tabExplorers" href="#tab1" class="active">Explorers</a>
-	              <a id="tabGuides" href="#tab2">Guides</a>
+							<%= link_to "Explorers",category_path(Category.first,type: "explorers"), id: "tabExplorers", href:"#tab1",remote: true%>
+							<%= link_to "Guides",category_path(Category.first,type: "guides"),id: "tabGuides", href:"#tab2", remote: true %>
+								<!-- <a id="tabExplorers" href="#tab1" class="active">Explorers</a> -->
+	              <!-- <a id="tabGuides" href="#tab2">Guides</a> -->
 	              <a id="tabProjects" href="#tab3">Projects</a>
 	              <span class="yellow-bar"></span>
 	          </div>
@@ -40,7 +42,7 @@
 
 		    <div class="tab-content custom-table category-tab-content">
 		    	<div id="tab1">
-		    		<%= render partial: 'categories/explorers',locals: { explores: @profiles }%>
+						<%=render partial: 'categories/explorers', locals: { explores: @profiles }%>
 					</div>
 		    	<div id="tab2">
 						<%= render partial: 'categories/guides',locals: { guides: @profiles }%>
