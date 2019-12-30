@@ -5,20 +5,22 @@ jQuery(document).ready(function($) {
 	*/
 	var URLsearchProfile = window.location.href;
 	URLsearchProfile = URLsearchProfile.split("#");
-	switch(URLsearchProfile[1]){
-		case "explore":
-			$('.tab1-tabProfile').trigger( "click" );
-		break;
-		case "guide":
-			$('.tab2-tabProfile').trigger('click');
-		break;
-		case "projects":
-			$('.tab3-tabProfile').trigger( "click" );
-		break;
-		case null || "" || undefined:
-			$('.tab1-tabProfile').trigger( "click" );
-		break;
-	}
+	$( document ).ready(function() {
+		switch(URLsearchProfile[1]){
+			case "explore":
+				$('.tab1-tabProfile').trigger( "click" );
+			break;
+			case "guide":
+				$('.tab2-tabProfile').trigger('click');
+			break;
+			case "projects":
+				$('.tab3-tabProfile').trigger( "click" );
+			break;
+			case null || "" || undefined:
+				$('.tab1-tabProfile').trigger( "click" );
+			break;
+		}
+	});
 
 	$('.tab1-tabProfile').click(function(){
 		var pathname = window.location.pathname;

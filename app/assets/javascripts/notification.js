@@ -23,7 +23,7 @@ function notification()
   $.ajax({url: "/notifications.json", success: function(result){
     $("#notification > #unread_count").text(result["unread"].length);
     check = result;
-    if (result["unread"].length == 0)
+    if (result["unread"].length == 0)    
     {
       unread = ["<li>New:</li><li><a class=\"nav-link\">No new notifications</a></li><hr><li>Earlier:</li>"]
       read = result["read"].map((item) => {
