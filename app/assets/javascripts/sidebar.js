@@ -156,8 +156,12 @@ jQuery(function ($) {
     }
 
     var URLMarket = window.location.href;
-    if (URLMarket.indexOf("markets") != -1) {
-        console.log(URLMarket);
+    if (URLMarket.indexOf("markets") != -1) {        
+        var topbarMarket = document.querySelector("#site-navbar");
+        topbarMarket.classList.add("markettopbarSide");
+    }
+
+    if (URLMarket.indexOf("about-yourself") != -1) {        
         var topbarMarket = document.querySelector("#site-navbar");
         topbarMarket.classList.add("markettopbarSide");
     }

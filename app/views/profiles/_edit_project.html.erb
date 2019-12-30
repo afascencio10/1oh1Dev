@@ -21,6 +21,8 @@
             <%= text_area_tag :description,nil,class: 'form-control',id:"project_description", placeholder: "Describe It",:required => true, rows: "3" %>
           </div>
 
+          <img class="projecteditPhotoPreview" src=""></img>
+
           <!-- Project Image -->
           <div class="form-group m-3">
             <label for="edit_url">Project Image</label>
@@ -30,8 +32,8 @@
                   id: "edit_url" %>
               <label class="custom-file-label" for="edit_url">Project Image...</label>
 
-              <i style="display: none" class="fa fa-spinner create-project-upload-loading" id="loaderedit"></i>
-              <i style="display: none; color:green" class="fa fa-check create-project-upload-loading" id="checkedit"></i>
+              <i style="display:none;position: absolute;left: 100px;top: -33px;" class="material-icons" id="loaderedit">autorenew</i>
+              <i style="display:none;position: absolute;left: 100px;top: -33px;color: green !important;" class="material-icons" id="checkedit">done</i>
             </div>
           </div>
 
@@ -141,3 +143,9 @@
     </div>
   </div>
 </div>
+<script>
+  function selectProjectEditPic() {
+    var editInputProject = document.getElementById('edit_url')
+    editInputProject.click()
+  }
+</script>

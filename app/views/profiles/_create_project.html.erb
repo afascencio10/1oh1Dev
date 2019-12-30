@@ -21,6 +21,8 @@
             <%= text_area_tag :description,nil,class: 'form-control', placeholder: "Describe It",:required => true, rows: "3" %>
           </div>
 
+          <img class="projectPhotoPreview" src=""></img>
+
           <!-- Project Image -->
           <div class="form-group m-3">
             <label for="projectphoto">Project Image</label>
@@ -30,8 +32,8 @@
                   id: "projectphoto" %>
               <label class="custom-file-label" for="projectphoto">Project Image...</label>
 
-              <i style="display: none" class="fa fa-spinner create-project-upload-loading" id="loaderimage"></i>
-              <i style="display: none; color:green" class="fa fa-check create-project-upload-loading" id="check"></i>
+              <i style="display:none;position: absolute;left: 100px;top: -33px;" class="material-icons" id="loaderimage">autorenew</i>
+              <i style="display:none;position: absolute;left: 100px;top: -33px;color: green !important;" class="material-icons" id="check">done</i>
             </div>
           </div>
 
@@ -144,5 +146,11 @@
       <% end %>
 
     </div>
-  </div>
+  </div>  
 </div>
+<script>
+  function selectProjectPic() {
+    var uploadInputProject = document.getElementById('projectphoto')
+    uploadInputProject.click()
+  }
+</script>

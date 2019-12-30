@@ -33,7 +33,7 @@ $(document).ready(function(){
     }else if(e.target.id == "edit_url") {
       loaderId = '#loaderedit';
       checkId = '#checkedit';
-      inputId = 'url_edit';
+      inputId = 'edit_url';
       $(loaderId).fadeIn();
       $(loaderId).addClass('fa-spin');
       var file = e.target.files[0];
@@ -46,15 +46,37 @@ $(document).ready(function(){
     },function (error) {
         console.log("Upload Error");
     },function() {
-      thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {        
-        console.log(downloadURL);
-        var inputIdComplete = '#' + inputId;
+      thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {                
+        var inputIdComplete = '#' + inputId;        
         $(inputIdComplete).val(downloadURL);
         profile = document.getElementById(inputId).value = downloadURL;
         $(loaderId).fadeOut();
         $(checkId).fadeIn();
-        console.log($(checkId));
-      })
+        console.log(profile);
+        console.log(inputId);
+        switch (inputId) {
+          case 'urlprofileBackground':
+          $('.backgroundimagechange').attr('style','background-image: url(' + downloadURL + ');');
+          break;
+          case 'urlprofile':
+          $('.profileImg').attr('src',downloadURL);
+          break;
+          case 'url':
+          $('.projectPhotoPreview').attr('src',downloadURL);
+          $('.projectPhotoPreview').css('height','125px');
+          $('.projectPhotoPreview').css('width','125px');
+          $('.projectPhotoPreview').css('border','3px solid #e9ecef');
+          $('.projectPhotoPreview').css('margin-left','25px');
+          break;
+          case 'edit_url':
+          $('.projecteditPhotoPreview').attr('src',downloadURL);
+          $('.projecteditPhotoPreview').css('height','125px');
+          $('.projecteditPhotoPreview').css('width','125px');
+          $('.projecteditPhotoPreview').css('border','3px solid #e9ecef');
+          $('.projecteditPhotoPreview').css('margin-left','25px');
+          break;
+        }
+      })      
     });
   })
 });
