@@ -8,6 +8,7 @@
     </button>
   </div>
   <div class="modal-body">
+      <div id="checkEventForm" style="display: none;"></div>
       <div class="form-group">
           <%= f.input :title,input_html: { class: 'form-control fz-14' }, id: 'newEventSubject',placeholder: 'Subject',label: false %>
           <input type="hidden" name="type" id="type" >
@@ -74,11 +75,3 @@
 
   </div>
 <% end %>
-
-<script type="text/javascript">
-  var url_string = window.location.href
-  var url = new URL(url_string);
-  var params = url.search.split("?")[1];
-  $("#type").val(params);
-
-</script>

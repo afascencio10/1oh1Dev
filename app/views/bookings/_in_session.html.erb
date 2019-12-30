@@ -157,25 +157,3 @@
       </div>
   </div>
 </div>
-
-<script type="text/javascript">
-	var timedelay = 1;
-	var _delay = setInterval(delayCheck, 500);
-
-	$('.inSession').on('mousemove', showAllEvent);
-
-	function delayCheck() {
-	  if (timedelay == 5) {
-	    $('.sessionHide').removeClass('showSessionBar');
-	    timedelay = 1;
-	  }
-	  timedelay = timedelay + 1;
-	}
-
-	function showAllEvent() {
-	  $('.sessionHide').addClass('showSessionBar');
-	  timedelay = 1;
-	  clearInterval(_delay);
-	  _delay = setInterval(delayCheck, 500);
-	}
-</script>

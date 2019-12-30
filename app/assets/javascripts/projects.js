@@ -33,7 +33,7 @@ $(document).ready(function(){
     }else if(e.target.id == "edit_url") {
       loaderId = '#loaderedit';
       checkId = '#checkedit';
-      inputId = 'edit_url';
+      inputId = 'url_edit';
       $(loaderId).fadeIn();
       $(loaderId).addClass('fa-spin');
       var file = e.target.files[0];
@@ -68,7 +68,7 @@ $(document).ready(function(){
           $('.projectPhotoPreview').css('border','3px solid #e9ecef');
           $('.projectPhotoPreview').css('margin-left','25px');
           break;
-          case 'edit_url':
+          case 'url_edit':
           $('.projecteditPhotoPreview').attr('src',downloadURL);
           $('.projecteditPhotoPreview').css('height','125px');
           $('.projecteditPhotoPreview').css('width','125px');

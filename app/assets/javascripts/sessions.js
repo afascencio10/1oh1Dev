@@ -699,4 +699,83 @@ jQuery(document).ready(function($) {
     timelineCalendar.refetchEvents()
     timelineCalendarMoreOptions.refetchEvents()
   }
+
+
+  //_in_session and show
+  var timedelay = 1;
+  var _delay = setInterval(delayCheck, 500);
+
+  $('.inSession').on('mousemove', showAllEvent);
+
+  function delayCheck() {
+    if (timedelay == 5) {
+      $('.sessionHide').removeClass('showSessionBar');
+      timedelay = 1;
+    }
+    timedelay = timedelay + 1;
+  }
+
+  function showAllEvent() {
+    $('.sessionHide').addClass('showSessionBar');
+    timedelay = 1;
+    clearInterval(_delay);
+    _delay = setInterval(delayCheck, 500);
+  }
+
+  //pre_in_room
+  // var timedelay = 1;
+  // var _delay = setInterval(delayCheck, 500);
+
+  // $('.roomBG').on('mousemove', showAllEvent);
+
+  // function delayCheck() {
+  //   if (timedelay == 5) {
+  //     $('.isHide').removeClass('showRoomBar');
+  //     timedelay = 1;
+  //   }
+  //   timedelay = timedelay + 1;
+  // }
+
+  // function showAllEvent() {
+  //   $('.isHide').addClass('showRoomBar');
+  //   timedelay = 1;
+  //   clearInterval(_delay);
+  //   _delay = setInterval(delayCheck, 500);
+  // }
+
+  //pre_session
+  // jQuery(document).ready(function($) {
+  //   var timedelay = 1;
+  //   var _delay = setInterval(delayCheck, 500);
+
+  //   $('.containerSessionVid').on('mousemove', showAllEvent);
+  //   function delayCheck() {
+  //     if (timedelay == 5) {
+  //       $('.isHide').removeClass('showRoomBar');
+  //       timedelay = 1;
+  //     }
+  //     timedelay = timedelay + 1;
+  //   }
+
+  //   function showAllEvent() {
+  //     $('.isHide').addClass('showRoomBar');
+  //     timedelay = 1;
+  //     clearInterval(_delay);
+  //     _delay = setInterval(delayCheck, 500);
+  //   }
+  // })
+
+  
+
+  //_form
+  var testEventForm = $("#checkEventForm")
+
+  if (testEventForm) {    
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    var params = url.search.split("?")[1];
+    $("#type").val(params);
+  }  
+
+
 })
