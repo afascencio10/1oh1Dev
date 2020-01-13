@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
 	var bookingCalendar = document.querySelector('.booking-calendar') // .category-calendar
 	if (bookingCalendar) {
 		var calendars = new FullCalendar.Calendar(bookingCalendar, {
@@ -123,36 +123,36 @@ jQuery(document).ready(function($) {
  	/*
 	** Read te search value and change the beahivor
 	*/
-	var URLsearchBooking = window.location.href;
-	URLsearchBooking = URLsearchBooking.split("#");
-	$( document ).ready(function() {
-		switch(URLsearchBooking[1]){
-			case "pending":
-				$('.tab1-tabBooking').trigger( "click" );
-			break;
-			case "upcoming":
-				$('.tab2-tabBooking').trigger('click');
-			break;
-			case "completed":
-				$('.tab3-tabBooking').trigger( "click" );
-			break;
-			case null || "" || undefined:
-				$('.tab1-tabBooking').trigger( "click" );
-			break;
-		}
-	});
-	$('.tab1-tabBooking').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"pending");
-	})
-	$('.tab2-tabBooking').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"upcoming");
-	})
-	$('.tab3-tabBooking').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"completed");
-	})
+	// var URLsearchBooking = window.location.href;
+	// URLsearchBooking = URLsearchBooking.split("#");
+	// $( document ).ready(function() {
+	// 	switch(URLsearchBooking[1]){
+	// 		case "pending":
+	// 			$('.tab1-tabBooking').trigger( "click" );
+	// 		break;
+	// 		case "upcoming":
+	// 			$('.tab2-tabBooking').trigger('click');
+	// 		break;
+	// 		case "completed":
+	// 			$('.tab3-tabBooking').trigger( "click" );
+	// 		break;
+	// 		case null || "" || undefined:
+	// 			$('.tab1-tabBooking').trigger( "click" );
+	// 		break;
+	// 	}
+	// });
+	// $('.tab1-tabBooking').click(function(){
+	// 	var pathname = window.location.pathname;
+	// 	history.pushState(null, "", pathname+'#'+"pending");
+	// })
+	// $('.tab2-tabBooking').click(function(){
+	// 	var pathname = window.location.pathname;
+	// 	history.pushState(null, "", pathname+'#'+"upcoming");
+	// })
+	// $('.tab3-tabBooking').click(function(){
+	// 	var pathname = window.location.pathname;
+	// 	history.pushState(null, "", pathname+'#'+"completed");
+	// })
 
 
 

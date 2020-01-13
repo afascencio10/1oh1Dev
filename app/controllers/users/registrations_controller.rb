@@ -11,21 +11,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.new(sign_up_params)
-    @user.add_role :guest
-    if User.exists?(email: params[:email]) # I think this should be `user_params[:email]` instead of `params[:email]`
-      flash[:error] = "User already exists."
-      redirect_to '/'
-    end
-    if @user.save
-      UserMailer.welcome_email(@user).deliver_now
-      session[:user_id] = @user.id
-      flash[:success] = "Successfully signed up!!"
-
-      sign_in(resource_name, resource)
-      redirect_to '/profile/about-yourself'
+    if User.exists?(email: params["user"]["email"]) # I think this should be `user_params[:email]` instead of `params[:email]`
+      flash[:error] = "Email already exists."
+      redirect_to unauthenticated_root_path
     else
-      render 'landing/index'
+      @user = User.new(sign_up_params)
+      @user.add_role :guest
+      if @user.save
+        UserMailer.welcome_email(@user).deliver_now
+        session[:user_id] = @user.id
+        flash[:success] = "Successfully signed up!!"
+
+        sign_in(resource_name, resource)
+        redirect_to '/profile/about-yourself'
+      else
+        render 'landing/index'
+      end
     end
   end
 

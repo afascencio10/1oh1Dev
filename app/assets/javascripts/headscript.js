@@ -1,10 +1,9 @@
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
     AOS.init({
         duration: 800,
         easing: 'slide',
         once: true
     });
-
     var starConfig = {
       starWidth: '20px',
       ratedFill: '#ffb649',
@@ -21,24 +20,17 @@ jQuery(document).ready(function($) {
         messagingSenderId: "340774294942",
         appId: "1:340774294942:web:cab3d13c23c64897"
     };
-    // if (!firebase.apps.length) {
-    //   firebase.initializeApp({});
-    // }
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
 
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    // firebase.initializeApp(firebaseConfig);
 
       "use strict";
       $('.rateYo').rateYo(starConfig);
 
       var siteMenuClone = function() {
-
-          $('.js-clone-nav').each(function(e) {
-              // e.preventDefault();
-              var $this = $(this);
-              $this.clone(true, true).attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
-          });
-
           setTimeout(function() {
 
               var counter = 0;
@@ -96,6 +88,11 @@ jQuery(document).ready(function($) {
                   $('body').addClass('offcanvas-menu');
                   $this.addClass('active');
               }
+          })
+
+          $('.site-mobile-menu-body a').on('click', function (e) {
+            $('body').removeClass('offcanvas-menu')
+            $('.js-menu-toggle').removeClass('active')
           })
 
           // click outisde offcanvas
@@ -232,7 +229,21 @@ jQuery(document).ready(function($) {
             stagePadding: 0,
             smartSpeed: 450,
             nav: true,
-            navText: ['<i class="material-icons">keyboard_arrow_left</i>', '<i class="material-icons">keyboard_arrow_right</i>']
+            navText: ['<i class="material-icons">keyboard_arrow_left</i>', '<i class="material-icons">keyboard_arrow_right</i>'],
+            responsive:{
+              0:{
+                  items:2
+              },
+              600:{
+                  items:2
+              },
+              993:{
+                  items:3
+              },
+              1200:{
+                  items:4
+              }
+            }
           });
       };
       siteCarousel();

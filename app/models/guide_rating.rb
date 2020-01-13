@@ -6,6 +6,12 @@ class GuideRating < ApplicationRecord
 
   scope :rate_desc,-> {order("rating DESC")}
   scope :sort_by_created_desc, -> {order(created_at: :desc)}
-  scope :average_rating, -> (profile,category_id) {where(:profile=>profile,:category_id=>category_id).average(:rating).to_f}
+  def self.average_rating(profile,category_id)
+    if !category_id.nil?
+      where(:profile=>profile,:category_id=>category_id)
+    else
+      where(:profile=>profile)
+    end
+  end
 
 end

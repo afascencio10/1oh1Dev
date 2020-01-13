@@ -1,12 +1,12 @@
 <section class="my-5">
   <h3 class="my-5 c-black">Top Explorers</h3>
 
-  <div class="row my-4" id="mainTopExplore">    
+  <div class="row my-4" id="mainTopExplore">
     <% if @top_explores.empty? %>
       <h6 class="my-7 c-black">No Explorers Available</h6>
     <% else %>
       <% @top_explores.each do |explorer|%>
-        <%= link_to explore_path(explorer.explore_id) do %>
+        <%= link_to explore_path(explorer.id) do %>
           <div class="col topExploreItem">
             <div class="minimal-card-wrap text-left">
               <div class="minimal-card border animating">
@@ -15,11 +15,11 @@
                 <div class="avatar-shadow center"
                      style="background-image: url(<%= image_path('avatar-shadow.png') %>);"></div>
                 <div class="cover"
-                     style="background-image: url(<%= explorer.explore.category.url %>);"></div>
+                     style="background-image: url(<%= explorer.category.url %>);"></div>
                 <h5><%= explorer.profile.user.firstname %>&nbsp; <%= explorer.profile.user.lastname %></h5>
                 <h6><%= explorer.profile.state %> , <%= explorer.profile.country %></h6>
-                <div class="rateYo d-inline-block p-0 my-2"></div>
-                <span class="align-bottom fz-13">246</span>
+                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(explorer,nil)[:rating] %>"></div>
+                <span class="align-bottom fz-13"><%= average_rating(explorer,nil)[:count] %></span>
               </div>
             </div>
           </div>

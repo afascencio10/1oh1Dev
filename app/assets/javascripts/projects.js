@@ -1,4 +1,4 @@
-$(document).ready(function(){  
+$(document).on('turbolinks:load', function() {
   var loaderId;
   var checkId;
   var inputId;
@@ -46,13 +46,12 @@ $(document).ready(function(){
     },function (error) {
         console.log("Upload Error");
     },function() {
-      thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {                
-        var inputIdComplete = '#' + inputId;        
+      thisref.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        var inputIdComplete = '#' + inputId;
         $(inputIdComplete).val(downloadURL);
-        profile = document.getElementById(inputId).value = downloadURL;
+        document.getElementById(inputId).value = downloadURL;
         $(loaderId).fadeOut();
         $(checkId).fadeIn();
-        console.log(profile);
         console.log(inputId);
         switch (inputId) {
           case 'urlprofileBackground':
@@ -76,7 +75,7 @@ $(document).ready(function(){
           $('.projecteditPhotoPreview').css('margin-left','25px');
           break;
         }
-      })      
+      })
     });
   })
 });

@@ -9,12 +9,12 @@ class BookingsController < ApplicationController
     if params["self"].to_i == 1 && params["other"].to_i == 1
 
       if params["explore_id"] !=nil
-        @reservation_bookings = (Explore.find(params["explore_id"].to_i).profile.bookings + Profile.find(current_user.id).bookings).uniq
+        @reservation_bookings = (Explore.find(params["explore_id"].to_i).profile.bookings + Profile.find(current_profile_id).bookings).uniq
         all_other_user_ids = Explore.find(params["explore_id"].to_i).profile.bookings.map(&:id)
         all_current_user_ids = current_user.profile.bookings.pluck(:id).uniq
         @meta = {other: all_other_user_ids, self: all_current_user_ids, common: all_other_user_ids & all_current_user_ids }
       elsif params["guide_id"] !=nil
-        @reservation_bookings = (Guide.find(params["guide_id"].to_i).profile.bookings + Profile.find(current_user.id).bookings).uniq
+        @reservation_bookings = (Guide.find(params["guide_id"].to_i).profile.bookings + Profile.find(current_profile_id).bookings).uniq
         all_other_user_ids = Guide.find(params["guide_id"].to_i).profile.bookings.map(&:id)
         all_current_user_ids = current_user.profile.bookings.pluck(:id).uniq
         @meta = {other: all_other_user_ids, self: all_current_user_ids, common: all_other_user_ids & all_current_user_ids }
@@ -64,48 +64,63 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    @companion_type = params["type"].split("=")[0]
-    @companion_id = params["type"].split("=")[1].to_i
-    @booking.start = @booking.start.to_time.utc
-    @booking.end = @booking.end.to_time.utc
-
+    @booking.start = Time.parse(params[:booking][:start]).getutc
+    @booking.end = Time.parse(params[:booking][:end]).getutc
     @diff_seconds = (params[:booking][:end].to_time-params[:booking][:start].to_time).to_i
     @booking.duration = format_time(@diff_seconds)
-    @booking.status = "pending"
-    if @companion_type == "explore_id"
-      @companion = Explore.find(@companion_id)
-      @booking.guide_id = Guide.find_by(:profile_id => current_profile_id,:category_id => Explore.find(@companion_id).category_id).id
-      @booking.explore_id = @companion_id
-      @booking.description = params[:booking][:description]
-      @other_profile = Explore.find(@companion_id).profile
+    if params["status"] == "3" #unaviable events for personal calendar
+      @booking.guide_id = 1
+      @booking.explore_id = 1
+      @booking.client_id = current_profile_id
+      @booking.recipient_id = current_profile.id
       @booking.identifier = SecureRandom.base64(10)
+      @booking.status = params["status"].to_i
+      if @booking.save
+        @booking.video_sessions.create(profile_id: current_user.profile.id)
+        redirect_to calendars_path
+      end
     else
+      @companion_type = params["type"].split("=")[0]
+      @companion_id = params["type"].split("=")[1].to_i
+      @booking.status = "pending"
       @companion = Guide.find(@companion_id)
       @booking.explore_id = Explore.find_by(:profile_id => current_profile_id,:category_id => Guide.find(@companion_id).category_id).id
       @booking.guide_id = @companion_id
       @booking.description = params[:booking][:description]
       @other_profile = Guide.find(@companion_id).profile
       @booking.identifier = SecureRandom.base64(10)
+      @booking.client_id = current_profile_id
+      @booking.recipient_id = @companion.profile_id
+      if @booking.save
+        @booking.video_sessions.create(profile_id: current_user.profile.id)
+        @booking.video_sessions.create(profile_id: @other_profile.id)
+        flash[:notice] = "Booking Created"
+
+        Notification.create(recipient: @companion.profile.user, user: current_user, action: "booking", notifiable: current_user, url: "/bookings" )
+
+        # mailer_time = timezone.utc_to_local(@booking.start) - 5.minute
+        #
+        # StartSessionJob.set(wait_until: mailer_time).perform_later @booking, profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)
+
+        render js: "window.location='#{calendars_path}'"
+        # render js: "window.location = '#{profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)}'"
+
+      end
+
     end
 
+    # if @companion_type == "explore_id"
+    #   @companion = Explore.find(@companion_id)
+    #   @booking.guide_id = Guide.find_by(:profile_id => current_profile_id,:category_id => Explore.find(@companion_id).category_id).id
+    #   @booking.explore_id = @companion_id
+    #   @booking.description = params[:booking][:description]
+    #   @other_profile = Explore.find(@companion_id).profile
+    #   @booking.identifier = SecureRandom.base64(10)
+    #   @booking.client_id = current_profile_id
+    #   @booking.recipient_id = @companion.profile_id
+    # else
 
-    if @booking.save
-      @booking.video_sessions.create(profile_id: current_user.profile.id)
-      @booking.video_sessions.create(profile_id: @other_profile.id)
-      flash[:notice] = "Booking Created"
-
-
-      Notification.create(recipient: @companion.profile.user, user: current_user, action: "booking", notifiable: current_user, url: "/bookings" )
-
-      # mailer_time = timezone.utc_to_local(@booking.start) - 5.minute
-      #
-      # StartSessionJob.set(wait_until: mailer_time).perform_later @booking, profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)
-
-      render js: "window.location='#{calendars_path}'"
-      # render js: "window.location = '#{profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)}'"
-
-    end
-
+    # end
   end
 
 

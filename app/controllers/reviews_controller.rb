@@ -1,14 +1,11 @@
 class ReviewsController < ApplicationController
-  def index
+  include ExploresHelper
 
+  def index
     if !params["explore_id"].nil? || !params["guide_id"].nil?
         @info = params["explore_id"] ? Explore.find(params["explore_id"].to_i) : Guide.find(params["guide_id"].to_i)
         @explore_ratings = ExploreRating.where(category_id: @info.category_id,profile: current_profile)
         @guide_ratings = GuideRating.where(category_id: @info.category_id,profile: current_profile)
-        @explore_rate = ExploreRating.average_rating(current_profile,@info.category_id)
-        @guide_rate = GuideRating.average_rating(current_profile,@info.category_id)
-
-
     end
 
   end

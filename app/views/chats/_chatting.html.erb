@@ -13,26 +13,6 @@
 
 <div id="userImageUrl" style="display: none;"><%= current_user.profile ? current_user.profile.profile_photo : image_path('no_profile.png')  %></div>
 <div id="chatScroll" class="card-body msg_card_body">
-
-    <!-- <div class="d-flex justify-content-start mb-4">
-      <div class="img_cont_msg">
-        <img src="https://www.khaama.com/wp-content/uploads/2019/02/Afghan-Singer-Ghawgha-Taban-880x672-880x672.jpg" class="rounded-circle user_img_msg">
-      </div>
-      <div class="msg_cotainer">
-        Hi, how are you samim?
-        <span class="msg_time">8:40 AM, Today</span>
-      </div>
-    </div>
-
-    <div class="d-flex justify-content-end mb-4">
-      <div class="msg_cotainer_send">
-        I love 1Oh1, I've learned so many things for free!
-        <span class="msg_time_send">8:55 AM, Today</span>
-      </div>
-      <div class="img_cont_msg">
-      </div>
-    </div> -->
-
     <div>
         <% if @chat.messages.any? %>
           <div id="messages">

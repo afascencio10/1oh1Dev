@@ -1,7 +1,7 @@
 class ExploresController < ApplicationController
   before_action :authenticate_user!
   before_action :set_explore, only: [:show, :edit, :update, :destroy]
-
+  include ExploresHelper
   # GET /explores
   # GET /explores.json
   def index
@@ -9,7 +9,7 @@ class ExploresController < ApplicationController
     category_explores_profiles_join = Category.joins(explores: :profile)
     category_guides_profiles_join = Category.joins(guides: :profile)
 
-    @top_explores = ExploreRating.includes(profile: :user,explore: [:category]).rate_desc.where(explore_id: not_self_explore_category_ids)
+    @top_explores = ExploreRating.includes(profile: :user,explore: [:category]).rate_desc.where(explore_id: not_self_explore_category_ids).pluck(:explore_id).uniq.map{|x| Explore.find(x)}
     @popular_explore_category = category_explores_profiles_join.distinct_country(country)
     @popular_guide_category = category_guides_profiles_join.distinct_country(country)
     @popular_incountry = @popular_explore_category.merge(@popular_guide_category)
@@ -18,7 +18,7 @@ class ExploresController < ApplicationController
     @popular_inworld = @world_popular_explore_category.merge(@world_popular_guide_category)
 
     if !@top_explores.empty?
-      @category = @top_explores[0].explore.category
+      @category = @top_explores[0].category
       @first_category_name_explore =  @category.name
       @first_category_explore= @explores.includes(:category,profile: :user).where(:category_id => @category.id).where.not(:profile_id => current_profile_id)
     else
@@ -31,7 +31,10 @@ class ExploresController < ApplicationController
   # GET /explores/1
   # GET /explores/1.json
   def show
-    @explore = Explore.find(params[:id])
+    @explore_ratings = @explore.profile.explore_ratings
+    @guide_ratings = @explore.profile.guide_ratings
+    @projects = @explore.profile.projects
+
   end
 
   # GET /explores/new
@@ -151,7 +154,6 @@ class ExploresController < ApplicationController
       if current_user.profile
         current_user.profile.country
       end
-
     end
 
     def all_countries

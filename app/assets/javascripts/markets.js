@@ -19,7 +19,7 @@ function showPreCheckout(amount, total,id) {
 	$('#preCheckoutDialog').modal()
 }
 
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
 	$('.subscriptions .subscription button').click(function (event) {
 		onCoinOrSubscriptionClick('subscription', event)
 		showPreCheckout($(this).attr('data-amount'), $(this).attr('data-total'),$(this).attr('stripe-id'))

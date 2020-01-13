@@ -1,13 +1,15 @@
-<%= render 'landing/navbar' %>
+<div class="profile-navbar">
+    <%= render 'landing/navbar' %>
+</div>
 
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled helpActive">
-    
+
     <%= render 'profiles/side_bar' %>
     <!-- page-content  -->
     <main class="page-content">
         <div id="overlay" class="overlay"></div>
         <div class="mainContent">
-            <i id="responsiveMenu" class="material-icons">more_vert</i>
+            <!-- <i id="responsiveMenu" class="material-icons">more_vert</i> -->
             <%= render 'help_profile' %>
         </div>
     </main>

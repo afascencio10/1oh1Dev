@@ -1,7 +1,7 @@
 <div class="modal fade" id="projectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <%= form_tag(Project.first,:url => {:controller => :projects, action: :update},method: :put ,remote: true,:id => 'edit_project' ) do %>
+      <%= form_tag(Project.first,:url => {:controller => :projects, action: :update},method: :put ,remote: true,authenticity_token: true,:id => 'edit_project' ) do %>
         <div class="modal-header">
           <h5 class="modal-title">Edit Project</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -14,7 +14,7 @@
             <label>Project Title</label>
             <%= text_field_tag :name,nil,class: 'form-control', placeholder: "Name", id:"project_name", :required => true %>
           </div>
-          <input type="hidden" name="id" id="edit_project_id">
+          <input type="hidden" name="edit_id" id="edit_project_id">
           <!-- Description -->
           <div class="form-group m-3">
             <label>Description</label>
@@ -71,19 +71,21 @@
             <div>
               <div class="d-inline-block align-middle">
                 <label class="mb-0">No</label>
+                <input type="hidden" name="help" value ="0">
               </div>
               <label class="switch align-middle mx-1 mb-0">
-                <input type="checkbox">
+                <input type="checkbox" id="edit-project-help-checkbox">
                 <span class="slider round"></span>
               </label>
               <label class="align-middle mb-0">Yes</label>
+              <input type="hidden" name="help" value ="1">
             </div>
           </div>
 
           <!-- categories -->
           <div class="create-project-categories-select-wrap">
             <div class="form-group custom-from-group m-3">
-              <label>categories</label>
+              <label>Categories</label>
 
               <%=select_tag "“category_id”", options_from_collection_for_select(Category.all,"id","name"),class: 'custom-select',:required => true, id: 'edit_project_category_select'%>
               <input type="hidden" id="edit-project-hidden-categories" name="edit-project-categories">
@@ -102,7 +104,7 @@
           </div>
           <div class="form-row mx-3 mb-3">
             <div class="custom-control form-group custom-radio custom-radio-with-image mr-3">
-              <input type="radio" class="custom-control-input" id="edit-project-raido-0" name="help" required>
+              <input type="radio" class="custom-control-input" id="edit-project-raido-0" name="status" value="0" required>
               <label class="custom-control-label" for="edit-project-raido-0">
                 <img width="30px" src="<%= image_path ('Icons/Idea_icon.png') %>">
                 Idea
@@ -110,7 +112,7 @@
             </div>
 
             <div class="custom-control form-group custom-radio custom-radio-with-image mx-3">
-              <input type="radio" class="custom-control-input" id="edit-project-raido-1" name="help" required>
+              <input type="radio" class="custom-control-input" id="edit-project-raido-1" name="status" value="1" required>
               <label class="custom-control-label" for="edit-project-raido-1">
                 <img width="30px" src="<%= image_path ('Icons/WIP-icon.png') %>">
                 In Progress
@@ -118,7 +120,7 @@
             </div>
 
             <div class="custom-control form-group custom-radio custom-radio-with-image">
-              <input type="radio" class="custom-control-input" id="edit-project-raido-2" name="help" required>
+              <input type="radio" class="custom-control-input" id="edit-project-raido-2" name="status" value="2" required>
               <label class="custom-control-label" for="edit-project-raido-2">
                 <img width="30px" src="<%= image_path ('Icons/completed-icon.png') %>">
                 Complete
@@ -127,7 +129,7 @@
           </div>
 
           <div class="container">
-            <input type="text" hidden id="url_edit" name="url_edit">
+            <input type="text" hidden id="url_edit" name="image">
           </div>
         </div>
         <div class="modal-footer">
@@ -137,15 +139,8 @@
               </div>
            </div>
         </div>
-
       <% end %>
 
     </div>
   </div>
 </div>
-<script>
-  function selectProjectEditPic() {
-    var editInputProject = document.getElementById('edit_url')
-    editInputProject.click()
-  }
-</script>

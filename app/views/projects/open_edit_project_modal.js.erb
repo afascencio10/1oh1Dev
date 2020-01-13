@@ -1,21 +1,148 @@
 $('.modal-body .bodyEditProject').html("<%= escape_javascript render('profiles/edit_project',locals:{:project => @project}) %>");
 $('#projectsModal').modal('show');
-
+var chipTemplate = '\
+    <div class="base-chips d-inline-block">\
+      <span class="base-chips-name"></span>\
+      <button type="button" class="close">\
+        <span aria-hidden="true">&times;</span>\
+      </button>\
+    </div>\
+    '
+var editProjectCategoriesHiddenElm = document.getElementById('edit-project-hidden-categories')
+var editProjectCollaboratorsHiddenElm = document.getElementById('edit-project-hidden-collaborators')
 
  var raw_ids = "<%=  @colab_ids.to_json %>";
  var format = raw_ids.replace(/&quot;/g, '\"');
  var colab_ids = JSON.parse(format);
  var categories_id = JSON.parse("<%=  @categories_id %>");
-// console.log(categories_id);
-// console.log("<%=  @project.help %>")
+
+console.log(colab_ids, categories_id);
+console.log("<%=  @project.help %>", 'help')
 var status = "<%=  @project.status %>";
-
-// console.log("<%=  @project.image %>")
-
+var hasHelp = Boolean("<%=  @project.help %>");
 
 
-// console.log(String(project.status));
-
+$("#edit_project_id").val("<%=@project.id%>");
 $("#project_name").val("<%=@project.name%>")
 $("#project_description").val("<%=@project.description%>")
 $("#edit-project-raido-"+String(status)).prop("checked", true);
+
+// add editProjectCollaborators
+$('#edit-project-collaborators').html('')
+$('#edit-project-categories').html('')
+$('#edit-project-help-checkbox').prop('checked', hasHelp)
+
+colab_ids.forEach(function (colab) {
+	generateDefaultChipForSelectElement(colab, 'edit_project_colab', $('#edit-project-collaborators'), editProjectCollaboratorsHiddenElm, colab_ids)
+})
+
+categories_id.forEach(function (category) {
+	generateDefaultChipForSelectElement(category, 'edit_project_category_select', $('#edit-project-categories'), editProjectCategoriesHiddenElm, categories_id)
+})
+
+
+$('#edit-project-collaborator-add').click(function () {
+	addSelectedItemAsChips(
+		$('#edit-project-collaborators'),
+		'edit_project_colab',
+		storeChipInArray(colab_ids, editProjectCollaboratorsHiddenElm),
+		removeChipFromArray(colab_ids, editProjectCollaboratorsHiddenElm),
+		colab_ids
+	)
+})
+
+$('#edit-project-categories-add').click(function () {
+	addSelectedItemAsChips(
+		$('#edit-project-categories'),
+		'edit_project_category_select',
+		storeChipInArray(categories_id, editProjectCategoriesHiddenElm),
+		removeChipFromArray(categories_id, editProjectCategoriesHiddenElm),
+		categories_id
+	)
+})
+
+function generateDefaultChipForSelectElement (value, selectId, wrapper, hiddenInput, storage) {
+	if (hiddenInput && storage) {
+		hiddenInput.text = JSON.stringify(storage)
+	}
+
+	var select = document.getElementById(selectId)
+
+	if (!select) return
+
+  var selectItem = Array.from(select.options).filter(function (option) {
+    if (value == option.value) return option
+  })
+  var selectText
+  if (selectItem[0]) {
+    selectText = selectItem[0].text
+  }
+
+  console.log(selectText)
+
+  addChips(
+    wrapper,
+    selectText,
+    value,
+    null,
+    removeChipFromArray(storage, hiddenInput)
+  )
+}
+
+function addChips(wrapper, chipName, chipValue, addClb, removeClb, storage) {
+    var element = $(chipTemplate)
+    if (storage) {
+      if (storage.findIndex(function (item) {
+        return item == chipValue
+      }) !== -1) return
+    }
+
+    	console.log(chipName)
+    element.find('.base-chips-name').text(chipName)
+    element.find('button').click(function () {
+      removeChips($(this), chipValue, removeClb)
+    })
+
+    wrapper.append(element)
+    if (addClb) addClb(chipValue)
+}
+
+function removeChips (chip, chipName, clb) {
+  if (clb) clb(chipName)
+
+  chip.parent().remove()
+}
+
+function addSelectedItemAsChips(wrapper, selectId, addClb, removeClb, storage) {
+  var select = document.getElementById(selectId)
+  if (!select) return
+
+  var selectText = select.selectedOptions[0].text
+  var selectValue = select.selectedOptions[0].value
+
+  addChips(wrapper, selectText, selectValue, addClb, removeClb, storage)
+}
+
+function storeChipInArray (array, hiddenInput) {
+  return function (chipName) {
+    array.push(chipName)
+
+    console.log(hiddenInput, JSON.stringify(array))
+    if (hiddenInput) {
+      hiddenInput.value = JSON.stringify(array)
+    }
+  }
+}
+
+function removeChipFromArray (array, hiddenInput) {
+  return function (chipName) {
+  	array.splice(array.findIndex(function (item) {
+  		return item === chipName
+  	}), 1)
+
+  	console.log(hiddenInput, JSON.stringify(array))
+    if (hiddenInput) {
+      hiddenInput.value = JSON.stringify(array)
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<div id="filterrific_results_projects">
+  <!-- <div>
+    <%= page_entries_info projects, entry_name: "prof" %>
+  </div> -->
+    <h4 class="mt-5 font-weight-bold">Top Projects for <%= @category.name %></h4>
+    <table class="table table-condensed table-hover table-striped mt-5">
+          <tbody>
+            <% if projects.blank? %>
+              No Projects available
+            <%else%>
+              <% projects.each do |project| %>
+                 <tr>
+                   <div class="project-card">
+                       <div class="image-container"
+                            style="background-image: url(<%= image_path('Section/workshop.jpg') %>);">
+                       </div>
+                       <div class="headline px-4 mt-1">
+                         <% if @type == "projects" %>
+                            <%= project.name%>
+                         <%else%>
+                          <%= project %>
+                         <%end%>
+
+                       </div>
+                       <div class="headline-subtitle px-4 my-1">
+                           <%= project.profile.user.firstname%> <%= project.profile.user.lastname%>
+                       </div>
+                       <div class="avatars avatars-wrap px-4 mt-2">
+                           <div class="avatar"
+                                style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
+
+                                <div class="avatars">
+                                    <div class="avatar"
+                                    style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
+                                    <div class="avatars">
+                                        <div class="avatar"
+                                            style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
+                                            <div class="avatars">
+                                                <div class="avatar"
+                                                    style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
+                                            </div>
+                                    </div>
+                                </div>
+                       </div>
+                       <div class="tags px-4 mb-4">
+                           Tag, Tag
+                       </div>
+                   </div>
+
+                <% end %>
+              <% end %>
+          </tbody>
+    </table>
+
+    <%= will_paginate projects,:container => false  %>
+
+</div>

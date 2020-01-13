@@ -366,7 +366,6 @@
 	position: fixed;
 	right: 0;
 	z-index: 9000;
-	padding-top: 20px;
 	background: $white;
 	height: calc(100vh);
 	
@@ -418,7 +417,7 @@
 	}
 
 	.site-mobile-menu-body {
-		overflow-y: scroll;
+		overflow-y: auto;
   	-webkit-overflow-scrolling: touch;
 		position: relative;
 		padding: 0 20px 20px 20px;

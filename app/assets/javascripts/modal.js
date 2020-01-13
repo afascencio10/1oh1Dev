@@ -1,5 +1,5 @@
-jQuery(document).ready(function($){
-    var $form_modal = $('.cd-user-modal'),
+$(document).on('turbolinks:load', function() {
+        var $form_modal = $('.cd-user-modal'),
         $form_login = $form_modal.find('.gridSign'),
         $form_signup = $form_modal.find('#cd-signup'),
         $form_forgot_password = $form_modal.find('.gridForgot'),

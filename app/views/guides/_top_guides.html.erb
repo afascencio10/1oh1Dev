@@ -1,12 +1,12 @@
 <section class="my-5">
   <h3 class="my-5 c-black">Top Guides</h3>
 
-  <div class="row my-4" id="mainTopGuides">    
+  <div class="row my-4" id="mainTopGuides">
     <% if @top_guides.empty? %>
       <h6 class="my-7 c-black">No Guides Available</h6>
     <% else %>
       <% @top_guides.each do |guide|%>
-        <%= link_to guide_path(guide.guide_id) do %>
+        <%= link_to guide_path(guide.id) do %>
           <div class="col topGuidesItem">
             <div class="minimal-card-wrap text-left">
               <div class="minimal-card border animating">
@@ -15,11 +15,11 @@
                 <div class="avatar-shadow center"
                      style="background-image: url(<%= image_path('avatar-shadow.png') %>);"></div>
                 <div class="cover"
-                     style="background-image: url(<%= guide.guide.category.url %>);"></div>
+                     style="background-image: url(<%= guide.category.url %>);"></div>
                 <h5><%= guide.profile.user.firstname %>&nbsp; <%= guide.profile.user.lastname %></h5>
                 <h6><%= guide.profile.state %> , <%= guide.profile.country %></h6>
-                <div class="rateYo d-inline-block p-0 my-2"></div>
-                <span class="align-bottom fz-13">246</span>
+                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(guide,nil)[:rating] %>"></div>
+                <span class="align-bottom fz-13"><%= average_rating(guide,nil)[:count] %></span>
               </div>
             </div>
           </div>

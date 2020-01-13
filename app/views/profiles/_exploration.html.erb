@@ -3,9 +3,9 @@
       <div class="cel celrating"><p class="txtrating c-black">Average Rating:</p></div>
       <div class="icons-Starts" id="subgridscore">
         <div class="cel mt-1">
-          <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= @explore_rate %>"></div>
+          <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(current_user,nil)[:explore_rating] %>"></div>
         </div>
-        <span class="cel fz-13 mt-3 fw-600 c-gray">58</span>
+        <span class="cel fz-13 mt-3 fw-600 c-gray"><%= average_rating(current_user,nil)[:explore_count] %></span>
 
         <div class="grid-RatingsModal">
           <div class="grid-Pop celpop">
@@ -130,9 +130,8 @@
             <!-- rate -->
             <div class="row">
               <div class="col">
-                <div class="rateYo d-inline-block p-0 mb-3 align-middle"></div>
-
-                <span class="fz-13 fw-600 c-gray">3</span>
+                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(current_user,category)[:explore_rating] %>"></div>
+                <span class="fz-13 fw-600 c-gray"><%= average_rating(current_user,category)[:explore_count]%></span>
               </div>
 
               <div class="col-auto">
@@ -158,49 +157,4 @@
         <% end %>
       <% end %>
     </div>
-
-
-<!--     <div class="reviewsContent">
-      <% if @explore_ratings.blank? %>
-         <div class="emptyReviews">
-            No Explore Ratings Available
-         </div>
-      <% else %>
-         <% @explore_ratings.each do |category,explore_rating| %>
-           <div class="reviews">
-               <div class="reviewImage">
-                   <div class="reviewImageGrid"><img class="imageReview" src="<%= category.url %>"></div>
-                   <div class="reviewLabel">
-                     <%= category.name %>
-                   </div>
-               </div>
-               <% explore_rating.each do |content| %>
-                 <div class="reviewInfo">
-                     <div class="reviewRate">
-                         <div class="celXs" id="subgridscoreXs">
-                             <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%=content.rating%>"></div>
-                          </div>
-                     </div>
-                     <div class="reviewViewAllReviews">
-                         <a href="">View All Reviews</a>
-                     </div>
-                     <%= link_to reviews_path(:guide_id => content.guide_id) do %>
-                       <div class="commentImage">
-                           <img class="commentProfileImage" src="<%= Guide.find(content.guide_id).profile.profile_photo %>">
-                       </div>
-                       <div class="comment">"<%= content.review %>"</div>
-                     <% end %>
-                 </div>
-                <% end %>
-           </div>
-         <% end %>
-      <% end %>
-    </div> -->
-    <!-- <div class="moreLink">
-        <div id="forMoreLink">
-            <a id="moreLink" href="#">More</a>
-        </div>
-    </div> -->
-
-   <!-- <a data-toggle="modal" data-target="#endTimes" id="moreLink" href="#">More</a> cambio prueba -->
 </div>

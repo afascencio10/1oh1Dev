@@ -11,13 +11,14 @@
 // about supported directives.
 //
 
-//= require popper.min
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
+
 //= require moment.min
 //= require perfect-scrollbar.min
 //= require mdtimepicker
-
+//= require popper.min
 //= require fullcalendar/core/main
 //= require fullcalendar/daygrid/main.js
 //= require fullcalendar/timegrid/main.js

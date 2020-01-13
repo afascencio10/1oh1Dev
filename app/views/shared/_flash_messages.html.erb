@@ -8,13 +8,13 @@
 								right: 10px;
 								min-width: 250px;
 								z-index: 11000;">
-		  <div class="toast-body <%=flash_class(key)%>">
+		  <div class="toast-body <%=flash_class(key)%>" style="padding:1.2rem">
 				<i class="material-icons align-middle">
 					<%= flash_icon(key) %>
 				</i>
 
 				<span class="align-middle ml-1">
-		    	<%= value %>
+					<%= value %>
 				</span>
 
 		    <button type="button" class="ml-2 mb-1 close" style="margin-top: 1px" data-dismiss="toast" aria-label="Close">
@@ -22,11 +22,12 @@
 		    </button>
 		  </div>
 		</div>
-  <script>
-		$('.toast').toast({
-			delay: 7000
-		})
-
-		$('.toast').toast('show')
-	</script>
 <% end %>
+
+<script type="text/javascript">
+	$('.toast').toast({
+		delay: 7000
+	})
+
+	$('.toast').toast('show')
+</script>

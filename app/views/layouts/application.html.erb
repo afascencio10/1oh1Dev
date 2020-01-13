@@ -25,6 +25,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'headscript' %>
     <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type =>  'image/x-icon'  %>
+
+    <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
+    <%= yield :javascript_includes %>
+    <%= yield :css_includes %>
   </head>
   <body>
     <div id="flash">
@@ -35,7 +39,6 @@
 
     <audio id="notification_sound" preload="none" src="https://firebasestorage.googleapis.com/v0/b/oh1-b365f.appspot.com/o/check.wav?alt=media&token=d214e82d-c59d-4c91-8222-6f8c6e924a8f" muted></audio>
 
-    <%= render 'bookings/bookingsApproveDialog' %>
     <%= yield(:head) %>
     <%= yield %>
   </body>

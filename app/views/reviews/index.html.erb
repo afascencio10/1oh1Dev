@@ -33,12 +33,12 @@
             <div  class="grid rating">
                 <div class="cell empty"></div>
                 <div class="grid score1 alignmentScore">
-                    <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%= @explore_rate%>"></div>
-                    <div class="cell rateNumber">14</div>
+                    <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%= average_rating(@info,nil)[:explore_rating]%>"></div>
+                    <div class="cell rateNumber"><%=average_rating(current_user,nil)[:explore_count]%></div>
                 </div>
                 <div class="grid score1 alignmentBroScore">
-                    <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%= @guide_rate%>"></div>
-                    <div class="cell rateNumber">21</div>
+                    <div id="" class="rateYoCustom d-inline-block p-0" starsSize="normal" rating="<%= average_rating(@info,nil)[:guide_rating]%>"></div>
+                    <div class="cell rateNumber"><%=average_rating(current_user,nil)[:guide_count]%></div>
                 </div>
                 <div class="cell projectsNumber"></div>
                 <div class="cell empty"></div>

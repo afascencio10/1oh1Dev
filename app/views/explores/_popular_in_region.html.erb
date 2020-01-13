@@ -1,13 +1,13 @@
 <section class="my-5">
   <h3 class="my-5 c-black">Popular Categories in <%= current_user.profile ? current_user.profile.country: "" %></h3>
 
-  <div class="row my-4" id="mainPopularExplore">    
+  <div class="row my-4" id="mainPopularExplore">
     <%if @popular_incountry.blank? %>
     Update your Country
     <%else%>
       <% @popular_incountry.each do |category|%>
         <div class="col center text-left popularExploreItem">
-          <%= link_to category_path(category.name.downcase,:type=>"explores") do %>
+          <%= link_to category_path(category.name.downcase,type:"explores") do %>
             <div class="card-skill border">
               <div class="cover"
                    style="background-image: url(<%= category.url %>);">

@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
   var testChestProfile = document.getElementById("checkChestProfile")
   if (testChestProfile) {    
     var ctx = document.getElementById('myChart').getContext("2d");
@@ -28,15 +28,13 @@ jQuery(document).ready(function($) {
       }]
     };
 
-    jQuery(document).ready(function($) {
-     var canvas = document.querySelector(".graphContainer");
-     console.log(canvas);
-     if (canvas){
-        var chart = new Chart('myChart', {
-        type: 'line',
-        data: lineChartData      
-        });
-     }   
-    })
+   var canvas = document.querySelector(".graphContainer");
+   console.log(canvas);
+   if (canvas){
+      var chart = new Chart('myChart', {
+      type: 'line',
+      data: lineChartData      
+      });
+   }   
   }    
 })

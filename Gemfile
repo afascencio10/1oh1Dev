@@ -51,7 +51,7 @@ gem 'cancancan'
 gem 'rolify'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5.2.0'
+gem 'turbolinks', '~> 5.2.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
@@ -67,6 +67,9 @@ gem "redis", "~> 3.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'figaro'
+gem 'ed25519', '>= 1.2', '< 2.0'
+gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 
 # gem 'bullet', group: 'development'
 
@@ -82,11 +85,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-postgresql', '~> 6.2'
+  gem 'capistrano-rvm'
   gem 'rails-erd'
 end
 
 # group :production do
-#   gem 'bundler', '~> 2.0.2'
+#   gem 'bundler', '~> 2.1.2'
 # end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

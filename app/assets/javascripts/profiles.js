@@ -1,39 +1,38 @@
-jQuery(document).ready(function($) {
-
+$(document).on('turbolinks:load', function() {
 	/*
 	** Read te search value and change the beahivor
 	*/
-	var URLsearchProfile = window.location.href;
-	URLsearchProfile = URLsearchProfile.split("#");
-	$( document ).ready(function() {
-		switch(URLsearchProfile[1]){
-			case "explore":
-				$('.tab1-tabProfile').trigger( "click" );
-			break;
-			case "guide":
-				$('.tab2-tabProfile').trigger('click');
-			break;
-			case "projects":
-				$('.tab3-tabProfile').trigger( "click" );
-			break;
-			case null || "" || undefined:
-				$('.tab1-tabProfile').trigger( "click" );
-			break;
-		}
-	});
-
-	$('.tab1-tabProfile').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"explore");
-	})
-	$('.tab2-tabProfile').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"guide");
-	})
-	$('.tab3-tabProfile').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+'#'+"projects");
-	})
+	// var URLsearchProfile = window.location.href;
+	// URLsearchProfile = URLsearchProfile.split("#");
+	// $( document ).ready(function() {
+	// 	switch(URLsearchProfile[1]){
+	// 		case "explore":
+	// 			$('.tab1-tabProfile').trigger( "click" );
+	// 		break;
+	// 		case "guide":
+	// 			$('.tab2-tabProfile').trigger('click');
+	// 		break;
+	// 		case "projects":
+	// 			$('.tab3-tabProfile').trigger( "click" );
+	// 		break;
+	// 		case null || "" || undefined:
+	// 			$('.tab1-tabProfile').trigger( "click" );
+	// 		break;
+	// 	}
+	// });
+	//
+	// $('.tab1-tabProfile').click(function(){
+	// 	var pathname = window.location.pathname;
+	// 	history.pushState(null, "", pathname+'#'+"explore");
+	// })
+	// $('.tab2-tabProfile').click(function(){
+	// 	var pathname = window.location.pathname;
+	// 	history.pushState(null, "", pathname+'#'+"guide");
+	// })
+	// $('.tab3-tabProfile').click(function(){
+	// 	var pathname = window.location.pathname;
+	// 	history.pushState(null, "", pathname+'#'+"projects");
+	// })
 
 	$('#editBackgroundPic').click(function(){
 		var uploadProfileInput = document.getElementById('profileBackground')
@@ -49,19 +48,15 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	
+
 
 	var createProjectCollaborators = []
 	var createProjectCategories = []
-	var editProjectCollaborators = []
-	var editProjectCategories = []
 	var editProfileLanguages = window.test || []
 
 	var editProfileLanguagesHiddenElm = document.getElementById('edit-profile-hidden-languages')
 	var createProjectCategoriesHiddenElm = document.getElementById('create-project-hidden-categories')
 	var createProjectCollaboratorsHiddenElm = document.getElementById('create-project-hidden-collaborators')
-	var editProjectCategoriesHiddenElm = document.getElementById('edit-project-hidden-categories')
-	var editProjectCollaboratorsHiddenElm = document.getElementById('edit-project-hidden-collaborators')
 
 	var chipTemplate = '\
     <div class="base-chips d-inline-block">\
@@ -97,14 +92,6 @@ jQuery(document).ready(function($) {
 		generateDefaultChipForSelectElement(category, '_category_id_', $('#create-project-categories'), createProjectCategoriesHiddenElm, createProjectCategories)
 	})
 
-	// add editProjectCollaborators
-	editProjectCollaborators.forEach(function (colab) {
-		generateDefaultChipForSelectElement(colab, 'edit_project_colab', $('#edit-project-collaborators'), editProjectCollaboratorsHiddenElm, editProjectCollaborators)
-	})
-
-	editProjectCategories.forEach(function (category) {
-		generateDefaultChipForSelectElement(category, 'edit_project_category_select', $('#edit-project-categories'), editProjectCategoriesHiddenElm, editProjectCategories)
-	})
 	// add
 	function generateDefaultChipForSelectElement (value, selectId, wrapper, hiddenInput, storage) {
 		if (hiddenInput && storage) {
@@ -203,26 +190,6 @@ jQuery(document).ready(function($) {
 			storeChipInArray(createProjectCategories, createProjectCategoriesHiddenElm),
 			removeChipFromArray(createProjectCategories, createProjectCategoriesHiddenElm),
 			createProjectCategories
-		)
-	})
-
-	$('#edit-project-collaborator-add').click(function () {
-		addSelectedItemAsChips(
-			$('#edit-project-collaborators'),
-			'edit_project_colab',
-			storeChipInArray(editProjectCollaborators, editProjectCollaboratorsHiddenElm),
-			removeChipFromArray(editProjectCollaborators, editProjectCollaboratorsHiddenElm),
-			editProjectCollaborators
-		)
-	})
-
-	$('#edit-project-categories-add').click(function () {
-		addSelectedItemAsChips(
-			$('#edit-project-categories'),
-			'edit_project_category_select',
-			storeChipInArray(editProjectCategories, editProjectCategoriesHiddenElm),
-			removeChipFromArray(editProjectCategories, editProjectCategoriesHiddenElm),
-			editProjectCategories
 		)
 	})
 

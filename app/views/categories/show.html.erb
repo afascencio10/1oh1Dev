@@ -16,10 +16,12 @@
 			<header class="mt-5 category-tabs">
 	          <div id="material-tabs">
 							<%= link_to "Explorers",category_path(Category.first,type: "explorers"), id: "tabExplorers", href:"#tab1",remote: true%>
-							<%= link_to "Guides",category_path(Category.first,type: "guides"),id: "tabGuides", href:"#tab2", remote: true %>
+							<%= link_to "Guides",category_path(Category.first,type: "guides"),id: "tabGuides", href:"#tab2",remote: true %>
+							<%= link_to "Projects",category_path(Category.first,type: "projects"),id: "tabProjects", href:"#tab3",remote: true %>
+
 								<!-- <a id="tabExplorers" href="#tab1" class="active">Explorers</a> -->
 	              <!-- <a id="tabGuides" href="#tab2">Guides</a> -->
-	              <a id="tabProjects" href="#tab3">Projects</a>
+	              <!-- <a id="tabProjects" href="#tab3">Projects</a> -->
 	              <span class="yellow-bar"></span>
 	          </div>
       		</header>
@@ -32,6 +34,9 @@
 				      <input hidden name="type" value="explores">
 				    <%elsif params[:type] == "guides"%>
 				      <input hidden name="type" value="guides">
+						<%elsif params[:type] == "projects"%>
+						<%= f.select(:with_country_name, @filterrific.select_options[:with_country],{ include_blank: '- Any -' }) %>
+				      <input hidden name="type" value="projects">
 				    <%end%>
 				    </div>
 				    <div>
@@ -42,13 +47,14 @@
 
 		    <div class="tab-content custom-table category-tab-content">
 		    	<div id="tab1">
-						<%=render partial: 'categories/explorers', locals: { explores: @profiles }%>
+						<%= render partial: 'categories/explorers', locals: { explores: @profiles }%>
 					</div>
 		    	<div id="tab2">
 						<%= render partial: 'categories/guides',locals: { guides: @profiles }%>
 		    	</div>
 		    	<div id="tab3">
-						<%= render 'search_project' %>
+						<%= render partial: 'categories/projects',locals: { projects: @profiles }%>
+						<!--<%= render 'search_project' %>-->
 		    	</div>
 		    </div>
 		</div>

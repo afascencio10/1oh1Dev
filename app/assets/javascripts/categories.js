@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
 
 	$(document).on("click", ".category_modal", function () {
 		 var category = $(this).data('val');

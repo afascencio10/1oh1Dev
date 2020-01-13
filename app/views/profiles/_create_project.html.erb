@@ -1,7 +1,7 @@
 <div class="modal fade" id="createProjectsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <%= form_tag( {:controller=>"projects", :action => :create }, { :method => :post,remote: true ,:id => 'create_project' }) do %>
+      <%= form_tag( {:controller=>"projects", :action => :create },  :method => :post,remote: true ,authenticity_token: true,:id => 'create_project' ) do |f| %>
         <div class="modal-header">
           <h5 class="modal-title">Create Project</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -130,7 +130,7 @@
 
 
           <div class="container">
-              <input type="text" hidden id="url" name="url">
+              <input type="hidden" id="url" name="image">
          </div>
         </div>
         <div class="modal-footer">
@@ -146,11 +146,5 @@
       <% end %>
 
     </div>
-  </div>  
+  </div>
 </div>
-<script>
-  function selectProjectPic() {
-    var uploadInputProject = document.getElementById('projectphoto')
-    uploadInputProject.click()
-  }
-</script>

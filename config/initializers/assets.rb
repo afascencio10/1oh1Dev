@@ -10,4 +10,4 @@ Rails.application.config.assets.precompile += %w( filterrific/filterrific-spinne
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( calendars.js profile_builder.js sessions.js signaling-server.js headscript.js )
+Rails.application.config.assets.precompile += %w( calendars.css sessions.css calendars.js profile_builder.js sessions.js signaling-server.js headscript.js )

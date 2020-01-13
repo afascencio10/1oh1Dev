@@ -25,21 +25,17 @@
                       <span class="align-middle">Explore Rating: </span>
                       <br>
                       <span class="align-middle">Baking Rating:</span>
-
-
                     </td>
                     <td>
-                      <div class="rateYo d-inline-block p-0"></div>
+                      <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="2"></div>
                       <br>
-                      <div class="rateYo d-inline-block p-0"></div>
+                      <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="4"></div>
                     </td>
                     <td>
                       <%= link_to 'Book', reserve_calendar_path(guide_id: guide.id ),class: "btn btn-primary px-3 py-1"%>
 
                       <br>
-                      <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>guide.profile.user_id).map(&:chat_id) %>
-                      <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => guide.profile_id), class: "secondary-success-color"  %>
-
+                      <%= link_to "Message" ,user_chats_path(current_user, :other_user => guide.profile_id),method: :post, class: "secondary-success-color"  %>
                       <br>
                       <%= link_to 'Profile', profile_path(guide.profile_id ),class: "secondary-success-color"%>
 

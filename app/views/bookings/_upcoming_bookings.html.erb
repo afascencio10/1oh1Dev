@@ -27,10 +27,10 @@
             </div>
 
           <% if booking.guide.profile_id == @profile_id %>
-            <% @type= "Guided" %>
+            <% @type= "Guiding" %>
             <% @companion= booking.explore.profile %>
           <% elsif booking.explore.profile_id == @profile_id %>
-            <% @type= "Explored" %>
+            <% @type= "Exploring" %>
             <% @companion= booking.guide.profile %>
           <%end%>
 
@@ -56,15 +56,14 @@
               </div>
             </td>
             <td>
-              <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
-              <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "secondary-success-color"  %>
+              <%= link_to "Message" ,user_chats_path(current_user, :other_user => @companion.user.id), method: :post, class: "secondary-success-color"  %>
               <br>
-              <a class="secondary-success-color upcomming-change-or-cancel" id="<%=booking.id %>" href="#">Change or Cancel</a>
+              <a class="secondary-success-color upcomming-change-or-cancel" id="<%=booking.id %>">Change or Cancel</a>
               <br>
             </td>
           </tr>
         <%end%>
-      <%end%>       
+      <%end%>
       </tbody>
   </table>
   <div class="upcomingBookingsLinks gridLinksShow">

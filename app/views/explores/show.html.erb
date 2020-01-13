@@ -22,14 +22,15 @@
 				<%= @explore.profile.user.firstname %> <%= @explore.profile.user.lastname %>
 			</div>
 
-			<%= link_to 'Book', reserve_calendar_path(explore_id: @explore.id ), class: 'btn btn-success explore-guy-book-btn'%>
+			<%= link_to "Message" ,user_chats_path(current_user, :other_user => @explore.profile_id), method: :post, class: "btn btn-success explore-guy-book-btn"  %>
+			<!--<%= link_to 'Book', reserve_calendar_path(explore_id: @explore.id ), class: 'btn btn-success explore-guy-book-btn'%>-->
 		</div>
 
 		<div class="mt-3 mt-xl-4">
 	      <div id="material-tabs">
-	          <a id="category-tab1-tab" href="#tab1" class="active"><strong>57</strong><br> Explorers</a>
-	          <a id="category-tab2-tab" href="#tab2"><strong>12</strong> <br> Guides</a>
-	          <a id="category-tab3-tab" href="#tab3"><strong>18</strong> <br> Projects</a>
+	          <a id="category-tab1-tab" href="#tab1" class="active"><strong><%= @explore.profile.explores.count %></strong><br> Explorers</a>
+	          <a id="category-tab2-tab" href="#tab2"><strong><%= @explore.profile.guides.count %></strong> <br> Guides</a>
+	          <a id="category-tab3-tab" href="#tab3"><strong><%= @explore.profile.projects.count %></strong> <br> Projects</a>
 	          <span class="yellow-bar"></span>
 	      </div>
 		</div>
@@ -38,43 +39,43 @@
 	    	<div id="tab1">
 	    		<div class="mt-3 mt-lg-4">
 	    			<div class="text-sm-center text-xl-left">
-		    			<div class="rateYo d-inline-block p-0"></div>
+							<div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(@explore,nil)[:explore_rating] %>"></div>
 
-	    				<span class="ml-3 explores-reviews-count">57 Reviews</span>
+	    				<span class="ml-3 explores-reviews-count"><%= average_rating(@explore,nil)[:explore_count] %> Reviews</span>
 	    			</div>
+						<% @explore_ratings.each do |rating|%>
+		    			<div class="explores-review my-5">
+		    				<div class="explores-review-profile-pic"
+		    					 style="background-image: url(<%= rating.profile.profile_photo %>);">
+		    				</div>
 
-	    			<div class="explores-review my-5">
-	    				<div class="explores-review-profile-pic"
-	    					 style="background-image: url(<%= image_path('People/asian-square.jpg') %>);">
-	    				</div>
-
-						<p>
-							"Travis Already has a solid background in electronics so it didn't take him long to pick up some tricky concepts!"
-						</p>
-	    			</div>
-
-	    			<div class="explores-review my-5">
-	    				<div class="explores-review-profile-pic"
-	    					 style="background-image: url(<%= image_path('People/asian-square.jpg') %>);">
-	    				</div>
-
-						<p>
-							"Travis Already has a solid background in electronics so it didn't take him long to pick up some tricky concepts!"
-						</p>
-	    			</div>
-
-	    			<div class="explores-review my-5">
-	    				<div class="explores-review-profile-pic"
-	    					 style="background-image: url(<%= image_path('People/asian-square.jpg') %>);">
-	    				</div>
-
-						<p>
-							"Travis Already has a solid background in electronics so it didn't take him long to pick up some tricky concepts!"
-						</p>
-	    			</div>
+							<p>
+								"<%=rating.review%>"
+							</p>
+		    			</div>
+						<%end%>
 	    		</div>
 			</div>
 	    	<div id="tab2">
+					<div class="mt-3 mt-lg-4">
+	    			<div class="text-sm-center text-xl-left">
+							<div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(@explore,nil)[:guide_rating] %>"></div>
+
+	    				<span class="ml-3 explores-reviews-count"><%= average_rating(@explore,nil)[:guide_count] %> Reviews</span>
+	    			</div>
+
+						<% @guide_ratings.each do |rating|%>
+		    			<div class="explores-review my-5">
+		    				<div class="explores-review-profile-pic"
+		    					 style="background-image: url(<%= rating.profile.profile_photo %>);">
+		    				</div>
+
+							<p>
+								"<%=rating.review%>"
+							</p>
+		    			</div>
+						<%end%>
+	    		</div>
 	    	</div>
 	    	<div id="tab3">
 	    	</div>

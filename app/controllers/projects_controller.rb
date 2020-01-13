@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -47,7 +48,7 @@ class ProjectsController < ApplicationController
           @flashing = flash
 
           @projects = current_user.profile.projects.includes(:categories).sort_by_created_desc
-          format.html { redirect_to profiles_path, notice: 'Project was successfully created.' }
+          format.html { redirect_to profiles_path, success: 'Project was successfully created.' }
           format.js
         else
           format.html { render :new }
@@ -60,31 +61,63 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    @project = Project.find(2)
-    # @params = project_params
-    # @params[:colab_id]=JSON.parse(params["create-project-collaborators"])
-    # project_categories = JSON.parse(params["create-project-categories"])
+    @params = project_params
+    @project = Project.includes(:categories).find(params[:edit_id])
+
+    if !@project.image.nil? & params["image"].empty?
+      @params[:image] = @project.image
+    else
+      @params[:image]= params["image"]
+    end
+
+    if !@project.colab_id.empty? & params["edit-project-collaborators"].empty?
+      @params[:colab_id] = @project.colab_id
+    else
+      @params[:colab_id]=JSON.parse(params["edit-project-collaborators"])
+    end
+
+    if !@project.categories.empty? & params["edit-project-categories"].empty?
+      @project_categories = @project.categories.pluck(:id).map{|x| x.to_s}
+    else
+      @project_categories = JSON.parse(params["edit-project-categories"])
+    end
+
+    puts @params
+
+
+    # @projects = current_user.profile.projects.includes(:categories).sort_by_created_desc
+    # respond_to do |format|
+    #   format.html { redirect_to profile_path, notice: 'Project was successfully updated.' }
+    #   format.js
+    # end
+    @categories = @project.categories.pluck(:id).map{|x| x.to_s}
+    @edit_category = @project_categories
+    @add_cat = @edit_category - @categories
+    # @del_cat = @categories - @edit_category
+
+    # puts @add_cat
+    # puts "dele"
+    # puts @del_cat
     flash.now[:success]= 'Project was successfully edited.'
     @flashing = flash
-    @projects = current_user.profile.projects.includes(:categories).sort_by_created_desc
     respond_to do |format|
-      format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-      format.js
+      if @project.update(@params)
+        @add_cat.each do |x|
+          @project.categories << Category.find(x.to_i)
+        end
+        # @del_cat.each do |x|
+        #   @project.categories.destroy(Category.find(x.to_i))
+        # end
+        flash.now[:success]= 'Project was successfully edited.'
+        @flashing = flash
+        @projects = current_user.profile.projects.sort_by_created_desc
+        format.html { redirect_to profiles_path, notice: 'Project was successfully updated.' }
+        format.js
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
     end
-    # respond_to do |format|
-    #   if @project.update(@params)
-    #     flash.now[:success]= 'Project was successfully edited.'
-    #     @flashing = flash
-    #     @projects = current_user.profile.projects.includes(:categories).sort_by_created_desc
-    #     respond_to do |format|
-    #       format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-    #       format.js
-    #     end
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @project.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
   #
   # # DELETE /projects/1
@@ -98,7 +131,7 @@ class ProjectsController < ApplicationController
   # end
 
   def open_edit_project_modal
-    @project = Project.find(params[:id])
+    @project = Project.includes(:categories).find(params[:id])
     @colab_ids = @project.colab_id
     @categories_id = @project.categories.pluck(:id)
     respond_to do |format|

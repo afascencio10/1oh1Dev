@@ -1,4 +1,4 @@
-jQuery(function ($) {
+$(document).on('turbolinks:load', function() {
 
     // Dropdown menu
     $(".sidebar-dropdown > a").click(function () {
@@ -156,12 +156,12 @@ jQuery(function ($) {
     }
 
     var URLMarket = window.location.href;
-    if (URLMarket.indexOf("markets") != -1 || URLMarket.indexOf("/profile/") != -1) {        
+    if (URLMarket.indexOf("markets") != -1 || URLMarket.indexOf("/profile/") != -1) {
         var topbarMarket = document.querySelector("#site-navbar");
         topbarMarket.classList.add("markettopbarSide");
     }
 
-    
+
 
 });
 

@@ -1,10 +1,49 @@
 <div class="site-mobile-menu site-navbar-target">
-  <div class="site-mobile-menu-header">
-    <div class="site-mobile-menu-close mt-3">
-      <i class="material-icons js-menu-toggle">close</i>
+  <div class="site-mobile-menu-header py-3">
+    <a  href="/profiles" class="" style="decoration:none">
+      <% if user_signed_in? %>
+        <% if current_user.profile.blank? %>
+          <img  class="profileTopbar" src="<%= image_path('no_profile.png') %>">
+        <% else %>
+          <img  class="profileTopbar" src="<%= current_user.profile.profile_photo ? current_user.profile.profile_photo : image_path('no_profile.png') %>">
+        <% end %>
+      <% end %>
+    </a>
+
+    <div class="site-mobile-menu-close mt-2">
+      <i class="material-icons js-menu-toggle cursor-p">close</i>
     </div>
   </div>
   <div class="site-mobile-menu-body">
+    <ul class="custom-nav nav flex-column bg-white mb-0">
+      <li class="nav-item">
+        <a href="/markets" class="nav-link text-dark font-italic">
+            Market
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link text-dark font-italic">
+            Guide
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/explores" class="nav-link text-dark font-italic">
+            Explore
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/projects" class="nav-link text-dark font-italic">
+            Project
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "Log out",
+            destroy_user_session_path,
+            :method => :delete,
+            :class=>"nav-link text-dark font-italic" %>
+      </li>
+    </ul>
   </div>
 </div>
 
@@ -28,7 +67,7 @@
 
       <div class="col-12 col-md-10 d-none d-xl-block">
         <nav class="site-navigation position-relative text-right" role="navigation">
-          <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+          <ul class="site-menu mx-auto d-none d-lg-block">
             <% if user_signed_in? %>
               <!-- <li><%= text_field_tag :what,nil,class: 'form-control what',placeholder: 'Search' %></li> -->
               <li><a href="/markets" class="nav-link">Market</a></li>
@@ -76,12 +115,12 @@
                 </ul> -->
               </li>
             <% else %>
-              <li><a href="#section-search" class="nav-link">Search</a></li>
-              <li><a href="#section-favourites" class="nav-link">Favourites</a></li>
-              <li><a href="#section-popular" class="nav-link">Popular</a></li>
-              <li><a href="#section-guides" class="nav-link">Guides</a></li>
-              <li><a href="#section-explorers" class="nav-link">Explore</a></li>
-              <li><a class="nav-link cd-signin cursor-p">Login</a></li>
+              <li><a data-turbolinks="false" href="#section-search" class="nav-link">Search</a></li>
+              <li><a data-turbolinks="false" href="#section-favourites" class="nav-link">Favourites</a></li>
+              <li><a data-turbolinks="false" href="#section-popular" class="nav-link">Popular</a></li>
+              <li><a data-turbolinks="false" href="#section-guides" class="nav-link">Guides</a></li>
+              <li><a data-turbolinks="false" href="#section-explorers" class="nav-link">Explore</a></li>
+              <li><a data-turbolinks="false" class="nav-link cd-signin cursor-p">Login</a></li>
             <% end %>
 
           </ul>

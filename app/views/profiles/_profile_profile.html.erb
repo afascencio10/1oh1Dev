@@ -1,5 +1,5 @@
 <div class="celprofile">
-  <a id="toggle-sidebar" href="#">
+  <a id="toggle-sidebar">
     <div class="memberView shadow">
       <div class="profileView">
         Profile
@@ -12,15 +12,24 @@
   <div class="exit">
     <button type="button" class="btnExit btn btn-success" id="toggle-exit">Exit View</button>
   </div>
-  <div class="fondo"><img class="imgfondo" src="<%= image_path('life-862972_1920.jpg')  %>"></div>
+  <div class="fondo"><img class="imgfondo" src="<%= !@profile.banner_photo.nil? ? @profile.banner_photo : image_path('life-862972_1920.jpg')  %>"></div>
   <div class="celprofile" id="description">
     <div class="cel pname">
       <img id="img-Profile" class="imgView" src="<%= image_path('People/beautiful-1274056_640.jpg')%>">
+
+      <div class="edit-profile-btn-wrap d-xl-none">
+        <i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">
+          create
+        </i>
+      </div>
+
       <p class="names"><%= current_user.firstname%>&nbsp<%= current_user.lastname %></p>
     </div>
 
-    <div class="cel"><i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">create</i>
-      <div class="cel buttonMessage"><button type="button" class="btnMessage">Message</button></div>
+    <div class="cel d-none d-xl-inline-block">
+      <i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">
+        create
+      </i>
     </div>
     <div class="cel pcity mediacity">
       <p class="city">

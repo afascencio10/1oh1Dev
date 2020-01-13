@@ -1,4 +1,11 @@
-<% javascript 'sessions' %>
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "sessions" %>
+<% end %>
+
+<% content_for :css_includes do %>
+  <%= stylesheet_link_tag "sessions" %>
+<% end %>
+
 
 <div class="bookings-container-wrap">
   <%= render 'landing/navbar' %>
@@ -17,7 +24,7 @@
     </div>
 
     <div class="row border-top mt-4">
-      <div class="col-8 timeline-calendar-wrap mt-2">
+      <div class="col-8 timeline-calendar-wrap slot-duration-12 mt-2">
         <button class="booking-add-event-btn" id="booking-add-event-btn">
             <!-- plus sign -->
             <span class="booking-add-event-btn-svg align-middle">

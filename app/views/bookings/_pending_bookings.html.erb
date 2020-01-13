@@ -2,17 +2,17 @@
   <% if @pending_bookings.empty? %>
     No Pending Bookings
   <%else%>
-  <div id="mainPendingBookings">   
-    <% @pending_bookings.each do |booking|%>    
+  <div id="mainPendingBookings">
+    <% @pending_bookings.each do |booking|%>
       <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
         <div class="date">
-          <%= local_time(booking.start,'%B %e')%>  
+          <%= local_time(booking.start,'%B %e')%>
         </div>
         <div class="start_time">
-          <%= local_time(booking.start,'%l:%M %P')%>  
+          <%= local_time(booking.start,'%l:%M %P')%>
         </div>
         <div class="end_time">
-          <%= local_time(booking.end,'%l:%M %P')%>  
+          <%= local_time(booking.end,'%l:%M %P')%>
         </div>
       </div>
       <div id="bookings-pending-btn-content" class="pendingBookingsItem border mt-5">
@@ -50,14 +50,13 @@
           <div>
             <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-primary booking-approve-btn">Approve</button>
             <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-outline-secondary mx-3 booking-decline-btn">Decline</button>
-            <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
-            <%= link_to "Respond" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "btn rounded-0 btn-outline-secondary"  %>
+            <%= link_to "Respond" ,user_chats_path(current_user, :other_user => @companion.user.id), method: :post, class: "btn rounded-0 btn-outline-secondary"  %>
 
           </div>
         </div>
       </div>
     <% end %>
-  </div>    
+  </div>
   <div class="upcomingBookingsLinks gridLinksShow">
     <a class="gridLessLink" id="lessPendingBookings">Less</a>
     <div class="showMoreLessMessage" id="pendingBookingsMessage">

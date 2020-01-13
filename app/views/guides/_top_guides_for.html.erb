@@ -18,8 +18,8 @@
                      style="background-image: url(<%= guide.category.url %>);"></div>
                 <h5><%= guide.profile.user.firstname %>&nbsp; <%= guide.profile.user.lastname %></h5>
                 <h6><%= guide.profile.state %> , <%= guide.profile.country %></h6>
-                <div class="rateYo d-inline-block p-0 my-2"></div>
-                <span class="align-bottom fz-13">246</span>
+                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(guide,nil)[:rating] %>"></div>
+                <span class="align-bottom fz-13"><%= average_rating(guide,nil)[:count] %></span>
               </div>
             </div>
           </div>

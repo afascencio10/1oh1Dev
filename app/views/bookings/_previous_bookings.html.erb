@@ -9,20 +9,20 @@
       </tr>
 
     </thead>
-    <tbody id="mainPreviousBookings">      
+    <tbody id="mainPreviousBookings">
       <% if @completed_bookings.empty? %>
         No Completed Bookings
       <%else%>
         <% @completed_bookings.each do |booking|%>
           <div class="bookingInfo" id="infoBooking-<%= booking.id%>" >
             <div class="date">
-              <%= local_time(booking.start,'%B %e')%>  
+              <%= local_time(booking.start,'%B %e')%>
             </div>
             <div class="start_time">
-              <%= local_time(booking.start,'%l:%M %P')%>  
+              <%= local_time(booking.start,'%l:%M %P')%>
             </div>
             <div class="end_time">
-              <%= local_time(booking.end,'%l:%M %P')%>  
+              <%= local_time(booking.end,'%l:%M %P')%>
             </div>
           </div>
           <% if booking.guide.profile_id == @profile_id %>
@@ -55,11 +55,9 @@
               </div>
             </td>
             <td>
-              <a class="secondary-success-color showTipModal" href="#">Send Tip</a>
+              <a class="secondary-success-color showTipModal">Send Tip</a>
               <br>
-              <!-- <a class="secondary-success-color" href="#">Message</a> -->
-              <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>@companion.user.id).map(&:chat_id) %>
-              <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => @companion.user.id), class: "secondary-success-color"  %>
+              <%= link_to "Message" ,user_chats_path(current_user, :other_user => @companion.user.id), method: :post, class: "secondary-success-color"  %>
               <br>
               <a class="secondary-success-color" href="#">Re-book</a>
               <br>
@@ -67,7 +65,7 @@
           </tr>
         <%end%>
       <%end%>
-    </tbody>    
+    </tbody>
     </table>
     <div class="upcomingBookingsLinks gridLinksShow">
       <a class="gridLessLink" id="lessPreviousBookings">Less</a>
@@ -76,4 +74,3 @@
       </div>
       <a class="gridMoreLink" id="morePreviousBookings">More</a>
     </div>
-

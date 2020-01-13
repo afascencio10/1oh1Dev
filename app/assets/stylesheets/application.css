@@ -39,7 +39,6 @@
 *= require messages
 *= require explores
 *= require bookings
-*= require sessions
 *= require pre_sessions
 *= require in_sessions
 *= require projects
@@ -47,7 +46,6 @@
 *= require markets
 *= require loading
 *= require guides
-*= require calendars
 *= require payment
 *= require chests
 *= require searchProject
@@ -62,6 +60,10 @@
 *= require components/buttons
 *= require components/chips
 *= require components/links
+*= require components/calendars
+*= require components/scrolls
+*= require components/cards
+*= require components/nav
 *= require utils/layout
 *= require utils/typography
 *= require utils/colors

@@ -81,7 +81,7 @@
 	</div>
 
 	<div class="form-row justify-content-end mb-5" id="action-buttons">
-		<button class="btn btn-success p-2 next-button" type="submit" >Next</button>
+		<%= submit_tag("Next",:id=>"submit_profile", :class=>'btn btn-success p-2 next-button',data: { disable_with: "Submitting..." })%>
 	</div>
 
 <% end %>

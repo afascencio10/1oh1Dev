@@ -3,7 +3,7 @@
 
   <div class="row my-4" id="mainPopularRol">
     <%@world_popular_guide_category.each do |category|%>
-      <%= link_to category_path(category.name.downcase,:type=>"guides") do %>
+      <%= link_to category_path(category.name.downcase,type:"guides") do %>
         <div class="col center text-left popularRolItem">
           <div class="card-skill border">
             <div class="cover"

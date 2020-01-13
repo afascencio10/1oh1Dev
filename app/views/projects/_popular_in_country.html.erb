@@ -1,35 +1,39 @@
 <div class="row m-0 project-cards-wrap justify-content-between">
-	<%@popular_in_country.each do |project|%>
-		<div class="col">
-			<div class="project-card">
-				<div class="image-container"
-					 style="background-image: url(<%= image_path('Section/workshop.jpg') %>);">
-				</div>
-				<div class="headline px-4 mt-1">
-					<%= project.name %>
-				</div>
-				<div class="headline-subtitle px-4 my-1">
-					<%= project.profile.user.firstname %> <%= project.profile.user.lastname %>
-				</div>
-				<div class="avatars avatars-wrap px-4 mt-2">
-					<div class="avatar" style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
-						 <div class="avatars">
-						 	<div class="avatar" style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
+	<% if @popular_in_country.empty?%>
+		No Projects for your Country
+	<%else%>
+		<%@popular_in_country.each do |project|%>
+			<div class="col">
+				<div class="project-card">
+					<div class="image-container"
+						 style="background-image: url(<%= image_path('Section/workshop.jpg') %>);">
+					</div>
+					<div class="headline px-4 mt-1">
+						<%= project.name %>
+					</div>
+					<div class="headline-subtitle px-4 my-1">
+						<%= project.profile.user.firstname %> <%= project.profile.user.lastname %>
+					</div>
+					<div class="avatars avatars-wrap px-4 mt-2">
+						<div class="avatar" style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
 							 <div class="avatars">
 							 	<div class="avatar" style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
-									 <div class="avatars">
-									 	<div class="avatar"style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
-									 </div>
+								 <div class="avatars">
+								 	<div class="avatar" style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
+										 <div class="avatars">
+										 	<div class="avatar"style="background-image: url(<%= image_path('Section/workshop.jpg') %>);"></div>
+										 </div>
+								 </div>
 							 </div>
-						 </div>
-				</div>
-				<div class="tags px-4 mb-4">
-					<% project.categories.each do |category|%>
-						<%=category.name%>
-					<% end %>
+					</div>
+					<div class="tags px-4 mb-4">
+						<% project.categories.each do |category|%>
+							<%=category.name%>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
+		<%end%>
 	<%end%>
 </div>
 

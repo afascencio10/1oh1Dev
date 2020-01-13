@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
     console.log('sadsad')
     var timedelay = 1;
 	var _delay = setInterval(delayCheck, 500);

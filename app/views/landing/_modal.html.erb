@@ -1,7 +1,7 @@
 <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
   <div class="cd-user-modal-container">
       <!-- close dialog -->
-      <a href="#0" class="cd-close-form"><i class="material-icons">close</i></a>
+      <a class="cd-close-form"><i class="material-icons">close</i></a>
 
       <div class="row register-page m-0">
         <div class="sign-up-wrap small p-0 relative">
@@ -51,7 +51,7 @@
                   </label>
                   <%= f.password_field :password, autocomplete: "new-password" ,class: "full-width", placeholder: "Password", required: 'true', minlength: '6'%>
 
-                  <a href="#0" class="hide-password">Show</a>
+                  <a class="hide-password">Show</a>
                   <span id="password-strength-text"></span>
                 </p>
 
@@ -61,13 +61,13 @@
                   </label>
                   <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "full-width", placeholder: "Confirm Password", required: 'true'%>
 
-                  <a href="#0" class="hide-password">Show</a>
+                  <a class="hide-password">Show</a>
                 </p>
                 <p class="fieldset fz-11 terms-container checkbox-fieldset my-2">
                   <input type="checkbox" name="user[accept-terms]" class="align-middle checkboxTerms" required id="accept-terms"/>
                   <label class="align-middle" for="accept-terms">I agree to the
-                    <a href="#0" data-toggle="modal" data-target="#termsAndConditions">Terms</a> and
-                    <a href="#0" data-toggle="modal" data-target="#privacyPolicy">Privacy policy</a>
+                    <a data-toggle="modal" data-target="#termsAndConditions">Terms</a> and
+                    <a data-toggle="modal" data-target="#privacyPolicy">Privacy policy</a>
                   </label>
                 </p>
                 <p class="fieldset text-center">
@@ -110,7 +110,7 @@
                       <i class="material-icons">lock</i>
                     </label>
                     <%= f.password_field :password ,class: "full-width", placeholder: "Password", required: 'true'%>
-                    <a href="#0" class="hide-password">Show</a>
+                    <a class="hide-password">Show</a>
                   </p>
 
                   <p class="fieldset checkbox-fieldset">
@@ -119,9 +119,9 @@
                   </p>
 
                   <p class="fieldset text-center">
-                    <%= f.submit  "Log in" , class: "greenButton full-width bg-green"%>
+                    <%= f.submit  "Log in" ,class: "greenButton full-width bg-green"%>
                   </p>
-                  <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+                  <p class="cd-form-bottom-message"><a>Forgot your password?</a></p>
           <% end %>
           <!-- FORM FORGOT PASSWORD -->
           <%= form_for(resource, as: resource_name, url: "/users/password",:html => {:class => "cd-form gridForgot hide", :id => "reset-password-form"}) do |f| %>
@@ -143,7 +143,7 @@
                 <%= f.submit "Reset password", class: "full-width bg-green", value: "Reset password", required: 'true'%>
                       <!--<input class="full-width" type="submit" value="Reset password">-->
             </p>
-            <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+            <p class="cd-form-bottom-message"><a>Back to log-in</a></p>
 
           <% end %>
         </div>

@@ -5,12 +5,12 @@ var starConfig = {
   readOnly: true
 }
 
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
 	// initialize stars
 	$('.rateYo').rateYo(starConfig)
 
 	$('.time-picker').mdtimepicker()
-	
+
 	var timeout = null
 
 	$(".minimal-card-wrap").mousemove(function(e) {
@@ -26,8 +26,8 @@ jQuery(document).ready(function($) {
 			card.css({"transform":"translate("+(x/50)+"%,"+(y/50)+"%) perspective(1500px) rotateX("+-y/50+"deg) rotateY("+x/50+"deg) scale(1.1)"});
 			avatar.css({"transform":"translate("+(x/50-50)+"%,"+(y/50-50)+"%) perspective(1500px) rotateX("+-y/50+"deg) rotateY("+x/50+"deg) scale(0.8)"});
 		}, 1)
-			
-	  
+
+
 	});
 
 
@@ -47,34 +47,58 @@ jQuery(document).ready(function($) {
 	/*
 	** Read the search value and change the beahivor
 	*/
-	var URLsearch = window.location.search;		
-	URLsearch=URLsearch.slice(6,15);	
+	var URLsearch = window.location.search;
+	URLsearch=URLsearch.slice(6,15);
 	$( document ).ready(function() {
 		console.log( "ready!" );
-		switch(URLsearch){
-			case "explorers":
-				$('#tabExplorers').trigger( "click" );
-			break;
-			case "guides":
-				$('#tabGuides').trigger('click');
-			break;
-			case "projects":
-				$('#tabProjects').trigger( "click" );
-			break;
-		}
-	});	
-	$('#tabExplorers').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+"?type=explorers");		
-	})
-	$('#tabGuides').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+"?type=guides");		
-	})
-	$('#tabProjects').click(function(){
-		var pathname = window.location.pathname;
-		history.pushState(null, "", pathname+"?type=projects");		
-	})
+		$('#tabExplorers').click(function(){
+			var pathname = window.location.pathname;
+			history.pushState(null, "", pathname+"?type=explores");
+		})
+		$('#tabGuides').click(function(){
+			var pathname = window.location.pathname;
+			history.pushState(null, "", pathname+"?type=guides");
+		})
+		$('#tabProjects').click(function(){
+			var pathname = window.location.pathname;
+			history.pushState(null, "", pathname+"?type=projects");
+		})
+		setTimeout(()=>{
+			switch(URLsearch){
+				case "explorers":
+					console.log("case explore");
+					$('#tabExplorers').trigger( "click" );
+				break;
+				case "guides":
+					console.log("case guide");
+					$('#tabGuides').trigger('click');
+				break;
+				case "projects":
+					console.log("case projects");
+					$('#tabProjects').trigger( "click" );
+				break;
+			}
+			$('#tabExplorers').click(function(){
+				var pathname = window.location.pathname;
+				history.pushState(null, "", pathname+"?type=explores");
+		    	window.location.reload();
+			})
+			$('#tabGuides').click(function(){
+				var pathname = window.location.pathname;
+				history.pushState(null, "", pathname+"?type=guides");
+		    	window.location.reload();
+			})
+			$('#tabProjects').click(function(){
+				var pathname = window.location.pathname;
+				history.pushState(null, "", pathname+"?type=projects");
+				window.location.reload();
+			})
+		},1)
+
+
+
+	});
+
 
 	//CODE FOR SHOW MORE AND LESS FEATURE
  	if(!showMoreLessInfo){
@@ -84,9 +108,8 @@ jQuery(document).ready(function($) {
  	function showMoreAndLess(params){
  		showMoreLessInfo[params.name] = {};
  		showMoreLessInfo[params.name].totalItems = $(params.idMainDiv+" "+params.classItem).length;
- 		console.log(params.name+" "+showMoreLessInfo[params.name].totalItems);
  		showMoreLessInfo[params.name].showItems = 5;
- 		$(params.idShowMore).click(function(){  		
+ 		$(params.idShowMore).click(function(){
  			var hiddenItems = showMoreLessInfo[params.name].totalItems - showMoreLessInfo[params.name].showItems;
  			if(hiddenItems > 0){
  				showMoreLessInfo[params.name].showItems = showMoreLessInfo[params.name].showItems + 5;
@@ -94,9 +117,9 @@ jQuery(document).ready(function($) {
  			updateShowItems(params);
 		});
 
-		$(params.idShowLess).click(function(){  		
+		$(params.idShowLess).click(function(){
  			showMoreLessInfo[params.name].showItems = Math.max(5,showMoreLessInfo[params.name].showItems - 5);
-			updateShowItems(params); 			
+			updateShowItems(params);
 		});
 		updateShowItems(params);
 		//function to update which items should be shown
@@ -116,9 +139,9 @@ jQuery(document).ready(function($) {
  	var paramsPopularGuides = {
  		idMainDiv: "#mainPopularGuides",
  		idMessage: "#popularGuidesMessage",
- 		idShowMore:"#showMorePopular", 
- 		idShowLess:"#showLessPopular",  
- 		classItem:".popularGuidesItem", 
+ 		idShowMore:"#showMorePopular",
+ 		idShowLess:"#showLessPopular",
+ 		classItem:".popularGuidesItem",
  		name:"popularGuides"
  	};
  	showMoreAndLess(paramsPopularGuides);
@@ -126,9 +149,9 @@ jQuery(document).ready(function($) {
  	var paramsPopularRol = {
  		idMainDiv: "#mainPopularRol",
  		idMessage: "#popularRolMessage",
- 		idShowMore:"#showMoreRol", 
- 		idShowLess:"#showLessRol",  
- 		classItem:".popularRolItem", 
+ 		idShowMore:"#showMoreRol",
+ 		idShowLess:"#showLessRol",
+ 		classItem:".popularRolItem",
  		name:"popularRolGuides"
  	};
  	showMoreAndLess(paramsPopularRol);
@@ -137,7 +160,7 @@ jQuery(document).ready(function($) {
  		idMainDiv: "#mainTopGuides",
  		idMessage: "#topGuidesMessage",
  		idShowMore:"#showMoreTop",
- 		idShowLess:"#showLessTop", 
+ 		idShowLess:"#showLessTop",
  		classItem:".topGuidesItem",
  		name:"topGuides"
  	};
@@ -158,9 +181,9 @@ jQuery(document).ready(function($) {
  	var paramsPopularExplore = {
  		idMainDiv: "#mainPopularExplore",
  		idMessage: "#popularExploreMessage",
- 		idShowMore:"#showMorePopular", 
- 		idShowLess:"#showLessPopular",  
- 		classItem:".popularExploreItem", 
+ 		idShowMore:"#showMorePopular",
+ 		idShowLess:"#showLessPopular",
+ 		classItem:".popularExploreItem",
  		name:"popularExplore"
  	};
  	showMoreAndLess(paramsPopularExplore);
@@ -168,9 +191,9 @@ jQuery(document).ready(function($) {
  	var paramsPopularRolExplore = {
  		idMainDiv: "#mainPopularRolExplore",
  		idMessage: "#popularRolExploreMessage",
- 		idShowMore:"#showMoreRolExplore", 
- 		idShowLess:"#showLessRolExplore",  
- 		classItem:".popularRolExploreItem", 
+ 		idShowMore:"#showMoreRolExplore",
+ 		idShowLess:"#showLessRolExplore",
+ 		classItem:".popularRolExploreItem",
  		name:"popularRolExplore"
  	};
  	showMoreAndLess(paramsPopularRolExplore);
@@ -179,7 +202,7 @@ jQuery(document).ready(function($) {
  		idMainDiv: "#mainTopExplore",
  		idMessage: "#topExploreMessage",
  		idShowMore:"#showMoreTopExplore",
- 		idShowLess:"#showLessTopExplore", 
+ 		idShowLess:"#showLessTopExplore",
  		classItem:".topExploreItem",
  		name:"topExplore"
  	};

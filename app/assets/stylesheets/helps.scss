@@ -81,7 +81,7 @@
 			font-size: 14px;
 			border-color: #f3f3f3!important;
 			border-radius: 3px;
-		}		
+		}
 	}
 	.btn {
 		text-transform: none;
@@ -122,7 +122,7 @@
 	#explore-item-container, #guiding-item-container, #projects-container, #calendar-container {
 		max-height: 400px;
 	}
-	
+
 	#calendar-container {
 		input[type="text"] {
 			max-width: 100px;
@@ -243,7 +243,7 @@
 	display: grid;
 	grid-template-columns: 4% 1fr 25%;
 	height: 90%;
-	
+
 	& .bodyHelp{
 		display: inherit;
 		grid-column: 2/3;
@@ -292,11 +292,11 @@
 		display: grid;
 		grid-auto-rows: auto;
 		padding: 1rem;
-	} 
+	}
 
-	& .sectionRight{	
+	& .sectionRight{
 		overflow: scroll;
-		max-height: 100vh;	
+		max-height: 100vh;
 		// background-color: powderblue;
 	}
 }
@@ -351,7 +351,7 @@
 		grid-template-columns: 1fr;
 		border-top: 1px solid #dbdbdb;
 		padding-top: 10px;
-		
+
 	}
 	.sectionRatingHelp {
 		display: grid;
@@ -378,12 +378,12 @@
 	.helpOther{
 		display: grid;
 		grid-template-columns: 95fr 5fr;
-//		border: solid #ec2525; 
+//		border: solid #ec2525;
 	}
 	.titleSectionsHelp {
 		font-size: 18px;
 		font-weight: 700;
-		color: #000000;		
+		color: #000000;
 	}
 	.txtSectionHelp{
 		font-size: 13px;
@@ -420,7 +420,7 @@
 	 }
 }
 
-// Start: Account section 
+// Start: Account section
 
 .sectionAccount{
 	height: 50rem;
@@ -446,7 +446,7 @@
 			grid-template-columns: repeat(2,1fr);
 
 			& .optionEmail{
-				justify-self: end;	
+				justify-self: end;
 			}
 		}
 
@@ -495,7 +495,7 @@
 	& input{
 		border: 1px solid #ebebeb;
 		font-size: 15px;
-		border-radius: 5px;  
+		border-radius: 5px;
 		background-color: #F9F9F9;
 	}
 }
@@ -505,7 +505,7 @@
 	display: grid;
 	grid-template-rows: repeat(2,1fr);
 }
-// End: Account section 
+// End: Account section
 
 
 .legalList {

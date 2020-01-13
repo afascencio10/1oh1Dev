@@ -181,6 +181,11 @@
 }
 @media (max-width: 1200px)
 {
+  .edit-profile-btn-wrap {
+    position: absolute;
+    right: 50%;
+    transform: translateX(calc(50% + 45px));
+  }
   .imgfondo {
     height: 100px!important;
   }
@@ -278,12 +283,15 @@
 }
 #profile-pic-ui {
   position: fixed;
+  background-color: #fff;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 9999;
   .profile-pic {
+    max-width: 500px;
+    margin: 0 auto;
     height: calc(100% - 140px);
     background-size: cover;
     background-color: white;
@@ -291,6 +299,7 @@
   .profile-info-children-wrap {
     position: absolute;
     padding: 18px 30px;
+    max-width: 500px;
     width: 100%;
     bottom: 140px;
     background: rgb(4,4,4);
@@ -310,6 +319,8 @@
   }
   .profile-info {
     height: 140px;
+    max-width: 500px;
+    margin: 0 auto;
     background-color: rgb(4, 4, 4);
     .calnedar-btn-wrap {
       margin: 0 35px;
@@ -675,9 +686,14 @@
 
 .projectContainer{
     display: grid;
-    grid-template-columns: 350px auto;
+    grid-template-columns: 250px auto;
     grid-column: 2/3;
     grid-column-gap: 15px;
+}
+@media (min-width: 1200px) {
+  .projectContainer {
+    grid-template-columns: 350px auto;
+  }
 }
 .showButtonsContainer{
   display: grid;
@@ -717,6 +733,14 @@
   right: 10px;
   z-index: 5;
 
+  &.in-profile-builder {
+    right: 25px;
+  }
+}
+.profile-builder-edit-project-icon {
+  position: absolute;
+  top: 0;
+  right: 10px;
 }
 
 .projectInfo{
@@ -1296,7 +1320,12 @@ input[type=radio]:checked {
  display : none  //oculto
 }
 .toggled .memberView {
- display: block;
+ display: none;
+}
+@media(min-width: 1200px) {
+  .toggled .memberView {
+    display: block;
+  }
 }
 .toggled .create {
     display:block
@@ -1692,9 +1721,6 @@ input:checked + .slider:before {
    text-transform: none;
 }
 
-.site-navbar .site-navigation .site-menu .logtxt{
-  text-transform: none;
-}
 .dropdown-menu {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1704,7 +1730,7 @@ input:checked + .slider:before {
 
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu {
-  top: 42px;
+  top: 39px;
   height: 34px;
 }
 .site-navbar .site-navigation .site-menu .has-children .dropdown-menu:hover {

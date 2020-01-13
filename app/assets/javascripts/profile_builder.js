@@ -1,7 +1,7 @@
-jQuery(document).ready(function($) {
+$(document).on('turbolinks:load', function() {
    var recurringCalendarData = {}
   var recurringCalnedarDataHiddenInput = document.getElementById('profile-calendar-hidden-recurring-unavailable')
-  var profileBuilderLanguages = ['eng']
+  var profileBuilderLanguages = []
   var profileBuilderLanguagesHiddenElm = document.getElementById('check')
 
   var chipTemplate = '\
@@ -101,8 +101,7 @@ jQuery(document).ready(function($) {
       array.push(chipName)
       console.log(array)
       if (hiddenInput) {
-        hiddenInput.text = JSON.stringify(array)
-        console.log(hiddenInput.text)
+        hiddenInput.value = JSON.stringify(array)
       }
     }
   }
@@ -130,11 +129,6 @@ jQuery(document).ready(function($) {
       profileBuilderLanguages
     )
   })
-
-
-  $('.next-button').on('click', function () {
-  });
-
 
 
  $('.recurringAddTimePicker').on('click', function () {

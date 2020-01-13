@@ -24,6 +24,7 @@
 					<p class="fz-14 mt-2 mb-0">
 						<i class="material-icons align-middle mr-3">today</i>
 						<%= f.input_field :title, as: :hidden, value: "Unavailable" %>
+						<input type="hidden" name="status" value="3">
 						<%= f.input_field :start, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
 						<%= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
 						<span class="today-placeholder align-middle">July 4th</span>
@@ -43,8 +44,7 @@
 
 				<div class="modal-footer border-0 px-5">
 			      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-			      <!-- <button type="button" class="btn btn-primary">Submit</button> -->
-						<%= f.button :submit,'Submit',class: 'btn btn-primary' %>
+						<%= f.button :submit,'Submit',class: 'btn btn-success',data: {disable_with: "Creating..."} %>
 			    </div>
 			</div>
 		</div>

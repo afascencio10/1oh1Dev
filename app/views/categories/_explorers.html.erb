@@ -25,8 +25,6 @@
                       <span class="align-middle">Explore Rating: </span>
                       <br>
                       <span class="align-middle">Baking Rating:</span>
-
-
                     </td>
                     <td>
                       <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="2"></div>
@@ -34,12 +32,8 @@
                       <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="4"></div>
                     </td>
                     <td>
-                      <%= link_to 'Book', reserve_calendar_path(explore_id: explore.id ),class: "btn btn-primary px-3 py-1"%>
-
-                      <br>
-                      <% id = Subscription.where(:user_id=>current_user.id).map(&:chat_id) & Subscription.where(:user_id=>explore.profile.user_id).map(&:chat_id) %>
-                      <%= link_to "Message" ,user_chat_path(current_user, Chat.find(id[0]).slug, :other_user => explore.profile_id), class: "secondary-success-color"  %>
-
+                      <!--<%= link_to 'Book', reserve_calendar_path(explore_id: explore.id ),class: "btn btn-primary px-3 py-1"%>-->
+                      <%= link_to "Message" ,user_chats_path(current_user, :other_user => explore.profile_id), method: :post, class: "btn btn-primary px-3 py-1"  %>
                       <br>
                       <%= link_to 'Profile', profile_path(explore.profile_id ),class: "secondary-success-color"%>
 

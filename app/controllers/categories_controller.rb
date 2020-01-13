@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
+  include ExploresHelper
+
   def index
     @categories = Category.all
     @categories = @categories.paginate(:page => params[:page], :per_page => 10)
@@ -11,12 +13,10 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:id])
     if @type =="explores"
       @model = Explore.includes(profile: :user)
-      @explore_rate = ExploreRating.average_rating(current_profile,@category.id)
-
     elsif params[:type]=="guides"
       @model = Guide.includes(profile: :user)
-      @guide_rate = GuideRating.average_rating(current_profile,@category.id)
-
+    elsif params[:type]=="projects"
+      @model = Project.includes(profile: :user)
     else
       @model = Explore.includes(profile: :user)
     end
@@ -24,12 +24,17 @@ class CategoriesController < ApplicationController
       @model,
       params[:filterrific],
       select_options: {
-        :with_country_name => Profile.options_for_select
+        :with_country_name => Profile.options_for_select,
+        :with_country => Profile.options_for_select
       }
     ) or return
     @profiles = @filterrific.find.page(params[:page])
 
-    @profiles= @profiles.where(category_id: @category.id).where.not(:profile => current_user.profile)
+    if @type == "projects"
+      @profiles= @profiles.includes(:categories).where(:categories=>{id:@category.id}).where.not(:profile => current_user.profile)
+    else
+      @profiles= @profiles.where(category_id: @category.id).where.not(:profile => current_user.profile)
+    end
     # @profiles = @profiles.paginate(:page => params[:page], :per_page => 3)
 
     respond_to do |format|
