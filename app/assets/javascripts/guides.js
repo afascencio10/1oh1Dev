@@ -133,6 +133,25 @@ $(document).on('turbolinks:load', function() {
 			});
 			var itemsShow = Math.min(showMoreLessInfo[params.name].showItems,showMoreLessInfo[params.name].totalItems);
 			$(params.idMessage).html("Showing " + itemsShow + " of " + showMoreLessInfo[params.name].totalItems + " items");
+			updateUIMoreLess(params);
+		}
+		function updateUIMoreLess(params){
+			if(showMoreLessInfo[params.name].totalItems==0){
+				$(params.idShowMore).css({opacity:0, cursor:"default"});
+				$(params.idShowLess).css({opacity:0, cursor:"default"});
+				$(params.idMessage).css({opacity:0, cursor:"default"});
+			}else{
+				$(params.idShowMore).css({opacity:1, cursor:"pointer"});
+				$(params.idShowLess).css({opacity:1, cursor:"pointer"});
+				$(params.idMessage).css({opacity:1, cursor:"pointer"});
+				if(showMoreLessInfo[params.name].showItems <= 5){
+					$(params.idShowLess).css({opacity:0, cursor:"default"});
+				}
+
+				if(showMoreLessInfo[params.name].showItems >= showMoreLessInfo[params.name].totalItems){
+					$(params.idShowMore).css({opacity:0, cursor:"default"});
+				}
+			}
 		}
  	}
 
@@ -181,8 +200,8 @@ $(document).on('turbolinks:load', function() {
  	var paramsPopularExplore = {
  		idMainDiv: "#mainPopularExplore",
  		idMessage: "#popularExploreMessage",
- 		idShowMore:"#showMorePopular",
- 		idShowLess:"#showLessPopular",
+ 		idShowMore:"#showMorePopularExplore",
+ 		idShowLess:"#showLessPopularExplore",
  		classItem:".popularExploreItem",
  		name:"popularExplore"
  	};
