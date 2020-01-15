@@ -35,7 +35,9 @@ $(document).on('turbolinks:load', function() {
 			var classesDateInfo = {
 				date:".today-placeholder",
 				start_time:".start-time-placeholder",
-				end_time:".end-time-placeholder"
+				end_time:".end-time-placeholder",
+				name:".nameCompanionDialog",
+				subject:".subjectSessionDialog"
 			};
 			showBookingInfo(dateInfo, classesDateInfo)
 			$('#bookingApproveDialog').modal();
@@ -46,8 +48,11 @@ $(document).on('turbolinks:load', function() {
 		var dateInfo = {
 			date:getLabel("date",startSelector),
 			start_time:getLabel("start_time",startSelector),
-			end_time:getLabel("end_time",startSelector)
+			end_time:getLabel("end_time",startSelector),
+			name:$("#nameBooking-"+id).html(),
+			subject:$("#categoryBooking-"+id).html()
 		};
+		console.log(dateInfo);
 		function getLabel(classTime,startSelector){
 			var selector = (""+startSelector).replace("{_class}",classTime);
 			return $(selector).attr("aria-label");
@@ -56,7 +61,13 @@ $(document).on('turbolinks:load', function() {
 	}
 
 	function showBookingInfo(dateInfo, classesInfo){
-		$(classesInfo.date).each(function(index){
+		//dateInfo and classesInfo should match keys
+		Object.keys(dateInfo).forEach(key=>{
+			$(classesInfo[key]).each(function(index){
+				$(this).html(dateInfo[key]);
+			});
+		});
+		/*$(classesInfo.date).each(function(index){
 			$(this).html(dateInfo.date);
 		});
 		$(classesInfo.start_time).each(function(index){
@@ -64,7 +75,7 @@ $(document).on('turbolinks:load', function() {
 		});
 		$(classesInfo.end_time).each(function(index){
 			$(this).html(dateInfo.end_time);
-		});
+		});*/
 	}
 
 
@@ -80,7 +91,9 @@ $(document).on('turbolinks:load', function() {
 			var classesDateInfo = {
 				date:".today-placeholder",
 				start_time:".start-time-placeholder",
-				end_time:".end-time-placeholder"
+				end_time:".end-time-placeholder",
+				name:".nameCompanionDialog",
+				subject:".subjectSessionDialog"
 			};
 			showBookingInfo(dateInfo, classesDateInfo);
 			$('#chagneOrCancelDialog').modal()

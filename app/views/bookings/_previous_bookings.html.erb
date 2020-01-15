@@ -42,7 +42,7 @@
             <td class="avatar text-center">
               <img width="40px" src="<%= @companion.profile_photo %>" alt="avatar">
               <br>
-              <span><%= @companion.user.firstname%></span>
+              <span id="nameBooking-<%= booking.id%>"><%= @companion.user.firstname%></span>
             </td>
             <td>
               <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
@@ -50,7 +50,7 @@
               <br>
               <div class="rateYo d-inline-block p-0 my-2"></div>
               <div class="booking-description">
-                <span><%= booking.guide.category.name %></span>-
+                <span id="categoryBooking-<%= booking.id%>"><%= booking.guide.category.name %></span>-
                 <span title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."><%= booking.title %></span>
               </div>
             </td>

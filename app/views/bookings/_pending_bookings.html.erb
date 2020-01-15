@@ -37,7 +37,9 @@
 
             <% end %>
 
-            <span class="font-weight-bold fz-14">Subject</span> - <span class="fz-14"><%= booking.guide.category.name %> with <%= @companion.user.firstname %> <%= @companion.user.lastname %></span>
+            <span class="font-weight-bold fz-14">Subject</span> - <span class="fz-14"><span id="categoryBooking-<%= booking.id%>"><%= booking.guide.category.name %></span> with <span id="nameBooking-<%= booking.id%>"><%= @companion.user.firstname %></span> <%= @companion.user.lastname %></span>
+
+
 
             <span class="float-right fz-14 mt-1">
               <span><%= local_time(booking.start,'%B %e, %Y')%>&emsp;</span>
