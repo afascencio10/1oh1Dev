@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!,:only => [:show]
+  before_action :authenticate_user!,:except => [:show]
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   include ExploresHelper
   # GET /profiles
@@ -41,6 +41,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @profile = Profile.includes(:user).friendly.find(params[:id])
+    @user = @profile.user
     @explores = @profile.explore_categories.uniq
     @guides = @profile.guide_categories.uniq
     @explore_categories = @profile.explore_categories.uniq
@@ -235,14 +236,17 @@ end
 
 
   def completed
+   @wallet = Wallet.new
+   @wallet.profile = current_user.profile
+   @wallet.coins = 120
+   @wallet.save
+   flash.now[:success] = "Reward for completing profile added!!!"
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      if params[:id].to_i == current_user.id
-        @profile = Profile.find(params[:id])
-      end
+      @profile = Profile.find(params[:id])
     end
 
     def format_time (timeElapsed)

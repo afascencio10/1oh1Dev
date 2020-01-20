@@ -36,7 +36,6 @@
 *= require profiles
 *= require reviews
 *= require sidebar
-*= require messages
 *= require explores
 *= require bookings
 *= require pre_sessions
@@ -64,8 +63,11 @@
 *= require components/scrolls
 *= require components/cards
 *= require components/nav
+*= require components/datepicker
+*= require components/timepicker
 *= require utils/layout
 *= require utils/typography
 *= require utils/colors
 *= require utils/utils
+*= require utils/general
  */

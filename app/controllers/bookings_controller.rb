@@ -38,7 +38,8 @@ class BookingsController < ApplicationController
 
     @profile_id = current_profile.id
     @bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :category,profile: :user])
-    @pending_bookings =  @bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
+    # @pending_bookings =  @bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
+    @pending_bookings =  @bookings.where(:status => 0).order(created_at: :desc).uniq
     @completed_bookings = @bookings.where(:status => 2).order(created_at: :desc).uniq
     @upcoming_bookings = @bookings.where(:status => 1).order(created_at: :desc).uniq
 
@@ -86,6 +87,7 @@ class BookingsController < ApplicationController
       @companion = Guide.find(@companion_id)
       @booking.explore_id = Explore.find_by(:profile_id => current_profile_id,:category_id => Guide.find(@companion_id).category_id).id
       @booking.guide_id = @companion_id
+      @booking.coins = 100
       @booking.description = params[:booking][:description]
       @other_profile = Guide.find(@companion_id).profile
       @booking.identifier = SecureRandom.base64(10)
@@ -96,14 +98,27 @@ class BookingsController < ApplicationController
         @booking.video_sessions.create(profile_id: @other_profile.id)
         flash[:notice] = "Booking Created"
 
-        Notification.create(recipient: @companion.profile.user, user: current_user, action: "booking", notifiable: current_user, url: "/bookings" )
+        # #Find respective wallet for explore and guide respectively
+        # @self_wallet = Wallet.find_by(profile_id: current_profile_id)
+        # @companion_wallet = Wallet.find_by(profile_id: @companion.profile.id)
+        #
+        # #Update wallet_history and wallet coins for explore(Self)
+        # @self_history = WalletHistory.create(wallet_id: @self_wallet.id, cost: -@booking.coins, prev_bal: @self_wallet.coins, new_bal: @self_wallet.coins - @booking.coins,action: @booking,source: "Explore")
+        # @self_wallet.update(coins: @self_history.new_bal)
+        #
+        # #Update wallet_history and wallet coins for guide(Companion)
+        # @companion_history = WalletHistory.create(wallet_id: @companion_wallet.id, cost: @booking.coins, prev_bal: @companion_wallet.coins, new_bal: @companion_wallet.coins + @booking.coins,action: @booking,source: "Guide")
+        # @companion_wallet.update(coins: @companion_history.new_bal)
+
+        # Notification.create(recipient: @companion.profile.user, user: current_user, action: "booking", notifiable: current_user, url: "/bookings" )
 
         # mailer_time = timezone.utc_to_local(@booking.start) - 5.minute
         #
         # StartSessionJob.set(wait_until: mailer_time).perform_later @booking, profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)
 
-        render js: "window.location='#{calendars_path}'"
-        # render js: "window.location = '#{profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)}'"
+        # render js: "window.location='#{calendars_path}'"
+        render js: "window.location = '#{profile_booking_path(current_user.profile.id, @booking,  :peer_id => @other_profile.id)}'"
+        puts profile_booking_path(@other_profile.id, @booking,  :peer_id => current_user.profile.id)
 
       end
 
@@ -134,11 +149,13 @@ class BookingsController < ApplicationController
     @profile_id = current_profile.id
     if !params[:booking_id].nil? && params[:change_request].nil? #for Approving request from Pending State
       @booking = Booking.find(params[:booking_id])
-      puts @booking.update(:status => 1)
+      @booking.update(:status => 1)
       flash.now[:success] = "Booking Approved!!"
       @new_bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
       @upcoming_bookings = @new_bookings.where(:status => 1).order(created_at: :desc).uniq
-      @pending_bookings =  @new_bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
+      # @pending_bookings =  @new_bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
+      @pending_bookings =  @new_bookings.where(:status => 0).order(created_at: :desc).uniq
+
       @flashing = flash
       respond_to do |format|
         format.js
@@ -150,7 +167,9 @@ class BookingsController < ApplicationController
       flash.now[:notice] = "Booking Change Requested!!"
       @new_bookings = current_profile.bookings.includes(explore: [ profile: :user], guide: [ :profile,:category])
       @upcoming_bookings = @new_bookings.where(:status => 1).order(created_at: :desc).uniq
-      @pending_bookings =  @new_bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
+      # @pending_bookings =  @new_bookings.my_pending(current_profile_id).order(created_at: :desc).uniq
+      @pending_bookings =  @new_bookings.where(:status => 0).order(created_at: :desc).uniq
+
       @flashing = flash
       respond_to do |format|
         format.js
@@ -169,7 +188,37 @@ class BookingsController < ApplicationController
   def destroy
     if !params[:booking_id].nil?
       @booking = Booking.find(params[:booking_id])
-      @booking.destroy
+      if @booking.destroy
+        if @booking.guide.profile_id == current_profile_id
+          @type = "Guiding"
+          @companion = @booking.explore
+        else
+          @type = "Exploring"
+          @companion = @booking.guide
+        end
+        #Find respective wallet for explore and guide respectively
+        @self_wallet = Wallet.find_by(profile_id: current_profile_id)
+        @companion_wallet = Wallet.find_by(profile_id: @companion.profile.id)
+
+        if @type == "Exploring"
+          #Update wallet_history and wallet coins for explore(Self)
+          @self_history = WalletHistory.create(wallet_id: @self_wallet.id, cost: @booking.coins, prev_bal: @self_wallet.coins, new_bal: @self_wallet.coins + @booking.coins,action: @booking,source: "Cancelled by Explorer")
+          @self_wallet.update(coins: @self_history.new_bal)
+
+          #Update wallet_history and wallet coins for guide(Companion)
+          @companion_history = WalletHistory.create(wallet_id: @companion_wallet.id, cost: -@booking.coins, prev_bal: @companion_wallet.coins, new_bal: @companion_wallet.coins-@booking.coins,action: @booking,source: "Cancelled by Explorer")
+          @companion_wallet.update(coins: @companion_history.new_bal)
+        else
+          #Update wallet_history and wallet coins for guide(Self)
+          @self_history = WalletHistory.create(wallet_id: @self_wallet.id, cost: -@booking.coins, prev_bal: @self_wallet.coins, new_bal: @self_wallet.coins - @booking.coins,action: @booking,source: "Cancelled by Guide")
+          @self_wallet.update(coins: @self_history.new_bal)
+
+          #Update wallet_history and wallet coins for explore(Companion)
+          @companion_history = WalletHistory.create(wallet_id: @companion_wallet.id, cost: @booking.coins, prev_bal: @companion_wallet.coins, new_bal: @companion_wallet.coins + @booking.coins,action: @booking,source: "Cancelled by Guide")
+          @companion_wallet.update(coins: @companion_history.new_bal)
+        end
+
+      end
       @profile_id = current_profile.id
       flash.now[:success] = "Booking Deleted!!"
       @flashing = flash
@@ -195,10 +244,55 @@ class BookingsController < ApplicationController
   def pre_session
   end
 
+  def send_tip
+    if params[:booking_id]
+      # @tip_coins = params[:tip_coins]
+      @booking = Booking.find(params[:booking_id])
+
+      if @booking.guide.profile_id == current_profile_id
+        @type = "Guiding"
+        @companion = @booking.explore
+      else
+        @type = "Exploring"
+        @companion = @booking.guide
+      end
+
+      # @self_wallet = Wallet.find_by(profile_id: current_profile_id)
+      # @companion_wallet = Wallet.find_by(profile_id: @companion.profile.id)
+      # if @type == "Exploring"
+      #   #Update wallet_history and wallet coins for Self
+      #   @self_history = WalletHistory.create(wallet_id: @self_wallet.id, cost: -@tip_coins, prev_bal: @self_wallet.coins, new_bal: @self_wallet.coins - @booking.coins,action: nil,source: "Tip from Explorer")
+      #   @self_wallet.update(coins: @self_history.new_bal)
+      #
+      #   #Update wallet_history and wallet Tip coins for Companion
+      #   @companion_history = WalletHistory.create(wallet_id: @companion_wallet.id, cost: @tip_coins, prev_bal: @companion_wallet.coins, new_bal: @companion_wallet.coins + @tip_coins,action: nil,source: "Tip for Guide")
+      #   @companion_wallet.update(coins: @companion_history.new_bal)
+      # else
+      #   #Update wallet_history and wallet coins for Self
+      #   @self_history = WalletHistory.create(wallet_id: @self_wallet.id, cost: -@tip_coins, prev_bal: @self_wallet.coins, new_bal: @self_wallet.coins - @booking.coins,action: nil,source: "Tip from Guide")
+      #   @self_wallet.update(coins: @self_history.new_bal)
+      #
+      #   #Update wallet_history and wallet Tip coins for Companion
+      #   @companion_history = WalletHistory.create(wallet_id: @companion_wallet.id, cost: @tip_coins, prev_bal: @companion_wallet.coins, new_bal: @companion_wallet.coins + @tip_coins,action: nil,source: "Tip for Explorer")
+      #   @companion_wallet.update(coins: @companion_history.new_bal)
+      # end
+
+
+
+
+    end
+
+    flash.now[:success] = "Tip Send!!"
+    @flashing = flash
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
-      if params[:profile_id].to_i == current_user.id
+      if params[:profile_id].to_i == current_user.profile.id
         current_user.profile.bookings.each do |booking|
           if booking[:slug] == params[:id]
             Profile.find(params[:peer_id]).bookings.each do |peer_booking|

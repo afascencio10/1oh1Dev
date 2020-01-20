@@ -6,13 +6,16 @@
         <h1 class="mt-3 c-white">Guides</h1>
 
         <div class="input-group mb-3">
+          <%= form_tag(guides_path, method: :get) do %>
           <input type="text"
                  class="form-control border-secondary text-white bg-transparent custom-search-input"
-                 placeholder="People, Projects, Subjects">
+                 placeholder="People, Projects, Subjects" name="search" value="<%= params[:search]%>">
 
           <div class="input-group-append">
-            <button class="btn custom-btn-outline-primary" type="button">Search</button>
+            <!-- <button class="btn custom-btn-outline-primary" type="button">Search</button> -->
+            <%= submit_tag 'Search',name: nil ,class: "btn custom-btn-outline-primary",data: {disable_with: "Searching..."} %>
           </div>
+          <%end%>
         </div>
 
         <h3 class="c-white-darker cursor-p" id="arroundScheduleBtn">
@@ -94,9 +97,9 @@
       <%= render 'top_guides_for'%>
     </main>
 
-    <button class="btn show-more-button-wide">
+    <!-- <button class="btn show-more-button-wide">
       Load more
-    </button>
+    </button> -->
 </div>
 
 <%= render 'landing/footer' %>

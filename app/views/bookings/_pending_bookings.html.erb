@@ -15,20 +15,21 @@
           <%= local_time(booking.end,'%l:%M %P')%>
         </div>
       </div>
+      <% if booking.guide.profile_id == @profile_id %>
+        <% @type= "Guiding" %>
+        <% @companion = booking.explore.profile %>
+      <% elsif booking.explore.profile_id == @profile_id %>
+        <% @type= "Exploring" %>
+        <% @companion = booking.guide.profile %>
+      <%end%>
       <div id="bookings-pending-btn-content" class="pendingBookingsItem border mt-5">
         <div class="response-wrap text-right border p-3">
           <!-- <div class="progress-circle d-inline-block align-middle mt-2 mr-2" id="bookings-circle">
           </div> -->
+          <h6><%= @type %></h6>
           <span class="secondary-success-color fz-14 align-middle">80% response rate</span>
         </div>
         <div class="content-wrap border p-3">
-          <% if booking.guide.profile_id == @profile_id %>
-            <% @type= "Guided" %>
-            <% @companion = booking.explore.profile %>
-          <% elsif booking.explore.profile_id == @profile_id %>
-            <% @type= "Explored" %>
-            <% @companion = booking.guide.profile %>
-          <%end%>
           <div>
             <% if @companion.profile_photo.nil? %>
               <img width="40px" height="40px" class="rounded-circle mr-2 active" src="<%= image_path('People/asian.jpg') %>" alt="avatar">
@@ -44,13 +45,23 @@
             <span class="float-right fz-14 mt-1">
               <span><%= local_time(booking.start,'%B %e, %Y')%>&emsp;</span>
               <span><%= local_time(booking.start,'%l:%M %P') %> - <%= local_time(booking.end,'%l:%M %P')%>&emsp;</span>
-              <span class="font-weight-bold">+120 <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
+              <span class="font-weight-bold">
+                <% if @type == "Exploring" %>
+                  - <%= booking.coins%>
+                <%else%>
+                  <%= booking.coins%>
+                <%end%>
+                <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
             </span>
           </div>
           <p class="fz-14 my-4"><%= booking.title %></p>
 
           <div>
-            <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-primary booking-approve-btn">Approve</button>
+            <% if booking.client_id == @profile_id%>
+              <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-primary disabled">Waiting for Approval</button>
+            <%else%>
+              <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-primary booking-approve-btn">Approve</button>
+            <%end%>
             <button type="button" id="<%= booking.id%>" class="btn rounded-0 btn-outline-secondary mx-3 booking-decline-btn">Decline</button>
             <%= link_to "Respond" ,user_chats_path(current_user, :other_user => @companion.user.id), method: :post, class: "btn rounded-0 btn-outline-secondary"  %>
 

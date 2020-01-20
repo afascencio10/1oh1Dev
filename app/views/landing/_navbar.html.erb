@@ -16,33 +16,55 @@
   </div>
   <div class="site-mobile-menu-body">
     <ul class="custom-nav nav flex-column bg-white mb-0">
-      <li class="nav-item">
-        <a href="/markets" class="nav-link text-dark font-italic">
-            Market
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/guides" class="nav-link text-dark font-italic">
-            Guide
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/explores" class="nav-link text-dark font-italic">
-            Explore
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/projects" class="nav-link text-dark font-italic">
-            Project
-        </a>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a href="/markets" class="nav-link text-dark font-italic">
+              Market
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/guides" class="nav-link text-dark font-italic">
+              Guide
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/explores" class="nav-link text-dark font-italic">
+              Explore
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/projects" class="nav-link text-dark font-italic">
+              Project
+          </a>
+        </li>
 
-      <li class="nav-item">
-        <%= link_to "Log out",
-            destroy_user_session_path,
-            :method => :delete,
-            :class=>"nav-link text-dark font-italic" %>
-      </li>
+        <li class="nav-item">
+          <%= link_to "Log out",
+              destroy_user_session_path,
+              :method => :delete,
+              :class=>"nav-link text-dark font-italic" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a data-turbolinks="false" href="#section-search" class="nav-link text-dark font-italic">Search</a>
+        </li>
+        <li class="nav-item">
+          <a data-turbolinks="false" href="#section-favourites" class="nav-link text-dark font-italic">Favourites</a>
+        </li>
+        <li class="nav-item">
+          <a data-turbolinks="false" href="#section-popular" class="nav-link text-dark font-italic">Popular</a>
+        </li>
+        <li class="nav-item">
+          <a data-turbolinks="false" href="#section-guides" class="nav-link text-dark font-italic">Guides</a>
+        </li>
+        <li class="nav-item">
+          <a data-turbolinks="false" href="#section-explorers" class="nav-link text-dark font-italic">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a data-turbolinks="false" class="nav-link text-dark font-italic cd-signin cursor-p">Login
+          </a>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

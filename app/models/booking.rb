@@ -6,10 +6,10 @@ class Booking < ApplicationRecord
 
   scope :my_pending, -> (profile_id){where(:status=>0,:recipient_id=>profile_id)}
 
-
   has_many :video_sessions, dependent: :destroy
   #if chat is destroyed all video_sessions will also be  destroyed
   has_many :profiles, through: :video_sessions
+  has_many :wallet_histories, foreign_key: :action_id
   validates :identifier, presence: true, uniqueness: true,case_sensitive: false
 
   validates :title, presence: true

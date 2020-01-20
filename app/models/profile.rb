@@ -15,6 +15,8 @@ class Profile < ApplicationRecord
   has_many :bookings, through: :video_sessions
   has_many :transactions
   serialize :languages, Array
+  has_one  :wallet
+  has_many :wallet_histories, through: :wallet
 
   self.per_page = 3
 

@@ -1,15 +1,16 @@
-<%= simple_form_for Booking.new, remote: true do |f| %>
+<%= simple_form_for Booking.new, html: {id: "new_booking_more"}, remote: true do |f| %>
 <div class="modal fade" id="newEventMoreOptionDialog" tabindex="-1" role="dialog" aria-labelledby="newEventMoreOptionDialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
         <div class="row">
           <div class="col-9 more-option-main-column">
-            <form>
+            <div>
               <div class="form-group position-relative">
                 <%= f.input :title,input_html: { class: 'form-control fz-14',id: 'newEventSubjectMoreOption' },placeholder: 'Subject',label: false %>
                 <%= f.input_field :start, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
                 <%= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
+                <input type="hidden" name="type" id="type_more">
                 <button type="button" class="close input-icon" style="top: 9px" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -94,7 +95,7 @@
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
           <div class="col-3">
             <div class="p-1 new-event-user-overview-wrap">
@@ -102,9 +103,9 @@
                 <img class="new-event-avatar"
                    height="80px"
                    width="80px"
-                   src="<%=image_path('People/asian-square.jpg')%>" alt="">
+                   src="<%= @companion.profile.profile_photo ? @companion.profile.profile_photo : image_path('no_profile.png') %>" alt="profile_pic_companion">
 
-                <span class="fz-13 align-bottom d-block mt-1">Ms.Brown</span>
+                <span class="fz-13 align-bottom d-block mt-1"><%=@companion.profile.user.firstname.upcase%> <%=@companion.profile.user.lastname.upcase%></span>
               </div>
               <div>
                 <div class="new-event-price border-top pt-1">
@@ -123,13 +124,13 @@
                 </div>
 
                 <div class="new-event-more-option-buy-gcoins">
-                  <a href="" class="fz-13">Buy more G-Coins</a>
+                  <a href="/markets" class="fz-13">Buy more G-Coins</a>
                 </div>
                 <div>
                   <!-- <button type="button" class="btn btn-primary mt-3">
                     Submit Booking Request
                   </button> -->
-                  <%= f.button :submit,'Submit Booking Request',class: 'btn btn-primary mt-3' %>
+                  <%= f.button :submit,'Submit Booking Request',class: 'btn btn-success mt-3' %>
                 </div>
               </div>
             </div>

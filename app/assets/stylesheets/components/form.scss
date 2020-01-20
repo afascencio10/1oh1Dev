@@ -26,6 +26,16 @@
 	}
 }
 
+input.gray-input, textarea.gray-input, select.gray-input {
+    background-color: rgb(241, 243, 244);
+    border: none;
+    border-radius: 3px;
+    color: rgb(60, 64, 67)
+}
+input.gray-input, select.gray-input{
+    height: 52px;
+}
+
 .checkbox-switcher {
 	display: inline-block;
 	width: 44px;

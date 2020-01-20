@@ -1,38 +1,81 @@
+var escapeEntityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+function escapeHtml (string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    return escapeEntityMap[s]
+  })
+}
+
+var getMessageTemplate = function (url, messageContent, type, time = '10:05') {
+  if (type) { // messages for left side
+    return `
+    <div class="row message mx-0 mb-2">
+      <div class="col-auto px-0">
+        <div>
+          <div class="avatar"
+               style="background-image: url(${url})">
+          </div>
+        </div>
+        <div class="message-time text-center mt-1">
+          ${time}
+        </div>
+      </div>
+      <div class="col">
+        <div class="message-content">
+          ${escapeHtml(messageContent)}
+        </div>
+      </div>
+    </div>`
+  } else {
+    return `
+    <div class="message mb-2">
+      <div class="text-right">
+        <div class="message-content active text-left mr-2">
+          ${escapeHtml(messageContent)}
+        </div>
+      </div>
+    </div>`
+  }
+}
+
 function createMessageChannel() {
   App.messages = App.cable.subscriptions.create({
-        channel: 'MessageChannel', chat_id: parseInt($("#message_chat_id").val())
-        },          
-        {
-        received: function(data) {
-          $("#messages").removeClass('hidden')
-          return $('#messages').append(this.renderMessage(data));
-        },
-        renderMessage: function(data) {
-          //console.log($("div#messages").children().last().attr('id'));
-          var id = Number($("#userIdInfo").text());
-          var url = $("#userImageUrl").text();
-          setTimeout(function(){
-            $('#chatScroll').scrollTop($('#chatScroll')[0].scrollHeight);
-          },500);          
-          $("#chat_form").trigger('reset');
-          if(id == data.user_id)
-          {
-            //return "<p id=\""+ data.user_id+ "\"> <b>&emsp;&emsp;&emsp;" + data.user + ": </b>" + data.message + "</p>";
-            return '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">'+ data.message +'</div><div class="img_cont_msg"></div></div>';
-          }
-          else{
-            return '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="'+url+'" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">'+data.message+'<span class="msg_time">8:40 AM, Today</span></div></div>';
-            //return "<p id=\""+ data.user_id+ "\"> <b>" + data.user + ": </b>" + data.message + "</p>";
-          }
-         },
-            },$('#chatScroll').scrollTop($('#chatScroll')[0].scrollHeight));
+    channel: 'MessageChannel', chat_id: parseInt($("#message_chat_id").val())
+    },          
+    {
+    received: function(data) {
+      $("#messages").removeClass('hidden')
+      return $('#messages').append(this.renderMessage(data));
+    },
+    renderMessage: function (data) {
+      //console.log($("div#messages").children().last().attr('id'));
+      var id = Number($("#userIdInfo").text());
+      var url = $("#userImageUrl").text();
+
+      setTimeout(function(){
+        $('#chatScroll').scrollTop($('#chatScroll')[0].scrollHeight);
+      },500);          
+      $("#chat_form").trigger('reset');
+
+      return getMessageTemplate(url, data.message, id !== data.user_id)
+     },
+  },$('#chatScroll').scrollTop($('#chatScroll')[0].scrollHeight));
 
       
 return App.messages;
 }
 $(document).on('turbolinks:load', function() {
-  var contactListScroll = document.getElementById('messages_contact_list_scroll')
-  var messagesScroll = document.getElementById('messages_scroll_container')
+  var contactListScroll = document.getElementById('chatScroll')
+  var messagesScroll = document.getElementById('filterrific_results')
 
   if (contactListScroll) new PerfectScrollbar(contactListScroll)
   if (messagesScroll) new PerfectScrollbar(messagesScroll)

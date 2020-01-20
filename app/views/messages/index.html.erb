@@ -1,3 +1,12 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "messages" %>
+<% end %>
+
+<% content_for :css_includes do %>
+  <%= stylesheet_link_tag "messages" %>
+<% end %>
+
+
 <div class="profile-navbar">
     <%= render 'landing/navbar' %>
 </div>
@@ -6,9 +15,9 @@
 
     <%= render 'profiles/side_bar' %>
     <!-- page-content  -->
-    <main class="page-content">
+    <main class="page-content h-100">
         <div id="overlay" class="overlay"></div>
-        <div class="mainContent">
+        <div class="mainContent container h-100">
             <!-- <i id="responsiveMenu" class="material-icons">more_vert</i> -->
             <%= render 'messages/messages_profile' %>
         </div>

@@ -1,21 +1,28 @@
-<% if current_user.id == message.user_id%>
-  <div class="d-flex justify-content-end mb-4">
-    <div class="msg_cotainer_send">
-      <%=message.content%>
-    </div>
-    <div class="img_cont_msg">
+<% if current_user.id != message.user_id %>
+  <div class="row message mx-0 mb-2">
+    <div class="col-auto px-0">
+      <div>
+        <div class="avatar"
+             style="background-image: url(<%= Profile.find_by(:user_id => message.user_id).profile_photo %>)">
+        </div>
+      </div>
 
+      <div class="message-time text-center mt-1">
+        10:05
+      </div>
+    </div>
+    <div class="col">
+      <div class="message-content">
+        <%=message.content%>
+      </div>
     </div>
   </div>
-
 <% else %>
-  <div class="d-flex justify-content-start mb-4">
-    <div class="img_cont_msg">
-      <img src="<%= Profile.find_by(:user_id => message.user_id).profile_photo%> " class="rounded-circle user_img_msg">
-    </div>
-    <div class="msg_cotainer">
-      <%=message.content%>
-      <!-- <span class="msg_time">9:07 AM, Today</span> -->
+  <div class="message mb-2">
+    <div class="text-right">
+      <div class="message-content active text-left">
+        <%=message.content%>
+      </div>
     </div>
   </div>
 <% end %>

@@ -2,7 +2,9 @@
     <div class="projectsContent" id="projectsListProfile">
       <div class="projectsSearchCreate">
        <div class="text-right">
-         <button class="buttonCreate btn btn-success mt-3 mr-3" data-toggle="modal" data-target="#createProjectsModal">Create New Project</button>
+         <% if !view_individual_profile.nil? %>
+             <button class="buttonCreate btn btn-success mt-3 mr-3" data-toggle="modal" data-target="#createProjectsModal">Create New Project</button>
+         <%end%>
        </div>
       </div>
       <% if @projects.blank? %>
@@ -49,9 +51,12 @@
                <div class="projectInfo">
                    <div class="projectTitle c-black"><%= project.name %></div>
                    <div class="editIconProject">
-                         <%= link_to open_edit_project_modal_path(id: project), remote: true do%>
-                          <i class="material-icons icons create">create</i>
-                         <%end%>
+                     <% if !view_individual_profile.nil? %>
+                       <%= link_to open_edit_project_modal_path(id: project), remote: true do%>
+                        <i class="material-icons icons create">create</i>
+                       <%end%>
+                     <%end%>
+
                    </div>
                    <div class="projectDescription">
                       <h3 class="descriptionTitle mb-1 c-black">Description:</h3>

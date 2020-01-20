@@ -22,7 +22,7 @@
   	</div>
     <div class="partnerName">
       <div>
-        <%= User.find(params[:peer_id]).firstname %> &nbsp;<%= User.find(params[:peer_id]).lastname%>
+        <%= Profile.find(params[:peer_id]).user.firstname %> &nbsp;<%= Profile.find(params[:peer_id]).user.lastname%>
         <div class="timeRemaining">
           <div id="demo">
           </div>
@@ -36,16 +36,22 @@
     <div class="transparent1oh1">
       <img src="<%= image_path('iconT.png')  %>" class="transparent1oh1Icon">
     </div>
-  	<div class="sessionIconsNoVideoCont">
-  		<img src="<%= image_path('Icons/nvideo.png')  %>" class="sessionIconsNoVideo">
+  	<div class="sessionIconsNoVideoCont"
+         id="toggle-video-btn"
+         onclick="handleToggleVideo()">
+      <i class="material-icons">videocam</i>
+      <i class="material-icons">videocam_off</i>
   	</div>
     <div class="sessionIconsEndCallCont" onclick="handleLeaveSession()">
       <img src="<%= image_path('Icons/endCallW.png')  %>" class="sessionIconsEndCall">
     </div>
-  	<div class="sessionIconsMuteCont">
-  		<img src="<%= image_path('Icons/mute.png')  %>" class="sessionIconsMute">
+  	<div class="sessionIconsMuteCont"
+         id="toggle-audio-btn"
+         onclick="handleToggleAudio()">
+      <i class="material-icons">mic</i>
+      <i class="material-icons">mic_off</i>
   	</div>
-  	<div class="sessionIconsScreenSharingCont">
+  	<div class="sessionIconsScreenSharingCont" onclick="handleScreenShare()">
   		<img src="<%= image_path('Icons/screensharing.png')  %>" class="sessionIconsScreenSharing">
   	</div>
     <div class="sessionIconsExpandCont">

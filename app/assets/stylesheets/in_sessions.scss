@@ -151,6 +151,23 @@ hangouts-like layout*/
         grid-column: 10/12;
         grid-row: 3/4;
         justify-self: center;
+        cursor: pointer;
+        i {
+            color: white;
+            font-size: 34px;
+        }
+        i:last-child {
+            display: none;
+        }
+
+        &.active {
+            i:first-child {
+                display: none;
+            }
+            i:last-child {
+                display: inline-block;
+            }
+        }
     }
 
     .sessionIconsMute {
@@ -165,6 +182,22 @@ hangouts-like layout*/
         grid-column: 15/17;
         grid-row: 3/4;
         justify-self: center;
+        cursor: pointer;
+        i {
+            color: white;
+            font-size: 34px;
+        }
+        i:last-child {
+            display: none;
+        }
+        &.active {
+            i:first-child {
+                display: none;
+            }
+            i:last-child {
+                display: inline-block;
+            }
+        }
     }
 
     .sessionIconsEndCall {

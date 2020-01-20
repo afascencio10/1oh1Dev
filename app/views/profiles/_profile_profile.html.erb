@@ -81,13 +81,13 @@
   </div>
   <div class="tab-content custom-table">
     <div id="tab1">
-      <%= render 'exploration' %>
+      <%= render partial: 'exploration',:locals => { :view_individual_profile => "false"}  %>
     </div>
     <div id="tab2">
-      <%= render 'guiding' %>
+      <%= render partial: 'guiding',:locals => { :view_individual_profile => "false"}  %>
     </div>
     <div id="tab3">
-      <%= render 'projects' %>
+      <%= render partial: 'projects',:locals => { :view_individual_profile => "false"}  %>
     </div>
   </div>
 

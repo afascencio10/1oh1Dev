@@ -108,13 +108,14 @@ $(document).on('turbolinks:load', function() {
 			$('#cancelSessionDialog').modal()
 	});
 
-	$('.showTipModal').on('click', function () {
-    $('#sendTipDialog').modal()
-  })
+	$(document).on("click", ".showTipModal", function(e) {
+		$("#send_tip_booking").val($(this).attr("id"))
+		$('#sendTipDialog').modal()
+	});
 
 	$('#send-tip-options .btn').click(function () {
 		$('#send-tip-options .btn').removeClass('active')
-
+		//write code for selecting coins value from #sendTipDialog into a hidden input named "tip_coins"
 		$(this).addClass('active')
 	})
 

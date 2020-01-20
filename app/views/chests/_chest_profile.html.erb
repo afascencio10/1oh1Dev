@@ -32,12 +32,12 @@
     <div class="roleBoxes">
       <div class="roleBox exploringBox">
         <div class="roleBoxTitle">Exploring</div>
-        <div class="roleBoxCount">-1400</div>
+        <div class="roleBoxCount"><%=@explore_amount%></div>
         <img class="gCoin" src="<%= image_path('coin.png')  %>">
       </div>
       <div class="roleBox guidingBox">
         <div class="roleBoxTitle">Guiding</div>
-        <div class="roleBoxCount">+1800</div>
+        <div class="roleBoxCount">+<%=@guide_amount%></div>
         <img class="gCoin" src="<%= image_path('coin.png')  %>">
       </div>
     </div>
@@ -47,7 +47,7 @@
       </div>
       <div class="balanceCount">
         <div class="balanceNumber">
-          +260
+          +<%=@available_balance%>
         </div>
         <img class="gCoinBalance" src="<%= image_path('coin.png')  %>">
       </div>
@@ -102,12 +102,12 @@
         </tr>
         <tr class="tableHeight bottomBorder">
           <td class="boldCell">Explore</td>
-          <td class="middleCell">-120</td>
+          <td class="middleCell"><%=@explore_amount%></td>
           <td class="middleCell">+120</td>
         </tr>
         <tr class="tableHeight bottomBorder">
           <td class="boldCell">Guide</td>
-          <td class="middleCell">+120</td>
+          <td class="middleCell"><%=@guide_amount%></td>
           <td class="middleCell">+300</td>
         </tr>
         <tr class="tableHeight">

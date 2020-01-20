@@ -45,7 +45,12 @@
               <span id="nameBooking-<%= booking.id%>"><%= @companion.user.firstname%></span>
             </td>
             <td>
-              <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
+              <span>
+                <% if @type == "Explored" %>
+                  - <%= booking.coins%>
+                <%else%>
+                  <%= booking.coins%>
+                <%end%>, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
 
               <br>
               <div class="rateYo d-inline-block p-0 my-2"></div>
@@ -55,11 +60,15 @@
               </div>
             </td>
             <td>
-              <a class="secondary-success-color showTipModal">Send Tip</a>
+              <a id="<%= booking.id%>" class="secondary-success-color showTipModal">Send Tip</a>
               <br>
               <%= link_to "Message" ,user_chats_path(current_user, :other_user => @companion.user.id), method: :post, class: "secondary-success-color"  %>
               <br>
-              <a class="secondary-success-color" href="#">Re-book</a>
+              <% if booking.explore.profile_id == @profile_id %>
+                <% @type= "Explored" %>
+                <%= link_to 'Re-Book', reserve_calendar_path(guide_id: booking.guide.id), class: 'secondary-success-color'%>
+              <%end%>
+
               <br>
             </td>
           </tr>

@@ -1,7 +1,7 @@
 <div class="modal" id="editModal">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <%= form_tag( category_path(Category.find(4).id), { :method => :patch }) do %>
+      <%= form_tag( category_path(Category.first.id), { :method => :patch }) do %>
       <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Edit Category</h4>

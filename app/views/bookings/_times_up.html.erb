@@ -13,7 +13,7 @@
           <div class="top-body">
             <span class="notice">Please rate your experience with</span>
             <% if params["peer_id"]%>
-              <span class="name"><%= User.find(params["peer_id"]).firstname %> <%= User.find(params["peer_id"]).lastname %></span>
+              <span class="name"><%= Profile.find(params["peer_id"]).user.firstname %> <%= Profile.find(params["peer_id"]).user.lastname %></span>
             <%end%>
           </div>
             <!-- person image  -->

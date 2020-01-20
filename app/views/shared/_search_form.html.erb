@@ -1,0 +1,20 @@
+<form action='/search' method="GET" id="search-form">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" name="filterrific[category]" class="form-control what my-2" placeholder="Anything">
+        </div>
+        <div class="col-md-3">
+          <input type="text" name="filterrific[availability]" class="form-control availability my-2" placeholder="Availability">
+        </div>
+        <div class="col-md-3">
+          <input type="text" name="filterrific[duration]" class="form-control duration my-2" placeholder="Duration">
+        </div>
+        <div class="col-md-2">
+          <%= submit_tag("Search",name:nil, :class=>'btn btn-success py-2 px-4 text-white') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

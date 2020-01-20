@@ -1,31 +1,27 @@
 class GuidesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,except: [:show]
   before_action :set_guide, only: [:show, :edit, :update, :destroy]
   include ExploresHelper
   # GET /guides
   # GET /guides.json
   def index
     @guides = Guide.all
-    category_explores_profiles_join = Category.joins(explores: :profile)
-    category_guides_profiles_join = Category.joins(guides: :profile)
-
-    @top_guides = GuideRating.rate_desc.where(guide_id: not_self_guide_category_ids).pluck(:guide_id).uniq.map{|x| Guide.find(x)}
-    @popular_explore_category = category_explores_profiles_join.distinct_country(country)
-    @popular_guide_category = category_guides_profiles_join.distinct_country(country)
-    @popular_incountry = @popular_explore_category.merge(@popular_guide_category)
-    @world_popular_explore_category= category_explores_profiles_join.distinct_country(all_countries)
-    @world_popular_guide_category= category_guides_profiles_join.distinct_country(all_countries)
-    @popular_inworld = @world_popular_explore_category.merge(@world_popular_guide_category)
-
-    if !@top_guides.empty?
-      @first_category = @top_guides[0].category
-      @first_category_name_guide = @first_category.name
-      @first_category_guide= @guides.includes(:category,profile: :user).where(:category_id => @first_category.id).where.not(:profile_id => current_profile_id)
+    if guide_params[:search]
+      puts Category.where("name LIKE ?","%#{guide_params[:search]}%" )
     else
-      @first_category_name_guide = "None"
-      @first_category_guide = []
-    end
+      @top_guides = GuideRating.rate_desc.where(guide_id: not_self_guide_category_ids).pluck(:guide_id).uniq.map{|x| Guide.find(x)}
+      @popular_incountry = popular_merge(country,nil)
+      @world_popular_guide_category= Category.joins(guides: :profile).distinct_country(all_countries)
 
+      if !@top_guides.empty?
+        @first_category = @top_guides[0].category
+        @first_category_name_guide = @first_category.name
+        @first_category_guide= @guides.includes(:category,profile: :user).where(:category_id => @first_category.id).where.not(:profile_id => current_profile_id)
+      else
+        @first_category_name_guide = "None"
+        @first_category_guide = []
+      end
+    end
   end
 
   # GET /guides/1
@@ -125,7 +121,7 @@ class GuidesController < ApplicationController
     end
 
     def guide_params
-      params.permit(category:[])
+      params.permit(:search,category:[])
     end
     def current_profile_id
       if current_user.profile
@@ -146,9 +142,5 @@ class GuidesController < ApplicationController
       if current_user.profile
         current_user.profile.country
       end
-    end
-
-    def all_countries
-      Profile.pluck(:country).uniq
     end
 end

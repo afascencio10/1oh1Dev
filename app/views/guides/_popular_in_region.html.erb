@@ -7,7 +7,7 @@
     <%else%>
       <% @popular_incountry.each do |category|%>
         <div class="col center text-left popularGuidesItem">
-          <%= link_to category_path(category.name.downcase,type:"guides") do %>
+          <%= link_to category_path(category.slug,type:"guides") do %>
           <div class="card-skill border">
             <div class="cover"
                  style="background-image: url(<%= category.url %>);">

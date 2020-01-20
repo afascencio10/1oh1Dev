@@ -3,18 +3,18 @@
 
   <div class="row my-4" id="mainPopularRol">
     <%@world_popular_guide_category.each do |category|%>
-      <%= link_to category_path(category.name.downcase,type:"guides") do %>
         <div class="col center text-left popularRolItem">
-          <div class="card-skill border">
-            <div class="cover"
-                 style="background-image: url(<%= category.url %>);">
-            </div>
-            <h5 class="font-weight-bold">
-              <%= category.name %>
-            </h5>
-          </div>
+            <%= link_to category_path(category.slug,type:"guides") do %>
+              <div class="card-skill border">
+                <div class="cover"
+                     style="background-image: url(<%= category.url %>);">
+                </div>
+                <h5 class="font-weight-bold">
+                  <%= category.name %>
+                </h5>
+              </div>
+            <%end%>
         </div>
-      <%end%>
     <%end%>
   </div>
 

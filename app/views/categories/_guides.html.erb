@@ -35,7 +35,11 @@
                       <%= link_to 'Book', reserve_calendar_path(guide_id: guide.id ),class: "btn btn-primary px-3 py-1"%>
 
                       <br>
-                      <%= link_to "Message" ,user_chats_path(current_user, :other_user => guide.profile_id),method: :post, class: "secondary-success-color"  %>
+                      <% if user_signed_in? %>
+                        <%= link_to "Message" ,user_chats_path(current_user, :other_user => guide.profile_id),method: :post, class: "secondary-success-color"  %>
+                      <%else%>
+                        <%= link_to "Message" ,nil,class: "secondary-success-color"  %>
+                      <%end%>
                       <br>
                       <%= link_to 'Profile', profile_path(guide.profile_id ),class: "secondary-success-color"%>
 

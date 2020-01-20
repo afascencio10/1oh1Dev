@@ -1,4 +1,4 @@
-<%= render 'landing/navbar' %>
+<%= render 'landing/navbar_unauth' %>
 
 <section class="page-banner text-center position-relative py-5" style="background-image: url(<%= @category.url %>);">
 </section>
@@ -18,11 +18,7 @@
 							<%= link_to "Explorers",category_path(Category.first,type: "explorers"), id: "tabExplorers", href:"#tab1",remote: true%>
 							<%= link_to "Guides",category_path(Category.first,type: "guides"),id: "tabGuides", href:"#tab2",remote: true %>
 							<%= link_to "Projects",category_path(Category.first,type: "projects"),id: "tabProjects", href:"#tab3",remote: true %>
-
-								<!-- <a id="tabExplorers" href="#tab1" class="active">Explorers</a> -->
-	              <!-- <a id="tabGuides" href="#tab2">Guides</a> -->
-	              <!-- <a id="tabProjects" href="#tab3">Projects</a> -->
-	              <span class="yellow-bar"></span>
+	             <span class="yellow-bar"></span>
 	          </div>
       		</header>
 

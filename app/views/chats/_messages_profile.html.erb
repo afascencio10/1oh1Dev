@@ -1,34 +1,27 @@
-<div class="gridcontainer font">
-      <div class="contactList background">
-          <div class="celroja">
-              <div class="messagesTitle">Messages</div>
-              <div class="celverde" id="forSearchInput">
-                <div>
-                  <div class="form-group col-md-12">
+<h1 class="messages-title d-none d-md-block">Messages</h1>
 
-                  </div>
-                </div>
-                <div class="searchContainer"><img class="searchIcon" src="<%= image_path('Icons/search.png')  %>"></div>
-                <%= form_for_filterrific @filterrific,html: { id: 'filterrific-no-ajax-auto-submit' }, url: messages_path do |f| %>
-                  <div class="searchContainer">
-                    <%= f.text_field(
-                      :search_query,
-                      class: 'filterrific-periodically-observed searchInput background',
-                      placeholder: 'Search'
-                    ) %>
-                  </div>
-                <% end %>
-              </div>
-          </div
-          <div class="chats">
-            <%= render(
-              partial: 'chats/list',
-              locals: { users: @users }
-            ) %>
-          </div>
-           <div class="celdaroja chat background">
-             <%= render 'chatting' %>
-          </div>
+<div class="row m-0 chat-wrap">
+  <!-- conversations -->
+  <div class="col-12 col-lg-auto h-100 d-none d-lg-block" id="conversationColumn">
+    <!-- search bar -->
+      <%= form_for_filterrific @filterrific,
+          html: { id: 'filterrific-no-ajax-auto-submit' }, url: messages_path do |f| %>
+      <div class="form-group">
+        <%= f.text_field(
+          :search_query,
+          class: 'filterrific-periodically-observed form-control',
+          placeholder: 'Search'
+        ) %>
       </div>
-
+    <% end %>
+    
+    <!-- conversations -->
+    <%= render(
+      partial: 'chats/list',
+      locals: { users: @users }
+    ) %>
+  </div>
+  <div class="col pl-0 pr-3 h-100 d-lg-block" id="chatColumn">
+    <%= render 'chatting' %>
+  </div>
 </div>

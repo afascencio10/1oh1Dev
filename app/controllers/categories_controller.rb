@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,except: [:show]
   load_and_authorize_resource
   include ExploresHelper
 
@@ -31,9 +31,18 @@ class CategoriesController < ApplicationController
     @profiles = @filterrific.find.page(params[:page])
 
     if @type == "projects"
-      @profiles= @profiles.includes(:categories).where(:categories=>{id:@category.id}).where.not(:profile => current_user.profile)
+      if user_signed_in?
+        @profiles= @profiles.includes(:categories).where(:categories=>{id:@category.id}).where.not(:profile => current_user.profile)
+      else
+        @profiles= @profiles.includes(:categories).where(:categories=>{id:@category.id})
+
+      end
     else
-      @profiles= @profiles.where(category_id: @category.id).where.not(:profile => current_user.profile)
+      if user_signed_in?
+        @profiles= @profiles.where(category_id: @category.id).where.not(:profile => current_user.profile)
+      else
+        @profiles= @profiles.where(category_id: @category.id)
+      end
     end
     # @profiles = @profiles.paginate(:page => params[:page], :per_page => 3)
 

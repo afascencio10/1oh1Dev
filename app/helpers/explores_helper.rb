@@ -21,4 +21,20 @@ module ExploresHelper
             guide_count: guide_count
           }
   end
+
+  def popular_merge(country,landing)
+    popular_explore_category = Category.joins(explores: :profile).distinct_country(country)
+    popular_guide_category = Category.joins(guides: :profile).distinct_country(country)
+    popular = popular_explore_category.merge(popular_guide_category)
+    if landing == true
+      result = popular.sort_by { rand }.first(4)
+    else
+      result = popular
+    end
+    return result
+  end
+
+  def all_countries
+    Profile.pluck(:country).uniq
+  end
 end

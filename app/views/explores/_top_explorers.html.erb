@@ -6,24 +6,24 @@
       <h6 class="my-7 c-black">No Explorers Available</h6>
     <% else %>
       <% @top_explores.each do |explorer|%>
-        <%= link_to explore_path(explorer.id) do %>
           <div class="col topExploreItem">
-            <div class="minimal-card-wrap text-left">
-              <div class="minimal-card border animating">
-                <div class="avatar center animating"
-                     style="background-image: url(<%= explorer.profile.profile_photo %>);"></div>
-                <div class="avatar-shadow center"
-                     style="background-image: url(<%= image_path('avatar-shadow.png') %>);"></div>
-                <div class="cover"
-                     style="background-image: url(<%= explorer.category.url %>);"></div>
-                <h5><%= explorer.profile.user.firstname %>&nbsp; <%= explorer.profile.user.lastname %></h5>
-                <h6><%= explorer.profile.state %> , <%= explorer.profile.country %></h6>
-                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(explorer,nil)[:rating] %>"></div>
-                <span class="align-bottom fz-13"><%= average_rating(explorer,nil)[:count] %></span>
+            <%= link_to explore_path(explorer.id) do %>
+              <div class="minimal-card-wrap text-left">
+                <div class="minimal-card border animating">
+                  <div class="avatar center animating"
+                       style="background-image: url(<%= explorer.profile.profile_photo %>);"></div>
+                  <div class="avatar-shadow center"
+                       style="background-image: url(<%= image_path('avatar-shadow.png') %>);"></div>
+                  <div class="cover"
+                       style="background-image: url(<%= explorer.category.url %>);"></div>
+                  <h5><%= explorer.profile.user.firstname %>&nbsp; <%= explorer.profile.user.lastname %></h5>
+                  <h6><%= explorer.profile.state %> , <%= explorer.profile.country %></h6>
+                  <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(explorer,nil)[:rating] %>"></div>
+                  <span class="align-bottom fz-13"><%= average_rating(explorer,nil)[:count] %></span>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
-        <% end %>
       <% end %>
     <% end %>
   </div>

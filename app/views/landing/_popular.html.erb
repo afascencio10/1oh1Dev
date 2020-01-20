@@ -5,52 +5,27 @@
       <div class="col-md-12 order-md-1" data-aos="fade-up">
 
         <div class="text-left pb-1 mb-4">
-          <h2 class="text-secondary" id="country_name">Popular in your Country</h2>
+          <h2 class="text-secondary" id="country_name">Popular in <%=@user_country%></h2>
         </div>
         <div class="row">
-          <div class="col text-center">
-            <div class="custom-card card-small my-3 centerMargin">
-              <div class="has-bg" style="background-image: url(<%= image_path('Skills/business-3152586_640.jpg') %>);">
-                <div class="texts-wrap">
-                  <div class="main-text">Business</div>
-                  <!-- <div class="sub-text">editing</div> -->
-                </div>
+          <% if @popular_incountry.blank? %>
+            No items for your country
+          <%else%>
+            <% @popular_incountry.each do |category|%>
+              <div class="col text-center">
+                <%= link_to category_path(category.slug,type:"explores"),data: { turbolinks: false } do %>
+                  <div class="custom-card card-small my-3 centerMargin">
+                    <div class="has-bg" style="background-image: url(<%= category.url %>);">
+                      <div class="texts-wrap">
+                        <div class="main-text"><%=category.name.classify%></div>
+                        <!-- <div class="sub-text">editing</div> -->
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
               </div>
-            </div>
-          </div>
-
-          <div class="col text-center">
-            <div class="custom-card card-small my-3 centerMargin">
-              <div class="has-bg"  style="background-image: url(<%= image_path('Skills/cigar-3768640_640.jpg') %>);">
-                <div class="texts-wrap">
-                  <div class="main-text">Cigar</div>
-                  <!-- <div class="sub-text">editing</div> -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col text-center">
-            <div class="custom-card card-small my-3 centerMargin">
-              <div class="has-bg" style="background-image: url(<%= image_path('Skills/people-2587062_1920.jpg') %>);">
-                <div class="texts-wrap">
-                  <div class="main-text">People</div>
-                  <!-- <div class="sub-text">editing</div> -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col text-center">
-            <div class="custom-card card-small my-3 centerMargin">
-              <div class="has-bg" style="background-image: url(<%= image_path('Skills/jetliner-1767857.jpg') %>);">
-                <div class="texts-wrap">
-                  <div class="main-text">Jetline</div>
-                  <!-- <div class="sub-text">editing</div> -->
-                </div>
-              </div>
-            </div>
-          </div>
+            <%end%>
+          <%end%>
         </div>
 
       </div>
@@ -60,56 +35,26 @@
     <div class="text-left pb-1 mb-4">
       <h2 class="text-secondary">Popular around the World</h2>
     </div>
-
     <div class="row">
-      <div class="col text-center">
-        <div class="custom-card card-small my-3 centerMargin">
-          <div class="has-bg" style="background-image: url(<%= image_path('Skills/piano-801707_640.jpg') %>);">
-            <div class="texts-wrap">
-              <div class="main-text">Piano</div>
-              <!-- <div class="sub-text">editing</div> -->
-            </div>
+      <% if @popular_inworld.blank? %>
+        No items available
+      <%else%>
+        <% @popular_inworld.each do |category| %>
+          <div class="col text-center">
+            <%= link_to category_path(category.slug,type:"explores"),data: { turbolinks: false } do %>
+              <div class="custom-card card-small my-3 centerMargin">
+                <div class="has-bg" style="background-image: url(<%= category.url %>);">
+                  <div class="texts-wrap">
+                    <div class="main-text"><%=category.name.classify%></div>
+                    <!-- <div class="sub-text">editing</div> -->
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
-        </div>
-      </div>
-
-      <div class="col text-center">
-        <div class="custom-card card-small my-3 centerMargin">
-          <div class="has-bg"  style="background-image: url(<%= image_path('Skills/industry-3225119_640.jpg') %>);">
-            <div class="texts-wrap">
-              <div class="main-text">Industry</div>
-              <!-- <div class="sub-text">editing</div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col text-center">
-        <div class="custom-card card-small my-3 centerMargin">
-          <div class="has-bg" style="background-image: url(<%= image_path('Skills/mediterranean-cuisine-2378758_640.jpg') %>);">
-            <div class="texts-wrap">
-              <div class="main-text">Cuisine</div>
-              <!-- <div class="sub-text">editing</div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col text-center">
-        <div class="custom-card card-small my-3 centerMargin">
-          <div class="has-bg" style="background-image: url(<%= image_path('Skills/blood-1813410_640.jpg') %>);">
-            <div class="texts-wrap">
-              <div class="main-text">Blood</div>
-              <!-- <div class="sub-text">editing</div> -->
-            </div>
-          </div>
-        </div>
-      </div>
+        <% end %>
+      <%end%>
     </div>
 
   </div>
 </div>
-<script>
-    document.getElementById("country_name").innerHTML = "Popular in " + geoplugin_countryName();
-
-</script>

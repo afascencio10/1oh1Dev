@@ -1,5 +1,5 @@
 <div class="explore-container-wrap">
-<%= render 'landing/navbar' %>
+<%= render 'landing/navbar_unauth' %>
 	<section class="page-banner text-center position-relative py-5"
 			 style="background-image: url(<%= @explore.category.url %>);">
 	</section>
@@ -21,8 +21,11 @@
 			<div class="explore-guy-name ml-2 ml-lg-3">
 				<%= @explore.profile.user.firstname %> <%= @explore.profile.user.lastname %>
 			</div>
-
-			<%= link_to "Message" ,user_chats_path(current_user, :other_user => @explore.profile_id), method: :post, class: "btn btn-success explore-guy-book-btn"  %>
+			<% if user_signed_in? %>
+				<%= link_to "Message" ,user_chats_path(current_user, :other_user => @explore.profile_id), method: :post, class: "btn btn-success explore-guy-book-btn"  %>
+			<%else%>
+				<%= link_to "Message" ,nil,class: "secondary-success-color"  %>
+			<%end%>
 			<!--<%= link_to 'Book', reserve_calendar_path(explore_id: @explore.id ), class: 'btn btn-success explore-guy-book-btn'%>-->
 		</div>
 

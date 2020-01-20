@@ -1,7 +1,9 @@
 $(document).ready(function () {
-  $(document).on('turbolinks:load', initSessions)
+  var debouncedInit = debounce(initSessions, 250)
 
-  initSessions()
+  $(document).on('turbolinks:load', debouncedInit)
+
+  debouncedInit()
 
   function initSessions () {
     var otherUserCheckBoxValue = true
@@ -278,6 +280,12 @@ $(document).ready(function () {
       })
       $('.start_hidden').val(globalDate + ' '+ globalStartTime);
       $('.end_hidden').val(globalDate + ' '+ globalEndTime);
+      setEventFormType()
+      return true
+    })
+
+    $('#new_booking_more').submit(function () {
+      setEventFormType()
       return true
     })
 
@@ -450,7 +458,7 @@ $(document).ready(function () {
         selectable: true,
         selectHelper: true,
         eventOverlap: false,
-        slotDuration: '00:05',
+        slotDuration: '00:15',
         datesRender: function () {
           // initiate custom scroll bar
           Array.from(document.querySelectorAll('.fc-scroller')).forEach(function (el) {
@@ -501,6 +509,7 @@ $(document).ready(function () {
               $('#newEventDialog form').submit(function() {
                 $('.start_hidden').val(globalDate + ' '+ globalStartTime);
                 $('.end_hidden').val(globalDate + ' '+ globalEndTime);
+                setEventFormType()
                 return true
               })
 
@@ -659,14 +668,31 @@ $(document).ready(function () {
       clearInterval(_delay);
       _delay = setInterval(delayCheck, 500);
     }
-    //_form
-    var testEventForm = $("#checkEventForm")
 
-    if (testEventForm) {
-      var url_string = window.location.href
-      var url = new URL(url_string);
-      var params = url.search.split("?")[1];
-      $("#type").val(params);
+    function setEventFormType () {
+      var testEventForm = $("#checkEventForm")
+      if (testEventForm) {
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var params = url.search.split("?")[1];
+        $("#type").val(params);
+        $('#type_more').val(params);
+      }
+    }
+  }
+
+  function debounce (func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
     }
   }
 })

@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   post '/profile/availabilty', to: 'profiles#availabilty_booking_create', as: :availabilty_booking
   get '/profile/completed', to: 'profiles#completed'
   get '/edit/project', to: 'projects#open_edit_project_modal', as: :open_edit_project_modal
+  post '/send/tip', to: 'bookings#send_tip', as: :send_tip
+  get '/search', to: 'landing#search_result', as: :search_result
 
   resources :users, only:[:new] do
    resources :chats, only: [:show,:create]
@@ -59,7 +61,7 @@ Rails.application.routes.draw do
 
 
 
-  if Rails.env.development?
+  # if Rails.env.development?
     devise_for :users, controllers:{
         sessions: "users/sessions",
         registrations: "users/registrations",
@@ -77,7 +79,7 @@ Rails.application.routes.draw do
 
     mount ActionCable.server, at: '/cable'
 
-    else
-      root :to => "subscribes#index"
-  end
+  #   else
+  #     root :to => "subscribes#index"
+  # end
 end

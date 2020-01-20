@@ -168,7 +168,6 @@
 .create {
     color: #838383;
     cursor: pointer;
-    display: none;
 }
 .imgfondo {
     width:100%;
@@ -1588,9 +1587,6 @@ input:checked + .slider:before {
   width: auto;
   margin-top: -5px;
 }
-.buttonCreate{
-  display: none;
-}
 .editProfilePic{
   position: absolute;
 }
@@ -1964,13 +1960,13 @@ input:checked + .slider:before {
     transition-property: all;
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-    &:hover {    
+    &:hover {
       i {
         color: #00b02f!important;
       }
     }
   }
-  
+
   &:hover .explore-item-footer {
     max-height: 100px;
     bottom: 0;
@@ -2016,5 +2012,5 @@ input:checked + .slider:before {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
     font-size: 17px;
-    justify-self: center; 
+    justify-self: center;
 }

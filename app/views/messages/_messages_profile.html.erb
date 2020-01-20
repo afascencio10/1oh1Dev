@@ -1,43 +1,29 @@
-<div class="gridcontainer font">
-      <div class="contactList background">
-          <div class="celroja">
-              <div class="messagesTitle">Messages</div>
-              <div id="forSearchInput">
-                <div>
-                  <div class="form-group col-md-12">
+<h1 class="messages-title d-none d-md-block">Messages</h1>
 
-                  </div>
-                </div>
-                <div class="searchContainer"><img class="searchIcon" src="<%= image_path('Icons/search.png')  %>"></div>
-                <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
-                  <div class="searchContainer">
-                    <%= f.text_field(
-                      :search_query,
-                      class: 'filterrific-periodically-observed searchInput',
-                      placeholder: 'Search'
-                    ) %>
-                  </div>
-                <% end %>
-              </div>
-          </div
-          <div class="chats">
-            <%= render(
-              partial: 'messages/list',
-              locals: { users: @users }
-            ) %>
-          </div>
-           <div class="celdaroja chat background">
-              <div class="chatHeader">
-              </div>
-              <div class="card-body msg_card_body">
-                  <h5 class="notSelectedTitle">You don't have a message selected</h5>
-                  <p class="notSelectedText">Choose one from your existing messages</p>
-                  <img class="imgYet" src="<%= image_path('Icons/yet.png') %>" >
-                </div>
-                <div class="inputChat">
-
-                </div>
-          </div>
+<div class="row m-0 chat-wrap">
+  <!-- conversations -->
+  <div class="col-12 col-lg-auto h-100 d-lg-block">
+    <!-- search bar -->
+      <%= form_for_filterrific @filterrific,
+          html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+      <div class="form-group">
+        <%= f.text_field(
+          :search_query,
+          class: 'filterrific-periodically-observed form-control',
+          placeholder: 'Search'
+        ) %>
       </div>
-
+    <% end %>
+    
+    <!-- conversations -->
+    <%= render(
+      partial: 'messages/list',
+      locals: { users: @users }
+    ) %>
+  </div>
+  <div class="col pl-0 pr-3 h-100 d-none d-lg-block">
+    <h5 class="text-center">You don't have a message selected</h5>
+    <p class="text-center">Choose one from your existing messages</p>
+    <img class="imgYet" src="<%= image_path('Icons/yet.png') %>" >
+  </div>
 </div>

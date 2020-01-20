@@ -222,8 +222,6 @@ $(document).on('turbolinks:load', function() {
           });
 
           $('.card-slider').owlCarousel({
-            animateOut: 'slideOutDown',
-            animateIn: 'flipInX',
             items: 4,
             margin: 50,
             stagePadding: 0,
@@ -232,7 +230,9 @@ $(document).on('turbolinks:load', function() {
             navText: ['<i class="material-icons">keyboard_arrow_left</i>', '<i class="material-icons">keyboard_arrow_right</i>'],
             responsive:{
               0:{
-                  items:2
+                  items:1,
+                  margin: 0,
+                  center: true
               },
               600:{
                   items:2

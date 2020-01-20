@@ -1,28 +1,47 @@
-<div id="filterrific_results">
-<!--   <div class="counterMessage">
-    <%= page_entries_info users, entry_name: "user"%>
-  </div> -->
-  <div class="contactListScroll" id="messages_contact_list_scroll">
+<div id="filterrific_results" class="conversations-wrap">
+  <div id="messages_contact_list_scroll">
     <% users.each do |user| %>
       <% if user != current_user %>
         <%= link_to(user_chats_path(current_user, :other_user => user.id), method: :post) do %>
-          <div class="contactCard">
-            <div class="celroja gridContact">
+          <div class="conversation-item rounded border my-2 cursor-p p-3 row m-0">
+            <!-- avatar -->
+            <div class="col-auto px-0">
               <% if user.profile.blank?%>
-              <div class="picture"><img src="<%= image_path('no_profile.png')  %>" class="profilePic"></div>
-              <%else%>
-              <div class="picture"><img src="<%= user.profile.profile_photo ? user.profile.profile_photo: image_path('no_profile.png') %>" class="profilePic"></div>
-              <%end%>
+                <div class="avatar"
+                     style="background-image: url(<%= image_path('no_profile.png') %>)">
+                </div>
+              <% else %>
+                <div class="avatar"
+                       style="background-image: url(<%= user.profile.profile_photo ? user.profile.profile_photo: image_path('no_profile.png') %>)">
+                </div>
+              <% end %>
+            </div>
 
-                <div class="contactLabel"><div id="forName">Name</div></div>
-                <div class="contactLabel"><div id="forDate">02 Feb</div></div>
-                <div class="contactLabel"><div id="forHobby"><%= user.firstname %></div></div>
-                <!-- <div class="notification"><div class="redCircle">5</div></div> -->
+            <div class="col">      
+              <!-- name -->
+              <div class="name">
+                <%= user.firstname %>
+              </div>
+
+              <div class="occupation">
+                occupation
+              </div>
+            </div>
+            
+            <div class="col-auto px-0">
+              <div class="last-visit">
+                last visit
+              </div>
+
+              <div class="unread-messages text-right">
+                <div class="red-circle">
+                  1
+                </div>
+              </div>
             </div>
           </div>
-        <%end%>
+        <% end %>
       <% end %>
     <% end %>
   </div>
-  <!--<%= will_paginate users  %>-->
 </div>

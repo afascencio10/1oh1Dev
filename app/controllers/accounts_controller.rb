@@ -36,17 +36,31 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(account_params)
-
-    respond_to do |format|
-      if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render :show, status: :created, location: @account }
+    @user = current_user
+    if @user.valid_password?(params[:current_password])
+      if params[:new_password] == params[:re_type_password]
+        @user.password = params[:new_password]
+        @user.save
+        flash.now[:success]= 'Password Changed!!!'
       else
-        format.html { render :new }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
+        flash.now[:error]= 'Both Passwords didn\'t match!!!'
       end
+    else
+      flash.now[:error]= 'Incorrect Current Password!!!'
     end
+    @flashing = flash
+    respond_to do |format|
+      format.js
+    end
+    # respond_to do |format|
+    #   if @account.save
+    #     format.html { redirect_to @account, notice: 'Account was successfully created.' }
+    #     format.json { render :show, status: :created, location: @account }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @account.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /accounts/1

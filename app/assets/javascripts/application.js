@@ -57,7 +57,6 @@
 //= require modal
 //= require chests
 //= require notification
-//= require messages
 //= require profiles
 //= require sidebar
 //= require reviews

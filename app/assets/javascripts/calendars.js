@@ -1,7 +1,9 @@
 $(document).ready(function () {
-  $(document).on('turbolinks:load', calendarsJsInit)
+  var debouncedInit = debounce(calendarsJsInit, 250)
 
-  calendarsJsInit()
+  $(document).on('turbolinks:load', debouncedInit)
+
+  debouncedInit()
 
   function calendarsJsInit () {
     var currentController = $('meta[name=psj]').attr('controller')
@@ -656,6 +658,21 @@ $(document).ready(function () {
     }
     function removeNotif (button) {
       $(button).parent().remove()
+    }
+  }
+
+  function debounce (func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
     }
   }
 })

@@ -1,43 +1,44 @@
-<!-- Start: header chat  -->
-<div class="chatHeader">
-  <div id="forChatHeader">
-      <i id="chatIcon" class="material-icons">keyboard_arrow_left</i>
-      <div class="chatTitle">Chat</div>
-      <div class="chatSub">From: <%= @other_user.firstname %></div>
-  </div>
-</div>
-<!-- End: Header chat  -->
-
-<!-- Start: Body chat  -->
 <div id="userIdInfo" style="display: none;"><%= current_user.id %></div>
 
-<div id="userImageUrl" style="display: none;"><%= current_user.profile ? current_user.profile.profile_photo : image_path('no_profile.png')  %></div>
-<div id="chatScroll" class="card-body msg_card_body">
-    <div>
-        <% if @chat.messages.any? %>
-          <div id="messages">
-            <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
-          </div>
-        <% else %>
-          <div id="messages">
-          </div>
-        <% end %>
-      </div>
+<div id="userImageUrl" style="display: none;"><%= @other_user.profile ? @other_user.profile.profile_photo : image_path('no_profile.png')  %></div>
 
+<!-- Start: header chat  -->
+<div class="row m-0">
+  <div class="col-auto px-0">
+    <div class="chat-avatar" style="background-image: url(<%= @other_user.profile ? @other_user.profile.profile_photo : image_path('no_profile.png') %>)"></div>
   </div>
-<!-- End: Body chat  -->
+  <div class="col">
+    <div class="chat-title">Chat</div>
+    <div class="chat-subtitle">From: <%= @other_user.firstname %></div>
+  </div>
 
-<!-- Start: Footer chat  -->
-<div class="inputChat">
-    <%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat,other_user: params[:other_user]}%>
+  <div class="col-auto">
+    <i class="material-icons d-lg-none cursor-p"
+       id="backToConversation">keyboard_backspace</i>
+  </div>
+</div>
+
+<div class="messages-wrap border p-3 rounded">
+  <div id="chatScroll" class="messages-scroll position-relative">
+    <div>
+      <% if @chat.messages.any? %>
+        <div id="messages">
+          <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
+        </div>
+      <% else %>
+        <div id="messages">
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Start: Footer chat  -->
+  <div>
+      <%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat,other_user: params[:other_user]}%>
+  </div>
 </div>
 <!-- End: Footer chat  -->
 
 <script>
-  createMessageChannel();
-  // app/assets/javascripts/channels/messages.js
-  messageForm();
-  // app/assets/javascripts/messages_form.js
-
-
+  createMessageChannel()
 </script>

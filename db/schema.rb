@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191230124156) do
+ActiveRecord::Schema.define(version: 20200113203222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20191230124156) do
     t.string   "description"
     t.integer  "client_id"
     t.integer  "recipient_id"
+    t.integer  "coins"
     t.index ["explore_id"], name: "index_bookings_on_explore_id", using: :btree
     t.index ["guide_id"], name: "index_bookings_on_guide_id", using: :btree
   end
@@ -160,8 +161,8 @@ ActiveRecord::Schema.define(version: 20191230124156) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "state"
     t.string   "country"
@@ -257,6 +258,24 @@ ActiveRecord::Schema.define(version: 20191230124156) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "wallet_histories", force: :cascade do |t|
+    t.integer "wallet_id"
+    t.integer "cost"
+    t.integer "prev_bal"
+    t.integer "new_bal"
+    t.string  "action_type"
+    t.integer "action_id"
+    t.string  "source"
+    t.index ["action_type", "action_id"], name: "index_wallet_histories_on_action_type_and_action_id", using: :btree
+    t.index ["wallet_id"], name: "index_wallet_histories_on_wallet_id", using: :btree
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "coins"
+    t.index ["profile_id"], name: "index_wallets_on_profile_id", using: :btree
+  end
+
   add_foreign_key "bookings", "explores", on_delete: :nullify
   add_foreign_key "bookings", "guides", on_delete: :nullify
   add_foreign_key "explore_ratings", "categories"
@@ -275,4 +294,6 @@ ActiveRecord::Schema.define(version: 20191230124156) do
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
   add_foreign_key "transactions", "profiles"
+  add_foreign_key "wallet_histories", "wallets"
+  add_foreign_key "wallets", "profiles"
 end

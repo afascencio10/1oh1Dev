@@ -14,6 +14,7 @@ module Mvp1oh1
     #
     # config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
     #for development comment it
+    config.autoload_paths += %W(#{config.root}/lib)
     config.active_job.queue_adapter = :sidekiq
 
   end

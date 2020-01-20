@@ -3,9 +3,9 @@
       <div class="cel celrating"><p class="txtrating c-black">Average Rating:</p></div>
       <div class="cel icons-Starts" id="subgridscore">
         <div class="cel mt-1">
-          <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(current_user,nil)[:guide_rating] %>"></div>
+          <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(@user,nil)[:guide_rating] %>"></div>
         </div>
-        <span class="cel fz-13 mt-3 fw-600 c-gray"><%= average_rating(current_user,nil)[:guide_count] %></span>
+        <span class="cel fz-13 mt-3 fw-600 c-gray"><%= average_rating(@user,nil)[:guide_count] %></span>
         <div class="grid-RatingsModal">
                 <div class="grid-Pop celpop">
                         <div class="grid-Starts celpop">
@@ -65,9 +65,11 @@
     <div class="interestsHeader mt-3">
         <div class="interestsTitle c-black">Subjects</div>
         <div class="interestsIcon">
-            <a href="#" data-toggle="modal" data-target="#editGuideModal">
-                <i class="material-icons c-dark-gray">edit</i>
-            </a>
+            <% if !view_individual_profile.nil? %>
+              <a href="#" data-toggle="modal" data-target="#editGuideModal">
+                  <i class="material-icons c-dark-gray">edit</i>
+              </a>
+            <%end%>
         </div>
     </div>
 
@@ -128,8 +130,8 @@
             <!-- rate -->
             <div class="row">
               <div class="col">
-                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(current_user,category)[:guide_rating] %>"></div>
-                <span class="fz-13 fw-600 c-gray"><%= average_rating(current_user,category)[:guide_count]%></span>
+                <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(@user,category)[:guide_rating] %>"></div>
+                <span class="fz-13 fw-600 c-gray"><%= average_rating(@user,category)[:guide_count]%></span>
               </div>
 
               <div class="col-auto">

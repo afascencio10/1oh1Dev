@@ -6,7 +6,8 @@
         <p class="names"><%= @profile.user.firstname%>&nbsp<%= @profile.user.lastname %></p>
     </div>
 
-    <div class="cel"><i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">create</i>
+    <div class="cel">
+      <i data-toggle="modal" data-target="#profileModal" class="material-icons icons create">create</i>
       <div class="cel buttonMessage"><button type="button" class="btnMessage">Message</button></div>
     </div>
     <div class="cel pcity mediacity"><p class="city">
@@ -48,13 +49,13 @@
   </div>
   <div class="tab-content custom-table">
         <div id="tab1">
-          <%= render 'exploration'  %>
+          <%= render partial: 'exploration',:locals => { :view_individual_profile => nil}  %>
         </div>
         <div id="tab2">
-          <%= render 'guiding' %>
+          <%= render partial: 'guiding',:locals => { :view_individual_profile => nil}  %>
         </div>
         <div id="tab3">
-          <%= render 'projects' %>
+          <%= render partial: 'projects',:locals => { :view_individual_profile => nil}  %>
         </div>
   </div>
   <%= render 'profile_pic_ui' %>

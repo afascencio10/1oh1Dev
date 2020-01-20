@@ -1,3 +1,10 @@
+// broswer polyfil
+navigator.getUserMedia = ( navigator.getUserMedia ||
+navigator.webkitGetUserMedia ||
+navigator.mozGetUserMedia ||
+navigator.msGetUserMedia)
+
+
 // Broadcast Types
 const JOIN_ROOM = "JOIN_ROOM";
 const EXCHANGE = "EXCHANGE";
@@ -7,10 +14,9 @@ const REMOVE_USER = "REMOVE_USER";
 let currentUser;
 let localVideo;
 let remoteVideoContainer;
-
 // Objects
 let pcPeers = {};
-let localstream;
+let localStream;
 
 window.onload = () => {
   currentUser = document.getElementById("current-user").innerHTML;
@@ -63,13 +69,17 @@ document.onreadystatechange = () => {
   if (document.readyState === "interactive") {
     navigator.mediaDevices
       .getUserMedia({
-        audio: false,
-        video: true
+        video: true,
+        audio:{
+        googEchoCancellation: false,
+        googAutoGainControl: false,
+        googNoiseReduction: false
+      }
       })
       .then(stream => {
-        localstream = stream;
+        localStream = stream;
         localVideo.srcObject = stream;
-        localVideo.muted = false;
+        localVideo.muted = true;
       })
       .catch(logError);
   }
@@ -81,14 +91,18 @@ const handleJoinSession = async () => {
   $('#local-video-up').fadeIn();
   navigator.mediaDevices
   .getUserMedia({
-    audio: false,
-    video: true
+    video: true,
+    audio:{
+    googEchoCancellation: false,
+    googAutoGainControl: false,
+    googNoiseReduction: false
+  }
   })
   .then(stream => {
-    localstream = stream;
+    localStream = stream;
     localVideoUp = document.getElementById("local-video-right");
     localVideoUp.srcObject = stream;
-    localVideoUp.muted = false;
+    localVideoUp.muted = true;
   })
   .catch(logError);
   App.session = await App.cable.subscriptions.create({channel: 'SessionChannel',session_id: document.getElementById("session_id").innerHTML },
@@ -120,14 +134,6 @@ const handleJoinSession = async () => {
       }
   });
 };
-// $(document).on('keypress', '[data-behavior~=message_speaker]', function(event) {
-//     if (event.keyCode === 13) {
-//       App.session.speak(event.target.value);
-//       event.target.value = '';
-//       return event.preventDefault();
-//     }
-//   });
-
 
 const handleLeaveSession = () => {
   for (user in pcPeers) {
@@ -146,6 +152,85 @@ const handleLeaveSession = () => {
   });
 };
 
+const handleScreenShare = function () {
+  localStream.getTracks().forEach(function(track) {
+    track.stop();
+  });
+
+  var displayMediaStreamConstraints = {
+  video: true,
+  audio:{
+  googEchoCancellation: false,
+  googAutoGainControl: false,
+  googNoiseReduction: false
+}
+};
+
+if (navigator.mediaDevices.getDisplayMedia) {
+    navigator.mediaDevices.getDisplayMedia(displayMediaStreamConstraints)
+    .then(stream => {
+      replaceTracks(stream);
+      localStream = stream;
+      localVideoUp = document.getElementById("local-video-right");
+      localVideoUp.srcObject = stream;
+      localVideoUp.muted = true;
+
+
+    })
+    .catch(logError);
+} else {
+  navigator.getDisplayMedia(displayMediaStreamConstraints).then(success).catch(error);
+}
+
+}
+
+function replaceTracks(newStream){
+
+  newStream.getTracks().forEach(function(track) {
+     localStream.addTrack(track);
+  });
+
+
+  _replaceTracksForPeer(pcPeers[Object.keys(pcPeers)[0]]);
+
+  function _replaceTracksForPeer(peer) {
+    peer.getSenders().map(function(sender) {
+        sender.replaceTrack(newStream.getTracks().find(function(track) {
+            return track.kind === sender.track.kind;
+        }));
+    });
+  }
+}
+
+
+const handleToggleAudio = function () {
+  var container = document.getElementById('toggle-audio-btn')
+
+  container.classList.toggle('active')
+
+  var audioTracks = localStream.getAudioTracks()
+
+  if (audioTracks.length === 0) return
+
+  for (var i = 0; i < audioTracks.length; ++i) {
+    audioTracks[i].enabled = !audioTracks[i].enabled
+  }
+}
+
+const handleToggleVideo = function () {
+  var container = document.getElementById('toggle-video-btn')
+
+  container.classList.toggle('active')
+
+  var videoTracks = localStream.getVideoTracks()
+
+  if (videoTracks.length === 0) return
+
+  for (var i = 0; i < videoTracks.length; ++i) {
+    videoTracks[i].enabled = !videoTracks[i].enabled
+  }
+}
+
 const joinRoom = data => {
   createPC(data.from, true);
 };
@@ -161,7 +246,7 @@ const removeUser = data => {
 const createPC = (userId, isOffer) => {
   let pc = new RTCPeerConnection(ice);
   pcPeers[userId] = pc;
-  pc.addStream(localstream);
+  pc.addStream(localStream);
 
   isOffer &&
     pc

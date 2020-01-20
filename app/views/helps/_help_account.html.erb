@@ -20,23 +20,24 @@
         <div>
             <h5>Change password</h5>
         </div>
-        <form action="" class="containerForm">
+          <%= form_tag( {:controller=>"accounts", :action => :create },  :method => :post,remote: true,:class=>"containerForm") do |f| %>
             <div class="group-form">
                 <label for="">Current password</label>
-                <input type="text">
+                <input type="password" name="current_password">
             </div>
             <div class=" group-form">
                 <label for="">New password</label>
-                <input type="text group-form">
+                <input type="password" name="new_password">
             </div>
             <div class="group-form">
                 <label for="">Re-type new password</label>
-                <input type="text">
+                <input type="password" name="re_type_password">
             </div>
             <div class="">
-                <button class="btn w-100 btnSubmitAccount">Submit</button>
+                <!-- <button class="btn w-100 btnSubmitAccount">Submit</button> -->
+              <%= submit_tag("Submit",:class=>'btn w-100 btnSubmitAccount',data: { disable_with: "Submitting..." })%>
             </div>
-        </form>
+            <%end%>
     </div>
 
 

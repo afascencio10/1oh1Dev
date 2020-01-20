@@ -48,7 +48,12 @@ class PaymentController < ApplicationController
 
     @transaction.charge_id = response["data"][0]["id"]
 
-    @transaction.save
+    if @transaction.save
+      @self_wallet = Wallet.find_by(profile_id: current_user.profile.id)
+      #Update wallet_history and wallet coins for Self, source: Transaction
+      @self_history = WalletHistory.create(wallet_id: @self_wallet.id, cost: @transaction.coins, prev_bal: @self_wallet.coins, new_bal: @self_wallet.coins + @transaction.coins,action: @transaction,source: "Purchase")
+      @self_wallet.update(coins: @self_history.new_bal)
+    end
 
     render json: @transaction
   end

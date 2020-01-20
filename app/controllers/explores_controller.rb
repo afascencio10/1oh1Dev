@@ -1,21 +1,15 @@
 class ExploresController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,except: [:show]
   before_action :set_explore, only: [:show, :edit, :update, :destroy]
   include ExploresHelper
   # GET /explores
   # GET /explores.json
   def index
     @explores = Explore.all
-    category_explores_profiles_join = Category.joins(explores: :profile)
-    category_guides_profiles_join = Category.joins(guides: :profile)
 
     @top_explores = ExploreRating.includes(profile: :user,explore: [:category]).rate_desc.where(explore_id: not_self_explore_category_ids).pluck(:explore_id).uniq.map{|x| Explore.find(x)}
-    @popular_explore_category = category_explores_profiles_join.distinct_country(country)
-    @popular_guide_category = category_guides_profiles_join.distinct_country(country)
-    @popular_incountry = @popular_explore_category.merge(@popular_guide_category)
-    @world_popular_explore_category= category_explores_profiles_join.distinct_country(country)
-    @world_popular_guide_category= category_guides_profiles_join.distinct_country(country)
-    @popular_inworld = @world_popular_explore_category.merge(@world_popular_guide_category)
+    @popular_incountry = popular_merge(country,nil)
+    @world_popular_explore_category = Category.joins(explores: :profile).distinct_country(all_countries)
 
     if !@top_explores.empty?
       @category = @top_explores[0].category
@@ -99,65 +93,36 @@ class ExploresController < ApplicationController
     end
   end
 
-  #
-  # # PATCH/PUT /explores/1
-  # # PATCH/PUT /explores/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @explore.update(explore_params)
-  #       format.html { redirect_to @explore, notice: 'Explore was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @explore }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @explore.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  #
-  # # DELETE /explores/1
-  # # DELETE /explores/1.json
-  # def destroy
-  #   @explore.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to explores_url, notice: 'Explore was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
-  #
-    private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_explore
-      @explore = Explore.find(params[:id])
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_explore
+    @explore = Explore.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def explore_params
-      params.permit(category:[])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def explore_params
+    params.permit(category:[])
+  end
 
-    def current_profile_id
-      if current_user.profile
-        current_user.profile.id
-      end
+  def current_profile_id
+    if current_user.profile
+      current_user.profile.id
     end
+  end
 
-    def not_self_explore_category_ids
-      if current_user.profile
-        category_ids_checked= current_user.profile.explores.pluck(:category_id)
-        Explore.where(category_id: category_ids_checked).where.not(:profile_id => current_profile_id).pluck(:id)
-      else
-        []
-      end
+  def not_self_explore_category_ids
+    if current_user.profile
+      category_ids_checked= current_user.profile.explores.pluck(:category_id)
+      Explore.where(category_id: category_ids_checked).where.not(:profile_id => current_profile_id).pluck(:id)
+    else
+      []
     end
+  end
 
-    def country
-      if current_user.profile
-        current_user.profile.country
-      end
+  def country
+    if current_user.profile
+      current_user.profile.country
     end
-
-    def all_countries
-      Profile.pluck(:country).uniq
-    end
+  end
 
 end

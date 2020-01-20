@@ -28,10 +28,10 @@
 
           <% if booking.guide.profile_id == @profile_id %>
             <% @type= "Guiding" %>
-            <% @companion= booking.explore.profile %>
+            <% @companion = booking.explore.profile %>
           <% elsif booking.explore.profile_id == @profile_id %>
             <% @type= "Exploring" %>
-            <% @companion= booking.guide.profile %>
+            <% @companion = booking.guide.profile %>
           <%end%>
 
           <tr class="upcomingBookingsItem">
@@ -47,7 +47,12 @@
               <span id="nameBooking-<%= booking.id%>"><%= @companion.user.firstname %></span>
             </td>
             <td>
-              <span>-20, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
+              <span>
+              <% if @type == "Exploring" %>
+                - <%= booking.coins%>
+              <%else%>
+                <%= booking.coins%>
+              <%end%>, <img width="25px" src="<%= image_path('coin.png') %>" alt="coin"></span>
 
 
               <br>

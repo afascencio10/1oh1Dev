@@ -3,87 +3,40 @@
     <h3 class="my-4">Top Guides</h3>
 
     <div class="card-slider owl-carousel">
-      <div class="custom-card card-normal my-3" >
-        <div class="has-bg" style="background-image: url(<%= image_path('Skills/business-3152586_640.jpg') %>);">
-          <div class="top-images">
-            <img src="<%= image_path('flags/united-states.png') %>" alt="">
-            <img src="<%= image_path('eng.jpeg') %>" alt="">
+      <% if @top_guides.blank? %>
+          <div class="custom-card card-normal mx-auto my-3" >
+            <div class="has-bg" style="background-image: url(<%= image_path('Skills/code-1084923_640.png') %>);">
+              <div class="top-images">
+                <img src="<%= image_path('flags/united-states.png') %>" alt="">
+                <img src="<%= image_path('eng.jpeg') %>" alt="">
+              </div>
+
+            <div class="texts-wrap">
+              <h5 class="text-white">Coding</h5>
+            </div>
+
+            <div class="bottom-image">
+              <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
+            </div>
           </div>
 
-        <div class="texts-wrap">
-          <h5 class="text-white">Business</h5>
-        </div>
+          <h5 class="text-right">Chris Morrie</h5>
+          <div class="text-right">
+            <div class="rateYo d-inline-block p-0"></div>
 
-        <div class="bottom-image">
-          <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
-        </div>
-      </div>
-
-      <h5 class="text-right">Paras Gaur</h5>
-      <div class="text-right">
-        <div class="rateYo d-inline-block p-0"></div>
-
-        <span class="d-inline-block star-counter">453</span>
-      </div>
-    </div>
-
-    <div class="custom-card card-normal my-3" >
-      <div class="has-bg" style="background-image: url(<%= image_path('Skills/pure-843893_640.jpg') %>);">
-        <div class="top-images">
-          <img src="<%= image_path('flags/united-states.png') %>" alt="">
-          <img src="<%= image_path('eng.jpeg') %>" alt="">
-        </div>
-
-      <div class="texts-wrap">
-        <h5 class="text-white">Pure</h5>
-      </div>
-
-      <div class="bottom-image">
-        <img src="<%= image_path('People/man.jpg') %>" alt="">
-      </div>
-    </div>
-
-    <h5 class="text-right">Asthon Ostrander</h5>
-    <div class="text-right">
-      <div class="rateYo d-inline-block p-0"></div>
-
-      <span class="d-inline-block star-counter">253</span>
-    </div>
-  </div>
-
-  <div class="custom-card card-normal my-3" >
-      <div class="has-bg" style="background-image: url(<%= image_path('Skills/cigar-3768640_640.jpg') %>);">
-        <div class="top-images">
-          <img src="<%= image_path('flags/united-states.png') %>" alt="">
-          <img src="<%= image_path('eng.jpeg') %>" alt="">
-        </div>
-
-      <div class="texts-wrap">
-        <h5 class="text-white">Cigar</h5>
-      </div>
-
-      <div class="bottom-image">
-        <img src="<%= image_path('People/adult.jpg') %>" alt="">
-      </div>
-    </div>
-
-    <h5 class="text-right">Raf Abed</h5>
-    <div class="text-right">
-      <div class="rateYo d-inline-block p-0"></div>
-
-      <span class="d-inline-block star-counter">43</span>
-    </div>
-  </div>
-
-      <div class="custom-card card-normal my-3" >
-        <div class="has-bg" style="background-image: url(<%= image_path('Skills/Woodworking.png') %>);">
-          <div class="top-images">
-            <img src="<%= image_path('flags/united-states.png') %>" alt="">
-            <img src="<%= image_path('eng.jpeg') %>" alt="">
+            <span class="d-inline-block star-counter">453</span>
           </div>
+        </div>
+
+        <div class="custom-card card-normal my-3" >
+          <div class="has-bg" style="background-image: url(<%= image_path('Skills/code-1084923_640.png') %>);">
+            <div class="top-images">
+              <img src="<%= image_path('flags/united-states.png') %>" alt="">
+              <img src="<%= image_path('eng.jpeg') %>" alt="">
+            </div>
 
           <div class="texts-wrap">
-            <h5 class="text-white">Woodworking</h5>
+            <h5 class="text-white">Coding</h5>
           </div>
 
           <div class="bottom-image">
@@ -91,38 +44,42 @@
           </div>
         </div>
 
-        <h5 class="text-right">Rachael</h5>
+        <h5 class="text-right">Chris Morrie</h5>
         <div class="text-right">
           <div class="rateYo d-inline-block p-0"></div>
 
-          <span class="d-inline-block star-counter">153</span>
+          <span class="d-inline-block star-counter">453</span>
         </div>
       </div>
+      <%else%>
+        <%@top_guides.each do |guide|%>
+          <div class="custom-card card-normal mx-auto my-3" >
+            <%= link_to guide_path(guide.id),data: { turbolinks: false } do %>
+              <div class="has-bg" style="background-image: url(<%= guide.category.url %>);">
+                <div class="top-images">
+                  <img src="<%= image_path('flags/united-states.png') %>" alt="">
+                  <img src="<%= image_path('eng.jpeg') %>" alt="">
+                </div>
 
+              <div class="texts-wrap">
+                <h5 class="text-white"><%=guide.category.name%></h5>
+              </div>
 
-      <div class="custom-card card-normal my-3" >
-        <div class="has-bg" style="background-image: url(<%= image_path('Skills/poly.jpg') %>);">
-          <div class="top-images">
-            <img src="<%= image_path('flags/united-states.png') %>" alt="">
-            <img src="<%= image_path('eng.jpeg') %>" alt="">
+              <div class="bottom-image">
+                <img src="<%= guide.profile.profile_photo %>" alt="">
+              </div>
+            </div>
+          <%end%>
+
+          <h5 class="text-right"><%=guide.profile.user.firstname%> <%=guide.profile.user.lastname%></h5>
+          <div class="text-right">
+            <div id="" class="rateYoCustom d-inline-block p-0" starsSize="small" rating="<%= average_rating(guide,nil)[:guide_rating] %>"></div>
+            <span class="d-inline-block star-counter"><%= average_rating(guide,nil)[:guide_count] %></span>
           </div>
-
-          <div class="texts-wrap">
-            <h5 class="text-white">Photoshop</h5>
           </div>
+      <%end%>
+    <%end%>
 
-          <div class="bottom-image">
-            <img src="<%= image_path('People/asian-square.jpg') %>" alt="">
-          </div>
-        </div>
-
-        <h5 class="text-right">Tina Roy</h5>
-        <div class="text-right">
-          <div class="rateYo d-inline-block p-0"></div>
-
-          <span class="d-inline-block star-counter">653</span>
-        </div>
-      </div>
     </div>
   </section>
 </main>

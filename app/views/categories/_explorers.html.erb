@@ -33,7 +33,11 @@
                     </td>
                     <td>
                       <!--<%= link_to 'Book', reserve_calendar_path(explore_id: explore.id ),class: "btn btn-primary px-3 py-1"%>-->
-                      <%= link_to "Message" ,user_chats_path(current_user, :other_user => explore.profile_id), method: :post, class: "btn btn-primary px-3 py-1"  %>
+                      <% if user_signed_in? %>
+                        <%= link_to "Message" ,user_chats_path(current_user, :other_user => explore.profile_id), method: :post, class: "btn btn-primary px-3 py-1"  %>
+                      <%else%>
+                        <%= link_to "Message" ,nil,class: "btn btn-primary px-3 py-1"  %>
+                      <%end%>
                       <br>
                       <%= link_to 'Profile', profile_path(explore.profile_id ),class: "secondary-success-color"%>
 
