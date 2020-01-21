@@ -150,6 +150,7 @@ $(document).on('turbolinks:load', function() {
     $('.sign-in-btn').on('click', function() {
       toggleColumns('sign-in')
     });
+    
 
     function focusOnfirstInputInSignIn () {
         var firstInput = document.querySelector('.sign-in-email')
@@ -174,6 +175,13 @@ $(document).on('turbolinks:load', function() {
           if(btnsign!= null)
           {
             btnsign.addEventListener('click', switchToFormRegister);
+          }
+
+          const btnsignb = document.querySelector('#forSignUpLink');
+
+          if(btnsignb!= null)
+          {
+            btnsignb.addEventListener('click', switchToFormRegister);
           }
 
 
@@ -239,7 +247,11 @@ $(document).on('turbolinks:load', function() {
         {
           btnSignIn.addEventListener('click', switchToFormSignIn);
         }
-
+        const btnSignL = document.querySelector('#forLoginLink');
+        if(btnSignL)
+        {
+          btnSignL.addEventListener('click', switchToFormSignIn);
+        }
 
         function switchToFormSignIn() {
           toggleColumns('sign-up');
