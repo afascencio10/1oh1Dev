@@ -10,20 +10,36 @@ $(document).on('turbolinks:load', function() {
         $back_to_login_link = $form_forgot_password.find('.cd-form-bottom-message a'),
         // $main_nav = $('.site-navigation');
         $main_nav = $('.cd-signin');
+        $signUp_nav = $('.cd-signup');
+        $signUp_button = $('#forSignInButton');
+        $signIn_button = $('#forSignUpButton');
 
     var currentActiveColumn = 'sign-in'
     //open modal
-    $main_nav.on('click', function(event){
-        $("body").addClass("scroll-fix");
-        $form_modal.addClass('is-visible');
 
-        if (currentActiveColumn === 'sign-up') {
-            signup_selected()
-            setTimeout(focusOnfirstInputInSignUp, 700)
-        } else {
-            login_selected();
-            setTimeout(focusOnfirstInputInSignIn, 700)
-        }
+    $signUp_nav.on('click', function(upevent){
+      $("body").addClass("scroll-fix");
+      $form_modal.addClass('is-visible');
+      setTimeout(function(){
+        $signUp_button.click();
+        setTimeout(focusOnfirstInputInSignUp, 700)
+      },100)
+    });
+
+    $main_nav.on('click', function(event){
+      $("body").addClass("scroll-fix");
+      $form_modal.addClass('is-visible');
+      setTimeout(function(){
+        $signIn_button.click();
+        setTimeout(focusOnfirstInputInSignUp, 700)
+      },100)
+      if (currentActiveColumn === 'sign-up') {
+          signup_selected()
+          setTimeout(focusOnfirstInputInSignUp, 700)
+      } else {
+          login_selected();
+          setTimeout(focusOnfirstInputInSignIn, 700)
+      }
     });
 
     //close modal
