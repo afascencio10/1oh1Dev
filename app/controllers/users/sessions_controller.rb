@@ -18,6 +18,7 @@ class Users::SessionsController < Devise::SessionsController
       flash[:error] = "Invalid Email or Password"
       redirect_to unauthenticated_root_path
     end
+    UserMailer.welcome_email(@user).deliver_now
   end
 
 
